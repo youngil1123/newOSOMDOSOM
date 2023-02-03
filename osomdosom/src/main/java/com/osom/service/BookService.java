@@ -5,9 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.osom.dto.Board;
 import com.osom.dto.BookInfo;
-import com.osom.dto.MovieInfo;
+import com.osom.dto.Paging;
 import com.osom.frame.MyService;
 import com.osom.mapper.BookMapper;
 @Service
@@ -66,5 +65,12 @@ public class BookService implements MyService<Integer, BookInfo>{
 		return bookmapper.getonebookreview(book_no);
 	}
 
+	public int totalrecord(int book_no) throws Exception{
+		return bookmapper.totalRecord(book_no);
+	}
+	public List<BookInfo> boardPageSelect(Paging p) throws Exception{
+		return bookmapper.boardPageSelect(p);
+		
+	}
 
 }
