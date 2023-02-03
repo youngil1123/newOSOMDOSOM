@@ -35,7 +35,7 @@ public class BookController {
 			System.out.println(p);
 			bookreview = bookservice.boardPageSelect(p);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch blockㅇ
 			e.printStackTrace();
 		}
 		System.out.println(p);

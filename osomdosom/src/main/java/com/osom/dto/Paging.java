@@ -72,5 +72,5 @@ public class Paging {
 		this.startRecord = startRecord;
 		startRecord=(nowPage-1)*onePageRecord;
 	}
-
+//
 }

@@ -70,7 +70,7 @@ public class BookService implements MyService<Integer, BookInfo>{
 	}
 	public List<BookInfo> boardPageSelect(Paging p) throws Exception{
 		return bookmapper.boardPageSelect(p);
-		
+		//
 	}
 
 }
