@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+<link th:href="@{/css/variables.css}" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>ZenBlog Bootstrap Template - Index</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/img/favicon.png" rel="icon">
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="/css/variables.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+<title>Movie Review | Single</title>
+
+<!-- Loading third party fonts -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|"
+	rel="stylesheet" type="text/css">
+<!-- Loading main css file -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+<style>
+.btn {
+	-bs-btn-font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+.search_box {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.star {
+	position: relative;
+	font-size: 2rem;
+	color: #ddd;
+}
+
+.star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: red;
+	overflow: hidden;
+	pointer-events: none;
+}
+th, td {
+	padding: 6px;
+    }
+</style>
+
+
+<!-- <script th:inline="javascript">		
+/*<![CDATA[*/
+	
+function deletePost() {
+    const id = [[${Board.board_no}]];
+
+    if ( !confirm(id + '번 게시글을 삭제할까요?') ) {
+      return false;
+    }
+
+    const formHtml = `
+        <form id="deleteForm" action="/post/delete.do" method="post">
+            <input type="hidden" id="id" name="id" value="${id}" />
+        </form>
+    `;
+    const doc = new DOMParser().parseFromString(formHtml, 'text/html');
+    const form = doc.body.firstChild;
+    document.body.append(form);
+    document.getElementById('deleteForm').submit();
+  }
+/*]]>*/
+</script>  -->
+
+</head>
+
+
+
+<!-- 미디어 검색 폼  시작-->
+
+
+<body>
+	
+		<!-- 미디어 검색 폼  끝-->
+
+
+
+
+
+		<!-- 여기서부터 게시글 작성 폼 시작 -->
+
+
+
+
+
+
+
+
+
+
+				
+			
+			<div class="form-group">
+			<label for="title">게시글 번호</label>
+			<textarea><li>[[${board.board_no}]]</li>></textarea>
+			
+				<label for="title">제목</label>
+				<!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
+				<!-- required 속성을 설정하면 필수입력 사항이된다. -->
+				<!-- pattern 속성을 이용한 정규표현식으로 데이터의 유효성 검사를 할 수 있다. -->
+				<li>[[${board.title}]]</li>
+			</div>
+
+
+			<div class="form-group" >
+				<label for="content">내용</label>
+				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
+				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
+				<li>[[${board.review}]]</li>
+			</div>
+
+			<div class="form-group">
+				<label for="content">개인메모</label>
+				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
+				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
+				<li>[[${board.secret_memo}]]</li>
+			</div>
+			<div class="form-group">
+				<label for="writer">시청매체</label> 
+				<li>[[${board.partner}]]</li>
+			</div>
+			<div class="form-group">
+				<label for="writer">별점</label> <span class="star"> ★★★★★ <span>★★★★★</span>
+					<input type="range" oninput="drawStar(this)" value="1" step="1" name="star_rate"
+					min="0" max="10">
+				</span>
+			</div>
+			<input type="hidden" id="con_no" name="con_no">
+			<button type="submit" class="btn btn-secondary" id="btn-save">수정</button>
+			<button type="button" onclick="deletePost()"class="btn btn-secondary" id="btn-save">삭제</button>
+			
+		
+
+	<!-- 여기서부터 게시글 작성 폼 끝 -->
+
+	<footer th:replace="footer.html :: footer"></footer>
+
+	<!-- Default snippet for navigation -->
+</body>
+
+</html>

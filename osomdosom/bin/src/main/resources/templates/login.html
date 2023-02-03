@@ -12,6 +12,8 @@
 	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 	rel="stylesheet">
 
+
+
 <!-- Vendor CSS Files -->
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/vendor/bootstrap-icons/bootstrap-icons.css"
@@ -24,40 +26,304 @@
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
+<link href="/css/login.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+	
+
 <script>
 	$(document).ready(function() {
-		$('#login_form > a').click(function() {
+		$('#login_form > #signbtn > a').click(function() {
 			$('#login_form').attr({
 				'method' : 'post',
 				'action' : '[[@{/loginimpl}]]'
 			});
+			
 			$('#login_form').submit();
+			
 		});
+		
+		/* 아이디중복체크 */
+		$("#idck_btn").click(function() {
+			 var mem_id = $("#mem_id").val();
+		          $.ajax({
+		              url:'[[@{/idCheck}]]', //Controller에서 요청 받을 주소
+		              type: "POST",
+		              data: {mem_id:mem_id},
+		              success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+		                  if(cnt == 0){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+		                  	alert("이 아이디는 사용 가능합니다.");
+		                    document.getElementById('idchk').value="yes"
+		                  } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+		                  	alert("이 아이디는 사용  불가능합니다.");
+		                    document.getElementById('idchk').value="no"
+		                  }
+		              },
+		              error:function(request, error){
+		  				alert("fail");
+		  				alert("code: "+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		              
+		              }
+		          });
+		      });	
+	
 	});
+	
+	
 	function press(){
 		if(window.event.keyCode == 13){
 			formname.submit();
-		}
+		}		
+	}
+	
+	function checkAll() {
+		var joinForm=document.mem_form;
+		var pwd=joinForm.mem_pwd.value;
+		var nickname=joinForm.nickname.value; 
+		var pwchk=document.getElementById('pwchk').value;
+		var idchk=document.getElementById('idchk').value;
+	
+		
+
+		
+		if (!checkUserId($("#mem_id").val())) {
+      	   	 return false;
+  		} 
+		  else if (!checkName($("#mem_name").val())) {
+     	  	  return false;
+     	  	  
+  		} else if (pwd.length==0|| pwd==""){
+  			  alert("비밀번호를 입력해주세요");
+  			  return false;   			 
+  		
+  		} else if (!checkMail($("#mem_email").val())) {
+  			  alert("이메일을 다시 입력해주세요");
+     		  return false;
+	
+	    } else if (nickname.length==0|| nickname==""){
+	    	  alert("닉네임을 입력해주세요");
+	    	  return false; 
+	    	  
+	    } else if(pwchk=="no"){
+	    	  alert("비밀번호를 확인해주세요")
+	    	  return false;
+	    	  
+	    } else if(idchk=="no"){
+	    	  alert("아이디중복체크를 해주세요")
+	    	  return false;
+	    } 
+		
+			alert("회원가입이 완료되었습니다.");
+ 			return true;
+	}
+	
+	
+	 // 공백확인 함수
+    function checkExistData(value, dataName) {
+        if (value == "") {
+            alert(dataName + " 입력해주세요!");
+            return false;
+        }
+        return true;
+    }
+  
+  function checkUserId(mem_id) {
+      //Id가 입력되었는지 확인하기
+      if (!checkExistData(mem_id, "아이디를"))
+          return false;
+
+      var idRegExp = /^[a-zA-z0-9]{4,12}$/; //아이디 유효성 검사
+      if (!idRegExp.test(mem_id)) {
+          alert("아이디는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+          mem_id = "";
+          $("#mem_id").focus();
+          return false;
+      }
+      
+      return true; //확인이 완료되었을 때
+      
+  }
+  
+  function checkName(mem_name) {
+      if (!checkExistData(mem_name, "이름을"))
+          return false;
+
+      var nameRegExp = /^[가-힣]{2,4}$/;
+      if (!nameRegExp.test(mem_name)) {
+          alert("이름이 올바르지 않습니다.");
+          return false;
+      }
+      return true; //확인이 완료되었을 때
+  }
+  
+
+ function checkMail(mem_email) {
+      //mail이 입력되었는지 확인하기
+      if (!checkExistData(mem_email, "이메일을"))
+          return false;
+
+      var emailRegExp = /^[A-Za-z0-9_]*[@]{1}[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+      if (!emailRegExp.test(mem_email)) {
+          alert("이메일 형식이 올바르지 않습니다!");
+          mem_email= "";
+          $("#mem_email").focus();
+          return false;
+      }
+      return true; //확인이 완료되었을 때
+  }
+ 
+ 
+ 
+  </script>
+
+<script>
+	function check_pw(){
+	 
+    var pw = document.getElementById('member_pwd1').value;
+    var SC = ["!","@","#","$","%","?","^","*","."];
+    var check_SC = 0;
+    
+    if(pw.length < 6 || pw.length>16){
+        window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+        document.getElementById('member_pwd1').value='';
+    }
+    for(var i=0;i<SC.length;i++){
+        if(pw.indexOf(SC[i]) != -1){
+            check_SC = 1;
+        }
+    }
+    if(check_SC == 0){
+        window.alert('!,@,#,$,%,? 등의 특수문자가 들어가 있지 않습니다.')
+        document.getElementById('member_pwd1').value='';
+    }
+    if(document.getElementById('member_pwd1').value !='' && document.getElementById('member_pwd2').value!=''){
+        if(document.getElementById('member_pwd1').value==document.getElementById('member_pwd2').value){
+            document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+            document.getElementById('check').style.color='blue';
+            document.getElementById('pwchk').value="yes"
+        }
+        else{
+            document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+            document.getElementById('check').style.color='red';
+            document.getElementById('pwchk').value="no"
+        }
+    }
 }
+
 </script>
+<script>
+
+	function check_mbti(){
+	var mb = document.getElementById('mbti').value;
+	alert(mb);
+	var mbti = mb.toUpperCase();
+	alert(mbti);
+	var SC = ["INFP","INTJ","INFP","INFJ","ISFP","ISTJ","ISFP","ISFJ","ENFP","ENTJ","ENFP","ENFJ","ESFP","ESTJ","ESFP","ESFJ"];
+	var check_SC = 0;
+	if(mbti.length!=4){
+    window.alert('MBTI는 네글자로 이루어져있습니당');
+    document.getElementById('mbti').value='';
+    document.getElementById('mbtichk').value="no";
+	}
+	for(var i=0;i<SC.length;i++){
+	       if(mbti.indexOf(SC[i]) != -1){
+	            check_SC = 1;
+	        }
+	} 
+	if(check_SC == 0){
+	 window.alert('존재하는 MBTI 타입이 아닙니다.')
+	 document.getElementById('mbti').value='';
+	 document.getElementById('mbtichk').value="no";
+	} else if(check_SC == 1){
+		 document.getElementById('mbtichk').value="yes";
+	 }
+	}
+	
+</script>
+
 </head>
 <body>
+
 <header th:replace="top.html :: navigation-bar"></header>
-	<div id="login_form_style">
-	<h1>&nbsp;&nbsp;로그인</h1>
-	<form method="post" id="login_form" name="formname">
-	
-		&nbsp;&nbsp;&nbsp;아이디&nbsp;&nbsp;&nbsp;<input type="text" name="mem_id"><span id="id_span"></span><br>
-		
-		&nbsp;비밀번호<input type="password" name="mem_pwd"><span id="pwd_span"></span><br>
-		
-		<input type="submit" class="btn btn-md btn-primary btn-block" value="로그인">
-	</form>
-	<input type="submit" class="btn btn-md btn-primary btn-block" onclick = "window.location='register'" value="회원가입"> 
+
+<div class="container" id="container">
+<div class="form-container sign-up-container">
+   <form action="/member/new" method="post" name="mem_form" id="mem_form" onsubmit="return checkAll()">
+       <h2>Create Account</h2>
+      <span>to have wonderful experience!</span>
+	 <div class="idck">
+	 <input type="text"  id="mem_id" name="mem_id" placeholder="id 입력" style= "width: 190px; display: block; float:left;" > 
+	 <input type="button" name="checkid" id="idck_btn" value="중복확인" style= "width: 90px; display: block; float:right;"/>
+	  <!-- 아이디 중복체크 여부 -->
+	<!--  <input type="hidden" name="idDuplication" value="idUncheck"> -->
 	</div>
+     <input type="text" placeholder="Name" name="mem_name" id="mem_name" />
+     <div class="passConfirm">
+	 <input type="password" placeholder="password" name="mem_pwd" id="member_pwd1" onchange="check_pw()">
+	 <input type="password" placeholder="verify password" name="mem_pwd2" id="member_pwd2" onchange="check_pw()">
+	 <span id="check"></span>
+	 </div>
+	 <input type="text" placeholder="E-Mail" name="mem_email" id="mem_email" />
+	 <input type="text" placeholder="MBTI(선택)" name="mbti" id="mbti" onchange="check_mbti()">	
+	 <input type="text" placeholder="Nickname" name="nickname" />
+	 <input type="hidden" id="pwchk" value="no">
+	 <input type="hidden" id="idchk" value="no">
+	 <input type="hidden" id="mbtichk" value="no">
+        <button type="submit" id="joinbtn" >Sign Up</button> 
+   
+    </form>  
+  </div>
+
+
+  <div class="form-container sign-in-container">
+    <form action="#" method="post" id="login_form" name="formname"/>
+      <h2>SIGN IN</h2>
+      <span>다솜이짱</span>
+      
+       <input type="text" placeholder="Id" name="mem_id" />
+       <input type="password" placeholder="Password" id="member_pwd" name="mem_pwd"/>
+      
+       <!-- <a th:href="@{/findpwd} onclick"window.open.href, '_blank">Forgot your password?</a>  -->
+	 
+       <a href="#" onclick="window.open
+       ('lostinfo','new','scrollbars=yes,resizable=no width=500 height=750, left=600,top=200'); return login">Forgot your password?</a>
+     	<br>
+		<div id="signbtn">
+    	<a><button type="submit" id="loginbtn" >Sign In</button></a>
+    	</div>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1 >Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" id="signIn">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" id="signUp">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
+
+<script>
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+  container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+  container.classList.remove("right-panel-active");
+});
+</script>
+
 </html>
-
-

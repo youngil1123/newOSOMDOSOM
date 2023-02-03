@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+<link th:href="@{/css/variables.css}" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>ZenBlog Bootstrap Template - Index</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/img/favicon.png" rel="icon">
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="/css/variables.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+<title>Movie Review | Single</title>
+
+<!-- Loading third party fonts -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|"
+	rel="stylesheet" type="text/css">
+<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Loading main css file -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+<style>
+.btn{
+--bs-btn-font-size: 2rem;
+margin-bottom:10px;
+}
+.star {
+    position: relative;
+    font-size: 2rem;
+    color: #ddd;
+  }
+  
+  .star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .star span {
+    width: 0;
+    position: absolute; 
+    left: 0;
+    color: red;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+</style>
+<script>
+const drawStar = (target) => {
+    document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+  }
+</script>
+
+</head>
+
+
+<body>
+	<header th:replace="top.html :: navigation-bar"></header>
+
+<div class="container" style="margin-top:100px;">
+  <h2>게시판 글쓰기</h2>
+  <form action="write.jsp" method="post">
+    <div class="form-group">
+      <label for="title">제목</label>
+<!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
+<!-- required 속성을 설정하면 필수입력 사항이된다. -->
+<!-- pattern 속성을 이용한 정규표현식으로 데이터의 유효성 검사를 할 수 있다. -->
+      <input type="text" class="form-control" id="title"
+       placeholder="제목 입력(4-100)" name="title"
+       maxlength="100" required="required"
+       pattern=".{4,100}">
+    </div>
+    <div class="form-group">
+   <label for="content">내용</label>
+<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
+<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
+   <textarea class="form-control" rows="15"  id="content"
+    name="content" placeholder="내용 작성"></textarea>
+ </div>
+ 
+ <div class="form-group">
+   <label for="content">개인메모</label>
+<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
+<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
+   <textarea class="form-control" rows="15"  id="content"
+    name="content" placeholder="내용 작성"></textarea>
+ </div>
+    <div class="form-group">
+      <label for="writer">시청매체</label>
+      <input type="text" class="form-control" id="writer"
+       placeholder="작성자(2자-10자)" name="writer">
+    </div>
+    <div class="form-group">
+				<label for="writer">별점</label> <span class="star"> ★★★★★ <span>★★★★★</span>
+					<input type="range" oninput="drawStar(this)" value="1" step="1"
+					min="0" max="10">
+				</span>
+			</div>
+   <button type="button" class="btn btn-secondary" onclick = "window.location='moviedetail'">등록</button>
+  </form>
+</div>
+
+	
+	 <footer th:replace="footer.html :: footer"></footer>
+	</div>
+	<!-- Default snippet for navigation -->
+
+
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+
+</html>
