@@ -4,9 +4,32 @@
 <meta charset="UTF-8">
 <link th:href="@{/css/main.css}" rel="stylesheet">
 <link th:href="@{/css/team.css}" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+</script>
+	<!-- Template Main JS File -->
+	<script src="/js/main.js"></script>
+	
+ 	
+	
 </head>
 <body>
 <header id="header" class="header d-flex align-items-center fixed-top" th:fragment="navigation-bar">
+
+	<script>		
+	function chklogin(){
+		alert("로그인이 필요한 서비스입니다. 로그인 이후 이용해 주십시오.");
+	}
+	</script> 
+	
+	<script>
+	function logout(){
+		alert("로그아웃 되었습니다.");
+	}
+	</script>
+
+
 		<div
 			class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
@@ -17,18 +40,17 @@
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="index.html"><span>미디어</span>
+					<li class="dropdown"><a th:href="@{/mediamain}"><span>미디어</span>
 							<i class="bi bi-chevron-down dropdown-indicator"></i></a>
 						<ul>
 							<li><a href="search-result.html"></a></li>
-							<li><a href="#">영화</a></li>
-							<li><a href="#">드라마</a></li>
-							<li><a href="#">책</a></li>
-							<li><a href="#">뮤지컬</a></li>
-							<li><a href="#">연극</a></li>
+							<li><a th:href="@{/movie}">Movie</a></li>
+							<li><a th:href="@{/book}">Book</a></li>
+							<li><a th:href="@{/musical}">Musical</a></li>
+							<li><a th:href="@{/theater}">Theater</a></li>
 
 						</ul></li>
-					<li class="dropdown"><a href="category.html"><span>MBTI</span>
+					<li class="dropdown"><a th:href="@{/mbtimain}"><span>MBTI</span>
 							<i class="bi bi-chevron-down dropdown-indicator"></i></a>
 
 						<ul>
@@ -59,23 +81,58 @@
 									<li><a href="#">ISTJ</a></li>
 								</ul></li>
 						</ul></li>
+					
+					
+					<div th:if ="${session.logincust == null}"> 
+						<li><a th:href="@{/follower/FollowerPage}" onClick='chklogin();'>팔로워</a></li>
+			
+					</div>
+					<div th:if="${session.logincust != null}">
+						<li><a th:href="@{/follower/FollowerPage}">팔로워</a></li>
 
-					<li><a href="#">팔로워</a></li>
-					<li><a href="about.html">포인트 상점</a></li>
-					<li><a href="contact.html">내 글</a></li>
+					</div>
+					
+					
+					<div th:if ="${session.logincust == null}"> 
+						<li><a th:href="@{/pointshop}" onClick='chklogin();'>포인트상점</a></li>
+			
+					</div>
+					<div th:if="${session.logincust != null}">
+						<li><a th:href="@{/pointshop}">포인트상점</a></li>
+
+					</div>
+					
+					
+				
+					<li><a th:href="@{/myboard}">내 글</a></li>
+					<div th:if ="${session.logincust == null}"> 			
+					</div>
+				
+					
+					<div th:if="${session.logincust != null}">
+						<li><a th:href="@{/mypage}">마이페이지</a></li>
+					</div>
 				</ul>
 			</nav>
 			<!-- .navbar -->
 
 			<div class="position-relative">
-				<ul>
-					<li><a th:href="@{/login}">Login</a></li>
-					<li><a th:href="@{/logout}">Logout</a></li>
-					<li><a th:href="@{/register}">Register</a></li>
 				
-				<a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
-				<i class="bi bi-list mobile-nav-toggle"></i>
-				</ul>
+					<div th:if ="${session.logincust == null}"> <!-- -->
+						<a th:href="@{/login}" >Login</a>
+			
+					</div>
+					<div th:if="${session.logincust != null}">
+						<a th:href="@{/logout}">
+						<span th:text="${session.logincust.nickname} + '님 <로그아웃>' " onClick='logout();'></h2>
+
+					</a>
+					</div>
+					<div>	
+						<a href="#" class="mx-2 js-search-open" style="display:block; float:left"><span class="bi-search"></span></a>
+						<i class="bi bi-list mobile-nav-toggle"></i>
+					</div>
+					
 				<!-- ======= Search Form ======= -->
 				<div class="search-form-wrap js-search-form-wrap">
 					<form action="search-result.html" class="search-form">
@@ -87,11 +144,26 @@
 					</form>
 				</div>
 				<!-- End Search Form -->
+<a href="#"
+		class="scroll-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="/vendor/aos/aos.js"></script>
+	<script src="/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="/js/main.js"></script>
 
 			</div>
 
 		</div>
 
+	
 	</header>
+	
 </body>
 </html>

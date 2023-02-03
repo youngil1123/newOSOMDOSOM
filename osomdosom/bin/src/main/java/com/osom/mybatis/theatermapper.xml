@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osom.mapper.TheaterMapper">
+	<insert id="insert" parameterType="TheaterInfo">
+		INSERT INTO theaterinfo VALUES (#{mt20id},#{prfnm},#{prfstate},#{genrenm},#{prfpdfrom},#{prfpdto},#{poster},#{fcltynm},#{prfruntime})
+	</insert>
+	<select id="get" parameterType="String" resultType="String">
+		SELECT mt20id FROM theaterinfo WHERE genrenm=#{genre}
+	</select>
+	<update id="updateconno" parameterType="TheaterInfo">
+		UPDATE theaterinfo SET con_no=#{con_no} WHERE mt20id =#{mt20id}		
+	</update>
+	<select id="searchtheaterlist" parameterType="String" resultType="TheaterInfo">
+		SELECT * FROM theaterinfo WHERE prfnm LIKE CONCAT('%',#{keyword},'%')
+	</select>
+	<select id="gettheaterreview" resultType="TheaterInfo" parameterType="String">
+		SELECT distinct(con_no),theaterinfo.poster,theaterinfo.prfnm,theaterinfo.mt20id,theaterinfo.genrenm FROM theaterinfo INNER JOIN board USING(con_no) where genrenm=#{genrenm};
+	</select>
+	
+	<select id="select" parameterType="String" resultType="TheaterInfo">
+		SELECT * FROM theaterinfo WHERE mt20id = #{mt20id}
+	</select>
+	<select id="getonetheaterreview" resultType="TheaterInfo" parameterType="String">
+		select * from board inner join theaterinfo using(con_no) inner join member_tbl using(mem_no) WHERE mt20id=#{mt20id};
+	</select>
+</mapper>

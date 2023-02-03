@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+<link th:href="@{/css/variables.css}" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>ZenBlog Bootstrap Template - Index</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/img/favicon.png" rel="icon">
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="/css/variables.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+<title>Movie Review | Single</title>
+
+<!-- Loading third party fonts -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|"
+	rel="stylesheet" type="text/css">
+<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Loading main css file -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+<!--[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]-->
+<style>
+.reviewlist > th{
+		width:15%;
+		height:40px;
+		line-height:40px;
+		border-bottom:1px solid #ddd;
+		text-align:center;
+}
+.review > td{
+		width:15%;
+		height:40px;
+		line-height:40px;
+		border-bottom:1px solid #ddd;
+		text-align:center;
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+	<header th:replace="top.html :: navigation-bar"></header>
+
+	<main class="main-content">
+		<div class="container">
+			<div class="page">
+				<div class="breadcrumbs">
+					<a href="index.html">Home</a> <a href="review.html">Movie
+						Review</a> <span>The Croods</span>
+				</div>
+
+				<div class="content">
+					<div class="row">
+						<div class="col-md-6">
+							<figure class="movie-poster">
+								<img src="http://kobis.or.kr/common/mast/movie/2019/09/thumb_x640/thn_d909cccd6fab4eee8e9d55c21b19c3c1.jpg" style="width: 70%; height: 70%;">
+							</figure>
+						</div>
+						<div class="col-md-6">
+							<h2 class="movie-title">조커</h2>
+							<div class="movie-summary">
+								<p>Sed ut perspiciatis unde omnis iste natus error sit
+									voluptatem accusantium doloremque laudantium, totam rem
+									aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+									architecto beatae vitae dicta sunt explicabo.</p>
+
+								<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+									aut odit aut fugit, sed quia consequuntur magni dolores eos qui
+									ratione voluptatem sequi nesciunt porro quisquam est, qui
+									dolorem ipsum quia dolor sit amet, consectetur, adipisci velit
+									sed.</p>
+							</div>
+							<ul class="movie-meta">
+								<li><strong>Rating:</strong>
+									<div class="star-rating" title="Rated 4.00 out of 5">
+										<span style="width: 80%"><strong class="rating">4.00</strong>
+											out of 5</span>
+									</div></li>
+								<li><strong>Length:</strong> 98 min</li>
+								<li><strong>Premiere:</strong> 22 March 2013 (USA)</li>
+								<li><strong>Category:</strong> Animation/Adventure/Comedy</li>
+							</ul>
+
+							<ul class="starring">
+								<li><strong>Directors:</strong> Kirk de Mico (as Kirk
+									DeMico). Chris Sanders</li>
+								<li><strong>Writers:</strong> Chris Sanders (screenplay),
+									Kirk De Micco (screenplay)</li>
+								<li><strong>Stars:</strong> Nicolas Cage, Ryan Reynolds,
+									Emma Stone</li>
+								</br>
+								
+							</ul>
+						</div>
+					</div>
+					<!-- .row -->
+					<h1>리뷰</h1>
+					<div class="entry-content">
+						<p>
+							여러 의미에서 미친 영화가 나왔다. 어떤 식으로든 관객을 뒤흔든다. 토드 필립스와 호아킨 피닉스는 조커라는 위험한
+							캐릭터의 기원을 매혹적이고 도전적인 방식으로 더듬어나간다. 기본적으론 자기애적 망상장애를 앓는 한 남자가 자신의
+							정체성을 찾으려다 의도치 않게 상징이 되어버린 이야기.
+							<택시 드라이버>, <코미디의 왕> 등 영화에 빚을 지고 있는 만큼 내러티브가 새롭다고 보긴
+							어렵다. 다만 여기에 조커라는 캐릭터가 덧씌워지고, 그것이 호아킨 피닉스의 육체를 통해 구현될 때 상상 이상의
+							폭발력을 갖는다. 아쉬운 건 이게 굳이 조커였어야 할 필요가 그다지 설득되지 않는다는 것. 금방이라도 망가질 것 같은
+							불안감과 휘몰아치는 에너지는 부정할 수 없지만 이 모든 건 조커라는 캐릭터가 아니라 배우 호아킨 피닉스를 향해
+							수렴된다.
+						</p>
+						<p>----------------------------------------------------------------------------------</p>
+						<table>
+    <thead>
+    <form method="post" action="">
+    <tr class="reviewlist">
+        <th>번호</th>
+        <th>작성자번호</th>
+        <th>글제목</th>
+        <th>동행자</th>
+        <th>비밀메모</th>
+        <th>별점</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <!-- CONTENTS !-->
+    <tr th:each="s: ${select}" class="review">
+        <td >
+            <span th:text="${s.board_no}"></span>
+        </td>
+        <td> 
+             <span th:text="${s.mem_no}"></span>
+            
+        </td>
+        <td>
+       		 <a href="#">
+            <span th:text="${s.title}"></span>
+            </a>
+        </td>
+         <td>
+            <span th:text="${s.partner}"></span>
+        </td>
+        <td>
+            <span th:text="${s.secret_memo}"></span>
+        </td>
+        <td>
+            <span th:text="${s.star_rate}"></span>
+        </td>
+    </tr>
+    </form>
+    </tbody>
+</table>
+								<!-- .container -->
+	</main>
+	<footer th:replace="footer.html :: footer"></footer>
+	</div>
+	<!-- Default snippet for navigation -->
+
+
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+
+</html>

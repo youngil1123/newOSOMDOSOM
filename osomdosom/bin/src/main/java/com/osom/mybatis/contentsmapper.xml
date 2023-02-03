@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osom.mapper.ContentsMapper">
+	<insert id="insert" parameterType="Contents">
+		INSERT INTO Contents VALUES(#{con_no},#{con_cd},#{con_genre})
+	</insert>
+	<select id="getconno" resultType="Integer" parameterType="String">
+		SELECT con_no FROM contents WHERE con_cd = #{con_cd}
+	</select>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osom.mapper.MovieMapper">
+	<insert id="insert" parameterType="MovieInfo">
+		INSERT INTO movieinfo VALUES (#{movieCd},#{movieNm},#{movieNmEn},#{genreAlt},#{openDt},#{peopleNm},#{showTm})
+	</insert>
+	<select id ="getmoviecd" resultType="String">
+		SELECT movieCd FROM movieinfo
+	</select>
+	<update id ="updateconno" parameterType="MovieInfo">
+		UPDATE movieinfo SET con_no =#{con_no} WHERE movieCd =#{movieCd}
+	</update>
+	<select id ="searchmovielist" parameterType="String" resultType="MovieInfo">
+		SELECT * FROM movieinfo WHERE movieNm LIKE CONCAT('%',#{keyword},'%')
+	</select>
+	<select id="getmoviereview" resultType="MovieInfo">
+		SELECT distinct(con_no),movieinfo.movieposter,movieinfo.movieNm,movieinfo.movieCd FROM movieinfo INNER JOIN board USING(con_no);
+	</select>
+	
+	<select id="select" parameterType="String" resultType="MovieInfo">
+		SELECT * FROM movieinfo WHERE movieCd = #{movieCd}
+	</select>
+	<select id="getonemoviereview" resultType="MovieInfo" parameterType="String">
+		select * from board inner join movieinfo using(con_no) inner join member_tbl using(mem_no) WHERE movieCd=#{movieCd};
+	</select>
+</mapper>

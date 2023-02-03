@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osom.mapper.BoardMapper">
+
+	<insert id="insert" parameterType="Board">
+		insert into board values (#{board_no},#{con_no},#{mem_no},#{title},#{review},#{partner},NOW(),#{secret_memo},#{star_rate})
+
+	</insert>
+
+	<select id="select" parameterType="Integer" resultType="Board">
+		select * from board where board_no=#{board_no} and mem_no=#{mem_no} and title=#{title} and partner=#{partner} and secret_memo=#{secret_memo} and star_rate=#{star_rate} 
+	</select>
+
+
+	<update id="update">
+		
+	</update>
+	<!-- 게시글 삭제 -->
+ 	<delete id="deletePost">
+		DELETE FROM board WHERE board_no = #{board_no};
+	</delete> 
+	
+	<select id="selectall" resultType="Board">
+		
+	</select>
+	
+	<select id="searchmylist" parameterType="Integer" resultType="Board"  >
+		select * from board where mem_no=#{mem_no} order by board_no desc
+	</select>
+	
+	<!-- 게시글 상세정보 조회 -->
+    <select id="findById" parameterType="Integer" resultType="Board">
+        SELECT * FROM board WHERE board_no=#{board_no}
+    </select>
+	
+</mapper>

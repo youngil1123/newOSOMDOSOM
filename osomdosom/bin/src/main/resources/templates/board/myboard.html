@@ -1,0 +1,243 @@
+<page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"> <taglib
+	uri="http://java.sun.com/jsp/jstl/core" prefix="c"> <taglib
+	uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+<link th:href="@{/css/variables.css}" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Jquery CDN 로드 : 항상 최신 버전 사용 -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+<!-- 부트스트랩 CDN 로드 : 항상 최신 버전 사용 : maxcdn -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+
+
+<!-- 부트스트랩 CDN 로드 : 항상 최신 버전 사용 : netdna -->
+<!--   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"> 
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script> -->
+
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>ZenBlog Bootstrap Template - Index</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/img/favicon.png" rel="icon">
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="/css/variables.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+
+<!-- Loading third party fonts -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|"
+	rel="stylesheet" type="text/css">
+<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Loading main css file -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+<style>
+.head-info{
+	float: left;
+	width: 100%;
+	height: 50px;
+	background: #ddd;
+	line-height: 50px;
+	margin-top: 100px;
+}
+
+.head-info>div:last-child {
+	text-align: right;
+}
+
+#table {
+	width: 100%;
+	margin-bottom: 50px;
+	
+}
+
+.board-list>td {
+	float: left;
+	width: 15%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	list-style: none;
+	text-align: center;
+
+}
+
+.list>td {
+	float: left;
+	width: 15%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	list-style: none;
+	text-align: center;
+	
+}
+
+.board-list>td:nth-child(6n+3) {
+	width: 35%;
+}
+
+.list>td:nth-child(6n+3) {
+	width: 35%;
+}
+
+.board-list>td:nth-child(6n+4) {
+	width: 20%;
+}
+
+.list>td:nth-child(6n+4) {
+	width: 20%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.word-cut{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	width:80px;
+}
+</style>
+
+<script th:inline="javascript">
+
+	$(function(){
+		//전체선택을 클릭하면 목록의 체크박스를 선택 또는 해제하는 기능
+		$("#allCheck").click(function(){
+			//  $("h1").attr("title","연습"); 
+			//  $("#bb").prop("checked", true);//값바꾸기    $("#bb").prop("checked"); //구하기
+			//  $(this) : 이벤트가 발생한 객체
+			$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+		});
+		
+		//선택삭제 버튼 클릭시
+		$("#choDel").on('click',function(){
+			//최소 1개이상 선택되어야 삭제하기 위해 이동
+			// <input type="checkbox" name="no" value="17"/><input type="checkbox" name="no" value="16"/>...
+			// each() 객체에 대한 반복문
+			var checkCount = 0;
+			$("input[name=no]").each(function(i, obj){
+				if(obj.checked){ // obj담긴 input태그의 체크정보를 구하여 갯수를 구한다.
+					checkCount++;
+				}
+			});
+			
+			if(checkCount>0){
+				if(confirm(checkCount+"개의 글을 삭제하시겠습니까?")){
+					$("#delForm").submit();
+				}
+			}else{
+				alert("삭제할 레코드 최소 1개이상 선택하세요..");
+			}			
+		});////
+		
+	});
+
+	
+
+
+</script>
+
+</head>
+<body>
+	<header th:replace="top.html :: navigation-bar"></header>
+	<header th:replace="top.html :: navigation-bar"></header>
+	<div class="container">
+	<h1>게시판 목록</h1>
+	<table id="table">
+	<div class="head-info">
+	
+	<form method="post" action="/webMVC/board/boardMultiDel.do" id="delForm">
+		<tr class="board-list">
+			<td><input type="checkbox" id="allCheck">전체선택</td>
+			<td>번호</td>
+			<td>제목</td>
+			<td>등록일</td>
+			<td>별점</td>
+		</tr>
+		<tr class="list" th:each="l :${searchmylist}">
+			<td><input type="checkbox" id="allCheck"></td>
+			<td th:text="${l.board_no}"></td>
+			<td><a th:href="@{/post/view.do( board_no=${l.board_no} )}" th:text="${l.title}" class="word-cut"></a></td>
+			<td><span th:text="${#dates.format(l.writedate,'yyyy-MM-dd')}"></span></td>
+			<td th:text="${l.star_rate}"></td>
+		</tr>
+	</form>
+	
+	<input type="button" value="선택삭제" id="choDel"/>
+	</table>
+	</div>
+	
+
+	<footer th:replace="footer.html :: footer"></footer>
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/app.js"></script>
+
+
+
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="js/demo/datatables-demo.js"></script>
+
+</body>
+</html>
