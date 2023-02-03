@@ -1,5 +1,5 @@
-<!-- <style>
-/*�럹�씠吏�*/
+<style>
+/*페이징*/
 .pageDiv ul{
 	list-style:none;
 	float:left;
@@ -14,16 +14,16 @@
 	<table>
 		<thead>
 			<tr class="reviewlist">
-				<th>�젣紐�</th>
-				<th class="jb-th-1" style="width: 42%;">由щ럭</th>
-				<th>�옉�꽦�옄(�땳�꽕�엫)</th>
-				<th>�벑濡앹씪</th>
-				<th>�룊�젏</th>
+				<th>제목</th>
+				<th class="jb-th-1" style="width: 42%;">리뷰</th>
+				<th>작성자(닉네임)</th>
+				<th>등록일</th>
+				<th>평점</th>
 			</tr>
 		</thead>
 
 		<tbody>
-			CONTENTS !
+			<!-- CONTENTS !-->
 			<tr th:each="s: ${bookreview}" class="review">
 				<td><span th:text="${s.title}"></span></td>
 				<td><a href="#"> <span th:text="${s.review}"
@@ -37,43 +37,34 @@
 	</table>
 </div>
 <div>
-�럹�씠吏� �젙蹂� �솗�씤..
-[[${p.nowPage}]], [[${p.totalPage}]]
+현재 페이지 : [[${p.nowPage}]]<br>
+총 페이지 : [[${p.totalPage}]]<br>
 </div>
-.container
+<!-- .container -->
 <div class="pageDiv">
 	<ul>
-		nowPage媛� 1�씪寃쎌슦
-		<th:if="${p.nowPage == 1}">
-			<li>prev</li>
-		</th:if>
-		nowPage媛� 1蹂대떎 �겢寃쎌슦
-		<th:if="${p.nowPage != 1}">
-			<li><a href="#">prev</a></li>
-		</th:if>
-		諛섎났臾몄쑝濡� �럹�씠吏� 踰덊샇 異쒕젰
-		<p th:each="i:${#numbers.sequence(p.startPage,p.startPage+p.onePageCount-1)}">
-			異쒕젰�븷 �럹�씠吏�踰덊샇(i)�뒗 珥앺럹�씠吏��닔 蹂대떎 �옉�쓣 �븣源뚯� 異쒕젰�븳�떎.
-			<th:if="${i <=p.totalPage}">
-			�쁽�옱�럹�씠吏�
-				<th:if="${i == p.nowPage}">
-					<li style="background-color:#ddd;"><a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a></li>
-				</th:if>
-			�쁽�옱�럹�씠吏� �븘�땺寃쎌슦
-				<th:if="${i != p.nowPage}">
-					<li><a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a></li>
-				</th:if>
-			</th:if>
+		<!-- nowPage가 1일경우 -->
+	
+		<!-- nowPage가 1보다 클경우 -->
+		<p th:if="${p.nowPage != 1}">
+			<li><a th:href="@{/review/bookreview(nowPage=${p.nowPage}-1,book_no=${p.book_no})}">이전</a></li>
 		</p>
-		nowPage>=totalPage
-		<th:if="${p.nowPage} &ge; ${p.totalPage}">
-			<li>next</li>
-		</th:if>
-		nowPage<totalPage
-		<th:if="${p.nowPage} &lt; ${p.totalPage}">
-			<li><a href="#">next</a></li>
-		</th:if>
+		<!-- 
+		<p th:each="i:${#numbers.sequence(p.startPage,p.startPage+p.onePageCount-1)}">
+			<p th:if="${i &lt;= p.totalPage}">
+				<p th:if="${i == p.nowPage}">
+					<li style="background-color:#ddd;"><a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a></li>
+				</p>
+				<p th:if="${i != p.nowPage}">
+					<li><a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a></li>
+				</p>
+			</p>
+		</p>
+		-->
+		<!-- nowPage<totalPage -->
+		<p th:if="${p.nowPage lt p.totalPage}">
+			<li><a th:href="@{/review/bookreview(nowPage=${p.nowPage}+1,book_no=${p.book_no})}">다음</a></li>
+		</p>
 	</ul>
 	
 </div>
- -->

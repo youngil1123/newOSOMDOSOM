@@ -121,32 +121,10 @@
 						</div>
 					</div>
 					<!-- .row -->
-					<h3>리뷰리스트~</h3>
-					<div class="entry-content">
-						<table>
-							<thead>
-									<tr class="reviewlist">
-										<th>제목</th>
-										<th class="jb-th-1" style="width:42%;">리뷰</th>
-										<th>작성자(닉네임)</th>
-										<th>등록일</th>
-										<th>평점</th>
-									</tr>
-							</thead>
-
-							<tbody>
-								<!-- CONTENTS !-->
-								<tr th:each="s: ${bookreview}" class="review">
-									<td><span th:text="${s.title}"></span></td>
-									<td><a href="#"> <span th:text="${s.review}" style="font-size:0.8em;"></span>
-									</a></td>
-									<td><span th:text="${s.nickname}"></span></td>
-									<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
-									<td><span th:text="${s.star_rate}"></span></td>
-								</tr>
-							</tbody>
-						</table></div></div>
-						<!-- .container --></div></div>
+					</div>
+				<div th:include="review/onereviewpaging" id="onereviewpaging"></div>
+				</div>
+				</div>
 	</main>
 	<footer th:replace="footer.html :: footer"></footer>
 	<!-- Default snippet for navigation -->
