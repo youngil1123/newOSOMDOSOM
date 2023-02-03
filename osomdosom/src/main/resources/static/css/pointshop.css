@@ -1,0 +1,110 @@
+.container{
+	padding-top:120px;
+
+}
+.point #point-flters {
+  padding: 0;
+  margin: 0 auto 25px auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.point #point-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 17px 9px 17px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #444444;
+  margin: 0 3px 10px 3px;
+  transition: all ease-in-out 0.3s;
+  background: #ede9e9;
+  border-radius: 50px;
+}
+
+#btn1{
+	width: 150px;
+    height: 30px;	
+}
+.point #point-flters li:hover,
+.point #point-flters li.filter-active {
+  color: #fff;
+  background: #e43c5c;
+}
+
+
+.point #point-flters li:last-child {
+  margin-right: 0;
+}
+
+.point .point-item {
+  margin-bottom: 30px;
+  overflow: hidden;
+
+}
+
+.point .point-item img {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  top: 0;
+  width: 250px;
+  height: 250px;
+  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.point .point-item .point-info {
+  opacity: 0;
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: -50px;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  background: #e43c5c;
+  padding: 15px 20px;
+  
+}
+
+.point .point-item .point-info h4 {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.point .point-item .point-info p {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.point .point-item .point-info .preview-link,
+.point .point-item .point-info .details-link {
+  position: absolute;
+  right: 50px;
+  font-size: 24px;
+  top: calc(50% - 18px);
+  color: white;
+  transition: ease-in-out 0.3s;
+}
+
+.point .point-item .point-info .preview-link:hover,
+.point .point-item .point-info .details-link:hover {
+  color: #f7c2cc;
+}
+
+.point .point-item .point-info .details-link {
+  right: 15px;
+}
+
+.point .point-item:hover img {
+  top: -30px;
+}
+
+.point .point-item:hover .point-info {
+  opacity: 1;
+  bottom: 0;
+}
+

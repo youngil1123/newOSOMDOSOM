@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+</head>
+<body>
+<header id="header" class="header d-flex align-items-center fixed-top" th:fragment="navigation-bar">
+		<div
+			class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+			<a th:href="@{/}" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
+				<!-- <img src="/img/logo.png" alt=""> -->
+				<h1>DOIT BOOK</h1>
+			</a>
+
+			<nav id="navbar" class="navbar">
+				<ul>
+					<li class="dropdown"><a href="index.html"><span>미디어</span>
+							<i class="bi bi-chevron-down dropdown-indicator"></i></a>
+						<ul>
+							<li><a href="search-result.html"></a></li>
+							<li><a href="#">영화</a></li>
+							<li><a href="#">드라마</a></li>
+							<li><a href="#">책</a></li>
+							<li><a href="#">뮤지컬</a></li>
+							<li><a href="#">연극</a></li>
+
+						</ul></li>
+					<li class="dropdown"><a href="category.html"><span>MBTI</span>
+							<i class="bi bi-chevron-down dropdown-indicator"></i></a>
+
+						<ul>
+							<li><a href="search-result.html"></a></li>
+							<li class="dropdown"><a href="#"><span>E형 MBTI</span> <i
+									class="bi bi-chevron-down dropdown-indicator"></i></a>
+								<ul>
+									<li><a href="#">ENFP</a></li>
+									<li><a href="#">ENFJ</a></li>
+									<li><a href="#">ENTP</a></li>
+									<li><a href="#">ENTJ</a></li>
+									<li><a href="#">ESFP</a></li>
+									<li><a href="#">ESFJ</a></li>
+									<li><a href="#">ESTP</a></li>
+									<li><a href="#">ESTJ</a></li>
+								</ul></li>
+
+							<li class="dropdown"><a href="#"><span>I형 MBTI</span> <i
+									class="bi bi-chevron-down dropdown-indicator"></i></a>
+								<ul>
+									<li><a href="#">INFP</a></li>
+									<li><a href="#">INFJ</a></li>
+									<li><a href="#">INTP</a></li>
+									<li><a href="#">INTJ</a></li>
+									<li><a href="#">ISFP</a></li>
+									<li><a href="#">ISFJ</a></li>
+									<li><a href="#">ISTP</a></li>
+									<li><a href="#">ISTJ</a></li>
+								</ul></li>
+						</ul></li>
+
+					<li><a href="#">팔로워</a></li>
+					<li><a href="about.html">포인트 상점</a></li>
+					<li><a href="contact.html">내 글</a></li>
+				</ul>
+			</nav>
+			<!-- .navbar -->
+
+			<div class="position-relative">
+				<ul>
+					<li><a th:href="@{/login}">Login</a></li>
+					<li><a th:href="@{/logout}">Logout</a></li>
+					<li><a th:href="@{/register}">Register</a></li>
+				
+				<a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+				</ul>
+				<!-- ======= Search Form ======= -->
+				<div class="search-form-wrap js-search-form-wrap">
+					<form action="search-result.html" class="search-form">
+						<span class="icon bi-search"></span> <input type="text"
+							placeholder="Search" class="form-control">
+						<button class="btn js-search-close">
+							<span class="bi-x"></span>
+						</button>
+					</form>
+				</div>
+				<!-- End Search Form -->
+
+			</div>
+
+		</div>
+
+	</header>
+</body>
+</html>

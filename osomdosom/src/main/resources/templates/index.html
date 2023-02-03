@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+<link th:href="@{/css/variables.css}" rel="stylesheet">
+<link th:href="@{/css/slider.css}" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>ZenBlog Bootstrap Template - Index</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/img/favicon.png" rel="icon">
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="/css/variables.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+<link href="/css/team.css" rel="stylesheet">
+<link href="/css/slider.css" rel="stylesheet">
+<style>
+.good{
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+#newboard{
+        margin:auto;
+        display:block;
+}
+.btn{
+--bs-btn-font-size: 2.5rem;
+margin-bottom:10px;
+}
+
+
+</style>
+<script>		
+	function checklogin(){
+		alert("로그인하세욥");
+	}
+
+
+	</script> 
+</head>
+
+<body>
+<header th:replace="top.html :: navigation-bar"></header>
+	
+<section id="hero-slider" class="hero-slider">
+      <div class="container-md" data-aos="fade-in">
+        <div class="good">
+          <div class="col-12">
+            <div class="swiper sliderFeaturedPosts">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a th:href="@{/movie}" class="img-bg d-flex align-items-end" style="background-image: url('/img/som.jpg');">
+                    <div class="img-bg-inner">
+                      <h2>The Best Homemade Masks for Face (keep the Pimples Away)</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide">
+                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-2.jpg');">
+                    <div class="img-bg-inner">
+                      <h2>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide">
+                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-3.jpg');">
+                    <div class="img-bg-inner">
+                      <h2>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide">
+                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-4.jpg');">
+                    <div class="img-bg-inner">
+                      <h2>9 Half-up/half-down Hairstyles for Long and Medium Hair</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="custom-swiper-button-next">
+                <span class="bi-chevron-right"></span>
+              </div>
+              <div class="custom-swiper-button-prev">
+                <span class="bi-chevron-left"></span>
+              </div>
+
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+	 <!-- Swiper -->
+	 <ul th:if="${session.logincust != null}">
+	<button class="btn btn-secondary" id="newboard" onclick = "window.location='newboardwrite'" >새 글 작성</button></br></ul>
+	<div th:if ="${session.logincust == null}"> 
+	<button  class="btn btn-secondary"  id="newboard"   onClick='checklogin();'>새 글 작성</a>
+			
+					</div>
+    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='movie'">MOVIE</button>
+    <div class="swiper mySwiper">
+    
+      <div class="swiper-wrapper">
+       <div class="swiper-slide"> <a th:href="@{/moviedetail}" style="width:100%; height:100%;"><img src="/img/movie/movie.jpg"></a></div>
+        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie2.jpg"></a></div>
+        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie3.jpg"></a></div>
+        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie4.jpg"></a></div>
+        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie5.jpg"></a></div>
+        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+     </br>
+     
+    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='book'">Book</button>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    
+    </br>
+    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='musical'">Musical</button>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    
+    </br>
+   <button class="custom-btn btn-8" id="media_name" onclick = "window.location='theater'">Theater</button>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
+        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        slidesPerGroup: 5,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+
+	<footer th:replace="footer.html :: footer"></footer>
+	
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link href="/css/lostinfo.css" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
+
+
+<Script>
+$(document).ready(function(){
+	$('#findidbtn').click(function(){
+		var mem_name = $('#mem_name').val();
+		var mem_email = $('#mem_email').val();
+		var tag="<li style='text-align:center;'>";
+		if(mem_name==""){
+			alert("이름을 입력해주세요");
+			$('#mem_name').focus();
+			return false;
+		} 
+		if( mem_email==""){
+			alert("이메일을 입력해주세요");
+			$('#mem_email').focus();
+			return false;
+		}
+		
+		$.ajax({
+			data:{
+				"mem_name":mem_name, 
+				"mem_email":mem_email
+			},
+			url:'[[@{/findid}]]',
+			success:function(data){
+				if(data==""){
+					alert("등록되지 않은 회원입니다. 이름과 연락처를 올바르게 입력했는지 확인하세요");
+					location.href = '[[@{/lostinfo}]]';
+				}else {
+					tag += "회원님의 가입 아이디는 <b>";
+					tag += data;
+					tag += "</b>입니다 </li>";
+					$('#emailresult').append(tag);
+				}
+			},error:function(){
+				alert("error");
+			}
+		});
+	});
+});
+
+</script>
+
+<script>
+/* 	function emailSend(){
+		let clientEmail=document.getElementById($('#emailText')).value;
+		let emailYN=isEmail(clientEmail);
+		
+		consol.log('입력이메일'+clientEmail);
+		
+		if(emailYN==true){
+			alert('이메일 형식입니다');	
+			$.ajax({
+				type:"post",
+				url:'[[@{/email}]]',
+				data:{
+					"mem_email":mem_email
+				},
+				success:function(data){
+				},error:function(e){
+					alert('오류입니다. 잠시 후 다시 시도해 주세요');
+				}
+			});
+		}else{
+			alert("이메일 형식에 알맞게 입력해 주세요 xxx@xxx.com");
+		}
+	}
+	 */
+
+	 
+	 
+</script>
+		<br>
+		<br>
+        <h1>DOIT BOOK</h1>
+        <br>
+		<section class="page-section" id="lostinfo">
+            <div id="lostid">
+                <h4>아이디 찾기</h4>
+                <ul>
+                   이름 <li ><input type="text" name="mem_name" id="mem_name"/></li>
+                   이메일 <li><input type="text" name="mem_email" id="mem_email"/></li><br>
+                    <div class="btn2">
+                    <button id="findidbtn" >아이디 찾기</button>
+                    </div>
+                      <br>
+                      <div id="emailresult"></div>
+                </ul>
+            </div>
+            <br>
+            <br>
+            
+            <h4>비밀번호 찾기</h4>
+            <form action="/joinMember" method="POST" onsubmit="return submitCheck();">
+            	이메일
+            <div class="forText">
+            	<input type="email" name="mem_email" id="emailText">
+            </div>
+            <div>
+            	<button id="emailCheck" onclick="emailSend()">인증번호 받기</button>
+            </div>
+            
+            <div class="forText">
+            	<input type="text" id="certificationNumber">
+            </div>
+            <div>
+            	<button id="certificationNumber" onclick="emailCertification()">인증하기</button>
+            	<!-- <input type="hidden" id="certificationYN" value="false"> -->
+            </div>
+            </form>
+            
+            
+  
+           <!--  <div id="lostpwd">
+                <h4>비밀번호 찾기</h4>
+                <ul>
+                    <div>
+                    	아이디<li><input type="text" name="userid" id="mem_id" ></li>
+                        이메일<li><input type="text" name="useremail" id="mem_email" ></li><br>
+                        <div class="btn2">
+                        <button id="findpwdbtn" onclick="findpwd()">비밀번호 찾기</button><br>
+                        </div>
+                        <div id="pwdresult"></div>
+                    </div>
+                </ul>
+            </div> -->
+        </section>

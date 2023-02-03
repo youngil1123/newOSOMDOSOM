@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<script>
+
+$(document).ready(function(){
+	$('#withdrawbtn').click(function(){
+		var c = confirm("삭제하시겠습니까?");
+		if(c==true){
+			$('#delete_form').attr({
+				'method':'post',
+				'action':'[[@{/mypage/deleteChk}]]'
+			});
+			$('#delete_form').submit();
+		}
+	});
+});
+	
+	//myinfo 처럼 데이터를 보내고. delete 완료 창으로 보내주면?
+	//비교가 실패시 회원삭제 실패창으로 보내고 알라트로 뭐가 실패햇는지 띄워주고 history.back? 쓰면?
+	
+	
+</script>
+
+<form id="delete_form">
+	<div>
+		<h2 >여기는 <span style="color:red;">회원 탈퇴</span> 창입니다.</h2>
+	</div>
+	
+	<h6>Doit Book 과 함께한 모든 추억을 지우시겠습니까? 정말루요? 진짜루요? 나중에 궁금할수도있는데요?</h6>
+	
+	<table>
+		<tr>
+			<th>아이디  </th>
+			<td> <input type="text" id="thisid" name="mem_id" placeholder="아이디"></td>
+		</tr>
+		<tr>
+			<th>비밀번호  </th>
+			<td><input type="password" id="thispwd" name="mem_pwd" placeholder="비밀번호"></td>
+		</tr>
+		<tr>
+			<th>이메일  </th>
+			<td> <input type="text" id="thisemail" name="mem_email" placeholder="email"></td>
+		</tr>
+	</table>
+	<br>
+	<input type="submit" id="withdrawbtn" value="회원 탈퇴">
+
+</form>
