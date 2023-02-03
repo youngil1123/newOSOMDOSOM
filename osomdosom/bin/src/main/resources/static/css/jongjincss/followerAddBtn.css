@@ -1,0 +1,92 @@
+body {
+  background:#fff;
+}
+h1 {
+  position: relative;
+  text-align: center;
+  color: #353535;
+  font-size: 50px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  font-size: 18px;
+  color: #676767;
+}
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+button {
+  margin: 20px;
+  outline: none;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  top:30px;
+  display: inline-block;
+}
+
+/* 4 */
+.btn-4 {
+  position: relative;
+  left:280%;
+  color: #000;
+  z-index: 2;
+  line-height: 40px;
+  padding: 0;
+}
+.btn-4:hover{
+  border: none;
+}
+.btn-4:before,
+.btn-4:after {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 0%;
+  border: 2px solid;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+.btn-4:before {
+  top: 0;
+   left: 0;
+   border-bottom-color: transparent;
+   border-right-color: transparent;
+   border-top-color: #000;
+   border-left-color: #000;
+}
+.btn-4:after{
+   bottom: 0;
+   right: 0;
+   border-top-color: transparent;
+   border-left-color: transparent;
+   border-bottom-color: #000;
+   border-right-color: #000;
+}
+.btn-4:hover:before,
+.btn-4:hover:after {
+  border-color: #000;
+  height: 100%;
+  width: 100%;
+}
+
+.section-title > h4{
+	position: absolute;
+	top:150px;
+	float:left;
+}

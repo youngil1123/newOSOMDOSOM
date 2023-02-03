@@ -18,6 +18,7 @@ url("./fonts/bootstrap-icons.woff?24e3eb84d0bcaf83d77f904c78ac1f47") format("wof
   vertical-align: -.125em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-top:14px;
 }
 
 .bi-123::before { content: "\f67f"; }

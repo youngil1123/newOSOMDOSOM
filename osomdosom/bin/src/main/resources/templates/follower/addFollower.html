@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/img/favicon.png" rel="icon">
+	<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">    
+	
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+  	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+		rel="stylesheet">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+		rel="stylesheet">
+	<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="/vendor/aos/aos.css" rel="stylesheet">
+	
+	<!-- Template Main CSS Files -->
+	<link href="/css/variables.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<link href="/css/team.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/css/jongjincss/addFollower.css" type="text/css">
+    
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- 이름 혹은 닉네임을 적을시 키업으로 일치하는 사람의 이미지가 올라오게끔. -->
+    <script>
+    
+    function getdata(id){
+    	$.ajax({
+    		url:'[[@{/follower/checkid}]]',
+    		data:{"cid":id},
+    		success:function(data){
+    			if(data != null && data != "no_memberImg"){
+    				document.getElementById("fw_img").src="/img/jongjinimg/follower/"+data;
+    			}
+    			else {
+    				document.getElementById("fw_img").src="/img/jongjinimg/follower/follow.png";
+    			}
+    		}
+    	});
+    };
+    
+    function followerAdd(id){
+    	$.ajax({
+			url:'[[@{/follower/AddFwTbl}]]',
+			data:{"fwid":id},
+			success:function(data){
+				if(data=="false"){
+					alert("이미 팔로우 중입니다.");
+				}else if(data =="myself"){
+					alert("스스로는 팔로우 할 수 없습니다.");
+				}else{
+					alert(data+" 님을 팔로우 합니다.");
+					var url="/follower";
+					location.replace(url);
+				}
+				
+			}
+			,error:function(request, error){
+				alert("잘못된 아이디입니다. 다시 입력해주세요.");
+			} 
+		});
+    }
+    
+    $(document).ready(function(){
+    	$('input[name="id"]').keyup(function(){
+    		var id = $(this).val();
+    		getdata(id);
+    	});
+    	$('#addBtn').click(function(){
+    			var id = $('input[name="id"]').val();
+    			followerAdd(id);	
+    	});
+    });
+    
+    
+    </script>
+     
+	<body>
+		<!-- top  -->
+		<header th:replace="top.html :: navigation-bar"></header>
+		
+<div class="followerContainer">
+  <div class="screen">
+    <div class="screen__content">
+      <form class="login">
+      	<img id= "fw_img" style="margin-left:60px;" src="/img/jongjinimg/follower/follow.png">
+      	<br><br><br><br><br>
+        <div class="login__field">
+          <i class="login__icon fas fa-user"></i>
+          <input type="text" class="login__input" name="id" placeholder="User id">
+        </div>       
+        <span id="id_span" style="position:absolute; right:30px; top:340px; "></span>
+		<a href="#" id="addBtn" class="button login__submit">
+      	<span class="button__text">Add Follower Now</span>
+          <i class="button__icon fas fa-chevron-right"></i>
+        </a> 
+		
+      </form>
+       
+      
+    </div>
+    <div class="screen__background">
+      <span class="screen__background__shape screen__background__shape4"></span>
+      <span class="screen__background__shape screen__background__shape3"></span>    
+      <span class="screen__background__shape screen__background__shape2"></span>
+      <span class="screen__background__shape screen__background__shape1"></span>
+    </div>    
+  </div>
+</div>
+	
+	</body>
+ 	<footer th:replace="footer.html :: footer"></footer>
+</html>
+     
+     
+     
+     
+     
+     
+     

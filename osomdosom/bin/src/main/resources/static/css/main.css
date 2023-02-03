@@ -47,7 +47,7 @@ h6 {
 # Sections & Section Header
 --------------------------------------------------------------*/
 section {
-  padding: 40px 0;
+  padding: 20px 0;
   overflow: hidden;
 
 }
@@ -413,7 +413,7 @@ section {
     display: block;
   }
 
-  .mobile-nav-toggle {
+	.mobile-nav-toggle {
     display: inline-block;
     color: var(--color-secondary);
     font-size: 28px;
@@ -448,7 +448,7 @@ section {
 
   .mobile-nav-active .navbar>ul {
     display: block;
-  }
+  } 
 }
 
 /*--------------------------------------------------------------
@@ -2738,6 +2738,7 @@ section {
 
 section {
   scroll-margin-top: 70px;
+
 }
 
 /*--------------------------------------------------------------
@@ -3153,7 +3154,7 @@ section {
 }
 
 .img-bg {
-  height: 500px;
+  height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -3182,7 +3183,7 @@ section {
 .img-bg .img-bg-inner {
   position: relative;
   z-index: 2;
-  max-width: 700px;
+  max-width: 1200px;
   position: relative;
   padding-left: 100px;
   padding-right: 100px;

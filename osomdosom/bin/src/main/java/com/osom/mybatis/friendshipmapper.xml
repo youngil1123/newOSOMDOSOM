@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osom.mapper.FriendshipMapper">
+    
+    <!-- 팔로워 추가 -->
+	<insert id="insert" parameterType="Friendship">
+		INSERT INTO friendship (mem_no, mem_no2) 
+		VALUES (#{mem_no},#{mem_no2})
+	</insert>
+	
+
+	 <!-- 팔로워 등록시 중복 체크 -->
+	<select id="check" parameterType="Friendship" resultType="Integer">
+		SELECT friend_no FROM friendship WHERE mem_no=#{mem_no} AND mem_no2=#{mem_no2}
+	</select>
+
+
+	<update id="update">
+		
+	</update>
+	<!--  팔로워 삭제 -->
+	<delete id="fwdelete" parameterType="Friendship">
+		DELETE FROM friendship WHERE mem_no=#{mem_no} AND mem_no2=#{mem_no2}
+	</delete>
+	
+	<select id="selectall" resultType="Member_tbl">
+		
+	</select>
+
+</mapper>
