@@ -1,0 +1,27 @@
+<h2> 현재 도서 콘텐츠 개수 : [[${bookcon_num}]] 개</h2>
+<div class="entry-content">
+	<table class="booktable">
+		<thead class="booktablehead">
+			<tr class="booklist">
+				<th>번호</th>
+				<th>제목</th>
+				<th>저자</th>
+				<th>출판사</th>
+				<th>출판년도</th>
+				<th>분류</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<!-- CONTENTS !-->
+			<tr th:each="s: ${books}" class="book">
+				<td><span th:text="${s.book_no}"></span></td>
+				<td>[[${s.bookname}]][[${s.vol}]]</td>
+				<td><span th:text="${s.authors}"></span></td>
+				<td><span th:text="${s.publisher}"></span></td>
+				<td><span th:text="${s.publication_year}"></span></td>
+				<td><span th:text="${s.class_nm}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

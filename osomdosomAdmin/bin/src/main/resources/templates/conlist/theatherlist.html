@@ -1,0 +1,27 @@
+<h2> 현재 연극 콘텐츠 개수 : [[${theatercon_num}]] 개</h2>
+<div class="entry-content">
+	<table class="theatertable">
+		<thead class="theatertablehead">
+			<tr class="theaterlist">
+				<th>공연코드</th>
+				<th>공연명</th>
+				<th>공연상태</th>
+				<th>공연기간</th>
+				<th>공연장</th>
+				<th>런타임</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<!-- CONTENTS !-->
+			<tr th:each="s: ${theaters}" class="theater">
+				<td><span th:text="${s.mt20id}"></span></td>
+				<td><span th:text="${s.prfnm}"></span></td>
+				<td><span th:text="${s.prfstate}"></span></td>
+				<td>[[${s.prfpdfrom}]]~[[${s.prfpdto}]]</td>
+				<td><span th:text="${s.fcltynm}"></span></td>
+				<td><span th:text="${s.prfruntime}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

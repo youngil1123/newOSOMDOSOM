@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<!-- Vendor CSS Files -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet">
+<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="/css/variables.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<title>어드민 관리 페이지</title>
+</head>
+<style>
+a {
+	margin:5px;
+	text-decoration: none;
+}
+.container{
+	width:800px;
+	height:800px;
+	 margin:0 auto;
+	 border :1px solid red;
+	 display : flex;
+  	 justify-content: center;
+  	 align-items : center;
+}
+.inner-div{
+	width:600px;
+	height:600px;
+	border:1px solid blue;
+	text-align:center;
+}
+</style>
+<body>
+<div class="container">
+	<div class="inner-div">
+		<span>관리자 페이지입니다.</span><br/>
+		<a class="btn btn-lg btn-outline-success" th:href="@{/membercontrol}" style="color:black;font-family: 'Gowun Dodum', sans-serif;font-size:1.5em">회원관리</a> 
+		<a class="btn btn-lg btn-outline-success" th:href="@{/reviewlist}" style="color:black;font-family: 'Gowun Dodum', sans-serif;font-size:1.5em">게시글관리</a><br>
+		<a class="btn btn-lg btn-outline-success" th:href="@{/contentslist}" style="color:black;font-family: 'Gowun Dodum', sans-serif;font-size:1.5em">콘텐츠목록</a> 
+		<a class="btn btn-lg btn-outline-success" th:href="@{/contentsupdate}" style="color:black;font-family: 'Gowun Dodum', sans-serif;font-size:1.5em">콘텐츠업데이트</a><br> 
+		<a class="btn btn-lg btn-outline-success" style="color:black;font-family: 'Gowun Dodum', sans-serif;font-size:1.5em">콘텐츠업데이트 요청</a> 
+		<a class="btn btn-lg btn-outline-success" th:href="@{/pointshop}" style="color:black;font-family: 'Gowun Dodum', sans-serif;font-size:1.5em">포인트상점</a><br>
+	</div>
+	</div>
+</body>
+</html>

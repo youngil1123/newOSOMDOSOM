@@ -1,0 +1,29 @@
+<h2> 현재 영화 콘텐츠 개수 : [[${moviecon_num}]] 개</h2>
+<div class="entry-content">
+	<table class="movietable">
+		<thead class="movietablehead">
+			<tr class="movielist">
+				<th>영화코드</th>
+				<th>영화명</th>
+				<th>영화명(영문)</th>
+				<th>장르</th>
+				<th>개봉일</th>
+				<th>감독</th>
+				<th>상영시간(분)</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<!-- CONTENTS !-->
+			<tr th:each="s: ${movies}" class="movie">
+				<td><span th:text="${s.movieCd}"></span></td>
+				<td><span th:text="${s.movieNm}"></span></td>
+				<td><span th:text="${s.movieNmEn}"></span></td>
+				<td><span th:text="${s.genreAlt}"></span></td>
+				<td><span th:text="${s.openDt}"></span></td>
+				<td><span th:text="${s.peopleNm}"></span></td>
+				<td><span th:text="${s.showTm}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

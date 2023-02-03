@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>어드민 메인</title>
+</head>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap')
+	; /*구글 폰트 import*/
+h1 {
+	font-size: 48px;
+	font-family: 'Gowun Dodum', sans-serif;
+	text-align: center;
+	text-shadow: 2px 2px lightblue;
+}
+
+#adminlogin_form {
+	padding: 10px 10px;
+	text-align: center;
+}
+
+#login_fail_msg {
+	color: red;
+	margin: auto 10px;
+	text-align: center;
+}
+
+#login_need_msg {
+	color: red;
+	margin: auto 10px;
+	text-align: center;
+}
+</style>
+<script>
+	$(document).ready(function() {
+		$('#login_submit').click(function() {
+			$('#adminlogin_form').attr({
+				'method' : 'post',
+				'action' : '[[@{/loginimpl}]]'
+			});
+
+			$('#adminlogin_form').submit();
+
+		});
+	});
+</script>
+<body>
+	<h1>
+		관리자 페이지입니다. <br>로그인 해주세요
+	</h1>
+	<img th:src="@{/img/goodday.jpg}"
+		style="height: 500px; margin: auto; display: block;">
+	<div>
+		<h2 th:text="${login_fail_msg}" id="login_fail_msg"></h2>
+		<h2 th:text="${login_need_msg}" id="login_need_msg"></h2>
+	</div>
+	<form id="adminlogin_form" method="post" th:action="@{/loginimpl}">
+		관리자ID&nbsp;&nbsp;<input type="text" name="admin_id" id="admin_id"
+			required /> 관리자PWD&nbsp;&nbsp;<input type="password" name="admin_pwd"
+			id="admin_pwd" required /><br> <br> <input type="submit"
+			value="로그인" id="login_submit" />
+	</form>
+
+</body>
+</html>

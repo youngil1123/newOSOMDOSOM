@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<title>콘텐츠목록</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Sunflower&display=swap"
+	rel="stylesheet">
+<style>
+body {
+	margin: 0 auto;
+	font-family: 'Sunflower', sans-serif;
+	line-height: 1.6
+}
+
+.container {
+	width: 1500px;
+	margin: 0px auto;
+}
+
+ul.tabs {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul.tabs li {
+	background: none;
+	color: #222;
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+	width: 150px;
+	text-align: center;
+}
+
+ul.tabs li.current {
+	background: #ededed;
+	color: #222;
+}
+
+.tab-content {
+	display: none;
+	background: #ededed;
+	padding: 15px;
+}
+
+.tab-content.current {
+	display: block;
+}
+
+td {
+	font-size:12px;
+	text-align: center;
+}
+</style>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('ul.tabs li').click(function() {
+			var tab_id = $(this).attr('data-tab');
+			$('ul.tabs li').removeClass('current');
+			$('.tab-content').removeClass('current');
+
+			$(this).addClass('current');
+			$("#" + tab_id).addClass('current');
+		});
+	});
+</script>
+<body>
+	<div class="container">
+
+		<ul class="tabs">
+			<li class="tab-link current" data-tab="movielist">영화</li>
+			<li class="tab-link" data-tab="booklist">도서</li>
+			<li class="tab-link" data-tab="musciallist">뮤지컬</li>
+			<li class="tab-link" data-tab="theaterlist">연극</li>
+			<li><a th:href="@{/main}">메인으로 이동</a></li>
+		</ul>
+
+
+		<section>
+			<div th:include="conlist/movielist" id="movielist"
+				class="tab-content current"></div>
+			<div th:include="conlist/booklist" id="booklist" class="tab-content"></div>
+			<div th:include="conlist/musicallist" id="musciallist"
+				class="tab-content"></div>
+			<div th:include="conlist/theatherlist" id="theaterlist"
+				class="tab-content"></div>
+		</section>
+
+	</div>
+</body>
+</html>

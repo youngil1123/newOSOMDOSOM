@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admin.mapper.MovieMapper">
+	<insert id="insert" parameterType="MovieInfo">
+		INSERT INTO movieinfo VALUES (#{movieCd},#{movieNm},#{movieNmEn},#{genreAlt},#{openDt},#{peopleNm},#{showTm})
+	</insert>
+	<select id ="getmoviecd" resultType="String">
+		SELECT movieCd FROM movieinfo
+	</select>
+	<update id ="updateconno" parameterType="MovieInfo">
+		UPDATE movieinfo SET con_no =#{con_no} WHERE movieCd =#{movieCd}
+	</update>
+	<select id ="searchmovielist" parameterType="String" resultType="MovieInfo">
+		SELECT * FROM movieinfo WHERE movieNm LIKE CONCAT('%',#{keyword},'%')
+	</select>
+	<select id="selectall" resultType="MovieInfo">
+		SELECT * FROM movieinfo
+	</select>
+	<select id="countcon" resultType="Integer">
+		SELECT count(*) FROM movieinfo
+	</select>
+</mapper>
