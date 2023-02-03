@@ -21,4 +21,9 @@ public interface Member_tblMapper extends MyMapper<String,Member_tbl>{
 
 	public void updateMyInfo(int mem_no, String mem_pwd, String nickname, String mbti, String mem_img);
 	public void updatePoint(int mem_no) throws Exception;
+	
+	public Object findByMemberEmail(String mem_email);
+
+
+	public void updatePassword(String memberId, String mem_pwd);
 }

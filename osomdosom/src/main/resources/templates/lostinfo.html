@@ -48,36 +48,33 @@ $(document).ready(function(){
 });
 
 </script>
-
 <script>
-/* 	function emailSend(){
-		let clientEmail=document.getElementById($('#emailText')).value;
-		let emailYN=isEmail(clientEmail);
-		
-		consol.log('입력이메일'+clientEmail);
-		
-		if(emailYN==true){
-			alert('이메일 형식입니다');	
-			$.ajax({
-				type:"post",
-				url:'[[@{/email}]]',
-				data:{
-					"mem_email":mem_email
-				},
-				success:function(data){
-				},error:function(e){
-					alert('오류입니다. 잠시 후 다시 시도해 주세요');
-				}
-			});
-		}else{
-			alert("이메일 형식에 알맞게 입력해 주세요 xxx@xxx.com");
-		}
-	}
-	 */
+$("#checkEmail").click(function () {
+    const mem_email = $("#mem_email").val();
+    const sendemail = document.forms["sendEmail"];
+    $.ajax({
+        type: 'post',
+        url: 'emailDuplication',
+        data: {
+            'mem_email': mem_email
+        },
+        dataType: "text",
+        success: function (result) {
+            if(result == "no"){
+                // 중복되는 것이 있다면 no == 일치하는 이메일이 있다!
+                alert('임시비밀번호를 전송 했습니다.');
+                sendEmail.submit();
+            }else {
+                alert('가입되지 않은 이메일입니다.');
+            }
 
-	 
-	 
+        },error: function () {
+            console.log('에러 체크!!')
+        }
+    })
+});
 </script>
+<body>
 		<br>
 		<br>
         <h1>DOIT BOOK</h1>
@@ -88,48 +85,29 @@ $(document).ready(function(){
                 <ul>
                    이름 <li ><input type="text" name="mem_name" id="mem_name"/></li>
                    이메일 <li><input type="text" name="mem_email" id="mem_email"/></li><br>
-                    <div class="btn2">
                     <button id="findidbtn" >아이디 찾기</button>
-                    </div>
                       <br>
                       <div id="emailresult"></div>
                 </ul>
             </div>
             <br>
-            <br>
-            
+    		<div id="lostpwd">
             <h4>비밀번호 찾기</h4>
-            <form action="/joinMember" method="POST" onsubmit="return submitCheck();">
-            	이메일
-            <div class="forText">
-            	<input type="email" name="mem_email" id="emailText">
-            </div>
-            <div>
-            	<button id="emailCheck" onclick="emailSend()">인증번호 받기</button>
-            </div>
-            
-            <div class="forText">
-            	<input type="text" id="certificationNumber">
-            </div>
-            <div>
-            	<button id="certificationNumber" onclick="emailCertification()">인증하기</button>
-            	<!-- <input type="hidden" id="certificationYN" value="false"> -->
-            </div>
-            </form>
-            
-            
-  
-           <!--  <div id="lostpwd">
-                <h4>비밀번호 찾기</h4>
-                <ul>
-                    <div>
-                    	아이디<li><input type="text" name="userid" id="mem_id" ></li>
-                        이메일<li><input type="text" name="useremail" id="mem_email" ></li><br>
-                        <div class="btn2">
-                        <button id="findpwdbtn" onclick="findpwd()">비밀번호 찾기</button><br>
-                        </div>
-                        <div id="pwdresult"></div>
+            <form role="form" action="/sendEmail" method="POST"  name="sendEmail">
+            	<div style="color: #ac2925">
+                        <center>입력된 정보로 임시 비밀번호가 전송됩니다.</center>
                     </div>
-                </ul>
-            </div> -->
+            <div class="forText">
+            	<input type="text" class="form-control" id="mem_email" placeholder="가입시 등록한 이메일을 입력하세요.">
+            </div>
+            
+            	<button id="checkEmail" >메일보내기</button>
+            
+            <br>
+            </form>
+            <div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
+  			</div>
+    
         </section>
+  </body>
+  </html>

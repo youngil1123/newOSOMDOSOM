@@ -52,5 +52,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id="updatePoint" parameterType="Integer">
 		update member_tbl set mem_point = mem_point+10 where mem_no = #{mem_no}
 	</update>
-	
+    <!--임시비밀번호변경 -->
+	<update parameterType="Member_tbl" id="updatePassword">
+	    update member_tbl set mem_pwd=#{mem_pwd} where mem_id=#{mem_id} 
+	</update>
+
+	<select parameterType="object" id="findByMemberEmail" resultType="Member_tbl">
+	   <!--  select * from member_tbl where mem_email=#{mem_email}, mem_id=#{mem_id}  -->
+	   SELECT mem_id FROM member_tbl WHERE mem_email=#{mem_email}
+	    </select>
 </mapper>
