@@ -24,4 +24,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="getonebookreview" resultType="BookInfo" parameterType="Integer">
 		select * from board inner join bookinfo using(con_no) inner join member_tbl using(mem_no) WHERE book_no=#{book_no};
 	</select>
+	<select id="totalRecord" resultType="Integer" parameterType="Integer">
+		select count(*) from board inner join bookinfo using(con_no) WHERE book_no=#{book_no};
+	</select>
+	<select id="boardPageSelect" resultType="BookInfo" parameterType="Paging">
+		select C.* from(select A.* from(select b.board_no,b.title,b.review,b.writedate,b.star_rate,m.nickname
+		from board b inner join bookinfo using(con_no) inner join member_tbl m using(mem_no) WHERE book_no=#{book_no} order by board_no desc) A LIMIT #{totalRecord}) C LIMIT #{startRecord},#{onePageRecord};
+	</select>
+	
 </mapper>

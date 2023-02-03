@@ -96,11 +96,11 @@ th, td {
 </style>
 
 
-<!-- <script th:inline="javascript">		
+<script th:inline="javascript">		
 /*<![CDATA[*/
 	
 function deletePost() {
-    const id = [[${Board.board_no}]];
+    const id = /*[[${board.board_no}]]*/;
 
     if ( !confirm(id + '번 게시글을 삭제할까요?') ) {
       return false;
@@ -117,36 +117,13 @@ function deletePost() {
     document.getElementById('deleteForm').submit();
   }
 /*]]>*/
-</script>  -->
+</script>
 
 </head>
-
-
-
-<!-- 미디어 검색 폼  시작-->
-
-
 <body>
-	
-		<!-- 미디어 검색 폼  끝-->
-
-
-
-
+<header th:replace="top.html :: navigation-bar"></header>	
 
 		<!-- 여기서부터 게시글 작성 폼 시작 -->
-
-
-
-
-
-
-
-
-
-
-				
-			
 			<div class="form-group">
 			<label for="title">게시글 번호</label>
 			<textarea><li>[[${board.board_no}]]</li>></textarea>
