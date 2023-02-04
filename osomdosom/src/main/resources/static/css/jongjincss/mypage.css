@@ -5,7 +5,7 @@ body{
 }
 
 .container{
-  width: 900px;
+  width: 1200px;
   margin: 0px auto ;
 }
 
@@ -37,4 +37,12 @@ ul.tabs li.current{
 
 .tab-content.current{
   display: block;
+}
+
+.mypage-left{
+	border: 1px solid red;
+	margin-left:6%;
+	float:left;
+	width:200px;
+	height:400px;
 }
