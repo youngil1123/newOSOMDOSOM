@@ -90,35 +90,32 @@ button {
 	width: 100px;
 }
 
-#point-flters li:hover,
-#point-flters li.filter-active {
-  color: #fff;
-  background: #e43c5c;
+#point-flters li:hover, #point-flters li.filter-active {
+	color: #fff;
+	background: #e43c5c;
 }
 
 #point-flters {
-  padding: 0;
-  margin: 0 auto 25px auto;
-  list-style: none;
-  text-align: center;
-  border-radius: 50px;
+	padding: 0;
+	margin: 0 auto 25px auto;
+	list-style: none;
+	text-align: center;
+	border-radius: 50px;
 }
 
 #point-flters li {
-  cursor: pointer;
-  display: inline-block;
-  padding: 7px 17px 9px 17px;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 1;
-  color: #444444;
-  margin: 0 3px 10px 3px;
-  transition: all ease-in-out 0.3s;
-  background: #ede9e9;
-  border-radius: 50px;
+	cursor: pointer;
+	display: inline-block;
+	padding: 7px 17px 9px 17px;
+	font-size: 30px;
+	font-weight: 500;
+	line-height: 1;
+	color: #444444;
+	margin: 0 3px 10px 3px;
+	transition: all ease-in-out 0.3s;
+	background: #ede9e9;
+	border-radius: 50px;
 }
-
-
 </style>
 <script>
  
@@ -185,23 +182,23 @@ button {
 						<h3>MBTI PAGE</h3>
 						<p>원하시는 MBTI를 선택하세요</p>
 						<div class="row">
-								<ul id="point-flters">
-									<li data-filter="*" class="filter-active">All</li>
-									<li data-filter=".filter-app">E</li>
-									<li data-filter=".filter-card">I</li>
-								</ul>
-							
+							<ul id="point-flters">
+								<li data-filter="*" class="filter-active">All</li>
+								<li data-filter=".filter-app">E</li>
+								<li data-filter=".filter-card">I</li>
+							</ul>
+
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="mbti  point-container">
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ENFP')}"> <img src="img/mbti/010.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ENFP')}"> <img
+								src="img/mbti/010.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -215,9 +212,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ENTP')}"><img src="img/mbti/013.png" alt=""
-								width="200">
-							</a>
+							<a th:href="@{/mbtiex(mbti='ENTP')}"><img
+								src="img/mbti/013.png" alt="" width="200"> </a>
 						</div>
 						<div class="content">
 							<p class="d-flex align-items-center">
@@ -230,8 +226,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ESTP')}"> <img src="img/mbti/014.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ESTP')}"> <img
+								src="img/mbti/014.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -245,9 +241,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ESFP')}"><img src="img/mbti/003.png" alt=""
-								width="200">
-							</a>
+							<a th:href="@{/mbtiex(mbti='ESFP')}"><img
+								src="img/mbti/003.png" alt="" width="200"> </a>
 						</div>
 						<div class="content">
 							<p class="d-flex align-items-center">
@@ -260,9 +255,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='INFP')}"><img src="img/mbti/015.png" alt=""
-								width="200">
-							</a>
+							<a th:href="@{/mbtiex(mbti='INFP')}"><img
+								src="img/mbti/015.png" alt="" width="200"> </a>
 						</div>
 						<div class="content">
 							<p class="d-flex align-items-center">
@@ -275,8 +269,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='INFJ')}"> <img src="img/mbti/005.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='INFJ')}"> <img
+								src="img/mbti/005.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -290,8 +284,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='INTP')}"> <img src="img/mbti/011.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='INTP')}"> <img
+								src="img/mbti/011.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -305,8 +299,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='INTJ')}"> <img src="img/mbti/009.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='INTJ')}"> <img
+								src="img/mbti/009.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -320,8 +314,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ENFJ')}"> <img src="img/mbti/016.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ENFJ')}"> <img
+								src="img/mbti/016.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -335,8 +329,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ENTJ')}"> <img src="img/mbti/006.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ENTJ')}"> <img
+								src="img/mbti/006.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -350,8 +344,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ISFP')}"> <img src="img/mbti/004.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ISFP')}"> <img
+								src="img/mbti/004.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -365,8 +359,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ISTP')}"> <img src="img/mbti/001.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ISTP')}"> <img
+								src="img/mbti/001.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -380,8 +374,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ESFJ')}"> <img src="img/mbti/012.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ESFJ')}"> <img
+								src="img/mbti/012.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -395,8 +389,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ISTJ')}"> <img src="img/mbti/008.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ISTJ')}"> <img
+								src="img/mbti/008.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -410,8 +404,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-card">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ISFJ')}"> <img src="img/mbti/002.png" alt=""
-								width="200">
+							<a th:href="@{/mbtiex(mbti='ISFJ')}"> <img
+								src="img/mbti/002.png" alt="" width="200">
 							</a>
 						</div>
 						<div class="content">
@@ -425,9 +419,8 @@ button {
 				<div class="img">
 					<div class="single_destination point-item filter-app">
 						<div class="thumb">
-							<a th:href="@{/mbtiex(mbti='ESTJ')}"><img src="img/mbti/007.png" alt=""
-								width="200">
-							</a>
+							<a th:href="@{/mbtiex(mbti='ESTJ')}"><img
+								src="img/mbti/007.png" alt="" width="200"> </a>
 						</div>
 						<div class="content">
 							<p class="d-flex align-items-center">
