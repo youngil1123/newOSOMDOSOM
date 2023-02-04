@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link href="/img/favicon.png" rel="icon">
+	<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+	
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+		rel="stylesheet">
+    <title>OsomDosom | MyPage</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+		rel="stylesheet">
+	<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="/vendor/aos/aos.css" rel="stylesheet">
+	
+	<!-- Template Main CSS Files -->
+	<link th:href="@{/css/variables.css}" rel="stylesheet">
+	<link th:href="@{/css/main.css}" rel="stylesheet">
+	<link th:href="@{/css/team.css}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
+    
+
+    
+
+    
+</head>
+<body>
+<!-- top  -->
+<header th:replace="top.html :: navigation-bar"></header>
+<br><br><br><br><br><br>
+
+<div th:if ="${session.logincust == null}"> 
+	<h2 style="text-align:center;">[[${result}]]</h2>
+	<a th:href="@{/}"><img src="/img/jongjinimg/bye.png" style="margin-left:45%; width:200px;"></img></a> <br>
+	<a th:href="@{/}"><input type="button" style="margin-left:60%;" value="메인페이지로 가기"></a>	
+</div>
+<div th:if="${session.logincust != null}">
+	<h2 style="text-align:center; color:red;">[[${result}]]</h2>
+	<a href="javascript:history.back()"><img src="/img/jongjinimg/fail.png" style="margin-left:40%; width:200px;"></img></a>	<br>
+	<a href="javascript:history.back()"><input type="button" style="margin-left:60%;" value="뒤로가기"></a>				
+</div>
+
+
+
+
+</body>
+ <footer th:replace="footer.html :: footer"></footer>
+</html>

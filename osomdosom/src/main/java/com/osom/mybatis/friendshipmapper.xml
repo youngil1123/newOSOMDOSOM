@@ -10,19 +10,23 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		VALUES (#{mem_no},#{mem_no2})
 	</insert>
 	
-
 	 <!-- 팔로워 등록시 중복 체크 -->
 	<select id="check" parameterType="Friendship" resultType="Integer">
 		SELECT friend_no FROM friendship WHERE mem_no=#{mem_no} AND mem_no2=#{mem_no2}
 	</select>
 
-
 	<update id="update">
 		
 	</update>
+	
 	<!--  팔로워 삭제 -->
 	<delete id="fwdelete" parameterType="Friendship">
 		DELETE FROM friendship WHERE mem_no=#{mem_no} AND mem_no2=#{mem_no2}
+	</delete>
+	
+	<!--  회원삭제시 해당 회원이 들어간 모든 팔로워컬럼 삭제 -->
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM friendship WHERE mem_no = #{mem_no} OR mem_no2 =#{mem_no}
 	</delete>
 	
 	<select id="selectall" resultType="Member_tbl">

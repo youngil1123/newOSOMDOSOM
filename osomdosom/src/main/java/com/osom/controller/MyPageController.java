@@ -133,7 +133,9 @@ public class MyPageController {
 	// 4. 구매내역테이블.. 5. 찜목록테이블...
 	
 	@RequestMapping("/deleteChk")
-	public Object deleteChk(Model model, Member_tbl inputinfo, HttpServletRequest request) {
+	public Object deleteChk(Model model, Member_tbl inputinfo, HttpServletRequest request)
+			throws NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, NoSuchPaddingException,
+			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
 		
 		//return 값.
 		String result ="";
@@ -142,21 +144,54 @@ public class MyPageController {
 		HttpSession session = request.getSession();
 		Member_tbl myinfo = (Member_tbl)session.getAttribute("logincust");
 		String myid = myinfo.getMem_id();
+		System.out.println("기존 아이디 : "+ myid);
 		String mypwd = myinfo.getMem_pwd(); //이건 암호화되어있다.
+		System.out.println("기존 패스워드 : "+ mypwd);
 		String myemail = myinfo.getMem_email();
-		
+		System.out.println("기존 이메일 : "+ myemail);
+		Integer myno =myinfo.getMem_no();
+				
 		//내가 입력한 정보들
 		String inputid = inputinfo.getMem_id();
+		System.out.println("내가적은 아이디 : "+ inputid);
 		String inputpwd = inputinfo.getMem_pwd(); //이건 암호화안되있음
+		System.out.println("내가적은 패스워드 : "+ inputpwd);
 		String inputemail = inputinfo.getMem_email();
+		System.out.println("내가적은 이메일 : "+ inputemail);
 		
 		if(!myid.equals(inputid)) {
 			result="입력하신 아이디 정보가 틀렸습니다. 확인 바랍니다.";
 			model.addAttribute("result", result);
-			return "/mypage/deleteFail";
+			return "/mypage/deleteAfter";
+		}
+		if(!myemail.equals(inputemail)) {
+			result="입력하신 이메일 정보가 틀렸습니다. 확인 바랍니다.";
+			model.addAttribute("result", result);
+			return "/mypage/deleteAfter";
 		}
 		
+		String key = "osomdosompasswd0077";
+		String enStr = CryptoUtil.encryptAES256(inputpwd, key);
+		inputpwd = enStr;
+		System.out.println("내가적은 패스워드 (암호화) : "+ inputpwd);
 		
+		if(!mypwd.equals(inputpwd)) {
+			result="입력하신 비밀번호 정보가 틀렸습니다. 확인 바랍니다.";
+			model.addAttribute("result", result);
+			return "/mypage/deleteAfter";
+		}
+		
+		try {
+			session.invalidate();
+			mservice.remove(inputid);
+			fservice.remove(myno);
+			result="회원탈퇴가 완료 되었습니다.";
+			model.addAttribute("result", result);
+			return "/mypage/deleteAfter";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		return result ;
