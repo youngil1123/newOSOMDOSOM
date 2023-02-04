@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <link href="/img/favicon.png" rel="icon">
+<meta charset="utf-8" />
+<link href="/img/favicon.png" rel="icon">
 <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
@@ -24,230 +24,426 @@
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
-<link href="/css/slider.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+<link href="/css/pointshop.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap"
+	rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <title>Media Main</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
-    />
-    <!-- Link Swiper's CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    />
-<style>
+<title>Media Main</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<script type="text/javascript" src="/js/isotope.pkgd.js"></script>
 
-.single_destination{
-	
+<style>
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.mbti {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	padding-top: 10px;
+}
+
+.mbti p {
+	font-size: 25px;
+	margin-left: 65px;
+}
+
+.single_destination {
+	float: left;
+	margin-left: 80px;
+	margin-bottom: 10px;
+}
+
+body {
+	box-sizing: border-box;
+	font-family: Consolas, monospace;
+}
+
+img {
+	max-width: 100%;
+}
+
+.thumb {
+	margin: 0px auto;
+}
+
+.thumb img {
+	transition: all 0.2s linear;
+}
+
+.thumb:hover img {
+	transform: scale(1.4);
+}
+
+button {
+	margin: 50px;
+	width: 100px;
+}
+
+#point-flters li:hover,
+#point-flters li.filter-active {
+  color: #fff;
+  background: #e43c5c;
+}
+
+#point-flters {
+  padding: 0;
+  margin: 0 auto 25px auto;
+  list-style: none;
+  text-align: center;
+  border-radius: 50px;
+}
+
+#point-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 17px 9px 17px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1;
+  color: #444444;
+  margin: 0 3px 10px 3px;
+  transition: all ease-in-out 0.3s;
+  background: #ede9e9;
+  border-radius: 50px;
 }
 
 
-
 </style>
+<script>
+ 
+(function() {
+	   
+	   const select = (el, all = false) => {
+	     el = el.trim()
+	     if (all) {
+	       return [...document.querySelectorAll(el)]
+	     } else {
+	       return document.querySelector(el)
+	     }
+	   }
+		
+	   const on = (type, el, listener, all = false) => {
+		    let selectEl = select(el, all)
+		    if (selectEl) {
+		      if (all) {
+		        selectEl.forEach(e => e.addEventListener(type, listener))
+		      } else {
+		        selectEl.addEventListener(type, listener)
+		      }
+		    }
+		  }
 
-  </head>
+	window.addEventListener('load', () => {
+	 let pointContainer = select('.point-container');
+	 if (pointContainer) {
+  	 let pointIsotope = new Isotope(pointContainer, {
+   	  itemSelector: '.point-item',
+       layoutMode: 'fitRows'
+  	 });
+
+  	 let pointFilters = select('#point-flters li', true);
+
+   	on('click', '#point-flters li', function(e) {
+   	 e.preventDefault();
+    	 pointFilters.forEach(function(el) {
+    	   el.classList.remove('filter-active');
+   	  });
+   	  this.classList.add('filter-active');
+
+   	  pointIsotope.arrange({
+   	    filter: this.getAttribute('data-filter')
+   	  });
+
+ 	  }, true);
+	  }
+
+ });
+	
+})()
+	</script>
+
+
+</head>
 <body>
- <header th:replace="top.html :: navigation-bar"></header>
-  <div class="popular_places_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>MBTI PAGE</h3>
-                        <p>원하시는 MBTI를 선택하세요</p>
-                    </div>
-                </div>
-            </div>
-  <div class="mbti">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb" stlye="float:left;">  
-                            <img src="img/mbti/010.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">ENFP </a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb" stlye="float:left;">
-                            <img src="img/mbti/013.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">ENTP </a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb" stlye="float:left;">
-                            <img src="img/mbti/014.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">ESTP </a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb" stlye="float:left;">
-                            <img src="img/mbti/003.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">ESFP </a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/015.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">INFP</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/005.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">INFJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/011.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">INTP</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/009.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"> <a th:href="@{/mbtiex}">INTJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/016.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">ENFJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/006.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"> <a th:href="@{/mbtiex}">ENTJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/004.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a th:href="@{/mbtiex}">ISFP</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/001.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a href="travel_destination.html">ISTP</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/012.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a href="travel_destination.html">ESFJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/008.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a href="travel_destination.html">ISTJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/002.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a href="travel_destination.html">ISFJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/mbti/007.png" alt="" width="200" border="1">
-                        </div>
-                        <div class="content">
-                            <p class="d-flex align-items-center"><a href="travel_destination.html">ESTJ</a> </p>
-                            
-                        </div>
-                    </div>
-                </div>
-                
-            </div> 
-        </div>
-    </div>
- 
- 
- 
- 
- 
- <footer th:replace="footer.html :: footer"></footer>
+	<header th:replace="top.html :: navigation-bar"></header>
+	<div class="popular_places_area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					<div class="section_title text-center mb_70">
+						<h3>MBTI PAGE</h3>
+						<p>원하시는 MBTI를 선택하세요</p>
+						<div class="row">
+								<ul id="point-flters">
+									<li data-filter="*" class="filter-active">All</li>
+									<li data-filter=".filter-app">E</li>
+									<li data-filter=".filter-card">I</li>
+								</ul>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="mbti  point-container">
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ENFP')}"> <img src="img/mbti/010.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ENFP')}">ENFP </a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ENTP')}"><img src="img/mbti/013.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ENTP')}">ENTP </a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ESTP')}"> <img src="img/mbti/014.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ESTP')}">ESTP </a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ESFP')}"><img src="img/mbti/003.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ESFP')}">ESFP </a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='INFP')}"><img src="img/mbti/015.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='INFP')}">INFP</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='INFJ')}"> <img src="img/mbti/005.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='INFJ')}">INFJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='INTP')}"> <img src="img/mbti/011.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='INTP')}">INTP</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='INTJ')}"> <img src="img/mbti/009.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='INTJ')}">INTJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ENFJ')}"> <img src="img/mbti/016.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ENFJ')}">ENFJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ENTJ')}"> <img src="img/mbti/006.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ENTJ')}">ENTJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ISFP')}"> <img src="img/mbti/004.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ISFP')}">ISFP</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ISTP')}"> <img src="img/mbti/001.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ISTP')}">ISTP</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ESFJ')}"> <img src="img/mbti/012.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ESFJ')}">ESFJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ISTJ')}"> <img src="img/mbti/008.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ISTJ')}">ISTJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-card">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ISFJ')}"> <img src="img/mbti/002.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ISFJ')}">ISFJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="img">
+					<div class="single_destination point-item filter-app">
+						<div class="thumb">
+							<a th:href="@{/mbtiex(mbti='ESTJ')}"><img src="img/mbti/007.png" alt=""
+								width="200">
+							</a>
+						</div>
+						<div class="content">
+							<p class="d-flex align-items-center">
+								<a th:href="@{/mbtiex(mbti='ESTJ')}">ESTJ</a>
+							</p>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer th:replace="footer.html :: footer"></footer>
 </body>
 </html>

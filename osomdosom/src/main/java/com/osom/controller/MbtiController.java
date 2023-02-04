@@ -9,16 +9,17 @@ public class MbtiController {
 
 
 	@RequestMapping("/mbtiex")
-    public String mbtiex(Model model) {
-		
+    public String mbtiex(Model model, String mbti) {
+		System.out.println(mbti);
 		model.addAttribute("top", "mbtiex");
+		model.addAttribute("mbti", mbti);
         return "/mbti/mbtiex";
     }
 	
 	@RequestMapping("/mbtimain")
     public String mbtimain(Model model) {
-		
 		model.addAttribute("top", "mbtimain");
+		
         return "/mbti/mbtimain";
     }
 }
