@@ -22,6 +22,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		delete from board where board_no=#{board_no}
 	</delete> 
 	
+	<!-- 회원탈퇴시 해당멤버의 게시글 전부 삭제 -->
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM board WHERE mem_no=#{mem_no}
+	</delete>
+	
 	<select id="selectall" resultType="Board">
 		
 	</select>

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.osom.dto.Member_tbl;
 import com.osom.frame.CryptoUtil;
 import com.osom.frame.ImgUtil;
+import com.osom.service.BoardService;
 import com.osom.service.FriendshipService;
 import com.osom.service.Member_tblService;
 
@@ -33,6 +34,9 @@ public class MyPageController {
 
 	@Autowired
 	FriendshipService fservice;
+	
+	@Autowired
+	BoardService bservice;
 
 	@Value("${memimgdir}")
 	String memimgdir;
@@ -185,6 +189,7 @@ public class MyPageController {
 			session.invalidate();
 			mservice.remove(inputid);
 			fservice.remove(myno);
+			bservice.remove(myno);
 			result="회원탈퇴가 완료 되었습니다.";
 			model.addAttribute("result", result);
 			return "/mypage/deleteAfter";
