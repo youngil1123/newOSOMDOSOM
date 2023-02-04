@@ -36,7 +36,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     </select>
     <!-- 게시글 수정 -->
     <update id="updatepost">
-		update 
+		UPDATE Board SET title = #{title}, review = #{review}, partner = #{partner}, scret_memo = #{scret_memo}, star_rate = #{star_rate} WHERE board_no = #{board_no}
+   
 	</update>
 	
 </mapper>
