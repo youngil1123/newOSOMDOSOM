@@ -53,6 +53,9 @@
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 <style>
+.reviewtable{
+	width:1000px;
+}
 .reviewlist>th {
 	width: 15%;
 	height: 40px;
@@ -68,7 +71,9 @@
 	border-bottom: 1px solid #ddd;
 	text-align: center;
 }
-
+.review>th:nth-child(2),td:nth-child(2){
+	width:40%;
+}
 .container {
 	margin-top: 120px;
 }
@@ -120,33 +125,7 @@
 						</div>
 					</div>
 					<!-- .row -->
-					<h1>리뷰</h1>
-					<div class="entry-content">
-						<table>
-							<thead>
-								<form method="post" action="">
-									<tr class="reviewlist">
-										<th>제목</th>
-										<th>리뷰</th>
-										<th>작성자(닉네임)</th>
-										<th>등록일</th>
-										<th>평점</th>
-									</tr>
-							</thead>
-
-							<tbody>
-								<!-- CONTENTS !-->
-								<tr th:each="s: ${theaterreview}" class="review">
-									<td><span th:text="${s.title}"></span></td>
-									<td><a href="#"> <span th:text="${s.review}"></span>
-									</a></td>
-									<td><span th:text="${s.nickname}"></span></td>
-									<td><span th:text="${s.writedate}"></span></td>
-									<td><span th:text="${s.star_rate}"></span></td>
-								</tr>
-								</form>
-							</tbody>
-						</table>
+					<div th:include="review/musicalreviewpaging" id="onereviewpaging"></div>
 						<!-- .container -->
 	</main>
 	<footer th:replace="footer.html :: footer"></footer>
