@@ -93,15 +93,15 @@ th, td {
 /*<![CDATA[*/
 	
 function deletePost() {
-    const id = /*[[${board.board_no}]]*/;
+    const board_no = /*[[${board.board_no}]]*/;
 
-    if ( !confirm(id + '번 게시글을 삭제할까요?') ) {
+    if ( !confirm(board_no + '번 게시글을 삭제할까요?') ) {
       return false;
     }
 
     const formHtml = `
         <form id="deleteForm" action="/post/delete.do" method="post">
-            <input type="hidden" id="id" name="id" value="${mem_no}" />
+            <input type="hidden" id="board_no" name="board_no" value="${board_no}" />
         </form>
     `;
     const doc = new DOMParser().parseFromString(formHtml, 'text/html');
@@ -158,7 +158,7 @@ const drawStar = (target) => {
 				<br><br>
 			</div>
 			<input type="hidden" id="con_no" name="con_no">
-			<button type="submit" class="btn btn-secondary" id="btn-save">수정</button>
+			<button type="submit" onclick="updatePost()"class="btn btn-secondary" id="btn-save">수정</button>
 			<button type="button" onclick="deletePost()"class="btn btn-secondary" id="btn-save">삭제</button>
 			
 		

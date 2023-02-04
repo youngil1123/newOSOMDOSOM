@@ -18,8 +18,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</update>
 	<!-- 게시글 삭제 -->
- 	<delete id="deletePost">
-		update board set  mem_no = #{mem_no};
+ 	<delete id="deletepost" parameterType="Integer">
+		delete from board where board_no=#{board_no}
 	</delete> 
 	
 	<select id="selectall" resultType="Board">
@@ -34,5 +34,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     <select id="findById" parameterType="Integer" resultType="Board">
         SELECT * FROM board WHERE board_no=#{board_no}
     </select>
+    <!-- 게시글 수정 -->
+    <update id="updatepost">
+		update 
+	</update>
 	
 </mapper>

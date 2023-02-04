@@ -77,27 +77,28 @@ public class BoardController {
         return "board/boardView";
     }
 	
-	//게시글 수정
-	/*
-	 * @GetMapping(value="/board/update_action", method = RequestMethod.GET)
-	 * //localhost:8080/board/view?id=1 //(get방식 파라미터) public String boardView(Model
-	 * model, int mem_no) throws Exception{ Board board =null;
-	 * 
-	 * 
-	 * model.addAttribute("board", boardservice.boardview(mem_no));
-	 * 
-	 * return "board/myboard"; }
-	 */
+    // 게시글 수정
+    @PostMapping("/post/update.do")
+    public String updatePost(final Board board) {
+        try {
+			boardservice.updatePost(board);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return "redirect:/myboard";
+    }
+
 	
 	
 	
 	// 게시글 삭제
     @PostMapping("/post/delete.do")
-    public String deletePost(@RequestParam final int mem_no) {
+    public String deletePost(@RequestParam final int board_no) {
         try {
-			boardservice.deletePost(mem_no);
+			boardservice.deletePost(board_no);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
         return "redirect:/myboard";
