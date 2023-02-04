@@ -38,7 +38,7 @@ public class MovieInfo {
 	private int star_rate;
 	
 	//member_tbl
-		private String nickname;
+	private String nickname;
 	
 
 	

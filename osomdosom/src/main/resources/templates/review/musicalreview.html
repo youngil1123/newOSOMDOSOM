@@ -53,6 +53,9 @@
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 <style>
+.reviewtable{
+	width:1000px;
+}
 .reviewlist>th {
 	width: 15%;
 	height: 40px;
@@ -68,7 +71,9 @@
 	border-bottom: 1px solid #ddd;
 	text-align: center;
 }
-
+.review>th:nth-child(2),td:nth-child(2){
+	width:40%;
+}
 .container {
 	margin-top: 120px;
 }
@@ -120,6 +125,7 @@
 						</div>
 					</div>
 					<!-- .row -->
+<<<<<<< HEAD
 					<h1>리뷰</h1>
 					<div class="entry-content">
 						<table>
@@ -147,6 +153,9 @@
 								</form>
 							</tbody>
 						</table>
+=======
+					<div th:include="review/musicalreviewpaging" id="onereviewpaging"></div>
+>>>>>>> branch 'main' of https://github.com/youngil1123/newOSOMDOSOM.git
 						<!-- .container -->
 	</main>
 	<footer th:replace="footer.html :: footer"></footer>
