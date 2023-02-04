@@ -24,8 +24,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		UPDATE member_tbl set mem_pwd=#{mem_pwd}, mbti=#{mbti} , nickname=#{nickname}, mem_img=#{mem_img} where mem_no=#{mem_no}
 	</update>
 
-	<delete id="delete">
-		
+	<delete id="delete" parameterType="String">
+		delete from member_tbl where mem_id=#{mem_id}
 	</delete>
 	
 	<select id="selectallfollower" resultType="Member_tbl" parameterType="Integer">
