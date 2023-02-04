@@ -16,7 +16,7 @@ public interface BoardMapper extends MyMapper<Integer,Board>{
 	public List<Board> searchmylist(Integer mem_no); 
 	public List<Board> searchmylist(String mem_id);
 	public Board get(int mem_no);
-	public Board deletepost(int board_no);
+	public Board deletepost(int mem_no);
 	public Board findById(int board_no);
 	
 	

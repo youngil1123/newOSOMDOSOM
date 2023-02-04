@@ -25,4 +25,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="getonemoviereview" resultType="MovieInfo" parameterType="String">
 		select * from board inner join movieinfo using(con_no) inner join member_tbl using(mem_no) WHERE movieCd=#{movieCd};
 	</select>
+	<select id="totalRecord" resultType="Integer" parameterType="String">
+		select count(*) from board inner join movieinfo using(con_no) WHERE movieCd=#{movieCd};
+	</select>
+	<select id="boardPageSelect" resultType="MovieInfo" parameterType="Paging">
+		select C.* from(select A.* from(select b.board_no,b.title,b.review,b.writedate,b.star_rate,m.nickname
+		from board b inner join movieinfo using(con_no) inner join member_tbl m using(mem_no) WHERE movieCd=#{movieCd} order by board_no desc) A LIMIT #{totalRecord}) C LIMIT #{startRecord},#{onePageRecord};
+	</select>
 </mapper>

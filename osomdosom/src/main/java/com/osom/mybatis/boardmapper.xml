@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</update>
 	<!-- 게시글 삭제 -->
  	<delete id="deletePost">
-		DELETE FROM board WHERE board_no = #{board_no};
+		update board set  mem_no = #{mem_no};
 	</delete> 
 	
 	<select id="selectall" resultType="Board">

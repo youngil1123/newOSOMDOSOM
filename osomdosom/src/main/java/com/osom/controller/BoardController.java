@@ -93,14 +93,14 @@ public class BoardController {
 	
 	// 게시글 삭제
     @PostMapping("/post/delete.do")
-    public String deletePost(@RequestParam final int board_no) {
+    public String deletePost(@RequestParam final int mem_no) {
         try {
-			boardservice.deletePost(board_no);
+			boardservice.deletePost(mem_no);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        return "redirect:/board/myboard";
+        return "redirect:/myboard";
     }
 
     }

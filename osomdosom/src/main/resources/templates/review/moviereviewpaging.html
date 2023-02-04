@@ -20,7 +20,7 @@
 </style>
 
 <div class="entry-content">
-	<table id="reviewtable">
+	<table class="reviewtable">
 		<thead>
 			<tr class="reviewlist">
 				<th>제목</th>
@@ -33,7 +33,7 @@
 
 		<tbody>
 			<!-- CONTENTS !-->
-			<tr th:each="s: ${bookreview}" class="review">
+			<tr th:each="s: ${moviereview}" class="review">
 				<td><span th:text="${s.title}"></span></td>
 				<td><a href="#"> <span th:text="${s.review}"
 						style="font-size: 0.8em;"></span>
@@ -49,14 +49,14 @@
 현재 페이지 : [[${p.nowPage}]] 
 총 페이지 : [[${p.totalPage}]]<br>
 </div>
-<!-- .container -->
+<!-- .container -->										
 <div class="pageDiv">
 		<!-- nowPage가 1보다 클경우 -->
 		<p th:if="${p.nowPage != 1}">
-			<span class="material-symbols-outlined"><a th:href="@{/review/bookreview(nowPage=${p.nowPage}-1,book_no=${p.book_no})}">arrow_back</span></a>
+			<span class="material-symbols-outlined"><a th:href="@{/review/moviereview(nowPage=${p.nowPage}-1,movieCd=${p.movieCd})}">arrow_back</span></a>
 		</p>
 		<!-- nowPage<totalPage -->
 		<p th:if="${p.nowPage lt p.totalPage}">
-			<span class="material-symbols-outlined"><a th:href="@{/review/bookreview(nowPage=${p.nowPage}+1,book_no=${p.book_no})}">arrow_forward</span></a>
+			<span class="material-symbols-outlined"><a th:href="@{/review/moviereview(nowPage=${p.nowPage}+1,movieCd=${p.movieCd})}">arrow_forward</span></a>
 		</p>
 </div>
