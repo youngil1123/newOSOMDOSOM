@@ -29,6 +29,7 @@ public class Member_tbl {
 	private String heart;
 
 	private MultipartFile img;
+	private String myword;
 
 
 // 이메일 찾기

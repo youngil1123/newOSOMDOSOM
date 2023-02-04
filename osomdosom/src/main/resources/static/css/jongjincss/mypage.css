@@ -5,7 +5,7 @@ body{
 }
 
 .container{
-  width: 1200px;
+  width: 1180px;
   margin: 0px auto ;
 }
 
@@ -25,13 +25,14 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-  background: #ededed;
+ border:3px solid gray;
   color: #222;
+  font-weight:bold;
 }
 
 .tab-content{
   display: none;
-  background: #ededed;
+  background: #FFFAF0;
   padding: 15px;
 }
 
@@ -40,9 +41,24 @@ ul.tabs li.current{
 }
 
 .mypage-left{
-	border: 1px solid red;
+
 	margin-left:6%;
 	float:left;
 	width:200px;
 	height:400px;
+}
+
+#update_form{
+	height:500px;
+}
+
+#profile_img{
+	margin-left:25px;
+	width:150px;
+	height:150px;
+	border-radius: 100%;
+}
+
+#delete_form{
+	height:340px;
 }

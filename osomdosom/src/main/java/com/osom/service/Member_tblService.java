@@ -69,8 +69,8 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 		return mapper.findmem_no(mem_id);
 	}
 
-	public void updateMyInfo(int mem_no, String mem_pwd, String nickname, String mbti, String mem_img) {
-		mapper.updateMyInfo(mem_no, mem_pwd, nickname, mbti, mem_img);
+	public void updateMyInfo(int mem_no, String mem_pwd, String nickname, String mbti, String mem_img, String myword) {
+		mapper.updateMyInfo(mem_no, mem_pwd, nickname, mbti, mem_img, myword);
 	}
 
 	

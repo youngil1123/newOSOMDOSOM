@@ -152,9 +152,14 @@ $(document).ready(function(){
 			<th>대표 이미지 수정</th>
 			<td><input type="file" name="img" accept="image/*"></td>
 		</tr>
+		<tr>
+			<th>자기소개 한마디</th>
+			<td><textarea name="myword" th:placeholder="${my.myword}"></textarea></td>
+		</tr>
 	</table>
+	<img src="/img/jongjinimg/edit.png" style="position:relative; bottom:470px; left:350px;">
 	<input type="hidden" id="pwdok" value="yes">
 	<input type="hidden" id="mbtiok" value="yes">
-	<button id="updatebtn"> 회원정보 수정하기</button>
+	<button id="updatebtn" style="position:relative; bottom:280px;"> 회원정보 수정하기</button>
 	
 </form>

@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="updateMyInfo" parameterType="Member_tbl">
-		UPDATE member_tbl set mem_pwd=#{mem_pwd}, mbti=#{mbti} , nickname=#{nickname}, mem_img=#{mem_img} where mem_no=#{mem_no}
+		UPDATE member_tbl set mem_pwd=#{mem_pwd}, mbti=#{mbti} , nickname=#{nickname}, mem_img=#{mem_img}, myword=#{myword} where mem_no=#{mem_no}
 	</update>
 
 	<delete id="delete" parameterType="String">
