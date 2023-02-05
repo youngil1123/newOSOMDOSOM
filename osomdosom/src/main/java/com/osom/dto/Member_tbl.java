@@ -65,12 +65,13 @@ public class Member_tbl {
 	 * }
 	 */
 
-	public Member_tbl(Integer mem_no, String mem_pwd, String nickname, String mbti) {
+	public Member_tbl(Integer mem_no, String mem_pwd, String nickname, String mbti,String myword) {
 		super();
 		this.mem_no = mem_no;
 		this.mem_pwd = mem_pwd;
 		this.nickname = nickname;
 		this.mbti = mbti;
+		this.myword= myword;
 	}
 
 	

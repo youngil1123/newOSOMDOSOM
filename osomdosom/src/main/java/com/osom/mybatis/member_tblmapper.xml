@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="selectallfollower" resultType="Member_tbl" parameterType="Integer">
-		select m.mem_no, m.mem_id, m.mbti, m.mem_img, m.nickname from member_tbl m inner join friendship f on m.mem_no = f.mem_no2 where f.mem_no = #{f.mem_no}
+		select m.mem_no, m.mem_id, m.mbti, m.mem_img, m.nickname, m.myword from member_tbl m inner join friendship f on m.mem_no = f.mem_no2 where f.mem_no = #{f.mem_no}
 	</select>
 	
 	<!-- 아이디를 넣으면 회원번호 알수잇는 기능 -->
