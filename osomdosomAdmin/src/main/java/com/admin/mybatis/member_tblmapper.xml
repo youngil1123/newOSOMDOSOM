@@ -6,4 +6,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    <select id="selectall" resultType="Member_tbl">
    		SELECT * FROM member_tbl
    </select>
+   <select id="countmember" resultType="Integer">
+   		SELECT COUNT(*) FROM member_tbl
+   </select>
 </mapper>

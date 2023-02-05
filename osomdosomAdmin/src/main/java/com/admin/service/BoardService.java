@@ -53,7 +53,9 @@ public class BoardService implements MyService<Integer, Board>{
 		return mapper.list();
 	}
 	
-
+	public int countreview() throws Exception{
+		return mapper.countreview();
+	}
 
 	}
 

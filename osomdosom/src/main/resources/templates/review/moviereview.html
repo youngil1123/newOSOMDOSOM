@@ -21,7 +21,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,6 +55,9 @@
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 <style>
+.reviewtable{
+	width:1000px;
+}
 .reviewlist>th {
 	width: 15%;
 	height: 40px;
@@ -68,20 +73,24 @@
 	border-bottom: 1px solid #ddd;
 	text-align: center;
 }
-
+.review>th:nth-child(2),td:nth-child(2){
+	width:40%;
+}
 .container {
 	margin-top: 120px;
 }
-.content{
+
+.content {
 	font-family: 'Gowun Dodum', sans-serif;
-	
 }
-.movie-title{
-	font-size:3em;
+
+.movie-title {
+	font-size: 3em;
 }
+
 .movie-meata {
 	list-style: none;
-	font-size:2em;
+	font-size: 2em;
 }
 </style>
 
@@ -115,11 +124,12 @@
 								<li>감독명 : [[${movie.peopleNm}]]</li>
 								<li>개봉일 : [[${movie.openDt}]]</li>
 								<li>러닝타임 :[[${movie.showTm}]]분</li>
-			
+
 							</ul>
 						</div>
 					</div>
 					<!-- .row -->
+
 					<h1>리뷰</h1>
 					<div class="entry-content">
 						<table>
@@ -141,13 +151,19 @@
 									<td><a href="#"> <span th:text="${s.review}"></span>
 									</a></td>
 									<td><span th:text="${s.nickname}"></span></td>
-									<td><span th:text="${s.writedate}"></span></td>
+									<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
 									<td><span th:text="${s.star_rate}"></span></td>
 								</tr>
 								</form>
 							</tbody>
 						</table>
 						<!-- .container -->
+
+				</div>
+				<div th:include="review/moviereviewpaging" id="onereviewpaging"></div>
+			</div>
+			<!-- .container -->
+
 	</main>
 	<footer th:replace="footer.html :: footer"></footer>
 	</div>

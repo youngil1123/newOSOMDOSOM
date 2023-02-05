@@ -18,9 +18,14 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</update>
 	<!-- 게시글 삭제 -->
- 	<delete id="deletePost">
-		DELETE FROM board WHERE board_no = #{board_no};
+ 	<delete id="deletepost" parameterType="Integer">
+		delete from board where board_no=#{board_no}
 	</delete> 
+	
+	<!-- 회원탈퇴시 해당멤버의 게시글 전부 삭제 -->
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM board WHERE mem_no=#{mem_no}
+	</delete>
 	
 	<select id="selectall" resultType="Board">
 		
@@ -34,5 +39,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     <select id="findById" parameterType="Integer" resultType="Board">
         SELECT * FROM board WHERE board_no=#{board_no}
     </select>
+    <!-- 게시글 수정 -->
+    <update id="updatepost">
+		UPDATE Board SET title = #{title}, review = #{review}, partner = #{partner}, scret_memo = #{scret_memo}, star_rate = #{star_rate} WHERE board_no = #{board_no}
+   
+	</update>
 	
 </mapper>

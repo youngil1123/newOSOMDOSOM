@@ -81,15 +81,16 @@
                 	<div class="product__item__pic set-bg" >
                     <img th:src="'/img/jongjinimg/follower/'+${fw.mem_img}" style="width:400px; height:370px;"> <!-- mem_img -->
                         <ul class="product__hover">
-                            <li><a href="#"><span class="icon_lookbook"></span></a></li>
-                            <li></li>
-                            <li id=""><a th:href="@{/follower/DeleteFw(dfwid=${fw.mem_id})}" onClick='chkDelete();'><span class="icon_delete"></span></a></li>
+                       		<li ><h4 id="myword">[[${fw.myword}]]</h4>  </li>
+                            <li><a href="#"><span class="icon_lookbook"></span></a></li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                            <li><a th:href="@{/follower/DeleteFw(dfwid=${fw.mem_id})}" onClick='chkDelete();'><span class="icon_delete"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">   <!-- mem_id -->
                         <h6><input type="hidden" name="thisid" th:value="${fw.mem_id}"> [[${fw.mem_id}]] <span>([[${fw.nickname}]])</span>
                         <img th:src="'/img/jongjinimg/follower/'+${fw.heart}" style="height:12px; width:12px" ></h6>
-                        <div class="product__price" th:text="${fw.mbti}"></div> <!-- mbti -->                
+                        <div class="product__price" th:text="${fw.mbti}"></div> <!-- mbti -->              
                     </div>
                 </div>
             </div>       

@@ -54,14 +54,19 @@ public class BoardService implements MyService<Integer, Board>{
 	}
 
 
-	public Board deletePost(int board_no)throws Exception {
+	public void deletePost(int board_no)throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.deletepost(board_no);
+		 mapper.deletepost(board_no);
 	}
 
 	public Board findPostById(int board_no) {
 		// TODO Auto-generated method stub
 		return mapper.findById(board_no);
+	}
+
+	public Board updatePost(Board board) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.update(board);
 	}
 
 	

@@ -73,15 +73,34 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span th:text="${myinfo.nickname}" style="font-size:2em; margin-right:40;"></span><span style="font-size:1.5em; margin-right:40;">님 의 마이페이지</span>
 
 <div class="container">
+	
+	<div class="mypage-left">
+	<table th:each="m : ${myinfo}">
+		<tr>
+			<th><img th:src="@{/img/jongjinimg/follower/}+${m.mem_img}" id= "profile_img"></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;"><span style="font-weight:bolder; font-size:1.2em;">[[${m.nickname}]]</span><span>님</span></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;">([[${m.mbti}]])</th>
+		</tr>
+		<tr>
+			<th style="text-align:center;">- 자기소개 -</th>
+		</tr>
+		<tr>
+			<th ><span style="font-weight:lighter;">[[${m.myword}]]</span></th>
+		</tr>
+	</table>
+	</div>	
 
 	<ul class="tabs">
-		<li class="tab-link current" data-tab="myInfo">내 정보</li>
-		<li class="tab-link" data-tab="myList">찜 목록</li>
-		<li class="tab-link" data-tab="myShoppingList">구매 내역</li>
-		<li class="tab-link" data-tab="withdraw">회원 탈퇴</li>
+		<li class="tab-link current" data-tab="myInfo"><img src="/img/jongjinimg/info.png" style="width:30px; height:30px;">  내 정보</li>
+		<li class="tab-link" data-tab="myList"><img src="/img/jongjinimg/wishlist.png" style="width:30px; height:30px;">  찜 목록</li>
+		<li class="tab-link" data-tab="myShoppingList"><img src="/img/jongjinimg/dollar.png" style="width:30px; height:30px;">  구매 내역</li>
+		<li class="tab-link" data-tab="withdraw"><img src="/img/jongjinimg/logout.png" style="width:30px; height:30px;"> 회원 탈퇴</li>
 	</ul>
 	
 

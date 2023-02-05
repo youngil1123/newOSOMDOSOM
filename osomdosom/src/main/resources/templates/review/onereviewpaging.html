@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
 /*페이징*/
 .pageDiv ul{
@@ -9,13 +10,21 @@
 	padding:5px 10px;
 	float:left;
 }
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
 </style>
+
 <div class="entry-content">
-	<table>
+	<table id="reviewtable">
 		<thead>
 			<tr class="reviewlist">
 				<th>제목</th>
-				<th class="jb-th-1" style="width: 42%;">리뷰</th>
+				<th class="jb-th-1">리뷰</th>
 				<th>작성자(닉네임)</th>
 				<th>등록일</th>
 				<th>평점</th>
@@ -37,34 +46,17 @@
 	</table>
 </div>
 <div>
-현재 페이지 : [[${p.nowPage}]]<br>
+현재 페이지 : [[${p.nowPage}]] 
 총 페이지 : [[${p.totalPage}]]<br>
 </div>
 <!-- .container -->
 <div class="pageDiv">
-	<ul>
-		<!-- nowPage가 1일경우 -->
-	
 		<!-- nowPage가 1보다 클경우 -->
 		<p th:if="${p.nowPage != 1}">
-			<li><a th:href="@{/review/bookreview(nowPage=${p.nowPage}-1,book_no=${p.book_no})}">이전</a></li>
+			<span class="material-symbols-outlined"><a th:href="@{/review/bookreview(nowPage=${p.nowPage}-1,book_no=${p.book_no})}">arrow_back</span></a>
 		</p>
-		<!-- 
-		<p th:each="i:${#numbers.sequence(p.startPage,p.startPage+p.onePageCount-1)}">
-			<p th:if="${i &lt;= p.totalPage}">
-				<p th:if="${i == p.nowPage}">
-					<li style="background-color:#ddd;"><a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a></li>
-				</p>
-				<p th:if="${i != p.nowPage}">
-					<li><a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a></li>
-				</p>
-			</p>
-		</p>
-		-->
 		<!-- nowPage<totalPage -->
 		<p th:if="${p.nowPage lt p.totalPage}">
-			<li><a th:href="@{/review/bookreview(nowPage=${p.nowPage}+1,book_no=${p.book_no})}">다음</a></li>
+			<span class="material-symbols-outlined"><a th:href="@{/review/bookreview(nowPage=${p.nowPage}+1,book_no=${p.book_no})}">arrow_forward</span></a>
 		</p>
-	</ul>
-	
 </div>

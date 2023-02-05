@@ -38,7 +38,6 @@ public class BookController {
 			// TODO Auto-generated catch blockㅇ
 			e.printStackTrace();
 		}
-		System.out.println(p);
 		model.addAttribute("book", book);
 		model.addAttribute("bookreview", bookreview);
 		model.addAttribute("p", p);

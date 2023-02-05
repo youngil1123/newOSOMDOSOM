@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.osom.dto.MovieInfo;
+import com.osom.dto.Paging;
 import com.osom.dto.TheaterInfo;
 import com.osom.frame.MyService;
 import com.osom.mapper.TheaterMapper;
@@ -60,7 +61,14 @@ public class TheaterService implements MyService<String, TheaterInfo>{
 		//
 		return theatermapper.getonetheaterreview(mt20id);
 	}
-	
+	public int totalRecord(Paging p) throws Exception{
+		// 공연의 리뷰개수 구하기
+		return theatermapper.totalRecord(p);
+	}
+	public List<TheaterInfo> boardPageSelect(Paging p) throws Exception{
+		//리뷰페이지
+		return theatermapper.boardPageSelect(p);
+	}
 
 
 	

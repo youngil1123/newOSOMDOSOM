@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.osom.dto.BookInfo;
 import com.osom.dto.MovieInfo;
+import com.osom.dto.Paging;
 import com.osom.frame.MyService;
 import com.osom.mapper.MovieMapper;
 @Service
@@ -65,5 +66,13 @@ public class MovieService implements MyService<String, MovieInfo>{
 		return moviemapper.getonemoviereview(movieCd);
 	}
 
-
+	public int totalRecord(String movieCd) {
+		//영화하나의 리뷰개수 구하기}
+		return moviemapper.totalRecord(movieCd);
+	}
+	public List<MovieInfo> boardPageSelect(Paging p){ 
+		//리뷰페이지
+		return moviemapper.boardPageSelect(p);
+	}
+	
 }

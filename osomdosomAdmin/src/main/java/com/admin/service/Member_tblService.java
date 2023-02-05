@@ -44,6 +44,9 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 		// TODO Auto-generated method stub
 		return mapper.selectall();
 	}
+	public int countmember() throws Exception{
+		return mapper.countmember();
+	}
 	
 }
 

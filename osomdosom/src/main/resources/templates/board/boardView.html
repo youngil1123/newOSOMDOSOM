@@ -8,8 +8,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-<!-- <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -61,12 +60,6 @@
 	-bs-btn-font-size: 2rem;
 	margin-bottom: 10px;
 }
-
-.search_box {
-	margin-top: 20px;
-	margin-bottom: 30px;
-}
-
 .star {
 	position: relative;
 	font-size: 2rem;
@@ -100,15 +93,15 @@ th, td {
 /*<![CDATA[*/
 	
 function deletePost() {
-    const id = /*[[${board.board_no}]]*/;
+    const board_no = /*[[${board.board_no}]]*/;
 
-    if ( !confirm(id + '번 게시글을 삭제할까요?') ) {
+    if ( !confirm(board_no + '번 게시글을 삭제할까요?') ) {
       return false;
     }
 
     const formHtml = `
         <form id="deleteForm" action="/post/delete.do" method="post">
-            <input type="hidden" id="id" name="id" value="${id}" />
+            <input type="hidden" id="board_no" name="board_no" value="${board_no}" />
         </form>
     `;
     const doc = new DOMParser().parseFromString(formHtml, 'text/html');
@@ -119,52 +112,57 @@ function deletePost() {
 /*]]>*/
 </script>
 
+<script>
+const drawStar = (target) => {
+    document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+  }
+</script>
+
 </head>
 <body>
 <header th:replace="top.html :: navigation-bar"></header>	
-
+<div class="container" style="margin-top:100px;">
 		<!-- 여기서부터 게시글 작성 폼 시작 -->
 			<div class="form-group">
-			<label for="title">게시글 번호</label>
-			<textarea><li>[[${board.board_no}]]</li>></textarea>
+			<label for="title" style=font-size:20px;>게시글 번호 : [[${board.board_no}]]번</label><br>
 			
-				<label for="title">제목</label>
-				<!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
-				<!-- required 속성을 설정하면 필수입력 사항이된다. -->
-				<!-- pattern 속성을 이용한 정규표현식으로 데이터의 유효성 검사를 할 수 있다. -->
-				<li>[[${board.title}]]</li>
+				<label for="title" style=font-size:20px;>제목</label>
+				<input class="form-control" rows="15"  id="content"
+    name="content" th:value="${board.title}" ></input></br>
 			</div>
 
-
+			
 			<div class="form-group" >
-				<label for="content">내용</label>
-				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
-				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
-				<li>[[${board.review}]]</li>
+				<label for="content" style=font-size:20px;>내용</label>
+				<textarea class="form-control" rows="15"  id="content"
+    name="content">[[${board.review}]]</textarea></br>
 			</div>
 
 			<div class="form-group">
-				<label for="content">개인메모</label>
+				<label for="content" style=font-size:20px;>개인메모</label>
 				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
 				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
-				<li>[[${board.secret_memo}]]</li>
+				<textarea class="form-control" rows="15"  id="content"
+    name="content">[[${board.secret_memo}]]</textarea></br>
 			</div>
 			<div class="form-group">
-				<label for="writer">시청매체</label> 
-				<li>[[${board.partner}]]</li>
+				<label for="writer" style=font-size:20px;>시청매체</label> 
+				<textarea class="form-control" rows="15"  id="content"
+    name="content">[[${board.partner}]]</textarea></br>
 			</div>
 			<div class="form-group">
-				<label for="writer">별점</label> <span class="star"> ★★★★★ <span>★★★★★</span>
+				<label for="writer" style=font-size:20px;>별점</label> <span class="star"> ★★★★★ <span>★★★★★</span>
 					<input type="range" oninput="drawStar(this)" value="1" step="1" name="star_rate"
-					min="0" max="10">
+					min="0" max="10" th:value="${board.star_rate}">
 				</span>
+				<br><br>
 			</div>
 			<input type="hidden" id="con_no" name="con_no">
-			<button type="submit" class="btn btn-secondary" id="btn-save">수정</button>
+			<button type="submit" onclick="updatePost()"class="btn btn-secondary" id="btn-save">수정</button>
 			<button type="button" onclick="deletePost()"class="btn btn-secondary" id="btn-save">삭제</button>
 			
 		
-
+	</div>
 	<!-- 여기서부터 게시글 작성 폼 끝 -->
 
 	<footer th:replace="footer.html :: footer"></footer>

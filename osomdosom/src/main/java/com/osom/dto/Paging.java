@@ -18,6 +18,9 @@ public class Paging {
 	
 	//리뷰 선택을 위한 ======책번호,영화코드,공연코드
 	private int book_no;
+	private String movieCd;
+	private String mt20id;
+	private String genrenm;
 
 	//
 	private int startRecord=0; //페이지 시작할때 조회할 첫번째 레코드.
@@ -72,5 +75,19 @@ public class Paging {
 		this.startRecord = startRecord;
 		startRecord=(nowPage-1)*onePageRecord;
 	}
+
+	public void setMovieCd(String movieCd) {
+		this.movieCd = movieCd;
+	}
+
+	public void setMt20id(String mt20id) {
+		this.mt20id = mt20id;
+	}
+
+	public void setGenrenm(String genrenm) {
+		this.genrenm = genrenm;
+	}
+	
+	
 //
 }

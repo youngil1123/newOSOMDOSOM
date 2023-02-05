@@ -4,7 +4,21 @@
 <meta charset="UTF-8">
 <title>회원목록</title>
 </head>
+<style>
+p{
+	font-size:1.3em;
+}
+th, td {
+	border-bottom: 1px solid #444444;
+	padding: 10px;
+}
+td{
+	text-align: center;
+}
+</style>
 <body>
+<a th:href="@{/main}">메인으로 이동</a>
+<p>현재 가입한 회원 수 : [[${membernumber}]] 명</p>
 	<div id="memberlist">
 		<table class="list_1" width="100%" cellspacing="0" summary="">
 			<caption></caption>

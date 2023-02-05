@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+/*페이징*/
+.pageDiv ul{
+	list-style:none;
+	float:left;
+	overflow:auto;
+}
+.pageDiv>ul>li{
+	padding:5px 10px;
+	float:left;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+</style>
+
+<div class="entry-content">
+	<table class="reviewtable">
+		<thead>
+			<tr class="reviewlist">
+				<th>제목</th>
+				<th class="jb-th-1">리뷰</th>
+				<th>작성자(닉네임)</th>
+				<th>등록일</th>
+				<th>평점</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<!-- CONTENTS !-->
+			<tr th:each="s: ${moviereview}" class="review">
+				<td><span th:text="${s.title}"></span></td>
+				<td><a href="#"> <span th:text="${s.review}"
+						style="font-size: 0.8em;"></span>
+				</a></td>
+				<td><span th:text="${s.nickname}"></span></td>
+				<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
+				<td><span th:text="${s.star_rate}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div>
+현재 페이지 : [[${p.nowPage}]] 
+총 페이지 : [[${p.totalPage}]]<br>
+</div>
+<!-- .container -->										
+<div class="pageDiv">
+		<!-- nowPage가 1보다 클경우 -->
+		<p th:if="${p.nowPage != 1}">
+			<span class="material-symbols-outlined"><a th:href="@{/review/moviereview(nowPage=${p.nowPage}-1,movieCd=${p.movieCd})}">arrow_back</span></a>
+		</p>
+		<!-- nowPage<totalPage -->
+		<p th:if="${p.nowPage lt p.totalPage}">
+			<span class="material-symbols-outlined"><a th:href="@{/review/moviereview(nowPage=${p.nowPage}+1,movieCd=${p.movieCd})}">arrow_forward</span></a>
+		</p>
+</div>

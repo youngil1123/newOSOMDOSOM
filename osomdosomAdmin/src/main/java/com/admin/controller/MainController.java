@@ -53,6 +53,8 @@ public class MainController {
 		try {
 			members = mservice.get();
 			model.addAttribute("members", members);
+			int membernumber = mservice.countmember();
+			model.addAttribute("membernumber", membernumber);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -102,6 +104,7 @@ public class MainController {
 		try {
 			boards = bservice.list();
 			model.addAttribute("boards", boards);
+			model.addAttribute("reviewnumber", bservice.countreview());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

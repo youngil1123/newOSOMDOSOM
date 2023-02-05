@@ -57,7 +57,7 @@ public class FriendshipService implements MyService<Integer, Friendship>{
 
 	@Override
 	public void remove(Integer k) throws Exception {
-		// TODO Auto-generated method stub
+		mapper.delete(k);
 
 	}
 

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.osom.dto.Member_tbl;
 import com.osom.frame.CryptoUtil;
 import com.osom.frame.ImgUtil;
+import com.osom.service.BoardService;
 import com.osom.service.FriendshipService;
 import com.osom.service.Member_tblService;
 
@@ -33,6 +34,9 @@ public class MyPageController {
 
 	@Autowired
 	FriendshipService fservice;
+	
+	@Autowired
+	BoardService bservice;
 
 	@Value("${memimgdir}")
 	String memimgdir;
@@ -68,6 +72,7 @@ public class MyPageController {
 		String chmbti = member.getMbti().toUpperCase();
 		System.out.println("내가입력한 mbti: " + chmbti);
 		String chimg = null;
+		String chmyword = member.getMyword();
 		
 		chimg = member.getImg().getOriginalFilename(); // DTO의 MultipartFile 를사용함(화면에서 이미지파일올릴때 이미지파일이름을 가져옴)
 		System.out.println("내가입력한 이미지: " + chimg);
@@ -102,9 +107,12 @@ public class MyPageController {
 		if (chmbti.length() == 0) {
 			chmbti = myinfo.getMbti();
 		}
+		if (chmyword.length() == 0) {
+			chmyword = myinfo.getMyword();
+		}
 
 
-		mservice.updateMyInfo(myno, chpwd, chnickname, chmbti, chimg); // <- dto에 회원번호, 비번,
+		mservice.updateMyInfo(myno, chpwd, chnickname, chmbti, chimg , chmyword); // <- dto에 회원번호, 비번,
 
 		Member_tbl newMyInfo = new Member_tbl();
 		try {
@@ -118,22 +126,12 @@ public class MyPageController {
 		return "redirect:/";
 	}
 	
-	// 받아온정보랑 세션의 정보랑 일치하는지 확인해봐야함  (비번은 암호화를 하든 복호화를 하든 해서 비교하자)
 
-	// 만약에 틀린게 있다면 if문으로 하나씩 내려가면서 확인. 그리고 발견할때 deleteFail.html로 보내주자. 
-	//alert창은 가능하면 (틀린정보)가 잘못입력되었습니다. 안되면 입력하신 정보가 틀렸습니다. 확인 바랍니다. 
-	//뜨고 다시 회원삭제페이지로 history.back 해버리자.
-	
-	// 만약에 전부 일치한다면 deleteOk.html로 이동시켜주자. (거기에서는 alert로 회원삭제가 완료되었습니다...
-	// 뜨게끔하고 th:location.href("@{/}");로 메인페이지로 이동
-	
-	//그리고 삭제해야할 테이블들 :
-	// 1. 회원정보,  2.팔로워테이블에 팔로우,팔로워에 이사람회원번호있느거 
-	//3.게시물테이블중에 이사람이 쓴거(이거는 남길지 말지 고민고민)
-	// 4. 구매내역테이블.. 5. 찜목록테이블...
 	
 	@RequestMapping("/deleteChk")
-	public Object deleteChk(Model model, Member_tbl inputinfo, HttpServletRequest request) {
+	public Object deleteChk(Model model, Member_tbl inputinfo, HttpServletRequest request)
+			throws NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException, NoSuchPaddingException,
+			InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
 		
 		//return 값.
 		String result ="";
@@ -142,21 +140,55 @@ public class MyPageController {
 		HttpSession session = request.getSession();
 		Member_tbl myinfo = (Member_tbl)session.getAttribute("logincust");
 		String myid = myinfo.getMem_id();
+		System.out.println("기존 아이디 : "+ myid);
 		String mypwd = myinfo.getMem_pwd(); //이건 암호화되어있다.
+		System.out.println("기존 패스워드 : "+ mypwd);
 		String myemail = myinfo.getMem_email();
-		
+		System.out.println("기존 이메일 : "+ myemail);
+		Integer myno =myinfo.getMem_no();
+				
 		//내가 입력한 정보들
 		String inputid = inputinfo.getMem_id();
+		System.out.println("내가적은 아이디 : "+ inputid);
 		String inputpwd = inputinfo.getMem_pwd(); //이건 암호화안되있음
+		System.out.println("내가적은 패스워드 : "+ inputpwd);
 		String inputemail = inputinfo.getMem_email();
+		System.out.println("내가적은 이메일 : "+ inputemail);
 		
 		if(!myid.equals(inputid)) {
 			result="입력하신 아이디 정보가 틀렸습니다. 확인 바랍니다.";
 			model.addAttribute("result", result);
-			return "/mypage/deleteFail";
+			return "/mypage/deleteAfter";
+		}
+		if(!myemail.equals(inputemail)) {
+			result="입력하신 이메일 정보가 틀렸습니다. 확인 바랍니다.";
+			model.addAttribute("result", result);
+			return "/mypage/deleteAfter";
 		}
 		
+		String key = "osomdosompasswd0077";
+		String enStr = CryptoUtil.encryptAES256(inputpwd, key);
+		inputpwd = enStr;
+		System.out.println("내가적은 패스워드 (암호화) : "+ inputpwd);
 		
+		if(!mypwd.equals(inputpwd)) {
+			result="입력하신 비밀번호 정보가 틀렸습니다. 확인 바랍니다.";
+			model.addAttribute("result", result);
+			return "/mypage/deleteAfter";
+		}
+		
+		try {
+			session.invalidate();
+			mservice.remove(inputid);
+			fservice.remove(myno);
+			bservice.remove(myno);
+			result="회원탈퇴가 완료 되었습니다.";
+			model.addAttribute("result", result);
+			return "/mypage/deleteAfter";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		return result ;
