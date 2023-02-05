@@ -1,13 +1,42 @@
-body{
-  margin-top: 100px;
-  font-family: 'Trebuchet MS', serif;
-  line-height: 1.6
+@font-face {
+    font-family: 'TTCrownMychewR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.container{
+@font-face {
+    font-family: 'KyoboHandwriting2020A';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'WandohopeR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+  margin-top: 100px;
+  font-family:'WandohopeR';
+  line-height: 2.2
+
+  
+}
+
+.mycontainer{
   width: 1180px;
   margin: 0px auto ;
 }
+
+#backgroundimg{
+	 background-image:url('/img/jongjinimg/mypagebkgrd4.png');
+
+}
+
+
 
 ul.tabs{
   margin: 0px;
@@ -18,26 +47,29 @@ ul.tabs li{
   background: none;
   color: #222;
   display: inline-block;
-  padding: 10px 15px;
+  padding: 10px 15px;              
   cursor: pointer;
   width:200px;
   text-align: center;
 }
 
 ul.tabs li.current{
- border:3px solid gray;
+  border:3px solid #72635A;
   color: #222;
   font-weight:bold;
+  border-radius:10% 20% 10% 30%;
+  text-underline-position:under;
 }
 
 .tab-content{
   display: none;
-  background: #FFFAF0;
   padding: 15px;
+  
 }
 
 .tab-content.current{
   display: block;
+
 }
 
 .mypage-left{
@@ -49,7 +81,8 @@ ul.tabs li.current{
 }
 
 #update_form{
-	height:500px;
+	height:740px;
+	margin-left:220px;
 }
 
 #profile_img{
@@ -60,5 +93,7 @@ ul.tabs li.current{
 }
 
 #delete_form{
-	height:340px;
+	height:740px;
+	margin-left:40px;
+	font-family:'WandohopeR';
 }

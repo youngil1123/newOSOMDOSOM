@@ -74,7 +74,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<div class="container">
+<div class="mycontainer">
 	
 	<div class="mypage-left">
 	<table th:each="m : ${myinfo}">
@@ -94,8 +94,8 @@
 			<th ><span style="font-weight:lighter;">[[${m.myword}]]</span></th>
 		</tr>
 	</table>
-	</div>	
-
+	</div >	
+	<div id="backgroundimg">
 	<ul class="tabs">
 		<li class="tab-link current" data-tab="myInfo"><img src="/img/jongjinimg/info.png" style="width:30px; height:30px;">  내 정보</li>
 		<li class="tab-link" data-tab="myList"><img src="/img/jongjinimg/wishlist.png" style="width:30px; height:30px;">  찜 목록</li>
@@ -104,14 +104,14 @@
 	</ul>
 	
 
-	<section>
+	<section class="section">
 		<div th:include="mypage/myInfo" id="myInfo" class="tab-content current"></div>
 		<div th:include="mypage/myList" id="myList" class="tab-content"></div>
 		<div th:include="mypage/myShoppingList" id="myShoppingList" class="tab-content"></div>
 		<div th:include="mypage/withdraw" id="withdraw" class="tab-content"></div>
 	</section>
-
-</div>
+	</div>
+	</div>
 <!-- MyPage Section End -->
 
 </body>

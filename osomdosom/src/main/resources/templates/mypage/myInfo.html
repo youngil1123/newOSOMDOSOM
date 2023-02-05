@@ -110,6 +110,8 @@ $(document).ready(function(){
 <!--checkExPwd()에서는 기존의 비밀번호, 아이디를 입력하게하고 일치할경우 업데이트가 진행되도록 하자. -->
 <form id="update_form" >
 <!-- action="/mypage/updateMyInfo" method="post" onsubmit="return checkExPwd()" -->
+<br>
+	<h3 style="font-weight:bolder;"> 내 정보 </h3>
 	<table th:each="my : ${myinfo}">
 		<tr>
 			<th >아이디</th>
@@ -157,9 +159,9 @@ $(document).ready(function(){
 			<td><textarea name="myword" th:placeholder="${my.myword}"></textarea></td>
 		</tr>
 	</table>
-	<img src="/img/jongjinimg/edit.png" style="position:relative; bottom:470px; left:350px;">
+	<!-- <img src="/img/jongjinimg/edit.png" style="position:relative; bottom:470px; left:350px;"> -->
 	<input type="hidden" id="pwdok" value="yes">
 	<input type="hidden" id="mbtiok" value="yes">
-	<button id="updatebtn" style="position:relative; bottom:280px;"> 회원정보 수정하기</button>
+	<button id="updatebtn" style="position:relative; left:180px;"> 회원정보 수정하기</button>
 	
 </form>
