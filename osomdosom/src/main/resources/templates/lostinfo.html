@@ -48,32 +48,7 @@ $(document).ready(function(){
 });
 
 </script>
-<script>
-$("#checkEmail").click(function () {
-    const mem_email = $("#mem_email").val();
-    const sendemail = document.forms["sendEmail"];
-    $.ajax({
-        type: 'post',
-        url: 'emailDuplication',
-        data: {
-            'mem_email': mem_email
-        },
-        dataType: "text",
-        success: function (result) {
-            if(result == "no"){
-                // 중복되는 것이 있다면 no == 일치하는 이메일이 있다!
-                alert('임시비밀번호를 전송 했습니다.');
-                sendEmail.submit();
-            }else {
-                alert('가입되지 않은 이메일입니다.');
-            }
 
-        },error: function () {
-            console.log('에러 체크!!')
-        }
-    })
-});
-</script>
 <body>
 		<br>
 		<br>
@@ -90,24 +65,22 @@ $("#checkEmail").click(function () {
                       <div id="emailresult"></div>
                 </ul>
             </div>
-            <br>
-    		<div id="lostpwd">
-            <h4>비밀번호 찾기</h4>
-            <form role="form" action="/sendEmail" method="POST"  name="sendEmail">
-            	<div style="color: #ac2925">
-                        <center>입력된 정보로 임시 비밀번호가 전송됩니다.</center>
-                    </div>
-            <div class="forText">
-            	<input type="text" class="form-control" id="mem_email" placeholder="가입시 등록한 이메일을 입력하세요.">
-            </div>
             
-            	<button id="checkEmail" >메일보내기</button>
             
-            <br>
-            </form>
-            <div class="text-center small mt-2" id="checkMsg" style="color: red"></div>
-  			</div>
-    
+	   <form class = "content" action="/member/pw_auth.me" method="post">
+			<div class="textbox">
+  				아이디<input id="text" id=id type="text" name="mem_id"/>
+  				<label for="text">아이디</label>
+   				<div class="error">아이디을 입력하세요  </div>
+ 			</div>
+			<div class="textbox">
+  				이메일<input id="email" name="mem_email" required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email" />
+  					<label for="email">이메일</label>
+  			<div class="error">유효하지 않은 이메일주소 입니다  </div>
+			</div>
+   			<button id="check">이메일보내기</button>
+		</form>
+    	
         </section>
   </body>
   </html>

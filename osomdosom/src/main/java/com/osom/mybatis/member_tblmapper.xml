@@ -48,17 +48,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="idCheck" parameterType="String" resultType="Integer">
 		SELECT COUNT(mem_id) FROM member_tbl WHERE mem_id= #{mem_id}
 	</select>
+	
 	<!-- 포인트 적립 -->
 	<update id="updatePoint" parameterType="Integer">
 		update member_tbl set mem_point = mem_point+10 where mem_no = #{mem_no}
 	</update>
-    <!--임시비밀번호변경 -->
-	<update parameterType="Member_tbl" id="updatePassword">
-	    update member_tbl set mem_pwd=#{mem_pwd} where mem_id=#{mem_id} 
-	</update>
+	
+	<!-- 회원정보조회 -->
+	<select id="selectMember" parameterType="String" resultType="Member_tbl">
+		select * from member_tbl where mem_email = #{mem_email}
+	</select>
 
-	<select parameterType="object" id="findByMemberEmail" resultType="Member_tbl">
-	   <!--  select * from member_tbl where mem_email=#{mem_email}, mem_id=#{mem_id}  -->
-	   SELECT mem_id FROM member_tbl WHERE mem_email=#{mem_email}
-	    </select>
+	<!-- 패스워드변경 -->
+	<update id = "pwUpdate_M" parameterType="Member_tbl">
+		update member_tbl set mem_pwd=#{mem_pwd}
+	</update>
+	    
+	 
 </mapper>

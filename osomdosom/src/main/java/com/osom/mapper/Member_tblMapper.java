@@ -24,6 +24,8 @@ public interface Member_tblMapper extends MyMapper<String,Member_tbl>{
 	
 	public Object findByMemberEmail(String mem_email);
 
-
-	public void updatePassword(String memberId, String mem_pwd);
+	public Member_tbl selectMember(String mem_email);
+	public void pwUpdate_M();
+	
+	
 }
