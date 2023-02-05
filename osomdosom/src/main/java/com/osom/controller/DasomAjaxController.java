@@ -16,7 +16,7 @@ import com.osom.service.Member_tblService;
 public class DasomAjaxController {
 	@Autowired
 	Member_tblService mservice;
-	
+	       
 	
 	
 	//아이디찾기
