@@ -55,8 +55,8 @@
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 <style>
-.reviewtable{
-	width:1000px;
+#reviewtable{
+	width:1100px;
 }
 .reviewlist>th {
 	width: 15%;
@@ -113,7 +113,7 @@
 					<div class="row">
 						<div class="col-md-4">
 							<figure class="movie-poster">
-								<img th:src="${movie.movieposter}"
+								<img th:src="${movie.movieposter}" onerror="this.onerror=null; this.src='/img/Noimg.jpg';"
 									style="width: 100%; height: 100%;">
 							</figure>
 						</div>
@@ -129,37 +129,6 @@
 						</div>
 					</div>
 					<!-- .row -->
-
-					<h1>리뷰</h1>
-					<div class="entry-content">
-						<table>
-							<thead>
-								<form method="post" action="">
-									<tr class="reviewlist">
-										<th>제목</th>
-										<th>리뷰</th>
-										<th>작성자(닉네임)</th>
-										<th>등록일</th>
-										<th>평점</th>
-									</tr>
-							</thead>
-
-							<tbody>
-								<!-- CONTENTS !-->
-								<tr th:each="s: ${moviereview}" class="review">
-									<td><span th:text="${s.title}"></span></td>
-									<td><a href="#"> <span th:text="${s.review}"></span>
-									</a></td>
-									<td><span th:text="${s.nickname}"></span></td>
-									<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
-									<td><span th:text="${s.star_rate}"></span></td>
-								</tr>
-								</form>
-							</tbody>
-						</table>
-						<!-- .container -->
-
-				</div>
 				<div th:include="review/moviereviewpaging" id="onereviewpaging"></div>
 			</div>
 			<!-- .container -->
