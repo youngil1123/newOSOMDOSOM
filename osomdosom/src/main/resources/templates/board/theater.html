@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8" />
-    <link href="/img/favicon.png" rel="icon">
+<head>
+<meta charset="utf-8" />
+<link href="/img/favicon.png" rel="icon">
 <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+<link th:href="@{/css/variables.css}" rel="stylesheet">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,153 +27,31 @@
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+<link href="/css/slider.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap"
+	rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <title>Swiper demo</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
-    />
-    <!-- Link Swiper's CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    />
-
-    <!-- Demo styles -->
-    <style>
-      html,
-      body {
-        position: relative;
-        height: 100%;
-        margin-top:130px;
-        
-      }
-
-      body {
-        background: white;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        color: #000;
-        margin: 0;
-        padding: 0;
-      }
-
-      .swiper {
-        width: 80%;
-        height: 50%;
-        margin-top:10px;
-        margin-bottom:100px;
-      }
-
-      .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #191970;
-
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-      }
-
-      .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      #media_name{
-    margin-left:160px;
-	margin-top:80px;
-	font-size: 25px;
-      }
-      
-.btn-8 {
-   line-height: 40px;
-  padding: 0;
-  background: transparent;
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  -webkit-perspective: 300px;
-  perspective: 300px;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-.btn-8:hover{
-  color: #000;
-}
-.btn-8:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #191970;
-  z-index: -1;
-  -webkit-transform-origin: center top;
-  transform-origin:center top;
-  -webkit-transform: rotateX(0);
-  transform: rotateX(0);
-  transition: all 0.3s ease;
-}
-.btn-8:hover:after {
-  -webkit-transform: rotateX(180deg);
-  transform: rotateX(180deg);
-}
-    </style>
-  </head>
+<title>Theater Review List</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+</head>
 
   <body>
   <header th:replace="top.html :: navigation-bar"></header>
-    <!-- Swiper -->
     <button class="custom-btn btn-8" id="media_name" onclick = "window.location='theater'">THEATER</button>
+    <div class="reviewcontainer"
+		style="margin-left: 160px; margin-right: 160px; margin-bottom:10px;">
     <span id="reviewlist" th:each="theaterreviews:${theaterreviews}">
       	<a th:href="@{/review/theaterreview(mt20id=${theaterreviews.mt20id})}"><img th:src="${theaterreviews.poster}" style="height:300px" id="reviewimg" ></a>
-      	<!-- <span><a th:text="${review.bookname}"></a></span> -->
     </span>
-	
-<!--       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div> -->
-     
-
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-<!--     <script>
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 5,
-        spaceBetween: 30,
-        slidesPerGroup: 5,
-        loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script> -->
+    </div>
     <footer th:replace="footer.html :: footer"></footer>
   </body>
 </html>

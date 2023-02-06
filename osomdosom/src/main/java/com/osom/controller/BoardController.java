@@ -78,16 +78,15 @@ public class BoardController {
     }
 	
     // 게시글 수정
-    @PostMapping("/post/update.do")
-    public String updatePost(final Board board) {
-        try {
-			boardservice.updatePost(board);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        return "redirect:/myboard";
-    }
+	
+	  @RequestMapping(value = "/update_action", method = RequestMethod.POST)
+	  public String updatePost(Board board, Model model) throws Exception {
+	 
+		  
+	 boardservice.updatePost(board);
+	  
+	  return "redirect:/myboard"; }
+	 
 
 	
 	

@@ -3,8 +3,11 @@ package com.osom.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.osom.dto.Mail;
 import com.osom.dto.Member_tbl;
 import com.osom.frame.MyService;
 import com.osom.mapper.BoardMapper;
@@ -18,6 +21,9 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 	
 	@Autowired
 	BoardMapper bmapper;
+	
+    @Autowired
+	 private JavaMailSender mailSender;
 	
 	//회원가입
 	@Override
@@ -69,21 +75,31 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 		return mapper.findmem_no(mem_id);
 	}
 
-	public void updateMyInfo(int mem_no, String mem_pwd, String nickname, String mbti, String mem_img) {
-		mapper.updateMyInfo(mem_no, mem_pwd, nickname, mbti, mem_img);
+	public void updateMyInfo(int mem_no, String mem_pwd, String nickname, String mbti, String mem_img, String myword) {
+		mapper.updateMyInfo(mem_no, mem_pwd, nickname, mbti, mem_img, myword);
 	}
-
-	
 
 	public void updatePoint(int mem_no) throws Exception {
 		 mapper.updatePoint(mem_no);
 	    }
 
+	public Member_tbl selectMember(String email) throws Exception{
+		return mapper.selectMember(email);
+	
+	}
+
+	public void pwUpdate_M(Member_tbl vo) throws Exception {
+		mapper.pwUpdate_M();
+	}
+
+
+	}
 
 
 
+	
 		
-}
+
 
 
 

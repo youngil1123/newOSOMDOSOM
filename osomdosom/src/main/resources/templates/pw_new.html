@@ -1,0 +1,68 @@
+<script>
+	function check_pw(){
+		var pwchk=document.getElementById('pwchk').value;
+		if(pwchk=="no"){
+	    	  alert("비밀번호를 확인해주세요")
+	    	  return false;
+		}else if (pwd.length==0|| pwd==""){
+	  			  alert("비밀번호를 입력해주세요");
+	  			  return false;   
+		} alert("비밀번호 수정이 완료되었습니다.");
+		  return true;		
+	}
+
+	function isSame(){
+	 
+    var pw = document.getElementById('pw').value;
+    var SC = ["!","@","#","$","%","?","^","*","."];
+    var check_SC = 0;
+    
+    if(pw.length < 6 || pw.length>16){
+        window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+        document.getElementById('pw').value='';
+    }
+    for(var i=0;i<SC.length;i++){
+        if(pw.indexOf(SC[i]) != -1){
+            check_SC = 1;
+        }
+    }
+    if(check_SC == 0){
+        window.alert('!,@,#,$,%,? 등의 특수문자가 들어가 있지 않습니다.')
+        document.getElementById('pw').value='';
+    }
+    if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
+        if(document.getElementById('pw').value==document.getElementById('pw2').value){
+            document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+            document.getElementById('check').style.color='blue';
+            document.getElementById('pwchk').value="yes"
+        }
+        else{
+            document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+            document.getElementById('check').style.color='red';
+            document.getElementById('pwchk').value="no"
+        }
+    }
+}
+
+</script>
+
+<form action="/member/pw_new.me" method="POST" class="content" onsubmit="return check_pw()">
+	<div class="textbox">
+		<input id="pw" name="pw" type="password" onchange="isSame();"><label>새비밀번호</label>
+		<div class="error">
+ 				Invalid password
+		</div> 
+	</div>
+	<div class="textbox">
+		<input id="pw2" type="password" onchange="isSame();"><label>새비밀번호 확인</label>
+		<input type="hidden" id="pwchk" value="no">
+		<div class="error">
+				Invalid password
+		</div>
+		<input type="hidden" id="pwchk" value="no">
+	</div>
+	<span id=same></span>
+	<br><br>
+	<input type="submit" id="check" value="비밀번호변경">
+	<input type="hidden" name="email" value="email">
+</form>

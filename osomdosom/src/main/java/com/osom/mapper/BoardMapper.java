@@ -18,7 +18,7 @@ public interface BoardMapper extends MyMapper<Integer,Board>{
 	public Board get(int mem_no);
 	public void deletepost(int board_no);
 	public Board findById(int board_no);
-	public Board updatepost(int board_no);
+	public Board updatepost(Board board);
 	
 	
 	

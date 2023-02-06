@@ -88,10 +88,10 @@ th, td {
     }
 </style>
 
-
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script th:inline="javascript">		
 /*<![CDATA[*/
-	
+	//게시글 삭제버튼
 function deletePost() {
     const board_no = /*[[${board.board_no}]]*/;
 
@@ -109,6 +109,26 @@ function deletePost() {
     document.body.append(form);
     document.getElementById('deleteForm').submit();
   }
+  
+$(document).ready(function(){
+	var formObj = $("form[name=updateForm]");
+	const query1 = 'input[name="con_no"]:checked';
+	
+	
+	const selectedEls1 = 
+	      document.querySelectorAll(query1);
+	let result = '';
+	selectedEls1.forEach((el) => {
+	    result += el.value + ' ';
+	  });
+	
+$(".btn btn-secondary").on("click",function(){
+	formObj.attr("action","/update_action");
+	formObj.attr("method","post");
+	formObj.submit;
+
+})
+
 /*]]>*/
 </script>
 
@@ -125,7 +145,8 @@ const drawStar = (target) => {
 		<!-- 여기서부터 게시글 작성 폼 시작 -->
 			<div class="form-group">
 			<label for="title" style=font-size:20px;>게시글 번호 : [[${board.board_no}]]번</label><br>
-			
+			<form action="/update_action" method="POST" name="updateForm">
+			<input type="hidden" th:value="${board.con_no}">
 				<label for="title" style=font-size:20px;>제목</label>
 				<input class="form-control" rows="15"  id="content"
     name="content" th:value="${board.title}" ></input></br>
@@ -157,10 +178,11 @@ const drawStar = (target) => {
 				</span>
 				<br><br>
 			</div>
-			<input type="hidden" id="con_no" name="con_no">
+			
+			
 			<button type="submit" class="btn btn-secondary" id="btn-save">수정</button>
 			<button type="button" onclick="deletePost()"class="btn btn-secondary" id="btn-save">삭제</button>
-			
+			</form>
 		
 	</div>
 	<!-- 여기서부터 게시글 작성 폼 끝 -->

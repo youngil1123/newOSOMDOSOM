@@ -64,10 +64,12 @@ public class BoardService implements MyService<Integer, Board>{
 		return mapper.findById(board_no);
 	}
 
-	public Board updatePost(Board board) throws Exception {
+	public void updatePost(Board board) throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.update(board);
+		 mapper.updatepost(board);
 	}
+
+	
 
 	
 

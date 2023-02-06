@@ -1,0 +1,41 @@
+<script>
+function checkAll(){
+	var numchk=document.getElementById('num_check').value;
+	 if (numchk.length==0|| nickname==""){
+	    	  alert("인증번호를 입력해주세요");
+	    	  return false; 
+	    	  
+	    } else if(numchk=="no"){
+	    	  alert("인증번호를 확인해주세요")
+	    	  return false;
+	    } 
+		
+		alert("성공");
+		return true;
+}
+		function check_num(){
+			  if(document.getElementById('num').value==document.getElementById('num_check').value){
+		            document.getElementById('check').innerHTML='인증번호가 일치합니다.'
+		            document.getElementById('check').style.color='blue';
+		            document.getElementById('pwchk').value="yes"
+		        }
+		        else{
+		            document.getElementById('check').innerHTML='인증번호가 일치하지 않습니다.';
+		            document.getElementById('check').style.color='red';
+		            document.getElementById('pwchk').value="no"
+		        }
+		}
+</script>
+
+<form action="pw_set.me" method="post" onsubmit="return checkAll">
+	<input type="hidden" id="num" name ="num" value="${num}" onchange="check_num()">
+	
+		<div class="content">
+			<div class="textbox">
+			<input type="text" name="email_injeung" id="num_check" placeholder="인증번호를 입력하세요"onchange="check_num()"><label>인증번호 </label>
+			<span id="check"></span>
+		</div>	
+			 <input type="hidden" id="numchk" value="no">
+			
+			<button type="submit" id="check" >확인</button>
+</form>

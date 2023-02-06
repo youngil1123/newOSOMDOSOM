@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</update>
 	
 	<update id="updateMyInfo" parameterType="Member_tbl">
-		UPDATE member_tbl set mem_pwd=#{mem_pwd}, mbti=#{mbti} , nickname=#{nickname}, mem_img=#{mem_img} where mem_no=#{mem_no}
+		UPDATE member_tbl set mem_pwd=#{mem_pwd}, mbti=#{mbti} , nickname=#{nickname}, mem_img=#{mem_img}, myword=#{myword} where mem_no=#{mem_no}
 	</update>
 
 	<delete id="delete" parameterType="String">
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="selectallfollower" resultType="Member_tbl" parameterType="Integer">
-		select m.mem_no, m.mem_id, m.mbti, m.mem_img, m.nickname from member_tbl m inner join friendship f on m.mem_no = f.mem_no2 where f.mem_no = #{f.mem_no}
+		select m.mem_no, m.mem_id, m.mbti, m.mem_img, m.nickname, m.myword from member_tbl m inner join friendship f on m.mem_no = f.mem_no2 where f.mem_no = #{f.mem_no}
 	</select>
 	
 	<!-- 아이디를 넣으면 회원번호 알수잇는 기능 -->
@@ -48,9 +48,21 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="idCheck" parameterType="String" resultType="Integer">
 		SELECT COUNT(mem_id) FROM member_tbl WHERE mem_id= #{mem_id}
 	</select>
+	
 	<!-- 포인트 적립 -->
 	<update id="updatePoint" parameterType="Integer">
 		update member_tbl set mem_point = mem_point+10 where mem_no = #{mem_no}
 	</update>
 	
+	<!-- 회원정보조회 -->
+	<select id="selectMember" parameterType="String" resultType="Member_tbl">
+		select * from member_tbl where mem_email = #{mem_email}
+	</select>
+
+	<!-- 패스워드변경 -->
+	<update id = "pwUpdate_M" parameterType="Member_tbl">
+		update member_tbl set mem_pwd=#{mem_pwd}
+	</update>
+	    
+	 
 </mapper>
