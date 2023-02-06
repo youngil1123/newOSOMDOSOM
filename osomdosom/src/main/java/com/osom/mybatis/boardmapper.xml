@@ -35,6 +35,18 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select * from board where mem_no=#{mem_no} order by board_no desc
 	</select>
 	
+	<select id="booklist" parameterType="Integer" resultType="Board">
+		SELECT * FROM board WHERE mem_no=#{mem_no} AND con_no BETWEEN 100 AND 5099 order by board_no desc
+	</select>
+	
+	<select id="movielist" parameterType="Integer" resultType="Board">
+		SELECT * FROM board WHERE mem_no=#{mem_no} AND con_no BETWEEN 5100 AND 21298 order by board_no desc
+	</select>
+	
+	<select id="theaterlist" parameterType="Integer" resultType="Board">
+		SELECT * FROM board WHERE mem_no=#{mem_no} AND con_no BETWEEN 21299 AND 100000 order by board_no desc
+	</select>
+ 	
 	<!-- 게시글 상세정보 조회 -->
     <select id="findById" parameterType="Integer" resultType="Board">
         SELECT * FROM board WHERE board_no=#{board_no}

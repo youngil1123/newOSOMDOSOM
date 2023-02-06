@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/team.css}" rel="stylesheet">
+<link th:href="@{/css/variables.css}" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>ZenBlog Bootstrap Template - Index</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/img/favicon.png" rel="icon">
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
+<!-- Template Main CSS Files -->
+<link href="/css/variables.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+<title>Movie Review | Single</title>
+
+<!-- Loading third party fonts -->
+<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|"
+	rel="stylesheet" type="text/css">
+<!-- Loading main css file -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+<style>
+.btn {
+	-bs-btn-font-size: 2rem;
+	margin-bottom: 10px;
+}
+.star {
+	position: relative;
+	font-size: 2rem;
+	color: #ddd;
+}
+
+.star input {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.star span {
+	width: 0;
+	position: absolute;
+	left: 0;
+	color: red;
+	overflow: hidden;
+	pointer-events: none;
+}
+th, td {
+	padding: 6px;
+    }
+</style>
+
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script th:inline="javascript">		
+
+</script>
+
+<script>
+const drawStar = (target) => {
+    document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+  }
+</script>
+
+</head>
+<body>
+<header th:replace="top.html :: navigation-bar"></header>	
+<div class="container" style="margin-top:100px;">
+		<!-- 여기서부터 게시글 작성 폼 시작 -->
+			<div class="form-group">
+			<label for="title" style=font-size:20px; name="board_no">게시글 번호 : [[${board.board_no}]]번</label><br>
+			
+			
+			
+			
+				<label for="title" style=font-size:20px;>제목</label>
+				<h2>[[${board.title}]]</h2></br>
+			</div>
+
+			
+			<div class="form-group" >
+				<label for="content" style=font-size:20px;>내용</label>
+				<h4>[[${board.review}]]</h4></br>
+			</div>
+
+			
+			<div class="form-group">
+				<label for="writer" style=font-size:20px;>시청매체</label> 
+				<h4>[[${board.partner}]]</h4></br>
+			</div>
+			<div class="form-group">
+				<label for="writer" style=font-size:20px;>별점</label> <span class="star"> ★★★★★ <span>★★★★★</span>
+					<input type="range" oninput="drawStar(this)" value="1" step="1" name="star_rate"
+					min="0" max="10" th:value="${board.star_rate}">
+				</span>
+				<br><br>
+			</div>
+			
+			
+			<a href="javascript:history.back();"><button>뒤로가기</button></a>
+			
+			
+		
+	</div>
+	<!-- 여기서부터 게시글 작성 폼 끝 -->
+
+	<footer th:replace="footer.html :: footer"></footer>
+
+	<!-- Default snippet for navigation -->
+</body>
+
+</html>

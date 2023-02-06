@@ -27,5 +27,6 @@ public interface Member_tblMapper extends MyMapper<String,Member_tbl>{
 	public Member_tbl selectMember(String mem_email);
 	public void pwUpdate_M();
 	
+	public Member_tbl selectbyno (Integer mem_no);
 	
 }

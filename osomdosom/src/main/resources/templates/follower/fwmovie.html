@@ -1,0 +1,20 @@
+<div class="fwcontent">
+	<table id="table">
+	
+
+		<tr class="board-list">
+			<td>번호</td>
+			<td>제목</td>
+			<td>등록일</td>
+			<td>별점</td>
+		</tr>
+		<tr class="list" th:each="ml :${movielist}">
+			<td th:text="${ml.board_no}"></td>
+			<td><a th:href="@{/post/fwview.do( board_no=${ml.board_no} )}" th:text="${ml.title}" class="word-cut"></a></td>
+			<td><span th:text="${#dates.format(ml.writedate,'yyyy-MM-dd')}"></span></td>
+			<td th:text="${ml.star_rate}"></td>
+		</tr>
+
+	
+	</table>
+</div>

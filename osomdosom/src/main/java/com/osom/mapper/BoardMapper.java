@@ -20,7 +20,9 @@ public interface BoardMapper extends MyMapper<Integer,Board>{
 	public Board findById(int board_no);
 	public void updatepost(Board board);
 	
-	
+	public List<Board> booklist(Integer mem_no); 
+	public List<Board> movielist(Integer mem_no); 
+	public List<Board> theaterlist(Integer mem_no); 
 	
 }
 	

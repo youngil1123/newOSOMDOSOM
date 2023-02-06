@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'TTCrownMychewR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/TTCrownMychewR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KyoboHandwriting2020A';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/KyoboHandwriting2020A.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'WandohopeR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/WandohopeR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+  margin-top: 100px;
+  font-family:'WandohopeR';
+  line-height: 2.2
+
+  
+}
+
+.mycontainer{
+  width: 1180px;
+  margin: 0px auto ;
+}
+
+.fwcontent{
+	width:700px;
+	height:300px;
+	margin-left:50px;
+}
+
+
+ul.tabs{
+  width:1000px;
+  margin-left: 340px;
+  padding: 0px;
+  list-style: none;
+}
+ul.tabs li{
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;              
+  cursor: pointer;
+  width:200px;
+  text-align: center;
+}
+
+ul.tabs li.current{
+  border:3px solid #72635A;
+  color: #222;
+  font-weight:bold;
+  border-radius:10% 20% 10% 30%;
+  text-underline-position:under;
+}
+
+.tab-content{
+  display: none;
+  padding: 15px;
+  
+}
+
+.tab-content.current{
+  display: block;
+
+}
+
+.mypage-left{
+
+	margin-left:6%;
+	float:left;
+	width:200px;
+	height:400px;
+}
+
+#update_form{
+	height:740px;
+	margin-left:220px;
+}
+
+#profile_img{
+	margin-left:25px;
+	width:150px;
+	height:150px;
+	border-radius: 100%;
+}
+
+#delete_form{
+	height:740px;
+	margin-left:40px;
+	font-family:'WandohopeR';
+}
+
+#table {
+	width: 100%;
+	
+	
+}
+.board-list>td:nth-child(4n+1) {
+	width: 10%;
+}
+
+.list>td:nth-child(4n+1) {
+	width: 10%;
+}
+
+.board-list>td:nth-child(4n+2) {
+	width: 45%;
+}
+
+.list>td:nth-child(4n+2) {
+	width: 45%;
+}
+
+.board-list>td:nth-child(4n+3) {
+	width: 20%;
+}
+
+.list>td:nth-child(4n+3) {
+	width: 20%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.word-cut{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	width:80px;
+}

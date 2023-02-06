@@ -14,6 +14,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="select" parameterType="String" resultType="Member_tbl">
 		select * from member_tbl where mem_id=#{mem_id}
 	</select>
+	
+	<!-- 회원번호로 데이터 불러오기 -->
+	<select id="selectbyno" parameterType="Integer" resultType="Member_tbl">
+		select * from member_tbl where mem_no=#{mem_no}
+	</select>
 
 
 	<update id="update">

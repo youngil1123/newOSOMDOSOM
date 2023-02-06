@@ -76,6 +76,13 @@ public class BoardController {
         model.addAttribute("board", board);
         return "board/boardView";
     }
+    
+    @GetMapping("/post/fwview.do")
+    public String openFwPostView(@RequestParam final int board_no, Model model) {
+        Board board = boardservice.findPostById(board_no);
+        model.addAttribute("board", board);
+        return "follower/fwBoardView";
+    }
 	
     // 게시글 수정
 	

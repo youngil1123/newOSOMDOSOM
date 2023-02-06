@@ -69,7 +69,15 @@ public class BoardService implements MyService<Integer, Board>{
 		 mapper.updatepost(board);
 	}
 
-	
+	public List<Board> booklist(Integer mem_no) throws Exception {
+		return mapper.booklist(mem_no);
+	}
+	public List<Board> movielist(Integer mem_no) throws Exception {
+		return mapper.movielist(mem_no);
+	}
+	public List<Board> theaterlist(Integer mem_no) throws Exception {
+		return mapper.theaterlist(mem_no);
+	}
 
 	
 
