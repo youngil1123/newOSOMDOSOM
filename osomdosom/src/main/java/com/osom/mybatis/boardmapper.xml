@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         SELECT * FROM board WHERE board_no=#{board_no}
     </select>
     <!-- 게시글 수정 -->
-    <update id="updatepost" parameterType="Integer" >
+    <update id="updatepost" parameterType="Board" >
 		UPDATE board SET title = #{title}, review = #{review}, partner = #{partner}, secret_memo = #{secret_memo}, star_rate = #{star_rate} WHERE board_no = #{board_no}
    
 	</update>

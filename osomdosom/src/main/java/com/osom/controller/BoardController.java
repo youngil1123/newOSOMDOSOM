@@ -82,7 +82,7 @@ public class BoardController {
 	  @RequestMapping(value = "/update_action", method = RequestMethod.POST)
 	  public String updatePost(Board board, Model model) throws Exception {
 	 
-		  
+		  System.out.println(board);
 	 boardservice.updatePost(board);
 	  
 	  return "redirect:/myboard"; }

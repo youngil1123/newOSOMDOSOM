@@ -110,7 +110,7 @@ function deletePost() {
     document.getElementById('deleteForm').submit();
   }
   
-$(document).ready(function(){
+/* $(document).ready(function(){
 	var formObj = $("form[name=updateForm]");
 	const query1 = 'input[name="con_no"]:checked';
 	
@@ -127,7 +127,7 @@ $(".btn btn-secondary").on("click",function(){
 	formObj.attr("method","post");
 	formObj.submit;
 
-})
+}) */
 
 /*]]>*/
 </script>
@@ -144,19 +144,21 @@ const drawStar = (target) => {
 <div class="container" style="margin-top:100px;">
 		<!-- 여기서부터 게시글 작성 폼 시작 -->
 			<div class="form-group">
-			<label for="title" style=font-size:20px;>게시글 번호 : [[${board.board_no}]]번</label><br>
+			<label for="title" style=font-size:20px; name="board_no">게시글 번호 : [[${board.board_no}]]번</label><br>
+			
 			<form action="/update_action" method="POST" name="updateForm">
-			<input type="hidden" th:value="${board.con_no}">
+			<input type="hidden" th:value="${board.con_no}" name="con_no">
+			<input type="hidden" th:value="${board.board_no}" name="board_no">
 				<label for="title" style=font-size:20px;>제목</label>
 				<input class="form-control" rows="15"  id="content"
-    name="content" th:value="${board.title}" ></input></br>
+    name="title" th:value="${board.title}" ></input></br>
 			</div>
 
 			
 			<div class="form-group" >
 				<label for="content" style=font-size:20px;>내용</label>
 				<textarea class="form-control" rows="15"  id="content"
-    name="content">[[${board.review}]]</textarea></br>
+    name="review">[[${board.review}]]</textarea></br>
 			</div>
 
 			<div class="form-group">
@@ -164,12 +166,12 @@ const drawStar = (target) => {
 				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
 				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
 				<textarea class="form-control" rows="15"  id="content"
-    name="content">[[${board.secret_memo}]]</textarea></br>
+    name="secret_memo">[[${board.secret_memo}]]</textarea></br>
 			</div>
 			<div class="form-group">
 				<label for="writer" style=font-size:20px;>시청매체</label> 
 				<textarea class="form-control" rows="15"  id="content"
-    name="content">[[${board.partner}]]</textarea></br>
+    name="partner">[[${board.partner}]]</textarea></br>
 			</div>
 			<div class="form-group">
 				<label for="writer" style=font-size:20px;>별점</label> <span class="star"> ★★★★★ <span>★★★★★</span>
