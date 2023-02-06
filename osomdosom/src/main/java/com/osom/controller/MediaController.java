@@ -3,14 +3,19 @@ package com.osom.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.osom.dto.Board;
 import com.osom.dto.BookInfo;
+import com.osom.dto.Member_tbl;
 import com.osom.dto.MovieInfo;
 import com.osom.dto.TheaterInfo;
+import com.osom.service.BoardService;
 import com.osom.service.BookService;
 import com.osom.service.MovieService;
 import com.osom.service.TheaterService;
@@ -28,6 +33,9 @@ public class MediaController {
 	@Autowired
 	BookService service;
 	
+	@Autowired
+	BoardService boardservice;
+	
 	
 
 
@@ -38,11 +46,24 @@ public class MediaController {
         return "/board/mediamain";
     }
 	@RequestMapping("/moviedetail")
-    public String moviedetail(Model model) {
+	public String searchmylist(Model model,  HttpSession session) throws Exception{
+		List<Board> list = null;
+		Member_tbl member = new Member_tbl();
+		member = (Member_tbl)session.getAttribute("logincust");
+
+
+		if(member != null) {
+				int mem_no = member.getMem_no();
+				list = boardservice.searchmylist(mem_no);
+		}
 		
-		model.addAttribute("top", "moviedetail");
-        return "/board/moviedetail";
+		model.addAttribute("searchmylist", list);
+
+		return "board/moviedetail";	
 	}
+		
+		
+	
 
 
 	@RequestMapping("/musical")

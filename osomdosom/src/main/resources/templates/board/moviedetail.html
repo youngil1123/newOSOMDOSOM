@@ -59,7 +59,7 @@
 		border-bottom:1px solid #ddd;
 		text-align:center;
 }
-.review > td{
+.review  tr{
 		width:15%;
 		height:40px;
 		line-height:40px;
@@ -142,44 +142,27 @@
 							수렴된다.
 						</p>
 						<p>----------------------------------------------------------------------------------</p>
-						<table>
+	<table>
     <thead>
     <form method="post" action="">
     <tr class="reviewlist">
         <th>번호</th>
         <th>작성자번호</th>
         <th>글제목</th>
-        <th>동행자</th>
-        <th>비밀메모</th>
+        <th>MBTI</th>
         <th>별점</th>
     </tr>
     </thead>
 
     <tbody>
     <!-- CONTENTS !-->
-    <tr th:each="s: ${select}" class="review">
-        <td >
-            <span th:text="${s.board_no}"></span>
-        </td>
-        <td> 
-             <span th:text="${s.mem_no}"></span>
-            
-        </td>
-        <td>
-       		 <a href="#">
-            <span th:text="${s.title}"></span>
-            </a>
-        </td>
-         <td>
-            <span th:text="${s.partner}"></span>
-        </td>
-        <td>
-            <span th:text="${s.secret_memo}"></span>
-        </td>
-        <td>
-            <span th:text="${s.star_rate}"></span>
-        </td>
-    </tr>
+    <tr class="review" th:each="l :${searchmylist}">
+			<td th:text="${l.mem_no}"></td>
+			<td th:text="${l.board_no}"></td>
+			<td><a th:href="@{/post/view.do( board_no=${l.board_no} )}" th:text="${l.title}" class="word-cut"></a></td>
+			<td th:text="${l.mbti}"></td>
+			<td th:text="${l.star_rate}"></td>
+		</tr>
     </form>
     </tbody>
 </table>
