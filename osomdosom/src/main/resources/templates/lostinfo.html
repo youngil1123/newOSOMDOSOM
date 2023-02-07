@@ -50,37 +50,31 @@ $(document).ready(function(){
 </script>
 
 <body>
-		<br>
-		<br>
+		
         <h1>DOIT BOOK</h1>
-        <br>
+        
+        <div id="lostid">
 		<section class="page-section" id="lostinfo">
-            <div id="lostid">
                 <h4>아이디 찾기</h4>
                 <ul>
                    이름 <li ><input type="text" name="mem_name" id="mem_name"/></li>
                    이메일 <li><input type="text" name="mem_email" id="mem_email"/></li><br>
                     <button id="findidbtn" >아이디 찾기</button>
-                      <br>
                       <div id="emailresult"></div>
                 </ul>
-            </div>
-            
-            
+         </section> 
+         </div>
+         <br>
+         <div id="findpwd">
 	   <form class = "content" action="/member/pw_auth.me" method="post">
-			<div class="textbox">
-  				아이디<input id="text" id=id type="text" name="mem_id"/>
-  				<label for="text">아이디</label>
-   				<div class="error">아이디을 입력하세요  </div>
- 			</div>
-			<div class="textbox">
-  				이메일<input id="email" name="mem_email" required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email" />
-  					<label for="email">이메일</label>
-  			<div class="error">유효하지 않은 이메일주소 입니다  </div>
-			</div>
-   			<button id="check">이메일보내기</button>
+				<h4>비밀번호 찾기</h4>
+				<ul>
+  					아이디<li><input id="text" id="id" type="text" name="mem_id"/></li>
+  					이메일<li><input id="email" name="mem_email" required="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)?$/i" type="email"/></li></br>
+  				<button id="check">인증번호 보내기</button>
+  			</ul>
 		</form>
-    	
-        </section>
+         </div>
+     
   </body>
   </html>

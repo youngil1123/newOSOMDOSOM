@@ -1,7 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<style>
+h4{
+	text-align:center;
+	}
+input {
+	background-color: #eee;
+    border: none;
+    padding: 12px 0px;
+    margin: 8px 0;
+    width: 320px;
+    height: 25px;
+}
+.textbox{
+	
+	width:400px;
+	height:300px;
+	margin:0 auto;
+}
+
+</style>
 <script>
+
 function checkAll(){
-	var numchk=document.getElementById('num_check').value;
-	 if (numchk.length==0|| nickname==""){
+	var email_injeung=document.getElementById('email_injeung').value;
+	var	numchk=document.getElementById('numchk').value;
+	 if (email_injeung.length==0|| email_injeung==""){
 	    	  alert("인증번호를 입력해주세요");
 	    	  return false; 
 	    	  
@@ -13,29 +37,37 @@ function checkAll(){
 		alert("성공");
 		return true;
 }
+</script>
+<script>
 		function check_num(){
-			  if(document.getElementById('num').value==document.getElementById('num_check').value){
-		            document.getElementById('check').innerHTML='인증번호가 일치합니다.'
-		            document.getElementById('check').style.color='blue';
-		            document.getElementById('pwchk').value="yes"
-		        }
-		        else{
-		            document.getElementById('check').innerHTML='인증번호가 일치하지 않습니다.';
-		            document.getElementById('check').style.color='red';
-		            document.getElementById('pwchk').value="no"
-		        }
+			 if(document.getElementById('num').value !='' && document.getElementById('email_injeung').value!=''){
+			        if(document.getElementById('num').value==document.getElementById('email_injeung').value){
+			            document.getElementById('checknum').innerHTML='인증번호가 일치합니다.'
+			            document.getElementById('checknum').style.color='blue';
+			            document.getElementById('numchk').value="yes"
+			        }
+			        else{
+			            document.getElementById('checknum').innerHTML='인증번호가 일치하지 않습니다.';
+			            document.getElementById('checknum').style.color='red';
+			            document.getElementById('numchk').value="no"
+			        }
+			    }
 		}
 </script>
-
-<form action="pw_set.me" method="post" onsubmit="return checkAll">
-	<input type="hidden" id="num" name ="num" value="${num}" onchange="check_num()">
+<body>
+<form action="/member/pw_set.me" method="post" onsubmit="return checkAll()">
 	
 		<div class="content">
+			<h4>인증번호확인</h4>
 			<div class="textbox">
-			<input type="text" name="email_injeung" id="num_check" placeholder="인증번호를 입력하세요"onchange="check_num()"><label>인증번호 </label>
-			<span id="check"></span>
-		</div>	
-			 <input type="hidden" id="numchk" value="no">
+			<input type="hidden" id="num" name ="num" th:value="${num}" onchange="check_num()">
+			<input type="text" name="email_injeung" id="email_injeung" placeholder="인증번호를 입력하세요"onchange="check_num()">
+			<input type="hidden" id="numchk" value="no">
+			<button id="check">확인</button>
+			 <br>
+			 <span id="checknum"></span>
 			
-			<button type="submit" id="check" >확인</button>
+			</div>
 </form>
+</body>
+</html>
