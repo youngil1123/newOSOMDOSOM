@@ -14,7 +14,7 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="/img/favicon.png" rel="icon">
+
 <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
@@ -25,18 +25,42 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+<link href="/jyvendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/jyvendor/bootstrap-icons/bootstrap-icons.css"
 	rel="stylesheet">
-<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="/vendor/aos/aos.css" rel="stylesheet">
+	<link href="/jyvendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/jyvendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/jyvendor/aos/aos.css" rel="stylesheet">
 <!-- Template Main CSS Files -->
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
 <link href="/css/index.css" rel="stylesheet">
 
-<script>
+<script type="text/javascript" src="/jyvendor/isotope-layout/isotope.pkgd.js"></script>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js">
+
+(function() {
+	   
+	   const select = (el, all = false) => {
+	     el = el.trim()
+	     if (all) {
+	       return [...document.querySelectorAll(el)]
+	     } else {
+	       return document.querySelector(el)
+	     }
+	   }
+		
+	   const on = (type, el, listener, all = false) => {
+		    let selectEl = select(el, all)
+		    if (selectEl) {
+		      if (all) {
+		        selectEl.forEach(e => e.addEventListener(type, listener))
+		      } else {
+		        selectEl.addEventListener(type, listener)
+		      }
+		    }
+		  }
 
 /**
  * Porfolio isotope and filter
@@ -46,6 +70,7 @@ window.addEventListener('load', () => {
   if (portfolioContainer) {
     let portfolioIsotope = new Isotope(portfolioContainer, {
       itemSelector: '.portfolio-item'
+      
     });
 
     let portfolioFilters = select('#portfolio-flters li', true);
@@ -67,6 +92,9 @@ window.addEventListener('load', () => {
   }
 
 });
+
+})()
+ 
 
 </script>
 
@@ -296,5 +324,4 @@ window.addEventListener('load', () => {
 	<footer th:replace="footer.html :: footer"></footer>
 	
 </body>
-
 </html>
