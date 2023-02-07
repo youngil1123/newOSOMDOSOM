@@ -69,7 +69,14 @@ public class TheaterService implements MyService<String, TheaterInfo>{
 		//리뷰페이지
 		return theatermapper.boardPageSelect(p);
 	}
-
+	public List<TheaterInfo> getLikeContentsNameM(int mem_no) throws Exception{
+		//찜한 뮤지컬 리스트
+		return theatermapper.getLikeContentsNameM(mem_no);
+	}
+	public List<TheaterInfo> getLikeContentsNameT(int mem_no) throws Exception{
+		//찜한 연극 리스트
+		return theatermapper.getLikeContentsNameT(mem_no);
+	}
 
 	
 

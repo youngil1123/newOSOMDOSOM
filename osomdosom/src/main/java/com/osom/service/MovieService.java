@@ -74,5 +74,8 @@ public class MovieService implements MyService<String, MovieInfo>{
 		//리뷰페이지
 		return moviemapper.boardPageSelect(p);
 	}
+	public List<MovieInfo> getLikeContentsName(int mem_no) throws Exception{
+		return moviemapper.getLikeContentsName(mem_no);
+	}
 	
 }
