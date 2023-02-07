@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.osom.dto.Board;
 import com.osom.dto.MovieInfo;
 import com.osom.dto.Paging;
 import com.osom.service.BoardService;
@@ -26,6 +28,7 @@ public class MovieController {
 		//책 하나 리뷰 보는 페이지로 이동(책 정보 + 리뷰정보를 가지고)
 		
 		MovieInfo movie= null;
+		Board con_no = null;
 		List<MovieInfo> moviereview = new ArrayList<MovieInfo>();
 		try {
 			movie = movieservice.get(movieCd);
@@ -35,6 +38,7 @@ public class MovieController {
 			System.out.println(movie);
 			System.out.println(p);
 			moviereview = movieservice.boardPageSelect(p);
+			boardservice.getavgstar_rate(con_no);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +46,7 @@ public class MovieController {
 		model.addAttribute("movie", movie);
 		model.addAttribute("moviereview", moviereview);
 		model.addAttribute("p", p);
-		
+		model.addAttribute("con_no",con_no);
 		return "review/moviereview";
 		
 	}

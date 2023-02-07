@@ -79,7 +79,10 @@ public class BoardService implements MyService<Integer, Board>{
 		return mapper.theaterlist(mem_no);
 	}
 
-	
+	public Double getavgstar_rate (Board con_no) throws Exception{
+		return mapper.getavgstar_rate(con_no);
+		
+	}
 
 
 	}
