@@ -40,7 +40,7 @@
 				<td><a href="#"> <span th:text="${s.review}"></span>
 				</a></td>
 				<td><span th:text="${s.nickname}"></span></td>
-				<td><span th:text="${s.writedate}"></span></td>
+				<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
 				<td><span th:text="${s.star_rate}"></span></td>
 			</tr>
 			</form>

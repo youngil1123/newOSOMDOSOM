@@ -46,7 +46,7 @@ public class SearchController {
 		model.addAttribute("top", "boardwrite");
 		return "/board/boardwrite";
 	}
-
+	
 	// 새 글 작성 페이지
 	@RequestMapping(value = "/newboardwrite")
 	public String newboardwrite(Model model, String keyword, String searchType) throws Exception {
