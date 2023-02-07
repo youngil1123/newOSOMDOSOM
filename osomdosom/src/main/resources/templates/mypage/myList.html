@@ -1,9 +1,28 @@
-<h2> 여긴 찜목록 이 들어올 자리</h2>
-<h2> 여긴 찜목록 이 들어올 자리</h2>
-<h2> 여긴 찜목록 이 들어올 자리</h2>
-<h2> 여긴 찜목록 이 들어올 자리</h2>
-<h2> 여긴 찜목록 이 들어올 자리</h2>
-<h2> 여긴 찜목록 이 들어올 자리</h2>
-<h2> 여긴 찜목록 이 들어올 자리</h2>
+<style>
+#likelist li {
+	list-style: none;
+	width: 700px;
+	text-align: center;
+}
 
-
+#likelist {
+	margin: 0 auto;
+}
+</style>
+<br><br><br>
+<div id="likelist">
+	<ul>
+		<span id="booklist" th:each="b:${books}">
+			<li><a th:href="@{/review/bookreview(book_no=${b.book_no})}">도서 > [[${b.bookname}]]</a></li>
+		</span>
+		<span id="movielist" th:each="m:${movies}">
+			<li><a th:href="@{/review/moviereview(movieCd=${m.movieCd})}">영화 > [[${m.movieNm}]]</a></li>
+		</span>
+		<span id="theaterlist" th:each="t:${theaters}">
+			<li><a th:href="@{/review/theaterreview(mt20id=${t.mt20id})}">연극 > [[${t.prfnm}]]</a></li>
+		</span>
+		<span id="musicallist" th:each="mu:${musicals}">
+			<li><a th:href="@{/review/theaterreview(mt20id=${mu.mt20id})}">뮤지컬 > [[${mu.prfnm}]]</a></li>
+		</span>
+	</ul>
+</div>

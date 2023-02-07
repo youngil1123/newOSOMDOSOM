@@ -31,5 +31,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select C.* from(select A.* from(select b.board_no,b.title,b.review,b.writedate,b.star_rate,m.nickname,m.mbti
 		from board b inner join bookinfo using(con_no) inner join member_tbl m using(mem_no) WHERE book_no=#{book_no} order by board_no desc) A LIMIT #{totalRecord}) C LIMIT #{startRecord},#{onePageRecord};
 	</select>
+	<select id="getLikeContentsName" resultType="BookInfo" parameterType="Integer">
+		select book_no,bookname from bookinfo where con_no in (select con_no from like_list where mem_no = #{mem_no})
+	</select>
 	
 </mapper>

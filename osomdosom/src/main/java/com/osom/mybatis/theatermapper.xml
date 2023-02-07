@@ -32,4 +32,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select C.* from(select A.* from(select b.board_no,b.title,b.review,b.writedate,b.star_rate,m.nickname
 		from board b inner join movieinfo using(con_no) inner join member_tbl m using(mem_no) WHERE mt20id=#{mt20id} and genrenm=#{genrenm} order by board_no desc) A LIMIT #{totalRecord}) C LIMIT #{startRecord},#{onePageRecord};
 	</select>
+	<select id="getLikeContentsNameM" resultType="TheaterInfo" parameterType="Integer">
+		select mt20id,prfnm from theaterinfo where con_no in (select con_no from like_list where mem_no = 2 and genrenm='뮤지컬')
+	</select>
+	<select id="getLikeContentsNameT" resultType="TheaterInfo" parameterType="Integer">
+		select mt20id,prfnm from theaterinfo where con_no in (select con_no from like_list where mem_no = 2 and genrenm='연극')
+	</select>
 </mapper>

@@ -12,4 +12,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     <insert id="likeadd" parameterType="Like_list">
     	INSERT INTO like_list VALUES(#{like_no},#{mem_no},#{con_no})
     </insert>
+    <select id="getLikeContents" parameterType="Integer" resultType="Integer">
+    	SELECT con_no FROM like_list WHERE mem_no = #{mem_no}
+    </select>
 </mapper>

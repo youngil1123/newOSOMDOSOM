@@ -19,4 +19,6 @@ public interface TheaterMapper extends MyMapper<String, TheaterInfo> {
 	public List<TheaterInfo> getonetheaterreview(String mt20id);
 	public int totalRecord(Paging p); // 공연의 리뷰개수 구하기
 	public List<TheaterInfo> boardPageSelect(Paging p); //리뷰페이지
+	public List<TheaterInfo> getLikeContentsNameM(int mem_no);
+	public List<TheaterInfo> getLikeContentsNameT(int mem_no);
 }

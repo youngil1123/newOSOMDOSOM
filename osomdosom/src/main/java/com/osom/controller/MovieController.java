@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.osom.dto.Board;
 import com.osom.dto.Like_list;
 import com.osom.dto.Member_tbl;
 import com.osom.dto.MovieInfo;
@@ -32,6 +33,7 @@ public class MovieController {
 		//영화 하나 리뷰 보는 페이지로 이동(영화 정보 + 리뷰정보를 가지고)
 		
 		MovieInfo movie= null;
+		Board con_no = null;
 		List<MovieInfo> moviereview = new ArrayList<MovieInfo>();
 		Member_tbl m = (Member_tbl)session.getAttribute("logincust");
 		int result = 0;
@@ -44,6 +46,9 @@ public class MovieController {
 			System.out.println(movie);
 			System.out.println(p);
 			moviereview = movieservice.boardPageSelect(p);
+
+			boardservice.getavgstar_rate(con_no);
+
 			//찜 상태 체크..
 			l.setCon_no(movie.getCon_no());
 			if(m!=null) {
@@ -57,6 +62,7 @@ public class MovieController {
 				//찜 되어있는 상태이면 result=0일것
 				model.addAttribute("likestate", result);
 			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,8 +70,12 @@ public class MovieController {
 		model.addAttribute("movie", movie);
 		model.addAttribute("moviereview", moviereview);
 		model.addAttribute("p", p);
+
+		model.addAttribute("con_no",con_no);
+
 		model.addAttribute("logincust", session.getAttribute("logincust"));
 		
+
 		return "review/moviereview";
 		
 	}

@@ -19,4 +19,5 @@ public interface MovieMapper extends MyMapper<String, MovieInfo> {
 	public List<MovieInfo> getonemoviereview(String movieCd);
 	public int totalRecord(String movieCd); //영화하나의 리뷰개수 구하기
 	public List<MovieInfo> boardPageSelect(Paging p); //리뷰페이지
+	public List<MovieInfo> getLikeContentsName(int mem_no);
 }
