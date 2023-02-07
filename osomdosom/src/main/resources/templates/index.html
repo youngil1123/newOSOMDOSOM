@@ -5,11 +5,11 @@
 <link th:href="@{/css/main.css}" rel="stylesheet">
 <link th:href="@{/css/team.css}" rel="stylesheet">
 <link th:href="@{/css/variables.css}" rel="stylesheet">
-<link th:href="@{/css/slider.css}" rel="stylesheet">
+
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>ZenBlog Bootstrap Template - Index</title>
+
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -28,230 +28,270 @@
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/vendor/bootstrap-icons/bootstrap-icons.css"
 	rel="stylesheet">
-<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 <link href="/vendor/aos/aos.css" rel="stylesheet">
 <!-- Template Main CSS Files -->
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
-<link href="/css/slider.css" rel="stylesheet">
-<style>
-.good{
-    --bs-gutter-x: 1.5rem;
-    --bs-gutter-y: 0;
-    flex-wrap: wrap;
-    margin-top: calc(-1 * var(--bs-gutter-y));
-    margin-right: calc(-.5 * var(--bs-gutter-x));
-    margin-left: calc(-.5 * var(--bs-gutter-x));
-}
-#newboard{
-        margin:auto;
-        display:block;
-}
-.btn{
---bs-btn-font-size: 2.5rem;
-margin-bottom:10px;
-}
+<link href="/css/index.css" rel="stylesheet">
+
+<script>
+
+/**
+ * Porfolio isotope and filter
+ */
+window.addEventListener('load', () => {
+  let portfolioContainer = select('.portfolio-container');
+  if (portfolioContainer) {
+    let portfolioIsotope = new Isotope(portfolioContainer, {
+      itemSelector: '.portfolio-item'
+    });
+
+    let portfolioFilters = select('#portfolio-flters li', true);
+
+    on('click', '#portfolio-flters li', function(e) {
+      e.preventDefault();
+      portfolioFilters.forEach(function(el) {
+        el.classList.remove('filter-active');
+      });
+      this.classList.add('filter-active');
+
+      portfolioIsotope.arrange({
+        filter: this.getAttribute('data-filter')
+      });
+      portfolioIsotope.on('arrangeComplete', function() {
+        AOS.refresh()
+      });
+    }, true);
+  }
+
+});
+
+</script>
 
 
-</style>
-<script>		
-	function checklogin(){
-		alert("로그인하세욥");
-	}
-
-
-	</script> 
 </head>
 
 <body>
 <header th:replace="top.html :: navigation-bar"></header>
 	
-<section id="hero-slider" class="hero-slider">
-      <div class="container-md" data-aos="fade-in">
-        <div class="good">
-          <div class="col-12">
-            <div class="swiper sliderFeaturedPosts">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <a th:href="@{/movie}" class="img-bg d-flex align-items-end" style="background-image: url('/img/som.jpg');">
-                    <div class="img-bg-inner">
-                      <h2>실시간 콘텐츠목록</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                    </div>
-                  </a>
-                </div>
+ <section id="hero" class="d-flex align-items-center">
 
-                <div class="swiper-slide">
-                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-2.jpg');">
-                    <div class="img-bg-inner">
-                      <h2>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="swiper-slide">
-                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-3.jpg');">
-                    <div class="img-bg-inner">
-                      <h2>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="swiper-slide">
-                  <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-4.jpg');">
-                    <div class="img-bg-inner">
-                      <h2>9 Half-up/half-down Hairstyles for Long and Medium Hair</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="custom-swiper-button-next">
-                <span class="bi-chevron-right"></span>
-              </div>
-              <div class="custom-swiper-button-prev">
-                <span class="bi-chevron-left"></span>
-              </div>
-
-              <div class="swiper-pagination"></div>
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>DOIT BOOK IN OSOMDOSOM</h1>
+          <h2>당신만의 미디어 리뷰를 써보세요. 리뷰 쓸떄마다 적립을 해드립니다</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a th:href="@{/newboardwrite}" class="btn-get-started scrollto">새글작성</a>
+            
           </div>
         </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>
+  
+  <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>미디어</h2>
+          <p>원하시는 미디어를 선택하여 많은 이들의 리뷰를 확인해보세요</p>
+        </div>
+
+        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-app">MOVIE</li>
+          <li data-filter=".filter-card">BOOK</li>
+          <li data-filter=".filter-web">MUSICAL</li>
+          <li data-filter=".filter-img">THEATER</li>
+        </ul>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="img/eunni.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 1</h4>
+              <p>App</p>
+              <a href="img/eunni.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="img/jin.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="img/jin.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="img/one.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 2</h4>
+              <p>App</p>
+              <a href="img/one.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="img/som.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 2</h4>
+              <p>Card</p>
+              <a href="img/som.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="img/Noimg.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 2</h4>
+              <p>Web</p>
+              <a href="img/Noimg.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>베스트 리뷰</h2>
+          <p>가장 조회수가 많은 리뷰를 확인해보세요.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-1.jpeg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Chief Executive Officer</span>
+                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Product Manager</span>
+                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>CTO</span>
+                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-4.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
-
-	 <!-- Swiper -->
-	 <ul th:if="${session.logincust != null}">
-	<button class="btn btn-secondary" id="newboard" onclick = "window.location='newboardwrite'" >새 글 작성</button></br></ul>
-	<div th:if ="${session.logincust == null}"> 
-	<button  class="btn btn-secondary"  id="newboard"   onClick='checklogin();'>새 글 작성</a>
-			
-					</div>
-    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='movie'">MOVIE</button>
-    <div class="swiper mySwiper">
-    
-      <div class="swiper-wrapper">
-       <div class="swiper-slide"> <a th:href="@{/moviedetail}" style="width:100%; height:100%;"><img src="/img/movie/movie.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie2.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie3.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie4.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie5.jpg"></a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-     </br>
-     
-    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='book'">Book</button>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-    
-    </br>
-    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='musical'">Musical</button>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-    
-    </br>
-   <button class="custom-btn btn-8" id="media_name" onclick = "window.location='theater'">Theater</button>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 5,
-        spaceBetween: 30,
-        slidesPerGroup: 5,
-        loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
 
 	<footer th:replace="footer.html :: footer"></footer>
 	

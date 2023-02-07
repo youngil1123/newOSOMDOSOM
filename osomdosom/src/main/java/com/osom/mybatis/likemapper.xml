@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osom.mapper.LikeMapper">
+    <select id="likeStateCheck" resultType="Integer" parameterType="Like_list">
+    	SELECT COUNT(*) FROM like_list WHERE mem_no =#{mem_no} and con_no =#{con_no}
+    </select>
+    <delete id="likeremove" parameterType="Like_list">
+    	DELETE FROM like_list where mem_no=#{mem_no} and con_no=#{con_no}
+    </delete>
+    <insert id="likeadd" parameterType="Like_list">
+    	INSERT INTO like_list VALUES(#{like_no},#{mem_no},#{con_no})
+    </insert>
+</mapper>

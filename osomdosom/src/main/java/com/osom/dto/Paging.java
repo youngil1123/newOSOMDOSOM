@@ -21,13 +21,12 @@ public class Paging {
 	private String movieCd;
 	private String mt20id;
 	private String genrenm;
-
 	//
 	private int startRecord=0; //페이지 시작할때 조회할 첫번째 레코드.
 	// 페이지 번호
 	private int onePageCount = 5; // 한번에 표시할 페이지 수
 	private int startPage = 1;// 시작페이지
-	private int selectRecord = onePageRecord;// 파미막 페이지 선택할 레코드수
+	private int selectRecord = onePageRecord;// 마지막 페이지 선택할 레코드수
 
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
@@ -89,5 +88,5 @@ public class Paging {
 	}
 	
 	
-//
+//	qqqq
 }

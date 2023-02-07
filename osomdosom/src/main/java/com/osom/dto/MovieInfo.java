@@ -39,7 +39,7 @@ public class MovieInfo {
 	
 	//member_tbl
 	private String nickname;
-	
+	private String mbti;
 
 	
 }
