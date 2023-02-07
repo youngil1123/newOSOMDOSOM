@@ -77,8 +77,12 @@
 					
 					
 				
-					<li><a th:href="@{/myboard}">내 글</a></li>
-					<div th:if ="${session.logincust == null}"> 			
+					
+					<div th:if ="${session.logincust == null}"> 
+						<li><a th:href="@{/login}" onClick='chklogin();'>내 글</a></li>			
+					</div>
+					<div th:if ="${session.logincust != null}"> 
+						<li><a th:href="@{/myboard}">내 글</a></li>			
 					</div>
 				
 					
