@@ -70,7 +70,11 @@ window.addEventListener('load', () => {
 
 </script>
 
-
+<script>
+	function chkwrite(){
+		alert("로그인하세욥!");
+	}
+	</script>
 </head>
 
 <body>
@@ -84,8 +88,14 @@ window.addEventListener('load', () => {
           <h1>DOIT BOOK IN OSOMDOSOM</h1>
           <h2>당신만의 미디어 리뷰를 써보세요. 리뷰 쓸떄마다 적립을 해드립니다</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a th:href="@{/newboardwrite}" class="btn-get-started scrollto">새글작성</a>
-            
+          
+          <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" class="btn-get-started scrollto" onClick='chkwrite();'>새글작성</a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/newboardwrite}" class="btn-get-started scrollto">새글작성</a>
+
+					</div>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
