@@ -1,12 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<style>
+*{
+	list-style:none;
+}
+h4{
+	text-align:center;
+	}
+input {
+	background-color: #eee;
+    border: none;
+    padding: 12px 0px;
+    margin: 8px 0;
+    width: 320px;
+    height: 25px;
+}
+.textbox{
+	border:1px solid #dcdcdc;
+	width:400px;
+	height:300px;
+	margin:0 auto;
+}
+
+</style>
 <script>
 	function check_pw(){
 		var pwchk=document.getElementById('pwchk').value;
 		if(pwchk=="no"){
 	    	  alert("비밀번호를 확인해주세요")
 	    	  return false;
-		}else if (pwd.length==0|| pwd==""){
-	  			  alert("비밀번호를 입력해주세요");
-	  			  return false;   
 		} alert("비밀번호 수정이 완료되었습니다.");
 		  return true;		
 	}
@@ -32,37 +54,36 @@
     }
     if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
         if(document.getElementById('pw').value==document.getElementById('pw2').value){
-            document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
-            document.getElementById('check').style.color='blue';
+            document.getElementById('checkpwd').innerHTML='비밀번호가 일치합니다.'
+            document.getElementById('checkpwd').style.color='blue';
             document.getElementById('pwchk').value="yes"
         }
         else{
-            document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
-            document.getElementById('check').style.color='red';
+            document.getElementById('checkpwd').innerHTML='비밀번호가 일치하지 않습니다.';
+            document.getElementById('checkpwd').style.color='red';
             document.getElementById('pwchk').value="no"
         }
     }
 }
 
 </script>
-
+<body>
+<h4>비밀번호 변경</h4>
 <form action="/member/pw_new.me" method="POST" class="content" onsubmit="return check_pw()">
 	<div class="textbox">
-		<input id="pw" name="pw" type="password" onchange="isSame();"><label>새비밀번호</label>
-		<div class="error">
- 				Invalid password
-		</div> 
-	</div>
-	<div class="textbox">
-		<input id="pw2" type="password" onchange="isSame();"><label>새비밀번호 확인</label>
+		<ul>
+		새 비밀번호<li><input id="pw" name="pw" type="password" onchange="isSame();"></li><br>
+		비밀번호 확인<li><input id="pw2" type="password" onchange="isSame();"></li>
+		<span id="checkpwd" style="font-size:12px;"></span>
+		<br>
 		<input type="hidden" id="pwchk" value="no">
-		<div class="error">
-				Invalid password
-		</div>
-		<input type="hidden" id="pwchk" value="no">
+		<input type="hidden" name="email" value="${email)">
+		<br>
+		<button id="check">비밀번호변경</button>
+		</ul> 
+		
 	</div>
-	<span id=same></span>
-	<br><br>
-	<input type="submit" id="check" value="비밀번호변경">
-	<input type="hidden" name="email" value="email">
+	<br>
 </form>
+</body>
+</html>
