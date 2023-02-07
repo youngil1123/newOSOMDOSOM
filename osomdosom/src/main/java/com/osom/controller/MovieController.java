@@ -9,14 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
 import com.osom.dto.Board;
-=======
 import com.osom.dto.Like_list;
 import com.osom.dto.Member_tbl;
->>>>>>> branch 'main' of https://github.com/youngil1123/newOSOMDOSOM.git
 import com.osom.dto.MovieInfo;
 import com.osom.dto.Paging;
 import com.osom.service.BoardService;
