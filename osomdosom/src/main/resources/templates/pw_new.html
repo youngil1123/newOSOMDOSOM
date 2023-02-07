@@ -72,13 +72,13 @@ input {
 <form action="/member/pw_new.me" method="POST" class="content" onsubmit="return check_pw()">
 	<div class="textbox">
 		<ul>
-		새 비밀번호<li><input id="pw" name="pw" type="password" onchange="isSame();"></li><br>
-		비밀번호 확인<li><input id="pw2" type="password" onchange="isSame();"></li>
-		<span id="checkpwd" style="font-size:12px;"></span>
-		<br>
-		<input type="hidden" id="pwchk" value="no">
-		<input type="hidden" name="email" value="${email)">
-		<br>
+			새 비밀번호<li><input id="pw" name="pw" type="password" onchange="isSame();"></li><br>
+			비밀번호 확인<li><input id="pw2" type="password" onchange="isSame();"></li>
+			<span id="checkpwd" style="font-size:12px;"></span>
+			<br>
+			<input type="hidden" id="pwchk" value="no">
+			<input type="hidden" name="email" th:value="${email}">
+			<br>
 		<button id="check">비밀번호변경</button>
 		</ul> 
 		

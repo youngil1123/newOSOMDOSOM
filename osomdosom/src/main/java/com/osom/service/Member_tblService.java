@@ -88,13 +88,13 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 	
 	}
 
-	public int pwUpdate_M() throws Exception {
-		mapper.pwUpdate_M();
-		return 0;
-	}
-	
+
 	public Member_tbl selectbyno(Integer mem_no) throws Exception{
 		return mapper.selectbyno(mem_no);
+	}
+
+	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email) throws Exception{
+		mapper.pwUpdate_M(mem_id, mem_pwd, mem_email);
 	}
 
 
