@@ -62,8 +62,10 @@ public class BoardController {
         int mem_no=member.getMem_no();
         board.setMem_no(mem_no);
 		
+        
 		
     	System.out.println(board);
+    
     	boardservice.register(board);
     	mservice.updatePoint(mem_no);
     	return "redirect:/myboard";	//내 글 페이지로 이동
@@ -109,7 +111,11 @@ public class BoardController {
 		}
         return "redirect:/myboard";
     }
+    
+
 
     }
+
+    
 	
 

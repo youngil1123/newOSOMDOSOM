@@ -72,5 +72,8 @@ public class BookService implements MyService<Integer, BookInfo>{
 		return bookmapper.boardPageSelect(p);
 		//
 	}
+	public List<BookInfo> getLikeContentsName(int mem_no) throws Exception{
+		return bookmapper.getLikeContentsName(mem_no);
+	}
 
 }

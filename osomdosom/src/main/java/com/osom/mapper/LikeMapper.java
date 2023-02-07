@@ -1,6 +1,8 @@
 package com.osom.mapper;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,8 @@ public interface LikeMapper extends MyMapper<Integer,Like_list>{
 	public void likeremove(Like_list l);
 	//찜목록 추가
 	public void likeadd(Like_list l);
+	//회원의 찜목록에 있는 콘텐츠 번호 조회
+	public List<Integer> getLikeContents(int mem_no);
 }
 	
 	

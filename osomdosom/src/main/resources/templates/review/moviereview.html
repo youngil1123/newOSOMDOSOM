@@ -165,6 +165,7 @@
 								<li>감독명 : [[${movie.peopleNm}]]</li>
 								<li>개봉일 : [[${movie.openDt}]]</li>
 								<li>러닝타임 :[[${movie.showTm}]]분</li>
+
 								<!-- 로그인되어있으면 찜상태 확인. 1)찜이 안되어 있으면 찜아이콘 보여주기 . 2) 찜 되어있으면 찜 목록에서 삭제 아이콘 보여주기 -->
 								<li th:if="${logincust!=null}">
 									<input type="hidden" id="loginid" th:value="${logincust.mem_no}">
@@ -176,6 +177,7 @@
 										<a href="#" class="material-symbols-rounded likeadd">heart_plus</a>
 									</span></li>
 								<li th:if="${logincust==null}" style="font-size:15px;color:red">이 컨텐츠를 찜하시려면 <u>로그인</u> 해주세요.</li>
+
 							</ul>
 						</div>
 					</div>

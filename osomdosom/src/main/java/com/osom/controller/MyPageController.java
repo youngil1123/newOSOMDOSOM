@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -18,12 +20,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.osom.dto.BookInfo;
 import com.osom.dto.Member_tbl;
+import com.osom.dto.MovieInfo;
+import com.osom.dto.TheaterInfo;
 import com.osom.frame.CryptoUtil;
 import com.osom.frame.ImgUtil;
 import com.osom.service.BoardService;
+import com.osom.service.BookService;
 import com.osom.service.FriendshipService;
+import com.osom.service.LikeService;
 import com.osom.service.Member_tblService;
+import com.osom.service.MovieService;
+import com.osom.service.TheaterService;
 
 @Controller
 @RequestMapping("/mypage")
@@ -40,7 +49,19 @@ public class MyPageController {
 
 	@Value("${memimgdir}")
 	String memimgdir;
+	
+	@Autowired
+	BookService bookservice;
 
+	@Autowired
+	LikeService likeservice;
+	
+	@Autowired
+	MovieService movieservice;
+	
+	@Autowired
+	TheaterService theaterservice;
+	
 	@RequestMapping("")
 	public ModelAndView mypage(HttpServletRequest request) {
 
@@ -48,7 +69,28 @@ public class MyPageController {
 		ModelAndView mv = new ModelAndView();
 
 		Member_tbl myinfo = (Member_tbl) session.getAttribute("logincust"); // 로그인한 내 정보들
-
+		int mem_no = myinfo.getMem_no();
+		//찜한 책정보 가져가기
+		List<BookInfo> books = new ArrayList<BookInfo>();
+		//찜한 영화정보 가져가기
+		List<MovieInfo> movies = new ArrayList<MovieInfo>();
+		//찜한 연극정보 가져가기
+		List<TheaterInfo> theaters = new ArrayList<TheaterInfo>();
+		//찜한 뮤지컬정보 가져가기
+		List<TheaterInfo> musicals = new ArrayList<TheaterInfo>();
+		try {
+			books = bookservice.getLikeContentsName(mem_no);
+			mv.addObject("books", books);
+			movies = movieservice.getLikeContentsName(mem_no);
+			mv.addObject("movies", movies);
+			theaters=theaterservice.getLikeContentsNameT(mem_no);
+			mv.addObject("theaters", theaters);
+			musicals=theaterservice.getLikeContentsNameM(mem_no);
+			mv.addObject("musicals", musicals);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mv.setViewName("mypage/mypage");
 		mv.addObject("myinfo", myinfo);
 		return mv;
