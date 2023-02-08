@@ -20,6 +20,8 @@ public interface LikeMapper extends MyMapper<Integer,Like_list>{
 	public void likeadd(Like_list l);
 	//회원의 찜목록에 있는 콘텐츠 번호 조회
 	public List<Integer> getLikeContents(int mem_no);
+	//회원의 찜목록의 개수 체크
+	public int countlikelist(int mem_no);
 }
 	
 	
