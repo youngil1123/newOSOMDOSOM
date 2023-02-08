@@ -56,7 +56,7 @@
 		<span id="reviewlist" th:each="moviereviews:${moviereviews}"> 
 		<a th:href="@{/review/moviereview(movieCd=${moviereviews.movieCd})}">
 		
-		<img  th:src="${moviereviews.movieposter}" onerror="this.onerror=null; this.src='/img/Noimg.jpg';" style="height: 300px" id="reviewimg" ></a>
+		<img  th:src="${moviereviews.movieposter}" onerror="this.onerror=null; this.src='/img/Noimg.jpg';" style="height: 300px; padding:3px;" id="reviewimg " ></a>
 		
 		</span>
 		
