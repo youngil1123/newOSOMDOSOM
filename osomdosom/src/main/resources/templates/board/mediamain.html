@@ -24,7 +24,8 @@
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
-<link href="/css/slider.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
+
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 
@@ -40,132 +41,175 @@
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
 
+<style>
+.container-fluid{
+	margin-left: 30px;
+}
+
+
+
+.gallery-item img {
+	transition: all 0.2s linear;
+}
+
+.gallery-item:hover img {
+	transform: scale(1.4);
+}
+
+</style>
 
   </head>
 
   <body>
   <header th:replace="top.html :: navigation-bar"></header>
-    <!-- Swiper -->
-    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='movie'">MOVIE</button>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-       <div class="swiper-slide"> <a th:href="@{/moviedetail}" style="width:100%; height:100%;"><img src="/img/movie/movie.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie2.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie3.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie4.jpg"></a></div>
-        <div class="swiper-slide"> <a th:href="@{/}" style="width:100%; height:100%;"><img src="/img/movie/movie5.jpg"></a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-     </br>
-    
-    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='book'">Book</button>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-    
-    </br>
-    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='musical'">Musical</button>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-    
-    </br>
-   <button class="custom-btn btn-8" id="media_name" onclick = "window.location='theater'">Theater</button>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide"> <a href="#">Slide 1</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 2</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 3</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 4</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 5</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 6</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 7</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 8</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 9</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 10</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 11</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 12</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 13</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 14</a></div>
-        <div class="swiper-slide"> <a href="#">Slide 15</a></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 5,
-        spaceBetween: 30,
-        slidesPerGroup: 5,
-        loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
+   
+   <section id="gallery" class="gallery">
+      
+		<div class="section-title">
+         <a th:href="@{/movie}"> <h2>MOVIE</h2></a>
+        </div>
+        <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          
+          </div>
+         </div>
+         
+         </section>
+         <section id="gallery" class="gallery">
+      
+		<div class="section-title">
+         <a th:href="@{/book}">  <h2>BOOK</h2></a>
+        </div>
+        <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          
+          </div>
+         </div>
+         
+         </section>
+         <section id="gallery" class="gallery">
+      
+		<div class="section-title">
+           <a th:href="@{/theater}"><h2>THEATER</h2></a>
+        </div>
+        <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          
+          </div>
+         </div>
+         
+         </section>
+         <section id="gallery" class="gallery">
+      
+		<div class="section-title">
+          <a th:href="@{/musical}"><h2>MUSCIAL</h2></a>
+        </div>
+        <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          
+          </div>
+         </div>
+         
+         </section>
+   
+   
+   
     <footer th:replace="footer.html :: footer"></footer>
   </body>
 </html>

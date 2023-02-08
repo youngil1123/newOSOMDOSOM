@@ -15,9 +15,14 @@
   scroll-behavior: smooth;
 }
 
+
+
 body {
   color: rgba(var(--color-primary-rgb), 1);
   
+	margin-top:100px;
+	margin-bottom:50px;
+
 }
 
 a {
