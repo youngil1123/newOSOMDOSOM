@@ -4,12 +4,19 @@
 	width: 700px;
 	text-align: center;
 }
+#notice{
+	width:700px;
+	text-align:center;
+	font-size:1.2em;
+	color:red;
+}
 
 #likelist {
 	margin: 0 auto;
 }
 </style>
 <br><br><br>
+<div id="notice"> 찜 목록에서 삭제하시려면 <u>해당 컨텐츠로 이동하여 삭제</u>해주세요 </div>
 <div id="likelist">
 	<ul>
 		<span id="booklist" th:each="b:${books}">

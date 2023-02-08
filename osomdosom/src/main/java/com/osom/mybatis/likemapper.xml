@@ -15,4 +15,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     <select id="getLikeContents" parameterType="Integer" resultType="Integer">
     	SELECT con_no FROM like_list WHERE mem_no = #{mem_no}
     </select>
+    <select id="countlikelist" parameterType="Integer" resultType="Integer">
+    	SELECT count(con_no) FROM like_list WHERE mem_no =#{mem_no}
+    </select>
 </mapper>

@@ -5,7 +5,7 @@
 <link th:href="@{/css/main.css}" rel="stylesheet">
 <link th:href="@{/css/team.css}" rel="stylesheet">
 <link th:href="@{/css/variables.css}" rel="stylesheet">
-
+<link th:href="@{/css/index.css}" rel="stylesheet">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -25,79 +25,38 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="/jyvendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/jyvendor/bootstrap-icons/bootstrap-icons.css"
+<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
 	rel="stylesheet">
-	<link href="/jyvendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-<link href="/jyvendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="/jyvendor/aos/aos.css" rel="stylesheet">
+	<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/vendor/aos/aos.css" rel="stylesheet">
 <!-- Template Main CSS Files -->
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
 <link href="/css/index.css" rel="stylesheet">
 
-<script type="text/javascript" src="/jyvendor/isotope-layout/isotope.pkgd.js"></script>
-<script src="http://code.jquery.com/jquery-3.5.1.min.js">
+<style>
+.container-fluid{
+	margin-left: 30px;
+}
 
-(function() {
-	   
-	   const select = (el, all = false) => {
-	     el = el.trim()
-	     if (all) {
-	       return [...document.querySelectorAll(el)]
-	     } else {
-	       return document.querySelector(el)
-	     }
-	   }
-		
-	   
-	   const on = (type, el, listener, all = false) => {
-		    let selectEl = select(el, all)
-		    if (selectEl) {
-		      if (all) {
-		        selectEl.forEach(e => e.addEventListener(type, listener))
-		      } else {
-		        selectEl.addEventListener(type, listener)
-		      }
-		    }
-		  }
+.gallery-item img {
+	transition: all 0.2s linear;
+}
 
-/**
- * Porfolio isotope and filter
- */
-window.addEventListener('load', () => {
-  let portfolioContainer = select('.portfolio-container');
-  if (portfolioContainer) {
-    let portfolioIsotope = new Isotope(portfolioContainer, {
-      itemSelector: '.portfolio-item'
-      
-    });
+.gallery-item:hover img {
+	transform: scale(1.4);
+}
 
-    let portfolioFilters = select('#portfolio-flters li', true);
+</style>
 
-    on('click', '#portfolio-flters li', function(e) {
-      e.preventDefault();
-      portfolioFilters.forEach(function(el) {
-        el.classList.remove('filter-active');
-      });
-      this.classList.add('filter-active');
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/js/isotope.pkgd.js"></script>
 
-      portfolioIsotope.arrange({
-        filter: this.getAttribute('data-filter')
-      });
-      portfolioIsotope.on('arrangeComplete', function() {
-        AOS.refresh()
-      });
-    }, true);
-  }
 
-});
 
-})()
- 
-
-</script>
 
 <script>
 	function chkwrite(){
@@ -123,7 +82,6 @@ window.addEventListener('load', () => {
             </div>
             <div th:if="${session.logincust != null}">
 						<a th:href="@{/newboardwrite}" class="btn-get-started scrollto">새글작성</a>
-
 					</div>
           </div>
         </div>
@@ -135,126 +93,51 @@ window.addEventListener('load', () => {
 
   </section>
   
-  <section id="portfolio" class="portfolio">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
+  <section id="gallery" class="gallery">
+      
+		<div class="section-title">
           <h2>미디어</h2>
-          <p>원하시는 미디어를 선택하여 많은 이들의 리뷰를 확인해보세요</p>
+          <p>원하시는 미디어를 선택하세요!</p>
         </div>
-
-        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-app">MOVIE</li>
-          <li data-filter=".filter-card">BOOK</li>
-          <li data-filter=".filter-web">MUSICAL</li>
-          <li data-filter=".filter-img">THEATER</li>
-        </ul>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="img/eunni.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <a href="img/eunni.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+        <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="img/jin.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="img/jin.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              </a>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="img/one.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <a href="img/one.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="img/som.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <a href="img/som.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100">
+              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+             </a>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="img/Noimg.jpg" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <a href="img/Noimg.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
+          
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
-
+         </div>
+         
+         </section>
+         
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>베스트 리뷰</h2>
-          <p>가장 조회수가 많은 리뷰를 확인해보세요.</p>
+          <h2>베스트 리뷰너</h2>
+          <p>가장 많은 리뷰를 쓴 사람들을 확인해보세요.</p>
         </div>
 
         <div class="row">
@@ -263,8 +146,8 @@ window.addEventListener('load', () => {
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
               <div class="pic"><img src="img/jongjinimg/follower/follower-1.jpeg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
+                <h4>nuguri01</h4>
+                
                 <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
@@ -280,8 +163,8 @@ window.addEventListener('load', () => {
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
               <div class="pic"><img src="img/jongjinimg/follower/follower-2.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
+                <h4>voss</h4>
+                
                 <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
@@ -297,8 +180,8 @@ window.addEventListener('load', () => {
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
               <div class="pic"><img src="img/jongjinimg/follower/follower-3.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
+                <h4>mint</h4>
+                
                 <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
@@ -314,8 +197,8 @@ window.addEventListener('load', () => {
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
               <div class="pic"><img src="img/jongjinimg/follower/follower-4.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
+                <h4>eunni</h4>
+                
                 <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>

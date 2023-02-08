@@ -58,5 +58,8 @@ public class LikeService implements MyService<Integer, Like_list>{
 	public List<Integer> getLikeContents(int mem_no) throws Exception{
 		return likemapper.getLikeContents(mem_no);
 	}
-
+	//회원의 찜목록 개수 조회
+	public int countlikelist(int mem_no) throws Exception{
+		return likemapper.countlikelist(mem_no);
+	}
 }
