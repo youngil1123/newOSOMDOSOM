@@ -1,14 +1,20 @@
 package com.osom.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.osom.dto.Board;
 import com.osom.dto.Member_tbl;
 import com.osom.frame.CryptoUtil;
+import com.osom.service.BoardService;
 import com.osom.service.Member_tblService;
 
 @Controller
@@ -16,6 +22,9 @@ public class MainController {
 	
 	@Autowired
 	Member_tblService mservice;
+	
+	@Autowired
+	BoardService bservice;
 	
 	@RequestMapping("/")
     public String main() {
@@ -26,6 +35,19 @@ public class MainController {
 	public String login(Model model) {
 		model.addAttribute("top", "login");
 		return "login";
+	}
+	@RequestMapping("/recentreview")
+	@ResponseBody
+	public List<Board> getrecentreview(){
+		// 최신 글 5개 가져오기..
+		List<Board> reviews = new ArrayList<Board>();
+		try {
+			reviews = bservice.recentreview();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return reviews;
 	}
 
 	@RequestMapping("/loginimpl")

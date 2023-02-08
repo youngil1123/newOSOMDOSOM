@@ -111,7 +111,20 @@ public class BoardController {
 		}
         return "redirect:/myboard";
     }
-    
+    @RequestMapping("/recentreviewone")
+    public String reviewone(int board_no,Model model,HttpSession session) {
+    	//리뷰 한개 보이는 페이지!
+    	Board b = null;
+    	try {
+			b = boardservice.get(board_no);
+			System.out.println(b);
+			model.addAttribute("b", b);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return "review/onereview";
+    }
 
 
     }
