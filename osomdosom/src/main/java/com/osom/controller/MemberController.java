@@ -1,8 +1,15 @@
 package com.osom.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -137,30 +144,39 @@ public class MemberController {
 	@RequestMapping(value = "/pw_set.me", method = RequestMethod.POST)
 	public String pw_set(@RequestParam(value = "email_injeung") String email_injeung,
 			@RequestParam(value = "num") String num) throws IOException {
-
+			System.out.println("일로넘오옴");
+			System.out.println(email_injeung+num);
 		if (email_injeung.equals(num)) {
-			return "/pw_new";
+			return "pw_new";
 		} else {
-			return "/pw_new";
+			return "/lostinfo";
 		}
 	} // 이메일 인증번호 확인
 
 	
-	  //DB 비밀번호 업데이트
-	  
-	  @RequestMapping(value = "/pw_new.me", method = RequestMethod.POST ) 
-	  public String pw_new(Member_tbl vo, HttpSession session , HttpServletRequest request) throws IOException{ 
-		  String pwd = (String)request.getParameter("pw");
-		  
-		  try {
-			mservice.pwUpdate_M(vo);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
-		return "login";
-	
-	  }
-	  
+	/*
+	 * //DB 비밀번호 업데이트
+	 * 
+	 * @RequestMapping(value = "/pw_new.me", method = RequestMethod.POST ) public
+	 * String pw_new(Member_tbl vo, HttpSession session , HttpServletRequest
+	 * request) throws IOException{ String plainpwd =
+	 * (String)request.getParameter("pw"); String key = "osomdosompasswd0077";
+	 * String encryptpwd =null; try { encryptpwd =
+	 * CryptoUtil.encryptAES256(plainpwd, key);
+	 * System.out.println("AES 256 방식 암호화 : " + encryptpwd); } catch
+	 * (InvalidKeyException e1) { // TODO Auto-generated catch block
+	 * e1.printStackTrace(); } catch (UnsupportedEncodingException e1) { // TODO
+	 * Auto-generated catch block e1.printStackTrace(); } catch
+	 * (NoSuchAlgorithmException e1) { // TODO Auto-generated catch block
+	 * e1.printStackTrace(); } catch (NoSuchPaddingException e1) { // TODO
+	 * Auto-generated catch block e1.printStackTrace(); } catch
+	 * (InvalidAlgorithmParameterException e1) { // TODO Auto-generated catch block
+	 * e1.printStackTrace(); } catch (IllegalBlockSizeException e1) { // TODO
+	 * Auto-generated catch block e1.printStackTrace(); } catch (BadPaddingException
+	 * e1) { // TODO Auto-generated catch block e1.printStackTrace(); }
+	 * 
+	 * vo.setMem_pwd(encryptpwd); int result = mservice.pwUpdate_M(vo); if(result ==
+	 * 1) { return "login"; } else { System.out.println("pw_update"+ result); return
+	 * "pw_new"; }
+	 */
 }

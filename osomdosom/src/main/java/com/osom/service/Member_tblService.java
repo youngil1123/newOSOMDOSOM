@@ -88,8 +88,9 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 	
 	}
 
-	public void pwUpdate_M(Member_tbl vo) throws Exception {
+	public int pwUpdate_M() throws Exception {
 		mapper.pwUpdate_M();
+		return 0;
 	}
 	
 	public Member_tbl selectbyno(Integer mem_no) throws Exception{

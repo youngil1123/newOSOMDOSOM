@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 	<!-- 패스워드변경 -->
 	<update id = "pwUpdate_M" parameterType="Member_tbl">
-		update member_tbl set mem_pwd=#{mem_pwd}
+		update member_tbl set mem_pwd=#{mem_pwd} where mem_email=#{mem_email}
 	</update>
 	    
 	 
