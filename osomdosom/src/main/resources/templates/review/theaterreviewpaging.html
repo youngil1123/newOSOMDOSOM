@@ -17,11 +17,10 @@
 	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
 }
 </style>
-<h1>리뷰</h1>
 <div class="entry-content">
-	<table>
+	<table id="reviewtable">
 		<thead>
-			<form method="post" action="">
+
 				<tr class="reviewlist">
 					<th>제목</th>
 					<th>리뷰</th>
@@ -41,7 +40,7 @@
 				<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
 				<td><span th:text="${s.star_rate}"></span></td>
 			</tr>
-			</form>
+
 		</tbody>
 	</table>
 </div>
