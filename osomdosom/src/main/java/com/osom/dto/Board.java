@@ -26,4 +26,6 @@ public class Board {
 	private String secret_memo;
 	private int star_rate;
 	
+	private String nickname;
+	
 }

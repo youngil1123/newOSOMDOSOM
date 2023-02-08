@@ -83,7 +83,9 @@ public class BoardService implements MyService<Integer, Board>{
 		return mapper.getavgstar_rate(con_no);
 		
 	}
-
+	public List<Board> recentreview() throws Exception{
+		return mapper.recentreview();
+	}
 
 	}
 

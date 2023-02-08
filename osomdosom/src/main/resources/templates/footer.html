@@ -7,7 +7,26 @@
 <body>
 <!-- ======= Footer ======= -->
 	<footer id="footer" class="footer">
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script>
+$(document).ready(function(){
+	$.ajax({
+		url:'/recentreview',
+		dataType:'JSON',
+		success:function(list){
+			console.log(list);
+			$(list).each(function(idx,board){
+				$('.footerreview').append('<li><a href="/recentreviewone?board_no='+board.board_no+'" class="d-flex align-items-center"><div><div class="post-meta d-block"><span class="date">'
+						+ board.nickname + '</span> <span class="mx-1">&bullet;</span><span>' + moment(board.writedate).format("YYYY-MM-DD")
+						+ '</span></div><span>' + board.title + '</span></div></a></li>');
+			});
+		},error:function(a,b,c){
+			console.log(a,b,c);
+		}
+			
+	});
+});
+</script>
 		<div class="footer-content">
 			<div class="container">
 
@@ -52,55 +71,8 @@
 					<div class="col-lg-4">
 						<h3 class="footer-heading">최신글</h3>
 
-						<ul class="footer-links footer-blog-entry list-unstyled">
-							<li><a href="single-post.html"
-								class="d-flex align-items-center"> <img src="/img/som.jpg"
-									alt="" class="img-fluid me-3">
-									<div>
-										<div class="post-meta d-block">
-											<span class="date">황**</span> <span class="mx-1">&bullet;</span>
-											<span>23.01.16</span>
-										</div>
-										<span>박하를 대적할 그가 온다!!</span>
-									</div>
-							</a></li>
-
-							<li><a href="single-post.html"
-								class="d-flex align-items-center"> <img src="/img/eunni.jpg"
-									alt="" class="img-fluid me-3">
-									<div>
-										<div class="post-meta d-block">
-											<span class="date">심**</span> <span class="mx-1">&bullet;</span>
-											<span>23.01.15</span>
-										</div>
-										<span>코코의 유치원사진</span>
-									</div>
-							</a></li>
-
-							<li><a href="single-post.html"
-								class="d-flex align-items-center"> <img src="/img/jin.jpg"
-									alt="" class="img-fluid me-3">
-									<div>
-										<div class="post-meta d-block">
-											<span class="date">*종*</span> <span class="mx-1">&bullet;</span>
-											<span>23.01.12</span>
-										</div>
-										<span>서울 밖도 봐줄만하네...</span>
-									</div>
-							</a></li>
-
-							<li><a href="single-post.html"
-								class="d-flex align-items-center"> <img src="/img/one.jpg"
-									alt="" class="img-fluid me-3">
-									<div>
-										<div class="post-meta d-block">
-											<span class="date">*영*</span> <span class="mx-1">&bullet;</span>
-											<span>23.01.11</span>
-										</div>
-										<span>롤하기전 손풀기 좋지요~~~~</span>
-									</div>
-							</a></li>
-
+						<ul class="footer-links footer-blog-entry list-unstyled footerreview">
+							
 						</ul>
 
 					</div>
