@@ -19,9 +19,8 @@
 
 body {
   color: rgba(var(--color-primary-rgb), 1);
-  
 	margin-top:100px;
-	margin-bottom:50px;
+	height:100%;
 
 }
 
@@ -1217,10 +1216,14 @@ section {
   background: rgba(var(--color-black-rgb), 0.9);
   font-size: 16px;
   color: rgba(var(--color-white-rgb), 0.7);
+    height: 50%;
+	width:100%;
+	
 }
 
 .footer .footer-content {
   padding: 60px 0;
+ 
 }
 
 .footer a.footer-link-more {
