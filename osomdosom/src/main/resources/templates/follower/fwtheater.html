@@ -17,4 +17,8 @@
 
 	
 	</table>
+	<input type="hidden" id="pagingcnt" th:value="${thpagingcnt}">
+	<ul th:each="thnum : ${#numbers.sequence(1,thpagingcnt)}" style="float:left;">
+		<li th:value="${thnum}" style=" list-style:none;"><a th:href="@{/follower/fwBoard2(fwNo=${fwNo},thnum=${thnum})}">[[${num}]]</a></li>
+	</ul>
 </div>

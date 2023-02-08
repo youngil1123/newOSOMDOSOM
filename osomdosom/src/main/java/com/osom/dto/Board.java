@@ -28,4 +28,6 @@ public class Board {
 	
 	private String nickname;
 	
+	private int pages;
+	private int offset;
 }

@@ -20,23 +20,31 @@
 
 body{
   margin-top: 100px;
-  font-family:'WandohopeR';
+ 
   line-height: 2.2
 
   
 }
 
 .mycontainer{
+	 font-family:'WandohopeR';
   width: 1180px;
   margin: 0px auto ;
 }
 
 .fwcontent{
 	width:700px;
-	height:300px;
-	margin-left:50px;
+	height:450px;
+	margin-left:29%;
 }
 
+.pagingsection{
+	
+	width:40%;
+	height:30px;
+	margin:auto;
+	text-align: center;
+}
 
 ul.tabs{
   width:1000px;

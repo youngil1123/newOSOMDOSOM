@@ -45,11 +45,12 @@
 
   <body>
   <header th:replace="top.html :: navigation-bar"></header>
-    <button class="custom-btn btn-8" id="media_name" onclick = "window.location='theater'">THEATER</button>
+  
     <div class="reviewcontainer"
-		style="margin-left: 160px; margin-right: 160px; margin-bottom:10px;">
+		style="margin-left:300px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
     <span id="reviewlist" th:each="theaterreviews:${theaterreviews}">
-      	<a th:href="@{/review/theaterreview(mt20id=${theaterreviews.mt20id})}"><img th:src="${theaterreviews.poster}" style="height:300px" id="reviewimg" ></a>
+      	<a th:href="@{/review/theaterreview(mt20id=${theaterreviews.mt20id})}">
+      	<img th:src="${theaterreviews.poster}" style="height:300px; padding:3px;" id="reviewimg" ></a>
     </span>
     </div>
     <footer th:replace="footer.html :: footer"></footer>

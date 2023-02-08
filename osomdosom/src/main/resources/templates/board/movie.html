@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/img/favicon.png" rel="icon">
 <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 <link th:href="@{/css/main.css}" rel="stylesheet">
@@ -24,9 +25,9 @@
 <link href="/vendor/aos/aos.css" rel="stylesheet">
 
 <!-- Template Main CSS Files -->
-<link href="/css/variables.css" rel="stylesheet">
-<link href="/css/main.css" rel="stylesheet">
-<link href="/css/team.css" rel="stylesheet">
+<link href="/css/variables.css" rel="stylesheet">  <!-- 글 폰트 삭제 -->
+<link href="/css/main.css" rel="stylesheet">    <!-- 탑 메뉴바 이상해짐 -->
+ <link href="/css/team.css" rel="stylesheet"> 
 <link href="/css/slider.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
 	rel="stylesheet">
@@ -42,21 +43,25 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
+<style>
 
+
+</style>
 <body>
 	<header th:replace="top.html :: navigation-bar"></header>
-	<button class="custom-btn btn-8" id="media_name"
-		onclick="window.location='movie'">MOVIE</button>
-	<br>
+
 	
 	<div class="reviewcontainer"
-		style="margin-left: 160px; margin-right: 160px;">
-		<span id="reviewlist" th:each="moviereviews:${moviereviews}"> <a
-			th:href="@{/review/moviereview(movieCd=${moviereviews.movieCd})}"><img
-				th:src="${moviereviews.movieposter}"
-				onerror="this.onerror=null; this.src='/img/Noimg.jpg';"
-				style="height: 300px" id="reviewimg"></a> <!-- <span><a th:text="${review.bookname}"></a></span> -->
+		style="margin-left:300px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;" >
+		<span id="reviewlist" th:each="moviereviews:${moviereviews}"> 
+		<a th:href="@{/review/moviereview(movieCd=${moviereviews.movieCd})}">
+		
+		<img  th:src="${moviereviews.movieposter}" onerror="this.onerror=null; this.src='/img/Noimg.jpg';" style="height: 300px; padding:3px;" id="reviewimg " ></a>
+		
 		</span>
+		
+		
+		
 	</div>
 	<footer th:replace="footer.html :: footer"></footer>
 

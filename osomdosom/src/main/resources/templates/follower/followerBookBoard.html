@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link href="/img/favicon.png" rel="icon">
+	<link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+	
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+		rel="stylesheet">
+    <title>Ashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+		rel="stylesheet">
+	<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+	<link href="/vendor/aos/aos.css" rel="stylesheet">
+	
+	<!-- Template Main CSS Files -->
+	<link th:href="@{/css/variables.css}" rel="stylesheet">
+	<link th:href="@{/css/main.css}" rel="stylesheet">
+	<link th:href="@{/css/team.css}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+ 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+	<link th:href="@{/css/jongjincss/fwboard.css}" rel="stylesheet">
+	
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script src="https://kit.fontawesome.com/def66b134a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header th:replace="top.html :: navigation-bar"></header>
+
+
+    
+<div class="mycontainer">
+
+	<div class="mypage-left">
+	<table th:each="fi : ${fwinfo}">
+		<tr>
+			<th><img th:src="@{/img/jongjinimg/follower/}+${fi.mem_img}" id= "profile_img"></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;"><span style="font-weight:bolder; font-size:1.2em;">[[${fi.nickname}]]</span><span>님</span></th>
+		</tr>
+		<tr>
+			<th style="text-align:center;">([[${fi.mbti}]])</th>
+		</tr>
+		<tr>
+			<th style="text-align:center;">- 자기소개 -</th>
+		</tr>
+		<tr>
+			<th ><span style="font-weight:lighter;">[[${fi.myword}]]</span></th>
+		</tr>
+	</table>
+	</div >	
+
+	<div>
+		<ul class="tabs" th:each="fi : ${fwinfo}">
+			<li class="tab-link current" data-tab="fwbook"><a th:href="@{/follower/fwBookBoard(fwNo=${fi.mem_no})}"><img src="/img/jongjinimg/book.png" style="width:30px; height:30px;">  도서</a></li>
+			<li class="tab-link" data-tab="fwmovie"><a th:href="@{/follower/fwMovieBoard(fwNo=${fi.mem_no})}"><img src="/img/jongjinimg/video-player.png" style="width:30px; height:30px;">  영화</a></li>
+			<li class="tab-link" data-tab="fwtheater"><a th:href="@{/follower/fwTheaterBoard(fwNo=${fi.mem_no})}"><img src="/img/jongjinimg/stage.png" style="width:30px; height:30px;">  연극</a></li>
+		</ul>
+		
+	
+		<div class="fwcontent">
+			<table id="table">
+			
+		
+				<tr class="board-list">
+					<td>번호</td>
+					<td>제목</td>
+					<td>등록일</td>
+					<td>별점</td>
+				</tr>
+				<tr class="list" th:each="bl :${booklist}">
+					<td th:text="${bl.board_no}"></td>
+					<td><a th:href="@{/post/fwview.do( board_no=${bl.board_no} )}" th:text="${bl.title}" class="word-cut"></a></td>
+					<td><span th:text="${#dates.format(bl.writedate,'yyyy-MM-dd')}"></span></td>
+					<td th:text="${bl.star_rate}"></td>
+				</tr>
+		
+			
+			</table>
+			<div class="pagingsection">
+				<input type="hidden" id="pagingcnt" th:value="${bkpagingcnt}">
+				<ul th:each="bknum : ${#numbers.sequence(1,bkpagingcnt)}" style="float:left;">
+					<li th:value="${bknum}" style=" list-style:none;"><a th:href="@{/follower/fwBookBoard(fwNo=${fwNo},bknum=${bknum})}">[[${bknum}]]</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+ <footer th:replace="footer.html :: footer"></footer>
+
+</body>
+</html>
