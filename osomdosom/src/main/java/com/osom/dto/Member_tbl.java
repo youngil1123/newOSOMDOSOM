@@ -74,6 +74,11 @@ public class Member_tbl {
 		this.myword= myword;
 	}
 
-	
+	public Member_tbl(String mem_id, String mem_pwd, String mem_email) {
+		super();
+		this.mem_id=mem_id;
+		this.mem_pwd=mem_pwd;
+		this.mem_email=mem_email;
+	}
 
 }
