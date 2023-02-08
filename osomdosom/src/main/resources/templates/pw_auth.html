@@ -61,6 +61,7 @@ function checkAll(){
 			<h4>인증번호확인</h4>
 			<div class="textbox">
 			<input type="hidden" id="num" name ="num" th:value="${num}" onchange="check_num()">
+			<input type="hidden" id="email" name ="email" th:value="${email}">
 			<input type="text" name="email_injeung" id="email_injeung" placeholder="인증번호를 입력하세요"onchange="check_num()">
 			<input type="hidden" id="numchk" value="no">
 			<button id="check">확인</button>

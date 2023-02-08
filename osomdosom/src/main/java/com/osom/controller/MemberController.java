@@ -2,6 +2,7 @@ package com.osom.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Member;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -127,6 +128,7 @@ public class MemberController {
 				ModelAndView mv = new ModelAndView();
 				mv.setViewName("/pw_auth");
 				mv.addObject("num", num);
+				mv.addObject("email", email);
 				return mv;
 			} else {
 				ModelAndView mv = new ModelAndView();
@@ -142,41 +144,35 @@ public class MemberController {
 
 	// 인증번호 동일한지 확인
 	@RequestMapping(value = "/pw_set.me", method = RequestMethod.POST)
-	public String pw_set(@RequestParam(value = "email_injeung") String email_injeung,
-			@RequestParam(value = "num") String num) throws IOException {
-			System.out.println("일로넘오옴");
-			System.out.println(email_injeung+num);
+	public ModelAndView pw_set(@RequestParam(value = "email_injeung") String email_injeung,
+			@RequestParam(value = "num") String num, @RequestParam(value="email") String email) throws IOException {
+		System.out.println("일로넘오옴");
+		System.out.println(email_injeung + num);
+		ModelAndView mv = new ModelAndView();
 		if (email_injeung.equals(num)) {
-			return "pw_new";
+			mv.setViewName("/pw_new");
+			mv.addObject("email", email);
+			return mv;
 		} else {
-			return "/lostinfo";
+			mv.setViewName("/pw_auth");
+			return mv;
 		}
 	} // 이메일 인증번호 확인
 
-	
-	/*
-	 * //DB 비밀번호 업데이트
-	 * 
-	 * @RequestMapping(value = "/pw_new.me", method = RequestMethod.POST ) public
-	 * String pw_new(Member_tbl vo, HttpSession session , HttpServletRequest
-	 * request) throws IOException{ String plainpwd =
-	 * (String)request.getParameter("pw"); String key = "osomdosompasswd0077";
-	 * String encryptpwd =null; try { encryptpwd =
-	 * CryptoUtil.encryptAES256(plainpwd, key);
-	 * System.out.println("AES 256 방식 암호화 : " + encryptpwd); } catch
-	 * (InvalidKeyException e1) { // TODO Auto-generated catch block
-	 * e1.printStackTrace(); } catch (UnsupportedEncodingException e1) { // TODO
-	 * Auto-generated catch block e1.printStackTrace(); } catch
-	 * (NoSuchAlgorithmException e1) { // TODO Auto-generated catch block
-	 * e1.printStackTrace(); } catch (NoSuchPaddingException e1) { // TODO
-	 * Auto-generated catch block e1.printStackTrace(); } catch
-	 * (InvalidAlgorithmParameterException e1) { // TODO Auto-generated catch block
-	 * e1.printStackTrace(); } catch (IllegalBlockSizeException e1) { // TODO
-	 * Auto-generated catch block e1.printStackTrace(); } catch (BadPaddingException
-	 * e1) { // TODO Auto-generated catch block e1.printStackTrace(); }
-	 * 
-	 * vo.setMem_pwd(encryptpwd); int result = mservice.pwUpdate_M(vo); if(result ==
-	 * 1) { return "login"; } else { System.out.println("pw_update"+ result); return
-	 * "pw_new"; }
-	 */
+
+   //DB비밀번호 업데이트	
+	@RequestMapping(value = "/pw_new.me", method = RequestMethod.POST)
+	public String pw_new(String pw, HttpSession session, String email) throws Exception{
+		System.out.println("pw="+pw+"email="+email);
+		Member_tbl member = new Member_tbl();
+		member=mservice.selectMember(email);
+		String memberId= member.getMem_id();
+		
+		String key = "osomdosompasswd0077";
+		String encryptpwd = CryptoUtil.encryptAES256(pw, key);
+		System.out.println("AES 256 방식 암호화 : " + encryptpwd);
+		
+		mservice.pwUpdate_M(memberId, encryptpwd, email);
+		return "return";
+	}
 }
