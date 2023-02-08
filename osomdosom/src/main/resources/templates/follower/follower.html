@@ -82,7 +82,7 @@
                     <img th:src="'/img/jongjinimg/follower/'+${fw.mem_img}" style="width:400px; height:370px;"> <!-- mem_img -->
                         <ul class="product__hover">
                        		<li ><h5 id="myword">[[${fw.myword}]]</h5>  </li><br>
-                            <li><a th:href="@{/follower/fwBoard(fwNo=${fw.mem_no})}"><span class="icon_lookbook"></span></a></li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <li><a th:href="@{/follower/fwBookBoard(fwNo=${fw.mem_no})}"><span class="icon_lookbook"></span></a></li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <li><a th:href="@{/follower/DeleteFw(dfwid=${fw.mem_id})}" onClick='chkDelete();'><span class="icon_delete"></span></a></li>
                         </ul>
                     </div>

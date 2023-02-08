@@ -69,14 +69,25 @@ public class BoardService implements MyService<Integer, Board>{
 		 mapper.updatepost(board);
 	}
 
-	public List<Board> booklist(Integer mem_no) throws Exception {
-		return mapper.booklist(mem_no);
+	public List<Board> booklist(Integer mem_no, int pages, int offset) throws Exception {
+		return mapper.booklist(mem_no, pages, offset);
 	}
-	public List<Board> movielist(Integer mem_no) throws Exception {
-		return mapper.movielist(mem_no);
+	public int bookcnt(Integer mem_no) throws Exception {
+		return mapper.bookcnt(mem_no);
 	}
-	public List<Board> theaterlist(Integer mem_no) throws Exception {
-		return mapper.theaterlist(mem_no);
+	
+	public List<Board> movielist(Integer mem_no, int pages, int offset) throws Exception {
+		return mapper.movielist(mem_no, pages, offset);
+	}
+	public int moviecnt(Integer mem_no) throws Exception {
+		return mapper.moviecnt(mem_no);
+	}
+	
+	public List<Board> theaterlist(Integer mem_no, int pages, int offset) throws Exception {
+		return mapper.theaterlist(mem_no, pages, offset);
+	}
+	public int theatercnt(Integer mem_no) throws Exception {
+		return mapper.theatercnt(mem_no);
 	}
 
 	public Double getavgstar_rate (Board con_no) throws Exception{
@@ -87,5 +98,6 @@ public class BoardService implements MyService<Integer, Board>{
 		return mapper.recentreview();
 	}
 
-	}
+	
+}
 
