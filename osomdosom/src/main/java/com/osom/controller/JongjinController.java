@@ -85,7 +85,7 @@ public class JongjinController {
 		ModelAndView mv = new ModelAndView();
 		List<Board> bklist = null;
 
-		int onepagelist = 3; //한페이지에 2개씩 불러오자.
+		int onepagelist = 10; //한페이지에 2개씩 불러오자.
 		
 		int bkoffset = (bknum-1)*onepagelist;
 	
@@ -135,7 +135,7 @@ public class JongjinController {
 		
 		List<Board> mvlist =null; //영화 리스트
 
-		int onepagelist = 3; //한페이지에 2개씩 불러오자.
+		int onepagelist = 10; //한페이지에 2개씩 불러오자.
 		
 		int mvoffset = (mvnum-1)*onepagelist;
 		
@@ -186,7 +186,7 @@ public class JongjinController {
 
 		List<Board> thlist =null; //연극 리스트
 
-		int onepagelist = 3; //한페이지에 2개씩 불러오자.
+		int onepagelist = 10; //한페이지에 2개씩 불러오자.
 
 		int thoffset = (thnum-1)*onepagelist;
 

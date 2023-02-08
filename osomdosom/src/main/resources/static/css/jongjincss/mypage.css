@@ -20,7 +20,7 @@
 
 body{
   margin-top: 100px;
-  font-family:'WandohopeR';
+  
   line-height: 2.2
 
   
@@ -29,6 +29,7 @@ body{
 .mycontainer{
   width: 1180px;
   margin: 0px auto ;
+  font-family:'WandohopeR';
 }
 
 #backgroundimg{
