@@ -50,15 +50,17 @@
 	transform: scale(1.4);
 }
 
+ #favorite__icon{fill:#E54C3B;visibility:hidden;}
+#favorite__rect{fill:#E54C3B;}
+  #favorite__text{fill:#FFFFFF;font-size:20px;}
 
 </style>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="/js/isotope.pkgd.js">
+<script type="text/javascript" src="/js/isotope.pkgd.js"></script>
 
 
 
-</script>
 
 <script>
 	function chkwrite(){
@@ -142,34 +144,95 @@
           <p>가장 많은 리뷰를 쓴 사람들을 확인해보세요.</p>
         </div>
 
-        <div class="row" th:each="m:${members}" style="height:300px; width:45%; float:left;  margin-left:50px;">
+        <div class="row">
 
           <div class="col-lg-6">
-            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100"  style="width:200%; height:250px;">
-              <div class="pic"><img th:src=" '/img/jongjinimg/follower/'+${m.mem_img}"  class="img-fluid" alt=""></div>
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-1.jpeg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>[[${m.nickname}]]</h4> 
-                <p>[[${m.myword}]]</p>
+                <h4>nuguri01</h4>
+                
+                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
                  <div class="follower">
                   <div th:if ="${session.logincust == null}"> 
-            <a th:href="@{/login}" onClick='chkwrite();'>
-            <img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
-            		
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            	<a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>	
             </div>
             <div th:if="${session.logincust != null}">
-						<a th:href="@{follower/addFollower}">
-						<img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
-						
-					</div> 
+						<a th:href="@{/follower}"></a>
+					</div>
 					
                 </div>
               </div>
             </div>
           </div>
 
-  </div>
- </div>
-           
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>voss</h4>
+                
+                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+               <div class="follower">
+                  <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/follower}"></a>
+					</div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>mint</h4>
+                
+                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                 <div class="follower">
+                  <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/follower}"></a>
+					</div>
+              
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+              <div class="pic"><img src="img/jongjinimg/follower/follower-4.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>eunni</h4>
+                
+                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <div class="follower">
+                  <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/follower}"></a>
+					</div>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </section>
 
 	<footer th:replace="footer.html :: footer"></footer>
