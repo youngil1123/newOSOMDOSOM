@@ -96,13 +96,13 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email) throws Exception{
 		mapper.pwUpdate_M(mem_id, mem_pwd, mem_email);
 	}
-<<<<<<< HEAD
+
 
 	public void logindate(int mem_no, String today) {
 		mapper.logindate(mem_no, today);
 	}
 	
-=======
+
 	public int totalRecord(int mem_no) throws Exception{
 		//멤버의 리뷰 수
 		return mapper.totalRecord(mem_no);
@@ -112,7 +112,6 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 		return mapper.boardPageSelect(p);
 	}
 
->>>>>>> branch 'main' of https://github.com/youngil1123/newOSOMDOSOM.git
 	}
 
 
