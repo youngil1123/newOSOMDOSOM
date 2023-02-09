@@ -73,6 +73,8 @@
 	});
 	
 	
+	
+	
 	function press(){
 		if(window.event.keyCode == 13){
 			formname.submit();
@@ -85,6 +87,7 @@
 		var nickname=joinForm.nickname.value; 
 		var pwchk=document.getElementById('pwchk').value;
 		var idchk=document.getElementById('idchk').value;
+		var emailchk=document.getElementById('emailchk').value;
 	
 		
 
@@ -114,7 +117,10 @@
 	    } else if(idchk=="no"){
 	    	  alert("아이디중복체크를 해주세요")
 	    	  return false;
-	    } 
+	    } else if(emailchk=="no"){
+	    	  alert("중복된 이메일이 있습니다.")
+	    	  return false;
+	    }
 		
 			alert("회원가입이 완료되었습니다.");
  			return true;
@@ -272,6 +278,8 @@
 	 <input type="hidden" id="pwchk" value="no">
 	 <input type="hidden" id="idchk" value="no">
 	 <input type="hidden" id="mbtichk" value="no">
+	
+	 
         <button type="submit" id="joinbtn" >Sign Up</button> 
    
     </form>  
