@@ -96,6 +96,13 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email) throws Exception{
 		mapper.pwUpdate_M(mem_id, mem_pwd, mem_email);
 	}
+
+
+	public void logindate(int mem_no, String today) {
+		mapper.logindate(mem_no, today);
+	}
+	
+
 	public int totalRecord(int mem_no) throws Exception{
 		//멤버의 리뷰 수
 		return mapper.totalRecord(mem_no);
@@ -104,6 +111,7 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 		//페이징해서 리뷰 가져가기
 		return mapper.boardPageSelect(p);
 	}
+
 
 	}
 

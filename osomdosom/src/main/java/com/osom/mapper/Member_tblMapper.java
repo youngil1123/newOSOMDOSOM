@@ -31,7 +31,11 @@ public interface Member_tblMapper extends MyMapper<String,Member_tbl>{
 	public Member_tbl selectbyno (Integer mem_no);
 	
 	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email);
+
+	public void logindate(int mem_no, String today);
+
 	public int totalRecord(int mem_no);//멤버의 리뷰 수
 	public List<Board> boardPageSelect(Paging p);//페이징해서 리뷰 가져가기
+
 	
 }

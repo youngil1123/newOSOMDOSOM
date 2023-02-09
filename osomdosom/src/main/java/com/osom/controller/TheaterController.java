@@ -29,7 +29,7 @@ public class TheaterController {
 	@Autowired
 	LikeService likeservice;
 	@RequestMapping("/review/theaterreview")
-	public String theaterreview(String mt20id, Model model,Paging p,HttpSession session) {
+	public String theaterreview(String mt20id, String prfnm, Model model ,Paging p ,HttpSession session) {
 		//뮤지컬 하나 리뷰 보는 페이지로 이동(뮤지컬 정보 + 리뷰정보를 가지고)
 		TheaterInfo theater = null;
 		List<TheaterInfo> theaterreview = new ArrayList<TheaterInfo>();
@@ -43,7 +43,7 @@ public class TheaterController {
 			p.setTotalRecord(theaterservice.totalRecord(p));
 			p.setStartRecord((p.getNowPage()-1)*p.getOnePageRecord());
 			System.out.println(theater);
-			theaterreview = theaterservice.getonetheaterreview(mt20id);
+			theaterreview = theaterservice.getonetheaterreview(mt20id,prfnm);
 			//찜 상태 체크..
 			l.setCon_no(theater.getCon_no());
 			if(m!=null) {
@@ -70,7 +70,7 @@ public class TheaterController {
 	}
 	
 	@RequestMapping("/review/musicalreview")
-	public String musicalreview(String mt20id, Model model,Paging p,HttpSession session) {
+	public String musicalreview(String mt20id,String prfnm, Model model,Paging p,HttpSession session) {
 		//뮤지컬 하나 리뷰 보는 페이지로 이동(뮤지컬 정보 + 리뷰정보를 가지고)
 		TheaterInfo theater = null;
 		List<TheaterInfo> theaterreview = new ArrayList<TheaterInfo>();
@@ -84,7 +84,7 @@ public class TheaterController {
 			p.setTotalRecord(theaterservice.totalRecord(p));
 			p.setStartRecord((p.getNowPage()-1)*p.getOnePageRecord());
 			System.out.println(theater);
-			theaterreview = theaterservice.getonetheaterreview(mt20id);
+			theaterreview = theaterservice.getonetheaterreview(mt20id,prfnm);
 			//찜 상태 체크..
 			l.setCon_no(theater.getCon_no());
 			if(m!=null) {
