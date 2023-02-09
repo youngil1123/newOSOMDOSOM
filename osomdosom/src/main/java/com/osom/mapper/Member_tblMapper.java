@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.osom.dto.Board;
 import com.osom.dto.Member_tbl;
+import com.osom.dto.Paging;
 import com.osom.frame.MyMapper;
 
 @Mapper
@@ -29,5 +31,7 @@ public interface Member_tblMapper extends MyMapper<String,Member_tbl>{
 	public Member_tbl selectbyno (Integer mem_no);
 	
 	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email);
+	public int totalRecord(int mem_no);//멤버의 리뷰 수
+	public List<Board> boardPageSelect(Paging p);//페이징해서 리뷰 가져가기
 	
 }
