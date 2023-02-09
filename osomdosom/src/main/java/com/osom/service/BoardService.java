@@ -97,7 +97,9 @@ public class BoardService implements MyService<Integer, Board>{
 	public List<Board> recentreview() throws Exception{
 		return mapper.recentreview();
 	}
-
+	public List<Integer> totalreview() throws Exception{
+		return mapper.totalreview();
+	}
 	
 }
 

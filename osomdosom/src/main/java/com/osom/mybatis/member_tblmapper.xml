@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     
     <!-- 회원가입 -->
 	<insert id="insert" parameterType="Member_tbl">
-		INSERT INTO member_tbl (mem_name, mem_id, mem_pwd, mem_email, mbti, nickname) 
-		VALUES (#{mem_name},#{mem_id},#{mem_pwd},#{mem_email},#{mbti},#{nickname})
+		INSERT INTO member_tbl (mem_name, mem_id, mem_pwd, mem_email, mbti, nickname,mem_img) 
+		VALUES (#{mem_name},#{mem_id},#{mem_pwd},#{mem_email},#{mbti},#{nickname},#{mem_img})
 	</insert>
 
 	<!-- 로그인 -->

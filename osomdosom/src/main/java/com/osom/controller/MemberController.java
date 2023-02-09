@@ -59,6 +59,7 @@ public class MemberController {
 		String plainpwd = member_tbl.getMem_pwd();
 		String key = "osomdosompasswd0077";
 		String encryptpwd = CryptoUtil.encryptAES256(plainpwd, key);
+		String mem_img = "Noimg.jpg";
 		System.out.println("AES 256 방식 암호화 : " + encryptpwd);
 
 		Member_tbl member = new Member_tbl();
@@ -68,6 +69,7 @@ public class MemberController {
 		member.setMem_email(member_tbl.getMem_email());
 		member.setMbti(member_tbl.getMbti());
 		member.setNickname(member_tbl.getNickname());
+		member.setMem_img(mem_img);
 		try {
 			mservice.register(member);
 		} catch (Exception e) {

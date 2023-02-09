@@ -134,23 +134,9 @@ public class BoardController {
 		}
     	return "review/onereview";
     }
-    @RequestMapping("/newreviewner")
-    public String newreviewner(int mem_no,Model model,HttpSession session) {
-    	//리뷰 한개 보이는 페이지!
-    	Board b = null;
-    	try {
-			b = boardservice.get(mem_no);
-			System.out.println(b);
-			model.addAttribute("b", b);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return "index";
-    }
-
     
     
+   
     }
 
     
