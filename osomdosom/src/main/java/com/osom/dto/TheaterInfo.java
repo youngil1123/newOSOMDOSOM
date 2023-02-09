@@ -37,5 +37,5 @@ public class TheaterInfo {
 	private int star_rate;
 	
 	//member_tbl
-		private String nickname;
+	private String nickname;
 }

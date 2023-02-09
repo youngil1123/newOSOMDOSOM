@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</update>
 	<select id="select" parameterType="Integer" resultType="Board">
-		select * from board where board_no=#{board_no}
+		select * from board inner join member_tbl using(mem_no) where board_no=#{board_no}
 	</select>
 	<!-- 게시글 삭제 -->
  	<delete id="deletepost" parameterType="Integer">
