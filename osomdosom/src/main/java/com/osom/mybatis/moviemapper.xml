@@ -33,6 +33,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		from board b inner join movieinfo using(con_no) inner join member_tbl m using(mem_no) WHERE movieCd=#{movieCd} order by board_no desc) A LIMIT #{totalRecord}) C LIMIT #{startRecord},#{onePageRecord};
 	</select>
 	<select id="getLikeContentsName" resultType="MovieInfo" parameterType="Integer">
-		select movieCd,movieNm from movieinfo where con_no in (select con_no from like_list where mem_no = #{mem_no})
+		select * from movieinfo where con_no in (select con_no from like_list where mem_no = #{mem_no})
 	</select>
 </mapper>

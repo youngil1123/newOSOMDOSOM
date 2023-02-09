@@ -1,9 +1,19 @@
 <style>
 #likelist li {
 	list-style: none;
-	width: 700px;
+	width: 150px;
+	height: 155px;
 	text-align: center;
+	margin-left:2%;
+	float:left;
+	background:#f4ebdf;
 }
+
+#likelist ul:nth-child(3n+1){
+	float:none;
+}
+
+
 #notice{
 	width:700px;
 	text-align:center;
@@ -12,7 +22,9 @@
 }
 
 #likelist {
-	margin: 0 auto;
+	margin-left: 1%;
+	height:700px;
+	width:700px;
 }
 </style>
 <br><br><br>
@@ -20,16 +32,17 @@
 <div id="likelist">
 	<ul>
 		<span id="booklist" th:each="b:${books}">
-			<li><a th:href="@{/review/bookreview(book_no=${b.book_no})}">도서 > [[${b.bookname}]]</a></li>
+			<li><a th:href="@{/review/bookreview(book_no=${b.book_no})}"><img th:src="${b.bookImageURL}" style="width:100px; height:120px;"><br>도서 > [[${b.bookname}]]</a></li>
 		</span>
 		<span id="movielist" th:each="m:${movies}">
-			<li><a th:href="@{/review/moviereview(movieCd=${m.movieCd})}">영화 > [[${m.movieNm}]]</a></li>
+			<li><a th:href="@{/review/moviereview(movieCd=${m.movieCd})}"><img th:src="${m.movieposter}" style="width:100px; height:120px;"><br>영화 > [[${m.movieNm}]]</a></li>
 		</span>
 		<span id="theaterlist" th:each="t:${theaters}">
-			<li><a th:href="@{/review/theaterreview(mt20id=${t.mt20id})}">연극 > [[${t.prfnm}]]</a></li>
+			<li><a th:href="@{/review/theaterreview(mt20id=${t.mt20id})}"><img th:src="${t.poster}" style="width:100px; height:120px;"><br>연극 > [[${t.prfnm}]]</a></a></li>
 		</span>
 		<span id="musicallist" th:each="mu:${musicals}">
-			<li><a th:href="@{/review/theaterreview(mt20id=${mu.mt20id})}">뮤지컬 > [[${mu.prfnm}]]</a></li>
+			<li><a th:href="@{/review/theaterreview(mt20id=${mu.mt20id})}"><img th:src="${mu.poster}" style="width:100px; height:120px;"><br>뮤지컬 > [[${mu.prfnm}]]</a></li>
 		</span>
 	</ul>
+
 </div>

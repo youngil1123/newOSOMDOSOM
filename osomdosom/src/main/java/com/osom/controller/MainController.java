@@ -53,7 +53,6 @@ public class MainController {
 	@RequestMapping("/loginimpl")
 	public String loginimpl(HttpSession session, String mem_id, String mem_pwd, Model model) {
 		Member_tbl member = null;
-		String result = "loginfail";
 
 		try {
 			member = mservice.get(mem_id);
@@ -64,12 +63,13 @@ public class MainController {
 			if(decryptpwd.equals(mem_pwd)) {
 					// 성공시에만 이걸로 바뀜. 디폴트는 로그인 fail.
 					session.setAttribute("logincust", member);
+					return "index";
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "index";
+		return "loginfail";
 	};
 	
 	@RequestMapping("/logout")

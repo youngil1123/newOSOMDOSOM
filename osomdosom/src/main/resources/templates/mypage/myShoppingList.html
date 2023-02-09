@@ -1,7 +1,41 @@
-<h2> 여긴 내 구매내역 이 들어올 자리</h2>
-<h2> 여긴 내 구매내역 이 들어올 자리</h2>
-<h2> 여긴 내 구매내역 이 들어올 자리</h2>
-<h2> 여긴 내 구매내역 이 들어올 자리</h2>
-<h2> 여긴 내 구매내역 이 들어올 자리</h2>
-<h2> 여긴 내 구매내역 이 들어올 자리</h2>
-<h2> 여긴 내 구매내역 이 들어올 자리</h2>
+<style>
+
+#errorimg{
+	height:300px;
+	width:700px;
+	margin-top:10%;
+}
+
+#error{
+	height:300px;
+	position:relative;
+	left:32%;
+	
+}
+
+#errormsg{
+	height:300px;
+	width:700px;
+	text-align:center;
+ 	margin-top: 5%;
+ 	margin-left:3%;
+}
+
+#mypoint{
+	width:670px;
+	text-align:right;
+	position:absolute;
+	top:40%;
+}
+</style>
+<div th:each="my : ${myinfo}" id="mypoint">
+	보유중인 포인트 : [[${myinfo.mem_point}]]
+</div>
+
+<div id="errorimg">
+	<img src="img/jongjinimg/system.png" id="error" title="error icons">
+	
+</div>
+<div id="errormsg">
+	<h5> 포인트 상점이 곧 오픈 예정입니다. 열심히 포인트를 쌓아두세요!</h5>
+</div>
