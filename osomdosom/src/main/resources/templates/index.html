@@ -50,6 +50,10 @@
 	transform: scale(1.4);
 }
 
+ #favorite__icon{fill:#E54C3B;visibility:hidden;}
+#favorite__rect{fill:#E54C3B;}
+  #favorite__text{fill:#FFFFFF;font-size:20px;}
+
 </style>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -149,11 +153,15 @@
                 <h4>nuguri01</h4>
                 
                 <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                 <div class="follower">
+                  <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            	<a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>	
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/follower}"></a>
+					</div>
+					
                 </div>
               </div>
             </div>
@@ -166,11 +174,15 @@
                 <h4>voss</h4>
                 
                 <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+               <div class="follower">
+                  <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/follower}"></a>
+					</div>
+                  
                 </div>
               </div>
             </div>
@@ -183,11 +195,15 @@
                 <h4>mint</h4>
                 
                 <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                 <div class="follower">
+                  <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/follower}"></a>
+					</div>
+              
                 </div>
               </div>
             </div>
@@ -200,11 +216,15 @@
                 <h4>eunni</h4>
                 
                 <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                <div class="follower">
+                  <div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/follower}"></a>
+					</div>
+                   
                 </div>
               </div>
             </div>
@@ -215,8 +235,8 @@
       </div>
     </section>
 
-	
+	<footer th:replace="footer.html :: footer"></footer>
 	
 </body>
-<footer th:replace="footer.html :: footer"></footer>
+
 </html>
