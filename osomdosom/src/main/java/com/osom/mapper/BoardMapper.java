@@ -30,7 +30,7 @@ public interface BoardMapper extends MyMapper<Integer,Board>{
 	
 	public Double getavgstar_rate(Board con_no); 
 	public List<Board> recentreview();
-	
+	public List<Board> newreviewner(int mem_no);
 	
 }
 	

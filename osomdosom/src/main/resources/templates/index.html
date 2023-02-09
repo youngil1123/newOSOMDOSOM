@@ -50,17 +50,42 @@
 	transform: scale(1.4);
 }
 
- #favorite__icon{fill:#E54C3B;visibility:hidden;}
-#favorite__rect{fill:#E54C3B;}
-  #favorite__text{fill:#FFFFFF;font-size:20px;}
 
 </style>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="/js/isotope.pkgd.js"></script>
+<script type="text/javascript" src="/js/isotope.pkgd.js">
 
+$(document).ready(function() {
+		$.ajax({url : '/recentreview',	
+				dataType : 'JSON',							
+				success : function(list) {							
+					$(list).each(function(idx,board) {
+						$('.mainreview').append(		
+							'<li><a href="/newreviewner?mem_no='										
+							+ board.mem_no	
+							+ '" class="d-flex align-items-center"><div><div class="post-meta d-block"><span class="date">'
+							+ board.nickname
+							+ '</span> <span class="mx-1">&bullet;</span><span>'
+							+ moment(
+									board.writedate)
+									.format(
+											"YYYY-MM-DD")
+							+ '</span></div><span>'
+							+ board.title
+							+ '</span></div></a></li>');														
+																							
+						});																	
+						},								
+						error : function(a, b, c) {
+							console.log(a, b, c);
+						}
 
-
+					});
+		});												
+																
+							
+</script>
 
 <script>
 	function chkwrite(){
@@ -140,8 +165,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>베스트 리뷰너</h2>
-          <p>가장 많은 리뷰를 쓴 사람들을 확인해보세요.</p>
+          <h2>최신 리뷰너</h2>
+          <p>가장 최신 리뷰를 쓴 사람들을 확인해보세요.</p>
         </div>
 
         <div class="row">
@@ -155,11 +180,13 @@
                 <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
                  <div class="follower">
                   <div th:if ="${session.logincust == null}"> 
-            <a th:href="@{/login}" onClick='chkwrite();'><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+            <a th:href="@{/login}" onClick='chkwrite();'>
+            <img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
             	<a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>	
             </div>
             <div th:if="${session.logincust != null}">
-						<a th:href="@{/follower}"></a>
+						<a th:href="@{/follower}"><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+						<a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
 					</div>
 					
                 </div>
@@ -180,7 +207,8 @@
             <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
             </div>
             <div th:if="${session.logincust != null}">
-						<a th:href="@{/follower}"></a>
+						<a th:href="@{/follower}"><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+						<a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
 					</div>
                   
                 </div>
@@ -201,7 +229,8 @@
             <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
             </div>
             <div th:if="${session.logincust != null}">
-						<a th:href="@{/follower}"></a>
+						<a th:href="@{/follower}"><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+						<a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
 					</div>
               
                 </div>
@@ -213,8 +242,11 @@
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
               <div class="pic"><img src="img/jongjinimg/follower/follower-4.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>eunni</h4>
-                
+                	
+						<ul
+							class="footer-links footer-blog-entry list-unstyled mainreview">
+
+						</ul>	
                 <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
                 <div class="follower">
                   <div th:if ="${session.logincust == null}"> 
@@ -222,8 +254,10 @@
             <a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
             </div>
             <div th:if="${session.logincust != null}">
-						<a th:href="@{/follower}"></a>
+						<a th:href="@{/follower}"><img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+						<a href=""><img src="/img/plus.png" style="width:30px; margin-left:3px;"></a>
 					</div>
+                  
                    
                 </div>
               </div>
