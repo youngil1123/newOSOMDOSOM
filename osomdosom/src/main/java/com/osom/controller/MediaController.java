@@ -120,6 +120,8 @@ public class MediaController {
 		model.addAttribute("top", "theater");
         return "/board/theater";
     }
+	
+	
 	//영화
 	@RequestMapping("/movie")
     public String getmovie(Model model) {

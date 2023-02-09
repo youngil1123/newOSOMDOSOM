@@ -46,19 +46,7 @@
 
 <header th:replace="top.html :: navigation-bar"></header>
 
- <script>
-    $(document).ready(function(){
-    	$('ul.tabs li').click(function(){
-    		var tab_id = $(this).attr('data-tab');
-    		
-    		$('ul.tabs li').removeClass('current');
-    		$('.tab-content').removeClass('current');
-    		
-    		$(this).addClass('current');
-    		$("#"+tab_id).addClass('current');
-    	});
-    });
-    </script>
+
     
 <div class="mycontainer">
 
@@ -83,18 +71,40 @@
 	</div >	
 
 	<div>
-		<ul class="tabs">
-			<li class="tab-link current" data-tab="fwbook"><img src="/img/jongjinimg/book.png" style="width:30px; height:30px;">  도서</li>
-			<li class="tab-link" data-tab="fwmovie"><img src="/img/jongjinimg/video-player.png" style="width:30px; height:30px;">  영화</li>
-			<li class="tab-link" data-tab="fwtheater"><img src="/img/jongjinimg/stage.png" style="width:30px; height:30px;">  연극</li>
+		<ul class="tabs" th:each="fi : ${fwinfo}">
+			<li class="tab-link" data-tab="fwbook"><a th:href="@{/follower/fwBookBoard(fwNo=${fi.mem_no})}"><img src="/img/jongjinimg/book.png" style="width:30px; height:30px;">  도서</a></li>
+			<li class="tab-link current" data-tab="fwmovie"><a th:href="@{/follower/fwMovieBoard(fwNo=${fi.mem_no})}"><img src="/img/jongjinimg/video-player.png" style="width:30px; height:30px;">  영화</a></li>
+			<li class="tab-link" data-tab="fwtheater"><a th:href="@{/follower/fwTheaterBoard(fwNo=${fi.mem_no})}"><img src="/img/jongjinimg/stage.png" style="width:30px; height:30px;">  연극</a></li>
 		</ul>
 		
 	
-		<section class="section">
-			<div th:include="follower/fwbook" id="fwbook" class="tab-content current"></div>
-			<div th:include="follower/fwmovie" id="fwmovie" class="tab-content"></div>
-			<div th:include="follower/fwtheater" id="fwtheater" class="tab-content"></div>
-		</section>
+		<div class="fwcontent">
+			<table id="table">
+			
+		
+				<tr class="board-list">
+					<td>번호</td>
+					<td>제목</td>
+					<td>등록일</td>
+					<td>별점</td>
+				</tr>
+				<tr class="list" th:each="ml :${movielist}">
+					<td th:text="${ml.board_no}"></td>
+					<td><a th:href="@{/post/fwview.do( board_no=${ml.board_no} )}" th:text="${ml.title}" class="word-cut"></a></td>
+					<td><span th:text="${#dates.format(ml.writedate,'yyyy-MM-dd')}"></span></td>
+					<td th:text="${ml.star_rate}"></td>
+				</tr>
+		
+			
+			</table>
+		
+			<div class="pagingsection">
+				<input type="hidden" id="pagingcnt" th:value="${mvpagingcnt}">
+				<ul th:each="mvnum : ${#numbers.sequence(1,mvpagingcnt)}" style="float:left;">
+					<li th:value="${mvnum}" style=" list-style:none;"><a th:href="@{/follower/fwMovieBoard(fwNo=${fwNo},mvnum=${mvnum})}">[[${mvnum}]]</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 
 </div>
