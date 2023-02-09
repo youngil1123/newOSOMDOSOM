@@ -78,15 +78,27 @@
 <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- Loading main css file -->
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 
 <style>
-.head-info{
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.container {
+	height: 1000px;
+}
+
+.head-info {
 	float: left;
 	width: 100%;
-	height: 50px;
+	height: 40px;
 	background: #ddd;
-	line-height: 50px;
+	line-height: 40px;
 	margin-top: 100px;
 }
 
@@ -97,10 +109,9 @@
 #table {
 	width: 100%;
 	margin-bottom: 50px;
-	
 }
 
-.board-list>td {
+.board-list>th {
 	float: left;
 	width: 15%;
 	height: 40px;
@@ -108,7 +119,6 @@
 	border-bottom: 1px solid #ddd;
 	list-style: none;
 	text-align: center;
-
 }
 
 .list>td {
@@ -119,10 +129,9 @@
 	border-bottom: 1px solid #ddd;
 	list-style: none;
 	text-align: center;
-	
 }
 
-.board-list>td:nth-child(6n+3) {
+.board-list>th:nth-child(6n+3) {
 	width: 35%;
 }
 
@@ -130,7 +139,7 @@
 	width: 35%;
 }
 
-.board-list>td:nth-child(6n+4) {
+.board-list>th:nth-child(6n+4) {
 	width: 20%;
 }
 
@@ -138,56 +147,62 @@
 	width: 20%;
 }
 
+.list>td:first-child {
+	height: 40px;
+	line-height: 40px;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 }
 
-.word-cut{
-	white-space:nowrap;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	width:80px;
+.word-cut {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 80px;
+}
+.pagingdiv li{
+float:left;
 }
 </style>
 
 <script th:inline="javascript">
-
-	$(function(){
+	$(function() {
 		//전체선택을 클릭하면 목록의 체크박스를 선택 또는 해제하는 기능
-		$("#allCheck").click(function(){
+		$("#allCheck").click(function() {
 			//  $("h1").attr("title","연습"); 
 			//  $("#bb").prop("checked", true);//값바꾸기    $("#bb").prop("checked"); //구하기
 			//  $(this) : 이벤트가 발생한 객체
 			$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
 		});
-		
+
 		//선택삭제 버튼 클릭시
-		$("#choDel").on('click',function(){
+		$("#choDel").on('click', function() {
 			//최소 1개이상 선택되어야 삭제하기 위해 이동
 			// <input type="checkbox" name="no" value="17"/><input type="checkbox" name="no" value="16"/>...
 			// each() 객체에 대한 반복문
 			var checkCount = 0;
-			$("input[name=no]").each(function(i, obj){
-				if(obj.checked){ // obj담긴 input태그의 체크정보를 구하여 갯수를 구한다.
+			$("input[name=no]").each(function(i, obj) {
+				if (obj.checked) { // obj담긴 input태그의 체크정보를 구하여 갯수를 구한다.
 					checkCount++;
 				}
 			});
-			
-			if(checkCount>0){
-				if(confirm(checkCount+"개의 글을 삭제하시겠습니까?")){
-					$("#delForm").submit();
+
+			if (checkCount > 0) {
+				if (confirm(checkCount + "개의 글을 삭제하시겠습니까?")) {
+					$.ajax({
+						url:'/post/delete.do',
+						data:{}
+					})
 				}
-			}else{
+			} else {
 				alert("삭제할 레코드 최소 1개이상 선택하세요..");
-			}			
+			}
 		});////
-		
+
 	});
-
-	
-
-
 </script>
 
 </head>
@@ -195,32 +210,52 @@
 
 	<header th:replace="top.html :: navigation-bar"></header>
 	<div class="container">
-	<h1>게시판 목록</h1>
-	<table id="table">
-	<div class="head-info">
-	
-	<form method="post" action="/webMVC/board/boardMultiDel.do" id="delForm">
-		<tr class="board-list">
-			<td><input type="checkbox" id="allCheck">전체선택</td>
-			<td>번호</td>
-			<td>제목</td>
-			<td>등록일</td>
-			<td>별점</td>
-		</tr>
-		<tr class="list" th:each="l :${searchmylist}">
-			<td><input type="checkbox" id="allCheck"></td>
-			<td th:text="${l.board_no}"></td>
-			<td><a th:href="@{/post/view.do( board_no=${l.board_no} )}" th:text="${l.title}" class="word-cut"></a></td>
-			<td><span th:text="${#dates.format(l.writedate,'yyyy-MM-dd')}"></span></td>
-			<td th:text="${l.star_rate}"></td>
-		</tr>
-	</form>
-	
-	<input type="button" value="선택삭제" id="choDel"/>
+		<h1>게시판 목록</h1>
+		<div class="head-info">
+			<table id="table">
+				<thead>
+					<tr class="board-list" style>
+						<th><input type="checkbox" id="allCheck">전체선택</th>
+						<th>번호</th>
+						<th>제목</th>
+						<th>등록일</th>
+						<th>별점</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="list" th:each="l :${searchmylist}">
+						<td><input type="checkbox" id="allCheck"></td>
+						<td th:text="${l.board_no}"></td>
+						<td><a th:href="@{/post/view.do( board_no=${l.board_no} )}"
+							th:text="${l.title}" class="word-cut"></a></td>
+						<td><span
+							th:text="${#dates.format(l.writedate,'yyyy-MM-dd')}"></span></td>
+						<td th:text="${l.star_rate}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<button id="choDel">선택삭제</button>
+			<div class="pagingsection">
+				<ul class="pagingdiv">
+					<li th:if="${p.nowPage != 1}" class="material-symbols-outlined"><a
+						th:href="@{/myboard(nowPage=${p.nowPage}-1)}">arrow_back</a></li>
+				<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
+					<span th:if="${i le p.totalPage}" style="list-style: none;">
+						<li th:if="${i == p.nowPage}" style="background-color: #ddd;">
+							<a th:href="@{/myboard(nowPage=${i})}">[[${i}]]</a>
+					</li>
+						<li th:if="${i != p.nowPage}"><a
+							th:href="@{/myboard(nowPage=${i})}">[[${i}]]</a></li>
+					</span>
+				</span>
+				<!-- nowPage<totalPage -->
+					<li th:if="${p.nowPage lt p.totalPage}" class="material-symbols-outlined"><a
+						th:href="@{/myboard(nowPage=${p.nowPage}+1)}">arrow_forward</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
-	</table>
-	</div>
-	
+
 
 	<footer th:replace="footer.html :: footer"></footer>
 

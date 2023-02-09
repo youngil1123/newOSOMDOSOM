@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.osom.dto.Board;
 import com.osom.dto.Member_tbl;
+import com.osom.dto.Paging;
 import com.osom.service.BoardService;
 import com.osom.service.Member_tblService;
 
@@ -36,7 +37,7 @@ public class BoardController {
 
 		// 내 글 보기
 		@RequestMapping("/myboard")
-		public String searchmylist(Model model,  HttpSession session) throws Exception{
+		public String searchmylist(Model model,  HttpSession session,Paging p) throws Exception{
 			List<Board> list = null;
 			Member_tbl member = new Member_tbl();
 			member = (Member_tbl)session.getAttribute("logincust");
@@ -44,10 +45,18 @@ public class BoardController {
 
 			if(member != null) {
 					int mem_no = member.getMem_no();
-					list = boardservice.searchmylist(mem_no);
+					p.setMem_no(mem_no);
+					p.setTotalRecord(mservice.totalRecord(mem_no));
+					p.setOnePageRecord(10);
+					p.setTotalPage((int) Math.ceil((double) p.getTotalRecord() / 10));
+					p.setStartRecord((p.getNowPage()-1)*p.getOnePageRecord());
+					System.out.println(p);
+					list = mservice.boardPageSelect(p);
+					System.out.println(list);
 			}
 			
 			model.addAttribute("searchmylist", list);
+			model.addAttribute("p", p);
 
 			return "board/myboard";	
 		}
