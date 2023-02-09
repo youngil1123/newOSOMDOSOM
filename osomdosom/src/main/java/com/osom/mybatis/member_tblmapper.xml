@@ -69,6 +69,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		update member_tbl set mem_pwd=#{mem_pwd} where mem_email=#{mem_email} and mem_id=#{mem_id}
 	</update>
 	    
-	 
+	 <update id="logindate" parameterType="Member_tbl">
+	 	update member_tbl set today=#{today} where mem_no=#{mem_no}
+	 </update>
 	 
 </mapper>

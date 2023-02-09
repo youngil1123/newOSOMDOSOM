@@ -27,7 +27,7 @@ public class Member_tbl {
 	private int mem_point;
 	private String mem_img;
 	private String heart;
-
+	private String today;
 	private MultipartFile img;
 	private String myword;
 
@@ -79,6 +79,14 @@ public class Member_tbl {
 		this.mem_id=mem_id;
 		this.mem_pwd=mem_pwd;
 		this.mem_email=mem_email;
+	}
+
+
+	public Member_tbl(Integer mem_no, String today) {
+		super();
+		this.mem_no=mem_no;
+		this.today=today;
+		
 	}
 
 }

@@ -97,7 +97,10 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 		mapper.pwUpdate_M(mem_id, mem_pwd, mem_email);
 	}
 
-
+	public void logindate(int mem_no, String today) {
+		mapper.logindate(mem_no, today);
+	}
+	
 	}
 
 
