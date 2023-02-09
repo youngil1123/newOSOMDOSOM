@@ -46,13 +46,15 @@
 	<header th:replace="top.html :: navigation-bar"></header>
 	
 
-	<div class="reviewcontainer"
-		style="margin-left:400px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
-		<span id="reviewlist" th:each="theaterreviews:${theaterreviews}">
+	<div class="reviewcontainer" style="margin-left:400px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
+		<text id="reviewlist" th:each="theaterreviews:${theaterreviews}">
 			<a th:href="@{/review/theaterreview(mt20id=${theaterreviews.mt20id})}">
 			<img th:src="${theaterreviews.poster}" style="height: 300px; padding:3px;" id="reviewimg"></a> 
-			<!-- <span><a th:text="${review.bookname}"></a></span> -->
-		</span>
+			<text th:each="musical:${theaterreviews}"> [[${musical.prfnm}]]</text>
+			</text>
+			
+		
+	
 	</div>
 	<footer th:replace="footer.html :: footer"></footer>
 </body>

@@ -57,9 +57,9 @@ public class TheaterService implements MyService<String, TheaterInfo>{
 	public List<TheaterInfo> gettheaterreview(String genrenm) throws Exception{
 		return theatermapper.gettheaterreview(genrenm);
 	}
-	public List<TheaterInfo> getonetheaterreview(String mt20id) throws Exception{
+	public List<TheaterInfo> getonetheaterreview(String mt20id, String prfnm) throws Exception{
 		//
-		return theatermapper.getonetheaterreview(mt20id);
+		return theatermapper.getonetheaterreview(mt20id,prfnm);
 	}
 	public int totalRecord(Paging p) throws Exception{
 		// 공연의 리뷰개수 구하기
