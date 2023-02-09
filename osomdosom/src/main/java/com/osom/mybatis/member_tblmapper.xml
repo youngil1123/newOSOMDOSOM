@@ -68,9 +68,22 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id = "pwUpdate_M" parameterType="Member_tbl">
 		update member_tbl set mem_pwd=#{mem_pwd} where mem_email=#{mem_email} and mem_id=#{mem_id}
 	</update>
+<<<<<<< HEAD
 	    
 	 <update id="logindate" parameterType="Member_tbl">
 	 	update member_tbl set today=#{today} where mem_no=#{mem_no}
 	 </update>
+=======
+	<select id="totalRecord" resultType="Integer">
+		select count(*) from board where mem_no =#{mem_no}
+	</select>
+	<select id="boardPageSelect" resultType="Board" parameterType="Paging">
+		select C.* from(select A.* from(select b.board_no,b.title,b.review,b.writedate,b.star_rate
+		from board b inner join member_tbl m using(mem_no) WHERE mem_no=#{mem_no} order by board_no desc) 
+        A LIMIT #{totalRecord}) 
+        C LIMIT #{startRecord},#{onePageRecord}
+	</select>    
+	 
+>>>>>>> branch 'main' of https://github.com/youngil1123/newOSOMDOSOM.git
 	 
 </mapper>

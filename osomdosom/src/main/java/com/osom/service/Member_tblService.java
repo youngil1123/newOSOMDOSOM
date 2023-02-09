@@ -3,12 +3,12 @@ package com.osom.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.osom.dto.Mail;
+import com.osom.dto.Board;
 import com.osom.dto.Member_tbl;
+import com.osom.dto.Paging;
 import com.osom.frame.MyService;
 import com.osom.mapper.BoardMapper;
 import com.osom.mapper.Member_tblMapper;
@@ -96,11 +96,23 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email) throws Exception{
 		mapper.pwUpdate_M(mem_id, mem_pwd, mem_email);
 	}
+<<<<<<< HEAD
 
 	public void logindate(int mem_no, String today) {
 		mapper.logindate(mem_no, today);
 	}
 	
+=======
+	public int totalRecord(int mem_no) throws Exception{
+		//멤버의 리뷰 수
+		return mapper.totalRecord(mem_no);
+	}
+	public List<Board> boardPageSelect(Paging p) throws Exception{
+		//페이징해서 리뷰 가져가기
+		return mapper.boardPageSelect(p);
+	}
+
+>>>>>>> branch 'main' of https://github.com/youngil1123/newOSOMDOSOM.git
 	}
 
 

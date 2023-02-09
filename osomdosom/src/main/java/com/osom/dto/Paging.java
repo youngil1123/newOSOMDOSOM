@@ -16,6 +16,9 @@ public class Paging {
 	private int totalRecord; // 총레코드수
 	private int totalPage; // 총페이지수
 	
+	//내글 페이징을 위한 mem_no
+	private int mem_no;
+	
 	//리뷰 선택을 위한 ======책번호,영화코드,공연코드
 	private int book_no;
 	private String movieCd;
@@ -85,6 +88,10 @@ public class Paging {
 
 	public void setGenrenm(String genrenm) {
 		this.genrenm = genrenm;
+	}
+
+	public void setMem_no(int mem_no) {
+		this.mem_no = mem_no;
 	}
 	
 	
