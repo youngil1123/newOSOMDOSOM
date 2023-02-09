@@ -134,8 +134,9 @@ public class BoardController {
 		}
     	return "review/onereview";
     }
-
-
+    
+    
+   
     }
 
     

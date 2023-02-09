@@ -28,8 +28,25 @@ public class MainController {
 	@Autowired
 	BoardService bservice;
 	
+	
+	
 	@RequestMapping("/")
-    public String main() {
+    public String main(Model model) {
+		
+		List<Member_tbl> members = new ArrayList<Member_tbl>();
+		try {
+			List<Integer> list = bservice.totalreview();
+			for(int i: list) {
+				Member_tbl member = null;
+				member = mservice.selectbyno(i);
+				members.add(member);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("members", members);
+		
         return "index";
     }
 	
@@ -62,6 +79,18 @@ public class MainController {
 	      
 		try {
 			member = mservice.get(mem_id);
+
+			if (member != null) {
+				String key = "osomdosompasswd0077";
+				String decryptpwd = CryptoUtil.decryptAES256(member.getMem_pwd(), key);
+				
+			if(decryptpwd.equals(mem_pwd)) {
+					// 성공시에만 이걸로 바뀜. 디폴트는 로그인 fail.
+					session.setAttribute("logincust", member);
+					return "redirect:/";
+				}
+			}
+
 			  String mtoday= member.getToday();
 			  	if(mtoday==null) { 
 				  		System.out.println("member.getToday()"+mtoday);
@@ -100,6 +129,7 @@ public class MainController {
 							}
 						}
 			  	}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -110,7 +140,7 @@ public class MainController {
 	public String logout(HttpSession session, Model model) {
 		session.invalidate();
 		model.addAttribute("session", session);
-		return "index";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/register")

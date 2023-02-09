@@ -72,4 +72,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="recentreview" resultType="Board">
 		select b.board_no,m.nickname, b.title, b.writedate, b.con_no from board b inner join member_tbl m using(mem_no) order by board_no desc LIMIT 5;
 	</select>
+	<select id="totalreview" resultType="Integer">
+		select mem_no from board group by mem_no order by count(mem_no) desc LIMIT 4  
+	</select>
 </mapper>
