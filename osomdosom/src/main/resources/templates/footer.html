@@ -2,31 +2,50 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Doit Book</title>
+<link rel="icon" href="/img/stack-of-books.png">
 
 </head>
 <body>
-<!-- ======= Footer ======= -->
-	<footer id="footer" class="footer">
+	<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script>
-$(document).ready(function(){
-	$.ajax({
-		url:'/recentreview',
-		dataType:'JSON',
-		success:function(list){
-			console.log(list);
-			$(list).each(function(idx,board){
-				$('.footerreview').append('<li><a href="/recentreviewone?board_no='+board.board_no+'" class="d-flex align-items-center"><div><div class="post-meta d-block"><span class="date">'
-						+ board.nickname + '</span> <span class="mx-1">&bullet;</span><span>' + moment(board.writedate).format("YYYY-MM-DD")
-						+ '</span></div><span>' + board.title + '</span></div></a></li>');
-			});
-		},error:function(a,b,c){
-			console.log(a,b,c);
-		}
-			
-	});
-});
+	$(document).ready(function() {
+		$.ajax({url : '/recentreview',	
+				dataType : 'JSON',							
+				success : function(list) {							
+					console.log(list);
+					$(list).each(function(idx,board) {
+						$('.footerreview').append(		
+							'<li><a href="/recentreviewone?board_no='										
+							+ board.board_no	
+							+ '" class="d-flex align-items-center"><div><div class="post-meta d-block"><span class="date">'
+							+ board.nickname
+							+ '</span> <span class="mx-1">&bullet;</span><span>'
+							+ moment(
+									board.writedate)
+									.format(
+											"YYYY-MM-DD")
+							+ '</span></div><span>'
+							+ board.title
+							+ '</span></div></a></li>');														
+																							
+						});																	
+						},								
+						error : function(a, b, c) {
+							console.log(a, b, c);
+						}
+
+					});
+		});												
+																
+								
+</script>
+<script>
+function chkwrite() {
+	alert("로그인하세욥!");
+			}
 </script>
 		<div class="footer-content">
 			<div class="container">
@@ -44,14 +63,27 @@ $(document).ready(function(){
 						<h3 class="footer-heading">안내</h3>
 						<ul class="footer-links list-unstyled">
 							<li><a th:href="@{/}"><i class="bi bi-chevron-right"></i>홈</a></li>
-							<li><a th:href="@{/mediamain}"><i class="bi bi-chevron-right"></i>미디어</a></li>
-							<li><a href="category.html"><i
+							<li><a th:href="@{/mediamain}"><i
+									class="bi bi-chevron-right"></i>미디어</a></li>
+							<li><a th:href="@{/mbtimain}"><i
 									class="bi bi-chevron-right"></i>MBTI</a></li>
-							<li><a th:href="@{/follower}"><i
-									class="bi bi-chevron-right"></i>팔로워</a></li>
-							<li><a href="about.html"><i class="bi bi-chevron-right"></i>포인트상점</a></li>
-							<li><a href="contact.html"><i
-									class="bi bi-chevron-right"></i>내 글</a></li>
+
+							<li th:if="${session.logincust == null}"><a
+								th:href="@{/login}" class="bi bi-chevron-right"
+								onClick='chkwrite();'>팔로워</a></li>
+							<li th:if="${session.logincust != null}"><a
+								th:href="@{/follower}" class="bi bi-chevron-right">팔로워</a></li>
+
+							<li th:if="${session.logincust == null}"><a
+								th:href="@{/login}" class="bi bi-chevron-right"
+								onClick='chkwrite();'>포인트상점</a></li>
+							<li th:if="${session.logincust != null}"><a
+								th:href="@{/pointshop}" class="bi bi-chevron-right">포인트상점</a></li>
+							<li th:if="${session.logincust == null}"><a
+								th:href="@{/login}" class="bi bi-chevron-right"
+								onClick='chkwrite();'>내글</a></li>
+							<li th:if="${session.logincust != null}"><a
+								th:href="@{/myboard}" class="bi bi-chevron-right">내글</a></li>
 						</ul>
 					</div>
 					<div class="col-6 col-lg-2">
@@ -59,8 +91,8 @@ $(document).ready(function(){
 						<ul class="footer-links list-unstyled">
 							<li><a th:href="@{/movie}"><i
 									class="bi bi-chevron-right"></i> 영화</a></li>
-							<li><a th:href="@{/book}"><i
-									class="bi bi-chevron-right"></i> 도서</a></li>
+							<li><a th:href="@{/book}"><i class="bi bi-chevron-right"></i>
+									도서</a></li>
 							<li><a th:href="@{/musical}"><i
 									class="bi bi-chevron-right"></i> 뮤지컬</a></li>
 							<li><a th:href="@{/theater}"><i
@@ -72,8 +104,9 @@ $(document).ready(function(){
 					<div class="col-lg-4">
 						<h3 class="footer-heading">최신글</h3>
 
-						<ul class="footer-links footer-blog-entry list-unstyled footerreview">
-							
+						<ul
+							class="footer-links footer-blog-entry list-unstyled footerreview">
+
 						</ul>
 
 					</div>
@@ -119,6 +152,6 @@ $(document).ready(function(){
 
 	</footer>
 
-	
+
 </body>
 </html>

@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     
     <!-- 회원가입 -->
 	<insert id="insert" parameterType="Member_tbl">
-		INSERT INTO member_tbl (mem_name, mem_id, mem_pwd, mem_email, mbti, nickname) 
-		VALUES (#{mem_name},#{mem_id},#{mem_pwd},#{mem_email},#{mbti},#{nickname})
+		INSERT INTO member_tbl (mem_name, mem_id, mem_pwd, mem_email, mbti, nickname,mem_img) 
+		VALUES (#{mem_name},#{mem_id},#{mem_pwd},#{mem_email},#{mbti},#{nickname},#{mem_img})
 	</insert>
 
 	<!-- 로그인 -->
@@ -19,7 +19,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectbyno" parameterType="Integer" resultType="Member_tbl">
 		select * from member_tbl where mem_no=#{mem_no}
 	</select>
-
 
 	<update id="update">
 		
@@ -68,7 +67,6 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<update id = "pwUpdate_M" parameterType="Member_tbl">
 		update member_tbl set mem_pwd=#{mem_pwd} where mem_email=#{mem_email} and mem_id=#{mem_id}
 	</update>
-
 	    
 	 <update id="logindate" parameterType="Member_tbl">
 	 	update member_tbl set today=#{today} where mem_no=#{mem_no}
@@ -83,7 +81,5 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         A LIMIT #{totalRecord}) 
         C LIMIT #{startRecord},#{onePageRecord}
 	</select>    
-	 
 
-	 
 </mapper>

@@ -2,6 +2,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<title>Doit Book</title>
+<link rel="icon" href="/img/stack-of-books.png">
 <link href="/img/favicon.png" rel="icon">
 <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -73,6 +75,8 @@
 	});
 	
 	
+	
+	
 	function press(){
 		if(window.event.keyCode == 13){
 			formname.submit();
@@ -85,6 +89,7 @@
 		var nickname=joinForm.nickname.value; 
 		var pwchk=document.getElementById('pwchk').value;
 		var idchk=document.getElementById('idchk').value;
+		var emailchk=document.getElementById('emailchk').value;
 	
 		
 
@@ -114,7 +119,10 @@
 	    } else if(idchk=="no"){
 	    	  alert("아이디중복체크를 해주세요")
 	    	  return false;
-	    } 
+	    } else if(emailchk=="no"){
+	    	  alert("중복된 이메일이 있습니다.")
+	    	  return false;
+	    }
 		
 			alert("회원가입이 완료되었습니다.");
  			return true;
@@ -272,7 +280,9 @@
 	 <input type="hidden" id="pwchk" value="no">
 	 <input type="hidden" id="idchk" value="no">
 	 <input type="hidden" id="mbtichk" value="no">
-        <button type="submit" id="joinbtn" >Sign Up</button> 
+	
+    	 
+         <button type="submit" id="joinbtn" >Sign Up</button> 
    
     </form>  
   </div>

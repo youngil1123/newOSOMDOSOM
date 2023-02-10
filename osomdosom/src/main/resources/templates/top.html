@@ -85,8 +85,11 @@
 					<div th:if ="${session.logincust != null}"> 
 						<li><a th:href="@{/myboard}">내 글</a></li>			
 					</div>
-				
 					
+					<div th:if="${session.logincust != null}">
+						<li><a th:href="@{/newboardwrite}">새글작성</a></li>
+					</div>
+
 					<div th:if="${session.logincust != null}">
 						<li><a th:href="@{/mypage}">마이페이지</a></li>
 					</div>

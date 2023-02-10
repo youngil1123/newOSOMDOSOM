@@ -54,7 +54,7 @@ public class DasomAjaxController {
   			return cnt;
   			
   		}
-
+ 
     
     
 	// 로그인이 되어있어야 팔로워 페이지로 이동, 아닐경우 로그인 페이지로 이동
