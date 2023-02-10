@@ -128,7 +128,6 @@
 					data:{"con_no":$('#con_no').val(),"mem_no":$('#loginid').val()},
 					url:'/review/likeadd',
 					success:function(){
-						alert(data);
 						if (data == 1) {
 							alert("찜목록에 추가되었습니다");
 							document.location.reload();
@@ -186,6 +185,7 @@
 										<a href="#" class="material-symbols-rounded likeadd">heart_plus</a>
 									</span></li>
 								<li th:if="${logincust==null}" style="font-size:15px;color:red">이 컨텐츠를 찜하시려면 <u>로그인</u> 해주세요.</li>
+								<li>평균 평점 : [[${star_rate}]]</li>
 							</ul>
 						</div>
 					</div>

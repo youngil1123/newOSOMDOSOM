@@ -73,12 +73,8 @@ public class JongjinController {
 	}
 
 	@RequestMapping("/addFollower")
-    public String addFollower(Model model,  @RequestParam(value = "mem_id", defaultValue = "null")String mem_id) {
-		
-		
-		
-		
-		
+    public String addFollower() {
+
         return "follower/addFollower";
     }
 	

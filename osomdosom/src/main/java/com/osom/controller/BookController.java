@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.osom.dto.Board;
 import com.osom.dto.BookInfo;
 import com.osom.dto.Like_list;
 import com.osom.dto.Member_tbl;
@@ -30,21 +31,24 @@ public class BookController {
 	LikeService likeservice;
 
 	@RequestMapping("/review/bookreview")
-	public String bookreview(int book_no, Model model, Paging p, HttpSession session) {
+	public String bookreview(int book_no, Board con_no, Model model, Paging p, HttpSession session) {
 		// 책 하나 리뷰 보는 페이지로 이동(책 정보 + 리뷰정보를 가지고)
 		//
 		BookInfo book = null;
+		Double star_rate =null;
 		List<BookInfo> bookreview = new ArrayList<BookInfo>();
 		Member_tbl m = (Member_tbl) session.getAttribute("logincust");
 		int result = 0;
 		Like_list l = new Like_list();
 		try {
 			book = bookservice.get(book_no);
+			star_rate = boardservice.getavgstar_rate(book.getCon_no());
 			p.setTotalRecord(bookservice.totalrecord(book_no));
 			p.setBook_no(book_no);
 			p.setStartRecord((p.getNowPage() - 1) * p.getOnePageRecord());
 			System.out.println(book);
 			System.out.println(p);
+			System.out.println(star_rate);
 			bookreview = bookservice.boardPageSelect(p);
 			// 찜 상태 체크..
 			l.setCon_no(book.getCon_no());
@@ -69,6 +73,7 @@ public class BookController {
 		}
 		model.addAttribute("book", book);
 		model.addAttribute("bookreview", bookreview);
+		model.addAttribute("star_rate",star_rate);
 		model.addAttribute("p", p);
 		model.addAttribute("logincust", session.getAttribute("logincust"));
 
