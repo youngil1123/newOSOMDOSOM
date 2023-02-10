@@ -128,7 +128,6 @@
 					data:{"con_no":$('#con_no').val(),"mem_no":$('#loginid').val()},
 					url:'/review/likeadd',
 					success:function(){
-						alert(data);
 						if (data == 1) {
 							alert("찜목록에 추가되었습니다");
 							document.location.reload();
