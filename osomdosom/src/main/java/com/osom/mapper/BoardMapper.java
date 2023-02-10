@@ -28,7 +28,7 @@ public interface BoardMapper extends MyMapper<Integer,Board>{
 	public int theatercnt(Integer mem_no);
 	
 	
-	public Double getavgstar_rate(Board con_no); 
+	public Double getavgstar_rate(int i); 
 	public List<Board> recentreview();
 	public List<Integer> totalreview();
 	

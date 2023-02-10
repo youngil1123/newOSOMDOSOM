@@ -90,8 +90,8 @@ public class BoardService implements MyService<Integer, Board>{
 		return mapper.theatercnt(mem_no);
 	}
 
-	public Double getavgstar_rate (Board con_no) throws Exception{
-		return mapper.getavgstar_rate(con_no);
+	public Double getavgstar_rate (int i) throws Exception{
+		return mapper.getavgstar_rate(i);
 		
 	}
 	public List<Board> recentreview() throws Exception{
@@ -100,6 +100,8 @@ public class BoardService implements MyService<Integer, Board>{
 	public List<Integer> totalreview() throws Exception{
 		return mapper.totalreview();
 	}
+
+
 	
 }
 

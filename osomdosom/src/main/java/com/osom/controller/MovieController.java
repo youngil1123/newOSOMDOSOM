@@ -34,12 +34,14 @@ public class MovieController {
 		
 		MovieInfo movie= null;
 		Board con_no = null;
+		Double star_rate =null;
 		List<MovieInfo> moviereview = new ArrayList<MovieInfo>();
 		Member_tbl m = (Member_tbl)session.getAttribute("logincust");
 		int result = 0;
 		Like_list l = new Like_list();
 		try {
 			movie = movieservice.get(movieCd);
+			star_rate = boardservice.getavgstar_rate(movie.getCon_no());
 			p.setTotalRecord(movieservice.totalRecord(movieCd));
 			p.setMovieCd(movieCd);
 			p.setStartRecord((p.getNowPage()-1)*p.getOnePageRecord());
@@ -47,7 +49,6 @@ public class MovieController {
 			System.out.println(p);
 			moviereview = movieservice.boardPageSelect(p);
 
-			boardservice.getavgstar_rate(con_no);
 
 			//찜 상태 체크..
 			l.setCon_no(movie.getCon_no());
@@ -69,6 +70,7 @@ public class MovieController {
 		}
 		model.addAttribute("movie", movie);
 		model.addAttribute("moviereview", moviereview);
+		model.addAttribute("star_rate",star_rate);
 		model.addAttribute("p", p);
 
 		model.addAttribute("con_no",con_no);

@@ -65,7 +65,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		UPDATE board SET title = #{title}, review = #{review}, partner = #{partner}, secret_memo = #{secret_memo}, star_rate = #{star_rate} WHERE board_no = #{board_no}
    
 	</update>
-	<select id="getavgstar_rate" resultType="double">
+	<select id="getavgstar_rate" resultType="double" parameterType="Integer">
 		select avg(star_rate) from board where con_no = #{con_no}
 	</select>
 	<!-- recent review(footer에 띄워줄 정보) -->

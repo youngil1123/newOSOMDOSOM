@@ -45,16 +45,36 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
+<style>
+.reviewcontainer {
+	margin-left: 1%;
+	height:100%;
+	width:1900px;
+	border: 1px solid black;
+}
+
+.reviewcontainer img {
+	text-align: center;
+	margin-left:1%;
+	overflow:hidden;
+	border: 1px solid blue;
+}
+
+p{
+	text-align: left;
+}
+
+</style>
 <body>
 	<header th:replace="top.html :: navigation-bar"></header>
 	
 
 	<div class="reviewcontainer" style="margin-left:400px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
-		<text id="reviewlist" th:each="theaterreviews:${theaterreviews}">
+		<span id="reviewlist" th:each="theaterreviews:${theaterreviews}">
 			<a th:href="@{/review/theaterreview(mt20id=${theaterreviews.mt20id})}">
-			<img th:src="${theaterreviews.poster}" style="height: 300px; padding:3px;" id="reviewimg"></a> 
-			<text th:each="musical:${theaterreviews}"> [[${musical.prfnm}]]</text>
-			</text>
+			<img th:src="${theaterreviews.poster}" style="height: 300px; padding:3px;" id="reviewimg"></a>
+			<p th:each="musical:${theaterreviews}"> [[${musical.prfnm}]]</p>
+			</span>
 			
 		
 	

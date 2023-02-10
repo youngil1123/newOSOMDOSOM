@@ -32,12 +32,14 @@ public class TheaterController {
 	public String theaterreview(String mt20id, String prfnm, Model model ,Paging p ,HttpSession session) {
 		//뮤지컬 하나 리뷰 보는 페이지로 이동(뮤지컬 정보 + 리뷰정보를 가지고)
 		TheaterInfo theater = null;
+		Double star_rate =null;
 		List<TheaterInfo> theaterreview = new ArrayList<TheaterInfo>();
 		Member_tbl m = (Member_tbl)session.getAttribute("logincust");
 		int result = 0;
 		Like_list l = new Like_list();
 		try {
 			theater = theaterservice.get(mt20id);
+			star_rate = boardservice.getavgstar_rate(theater.getCon_no());
 			p.setMt20id(mt20id);
 			p.setGenrenm("연극");
 			p.setTotalRecord(theaterservice.totalRecord(p));
@@ -63,6 +65,7 @@ public class TheaterController {
 		}
 		model.addAttribute("theater", theater);
 		model.addAttribute("theaterreview", theaterreview);
+		model.addAttribute("star_rate",star_rate);
 		model.addAttribute("p", p);
 		model.addAttribute("logincust", session.getAttribute("logincust"));
 		return "review/theaterreview";
@@ -73,12 +76,15 @@ public class TheaterController {
 	public String musicalreview(String mt20id,String prfnm, Model model,Paging p,HttpSession session) {
 		//뮤지컬 하나 리뷰 보는 페이지로 이동(뮤지컬 정보 + 리뷰정보를 가지고)
 		TheaterInfo theater = null;
+		Double star_rate =null;
 		List<TheaterInfo> theaterreview = new ArrayList<TheaterInfo>();
 		Member_tbl m = (Member_tbl)session.getAttribute("logincust");
 		int result = 0;
+		
 		Like_list l = new Like_list();
 		try {
 			theater = theaterservice.get(mt20id);
+			star_rate = boardservice.getavgstar_rate(theater.getCon_no());
 			p.setMt20id(mt20id);
 			p.setGenrenm("뮤지컬");
 			p.setTotalRecord(theaterservice.totalRecord(p));
@@ -104,6 +110,7 @@ public class TheaterController {
 		}
 		model.addAttribute("theater", theater);
 		model.addAttribute("theaterreview", theaterreview);
+		model.addAttribute("star_rate",star_rate);
 		model.addAttribute("p", p);
 		model.addAttribute("logincust", session.getAttribute("logincust"));
 		
