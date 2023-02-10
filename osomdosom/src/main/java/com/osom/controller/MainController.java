@@ -106,7 +106,7 @@ public class MainController {
 								mservice.logindate(member.getMem_no(),today);
 								return "loginOk";
 							}
-							return "index";
+							return "redirect:/";
 						}
 					}
 			  	}else {
@@ -125,7 +125,7 @@ public class MainController {
 									mservice.logindate(member.getMem_no(),mtoday);
 									return "loginOk";
 								}
-								return "index";
+								return "redirect:/";
 							}
 						}
 			  	}
