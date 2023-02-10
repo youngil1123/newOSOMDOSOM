@@ -61,9 +61,11 @@
 .material-symbols-rounded {
 	font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 200, 'opsz' 72
 }
-#reviewtable{
-	width:1100px;
+
+#reviewtable {
+	width: 1100px;
 }
+
 .reviewlist>th {
 	width: 15%;
 	height: 40px;
@@ -79,9 +81,11 @@
 	border-bottom: 1px solid #ddd;
 	text-align: center;
 }
-.review>th:nth-child(2),td:nth-child(2){
-	width:40%;
+
+.review>th:nth-child(2), td:nth-child(2) {
+	width: 40%;
 }
+
 .container {
 	margin-top: 120px;
 }
@@ -101,43 +105,47 @@
 </style>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
-	$(document).ready(function(){
-		$(".likeremove").click(function(){
-			if(confirm("찜목록에서 삭제하시겠습니까?")){
+	$(document).ready(function() {
+		$(".likeremove").click(function() {
+			if (confirm("찜목록에서 삭제하시겠습니까?")) {
 				$.ajax({
-					data:{"con_no":$('#con_no').val(),"mem_no":$('#loginid').val()},
-					url:'/review/likeremove',
-					success:function(){
+					data : {
+						"con_no" : $('#con_no').val(),
+						"mem_no" : $('#loginid').val()
+					},
+					url : '/review/likeremove',
+					success : function() {
 						alert("찜목록에서 삭제되었습니다.");
 						document.location.reload();
 					}
-					
+
 				});
-			}else{
+			} else {
 				return false;
 			}
-			
-				
+
 		});
-		$(".likeadd").click(function(){
-			if(confirm("찜목록에 추가하시겠습니까?")){
+		$(".likeadd").click(function() {
+			if (confirm("찜목록에 추가하시겠습니까?")) {
 				$.ajax({
-					data:{"con_no":$('#con_no').val(),"mem_no":$('#loginid').val()},
-					url:'/review/likeadd',
+					data : {
+						"con_no" : $('#con_no').val(),
+						"mem_no" : $('#loginid').val()
+					},
+					url : '/review/likeadd',
 					success : function(data) {
+						alert(data);
 						if (data == 1) {
 							alert("찜목록에 추가되었습니다");
-						} else
-							(data == 0)
-						{
-							alert("찜 목록에는 15개 이하만 넣을 수 있습니다");
+							document.location.reload();
+						} else {
+							alert("찜 목록 추가에 실패하였습니다 찜 목록에는 15개 이하만 넣을 수 있습니다");
+							document.location.reload();
 						}
-						document.location.reload();
-
 					}
-					
+
 				});
-			}else{
+			} else {
 				return false;
 			}
 		});
@@ -162,7 +170,8 @@
 					<div class="row">
 						<div class="col-md-4">
 							<figure class="movie-poster">
-								<img th:src="${movie.movieposter}" onerror="this.onerror=null; this.src='/img/Noimg.jpg';"
+								<img th:src="${movie.movieposter}"
+									onerror="this.onerror=null; this.src='/img/Noimg.jpg';"
 									style="width: 100%; height: 100%;">
 							</figure>
 						</div>
@@ -175,16 +184,20 @@
 								<li>러닝타임 :[[${movie.showTm}]]분</li>
 
 								<!-- 로그인되어있으면 찜상태 확인. 1)찜이 안되어 있으면 찜아이콘 보여주기 . 2) 찜 되어있으면 찜 목록에서 삭제 아이콘 보여주기 -->
-								<li th:if="${logincust!=null}">
-									<input type="hidden" id="loginid" th:value="${logincust.mem_no}">
-									<input type="hidden" id="con_no" th:value="${movie.con_no}">
-									<span th:if="${likestate==1}" style="font-size:15px;"><b>찜한 컨텐츠 입니다</b>. 삭제하시려면 오른쪽 아이콘을 클릭하세요.
-										<a href="#" class="material-symbols-rounded likeremove">heart_minus</a>
-									</span>
-									<span th:if="${likestate==0}" style="font-size:15px;">이 컨텐츠를 찜목록에 저장하려면 오른쪽 아이콘을 클릭하세요.
-										<a href="#" class="material-symbols-rounded likeadd">heart_plus</a>
-									</span></li>
-								<li th:if="${logincust==null}" style="font-size:15px;color:red">이 컨텐츠를 찜하시려면 <u>로그인</u> 해주세요.</li>
+								<li th:if="${logincust!=null}"><input type="hidden"
+									id="loginid" th:value="${logincust.mem_no}"> <input
+									type="hidden" id="con_no" th:value="${movie.con_no}"> <span
+									th:if="${likestate==1}" style="font-size: 15px;"><b>찜한
+											컨텐츠 입니다</b>. 삭제하시려면 오른쪽 아이콘을 클릭하세요. <a href="#"
+										class="material-symbols-rounded likeremove">heart_minus</a> </span> <span
+									th:if="${likestate==0}" style="font-size: 15px;">이 컨텐츠를
+										찜목록에 저장하려면 오른쪽 아이콘을 클릭하세요. <a href="#"
+										class="material-symbols-rounded likeadd">heart_plus</a>
+								</span></li>
+								<li th:if="${logincust==null}"
+									style="font-size: 15px; color: red">이 컨텐츠를 찜하시려면 <u>로그인</u>
+									해주세요.
+								</li>
 
 							</ul>
 						</div>
@@ -192,15 +205,14 @@
 					<!-- .row -->
 
 
-				
-						<!-- .container -->
+
+					<!-- .container -->
 
 				</div>
 
 				<div th:include="review/moviereviewpaging" id="onereviewpaging"></div>
 			</div>
 			<!-- .container -->
-
 	</main>
 	<footer th:replace="footer.html :: footer"></footer>
 	</div>

@@ -128,14 +128,14 @@
 					data:{"con_no":$('#con_no').val(),"mem_no":$('#loginid').val()},
 					url:'/review/likeadd',
 					success:function(){
+						alert(data);
 						if (data == 1) {
 							alert("찜목록에 추가되었습니다");
-						} else
-							(data == 0)
-						{
-							alert("찜 목록에는 15개 이하만 넣을 수 있습니다");
+							document.location.reload();
+						} else{
+							alert("찜 목록 추가에 실패하였습니다 찜 목록에는 15개 이하만 넣을 수 있습니다");
+							document.location.reload();
 						}
-						document.location.reload();
 					}
 					
 				});
