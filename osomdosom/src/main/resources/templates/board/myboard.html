@@ -223,7 +223,7 @@ float:left;
 				</thead>
 				<tbody>
 					<tr class="list" th:each="l :${searchmylist}">
-						<td><input type="checkbox" id="allCheck"></td>
+						<td><input type="checkbox" id="eachCheck"></td>
 						<td th:text="${l.board_no}"></td>
 						<td><a th:href="@{/post/view.do( board_no=${l.board_no} )}"
 							th:text="${l.title}" class="word-cut"></a></td>
@@ -233,6 +233,7 @@ float:left;
 					</tr>
 				</tbody>
 			</table>
+			<!-- 여기 아래는 paging -->
 			<button id="choDel">선택삭제</button>
 			<div class="pagingsection">
 				<ul class="pagingdiv">
