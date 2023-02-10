@@ -52,6 +52,32 @@
 	transform: scale(1.4);
 }
 
+.jb-a {
+  width: 400px;
+  margin: 0px auto;
+  position: relative;
+  z-index:1;
+}
+.jb-c {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.jb-c {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: none;
+}
+.jb-a:hover .jb-c {
+  display: block;
+}
+
+.section-title{
+	position:relative;
+	z-index:2;
+}
  #favorite__icon{fill:#E54C3B;visibility:hidden;}
 #favorite__rect{fill:#E54C3B;}
   #favorite__text{fill:#FFFFFF;font-size:20px;}
@@ -119,29 +145,41 @@
         <div class="container-fluid">
         <div class="row gy-4 justify-content-center">
           <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+            <div class="gallery-item h-100 jb-a">
+             <a th:href="@{/movie}"> 
+             <img src="/img/movie.png" class="img-fluid  jb-b" alt="" style="width:300px; height:400px;">
+             <img src="/img/movie2.png" class="img-fluid  jb-c" alt="" style="width:300px; height:400px;">
               </a>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
+          
+           <div class="col-xl-3 col-lg-4 col-md-6 jb-a">
             <div class="gallery-item h-100">
-             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              <a th:href="@{/musical}">
+              <img src="/img/musical.png" class="img-fluid jb-b" alt="" style="width:300px; height:400px;">
+              <img src="/img/musical2.png" class="img-fluid  jb-c" alt="" style="width:300px; height:400px;">
+             </a>
+            </div>
+          </div>
+          
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="gallery-item h-100 jb-a">
+             <a th:href="@{/book}"> 
+             <img src="/img/book.png" class="img-fluid jb-b" alt="" style="width:300px; height:400px;">
+             <img src="/img/book2.png" class="img-fluid jb-c" alt="" style="width:300px; height:400px;">
               </a>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
+          
+          <div class="col-xl-3 col-lg-4 col-md-6 jb-a">
             <div class="gallery-item h-100">
-              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
+              <a th:href="@{/theater}">
+              <img src="/img/theater.png" class="img-fluid jb-b" alt="" style="width:300px; height:400px;">
+              <img src="/img/theater2.png" class="img-fluid  jb-c" alt="" style="width:300px; height:400px;">
              </a>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
+         
           
           </div>
          </div>
