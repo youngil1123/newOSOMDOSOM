@@ -61,12 +61,23 @@
 <script type="text/javascript" src="/js/isotope.pkgd.js"></script>
 
 
+   
+    
 
 
 <script>
 	 function chkwrite(){
 		alert("로그인하세욥!");
 	}
+	 
+	 function chkadd(){
+		
+	alert("팔로우를 하였습니다.");
+	
+	
+	return true;
+};
+	 
 	</script>
 </head>
 
@@ -151,6 +162,7 @@
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100"  style="width:200%; height:250px;">
               <div class="pic"><img th:src=" '/img/jongjinimg/follower/'+${m.mem_img}" style="height:180px; width:130px;" class="img-fluid" alt=""></div>
               <div class="member-info">
+              <input type="hidden" id="best" th:value="${m.mem_id}"> 
                 <h4>[[${m.nickname}]]</h4> 
                 <p>[[${m.myword}]]</p>
                  <div class="follower">
@@ -160,8 +172,9 @@
             </div>
             
             <div th:if="${session.logincust != null}">
-						<a th:href="@{follower/addFollower}">
-						<img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
+						<a th:href="@{/follower/addbest(fwid=${m.mem_id})}" onClick='chkadd();' id="heart">
+						<img src="img/jongjinimg/follower/heart.png" style="width:30px;">
+						</a>
 					</div> 
 					
                 </div>

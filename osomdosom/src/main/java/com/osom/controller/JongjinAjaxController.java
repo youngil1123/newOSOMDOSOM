@@ -82,6 +82,40 @@ public class JongjinAjaxController {
 		}
 
 	}
+	
+	@RequestMapping("/addbest")
+	public ModelAndView addbest(String fwid, HttpServletRequest request) throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+		
+		Friendship friendship = new Friendship();
+
+		HttpSession session = request.getSession();
+		Member_tbl member = (Member_tbl) session.getAttribute("logincust");
+
+		int myid_no = mservice.findmem_no(member.getMem_id());
+		int fwid_no = mservice.findmem_no(fwid);
+
+		friendship.setMem_no(myid_no);
+		friendship.setMem_no2(fwid_no);
+
+		Integer chk = fservice.get(friendship);
+		if (chk == null) {
+			if (myid_no == fwid_no) {
+				mv.setViewName("/follower/deleteFollower");
+				return mv;
+			} else {
+				fservice.register(friendship);
+				mv.setViewName("/follower/deleteFollower");
+				return mv;
+			}
+		} else {
+			mv.setViewName("/follower/deleteFollower");
+			return mv;
+		}
+
+	}
+
 
 	@RequestMapping("/DeleteFw")
 	public ModelAndView DeleteFw(String dfwid, HttpServletRequest request) throws Exception {
