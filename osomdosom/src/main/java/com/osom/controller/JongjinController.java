@@ -1,6 +1,5 @@
 package com.osom.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.osom.dto.Board;
 import com.osom.dto.Friendship;
 import com.osom.dto.Member_tbl;
-
-import com.osom.dto.Paging;
 import com.osom.service.BoardService;
 import com.osom.service.FriendshipService;
 import com.osom.service.Member_tblService;
@@ -75,7 +73,12 @@ public class JongjinController {
 	}
 
 	@RequestMapping("/addFollower")
-    public String addFollower() {
+    public String addFollower(Model model,  @RequestParam(value = "mem_id", defaultValue = "null")String mem_id) {
+		
+		
+		
+		
+		
         return "follower/addFollower";
     }
 	

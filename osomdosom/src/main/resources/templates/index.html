@@ -156,13 +156,12 @@
                  <div class="follower">
                   <div th:if ="${session.logincust == null}"> 
             <a th:href="@{/login}" onClick='chkwrite();'>
-            <img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
-            		
+            <img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>           		
             </div>
+            
             <div th:if="${session.logincust != null}">
 						<a th:href="@{follower/addFollower}">
 						<img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>
-						
 					</div> 
 					
                 </div>
