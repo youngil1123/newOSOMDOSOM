@@ -2671,7 +2671,8 @@ section {
     font-style: normal;
 }
 
-.header {
+.top1 {
+	
   height: 90px;
   transition: all 0.5s;
   z-index: 997;
@@ -2680,17 +2681,17 @@ section {
   font-size:20px;
 }
 
-.header.sticked {
+.top1.sticked {
   height: 70px;
 }
 
-.header .logo img {
+.top1 .logo img {
   max-height: 40px;
   margin-right: 6px;
 
 }
 
-.header .logo h1 {
+.top1 .logo h1 {
   font-size: 30px;
   font-weight: 700;
   color: var(--color-default);
