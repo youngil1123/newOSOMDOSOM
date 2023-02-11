@@ -48,7 +48,7 @@
 	<header th:replace="top.html :: navigation-bar"></header>
 
 	<div class="reviewcontainer"
-		style="margin-left:300px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
+		style="margin-left:350px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
 		<span id="reviewlist" th:each="bookreview:${bookreviews}"> 
 		<a th:href="@{/review/bookreview(book_no=${bookreview.book_no})}">
 		<img th:src="${bookreview.bookImageURL}" style="height: 300px; width:200px; padding:3px;" id="reviewimg"></a>

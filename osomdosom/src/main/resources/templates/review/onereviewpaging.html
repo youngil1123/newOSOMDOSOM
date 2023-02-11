@@ -17,6 +17,14 @@
   'GRAD' 0,
   'opsz' 48
 }
+
+span{
+overflow: hidden; 
+text-overflow: ellipsis; 
+white-space: nowrap;
+
+}
+
 </style>
 
 <div class="entry-content">
@@ -35,9 +43,7 @@
 			<!-- CONTENTS !-->
 			<tr th:each="s: ${bookreview}" class="review">
 				<td><span th:text="${s.title}"></span></td>
-				<td><a href="#"> <span th:text="${s.review}"
-						style="font-size: 0.8em;"></span>
-				</a></td>
+				<td><a href="#"><span style="font-size: 0.8em;" th:text="${s.review}" ></span></a></td>
 				<td><span th:text="${s.nickname}"></span></td>
 				<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
 				<td><span th:text="${s.star_rate}"></span></td>
