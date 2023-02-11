@@ -9,4 +9,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
    <select id="countmember" resultType="Integer">
    		SELECT COUNT(*) FROM member_tbl
    </select>
+   
+	<update id="banned" parameterType="Member_tbl">
+		UPDATE member_tbl SET ban =#{ban} WHERE mem_no=#{mem_no}
+	</update>
+	
+	<select id="selectbyid" parameterType="String" resultType="Member_tbl">
+		select * from member_tbl where mem_id=#{mem_id}
+	</select>
 </mapper>

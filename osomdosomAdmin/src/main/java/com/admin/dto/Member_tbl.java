@@ -25,6 +25,8 @@ public class Member_tbl {
 	private int mem_point;
 	private String mem_img;
 	private String heart;
+	
+	private String ban;
 
 
 // 이메일 찾기
@@ -55,7 +57,11 @@ public class Member_tbl {
 	 * 
 	 * }
 	 */
-
+	Member_tbl(String ban, int mem_no){
+		super();
+		this.ban=ban;
+		this.mem_no=mem_no;
+	}
 	
 
 }

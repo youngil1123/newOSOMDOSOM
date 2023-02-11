@@ -12,6 +12,36 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+  <script>
+  $(function(){
+	  $("#ban").on("click", function(){
+		  let member_id = $(this).val();
+		  alert("member_id");
+	  })
+	  
+  })
+  
+  
+ /*  function chkBanned(){
+	  
+	 var nowstate = (this).value();
+	  alert("nowstate");
+	  $.ajax({
+		  url:'[[@{/bann}]]',
+		  data:{
+			  'mem_id':nowstate,
+			  
+				  
+		  },
+		  success:function(data){
+			  alert("벤 유무 변경 : "+data);
+			  
+		  }
+	  }) 
+  } */
+  
+  </script>
 
 <title>회원목록</title>
 </head>
@@ -57,6 +87,7 @@ td{
 					<th style="text-align:center;">회원mbti</th>
 					<th style="text-align:center;">회원닉네임</th>
 					<th style="text-align:center;">회원포인트</th>
+					<th style="text-align:center;">정지 여부</th>
 				</tr>
 			</thead>
 			<tbody id="hzTable">
@@ -68,6 +99,7 @@ td{
 					<td th:text="${mem.mbti}"></td>
 					<td th:text="${mem.nickname}"></td>
 					<td th:text="${mem.mem_point}">p</td>
+					<td><a th:href="@{/bann(mem_id=${mem.mem_id})}">상태 : [[${mem.ban}]] </a></td>
 				</tr>
 			</tbody>
 			<caption></caption>
