@@ -211,7 +211,7 @@
             <img src="img/jongjinimg/follower/heart.png" style="width:30px;"></a>           		
             </div>
             
-            <div th:if="${session.logincust != null}">
+            <div th:if="${session.logincust != null} and ${session.logincust.nickname}!=${m.nickname}">
 						<a th:href="@{/follower/addbest(fwid=${m.mem_id})}" onClick='chkadd();' id="heart">
 						<img src="img/jongjinimg/follower/heart.png" style="width:30px;">
 						</a>
