@@ -66,7 +66,7 @@ public class MbtiController {
 
 		}
 		model.addAttribute("contents", contents);
-		System.out.println(contents);
+		
 		model.addAttribute("top", "mbtiex");
 		model.addAttribute("mbti", mbti);
         return "/mbti/mbtiex";

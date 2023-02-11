@@ -60,6 +60,11 @@ public class FriendshipService implements MyService<Integer, Friendship>{
 		mapper.delete(k);
 
 	}
+	
+	public int followercnt(int mem_no) {
+		return mapper.followercnt(mem_no);
+	}
+
 
 
 
