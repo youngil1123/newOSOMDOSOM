@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.admin.dto.Admin;
 import com.admin.dto.Board;
@@ -136,5 +137,56 @@ public class MainController {
 		model.addAttribute("musicals", musicals);
 		model.addAttribute("musicalcon_num", theaterservice.countcon("뮤지컬"));
 		return "contentslist";
+	}
+	
+	
+	@RequestMapping("/bann")
+	public ModelAndView bann (String mem_id) {
+		
+		System.out.println("controller 들어왓는지 : "+mem_id);
+		
+		Member_tbl mem;
+		String ban = null;
+		int mem_no=0;
+		ModelAndView mv = new ModelAndView();
+		String memberid = mem_id;
+		try {
+			mem = mservice.selectbyid(memberid);
+			System.out.println("try 들어왓는지 : "+mem);
+			
+			if(mem != null) {
+				mem_no=mem.getMem_no();
+				ban = mem.getBan();
+				System.out.println("mem != 들어왓는지 mem_no : "+mem_no+"  ban : "+ban);
+				
+				if(ban == null || ban=="") {
+					ban = "no";
+					System.out.println("ban=='' 들어왓는지 : "+mem_id);
+					
+				}
+				System.out.println("여기까지 왓는가?");
+				if(ban.equals("yes")) {
+					ban = "no";
+					mservice.banned(ban, mem_no);
+					System.out.println("ban : "+ban);
+					mv.setViewName("gotomemberlist");
+					
+					return mv;
+				}else if(ban.equals("no")) {
+					ban = "yes";
+					mservice.banned(ban, mem_no);
+					System.out.println("ban : "+ban);
+					mv.setViewName("gotomemberlist");
+					return mv;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			ban="";
+			
+			
+		}
+		return mv;
+		
 	}
 }
