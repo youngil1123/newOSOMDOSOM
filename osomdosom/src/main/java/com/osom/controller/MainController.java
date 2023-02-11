@@ -73,12 +73,20 @@ public class MainController {
 	public String loginimpl(HttpSession session, String mem_id, String mem_pwd, Model model) {
 		Member_tbl member = null;
 	    Date date = new Date();
-	        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	        String today = format.format(date);
-	        System.out.println("today"+today);
-	      
+	    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	    String today = format.format(date);
+	    System.out.println("today"+today);
+	        
+	    
 		try {
+			String ban = "no";
 			member = mservice.get(mem_id);
+			ban= mservice.selectban(mem_id);
+			System.out.println(mem_id + ban);
+			
+			if("yes".equals(ban)) {
+				return "loginbanned";
+			}
 
 			  String mtoday= member.getToday();
 			  

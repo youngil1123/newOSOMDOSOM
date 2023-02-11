@@ -112,6 +112,10 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 		return mapper.boardPageSelect(p);
 	}
 
+	public String selectban(String mem_id) throws Exception{
+		
+		return mapper.selectban(mem_id);
+	}
 
 
 	}
