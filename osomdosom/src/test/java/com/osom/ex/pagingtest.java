@@ -1,4 +1,4 @@
-package com.shop;
+package com.osom.ex;
 
 import java.util.List;
 

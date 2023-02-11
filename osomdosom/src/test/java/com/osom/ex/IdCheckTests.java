@@ -1,4 +1,4 @@
-package com.shop;
+package com.osom.ex;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.osom.mapper.MbtiMapper">
+<select id="countmbtimemno" parameterType="String" resultType="Integer">
+	SELECT COUNT(mem_no) from member_tbl where mbti = #{mbti}
+</select>
+<select id="getconnoAndcountmem" parameterType="String" resultType="Mbti">
+	select con_no, count(mem_no) oneconmem_no from board inner join member_tbl m using(mem_no) where m.mbti =#{mbti} group by con_no order by count(mem_no) desc LIMIT 10;
+</select>
+<select id="getcongenreByconno" parameterType="Integer" resultType="String">
+	select con_genre from contents where con_no = #{con_no}
+</select>
+<select id="getconByconnoBook" parameterType="Integer" resultType="Mbti">
+	select book_no,bookImageURL from bookinfo where con_no = #{con_no}
+</select>
+<select id="getconByconnoMovie" parameterType="Integer" resultType="Mbti">
+	select movieCd,movieposter from movieinfo where con_no = #{con_no}
+</select>
+<select id="getconByconnoTheater" parameterType="Integer" resultType="Mbti">
+	select mt20id,poster from theaterinfo where con_no = #{con_no}
+</select>
+
+</mapper>
