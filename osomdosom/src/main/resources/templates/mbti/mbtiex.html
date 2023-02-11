@@ -24,7 +24,7 @@
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/team.css" rel="stylesheet">
-<link href="/css/slider.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
 
@@ -43,6 +43,41 @@
 	margin:0 auto;
 	
 }
+#reviewnull{
+text-align:center;
+
+}
+#reviewnull .mini{
+margin-bottom:30px;
+}
+
+#reviewnull img{
+	margin-bottom:50px;
+	width:40%;
+margin-left:430px;
+margin-top:30px;
+}
+.btn-gradient {
+  text-decoration: none;
+  color: white;
+  padding: 10px 30px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.21);
+  border-bottom: 4px solid rgba(0,0,0,0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+.btn-gradient.cyan {
+  background: rgba(27,188,194,1);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27,188,194,1)), to(rgba(24,163,168,1)));
+  background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+}
+
 </style>
   <body>
   <header th:replace="top.html :: navigation-bar"></header>
@@ -52,32 +87,50 @@
   <h3> 현재 [[${mbti}]] 회원 수는 [[${mbtimemno}]] 명</h3>
   <h5> [[${mbti}]] 가 리뷰를 많이 남긴 컨텐츠 순위</h5>
   </div>
-  <div class="reviewcontainer"
-		style="margin-left:80px; margin-top:10px; margin-right: 50px; margin-bottom: 10px;">
-		<br><br><br>
-  <span th:each="c,cStat:${contents}">
-  	<span th:if="${c.congenre == '도서'}">
-  		<span th:text="${cStat.count}" style="color:blue;font-weight:bold"></span>
-  		<a th:href="@{/review/bookreview(book_no=${c.book_no})}">
-  		<img th:src="${c.bookImageURL}" style="height: 210px; width:140px; padding:3px;" id="reviewimg">
 
-  		</a>
-  	</span>
-  	<span th:if="${c.congenre == '영화'}">
-  		<span th:text="${cStat.count}" style="color:blue;font-weight:bold"></span>
-  		<a th:href="@{/review/moviereview(movieCd=${c.movieCd})}">
-  		<img th:src="${c.movieposter}" style="height: 210px; width:140px; padding:3px;" id="reviewimg">
-  		</a>
-  	</span>
-  	<span th:if="${c.congenre == '연극'}">
-  		<span th:text="${cStat.count}" style="color:blue;font-weight:bold"></span>
-  		<a th:href="@{/review/theaterreview(mt20id=${c.mt20id})}">
-  		<img th:src="${c.poster}" style="height: 210px; width:140px; padding:3px;" id="reviewimg">
-  		</a>
-  	</span>
+	<div class="reviewcontainer"
+		style="margin-left: 80px; margin-top: 10px; margin-right: 50px; margin-bottom: 10px;">
+		<br>
+		<br>
+		<br> <span th:if="${contents != null}"> <span
+			th:each="c,cStat:${contents}"> <span
+				th:if="${c.congenre == '도서'}"> <span th:text="${cStat.count}"
+					style="color: blue; font-weight: bold"></span> <a
+					th:href="@{/review/bookreview(book_no=${c.book_no})}"> <img
+						th:src="${c.bookImageURL}"
+						style="height: 210px; width: 140px; padding: 3px;" id="reviewimg">
+
+				</a>
+			</span> <span th:if="${c.congenre == '영화'}"> <span
+					th:text="${cStat.count}" style="color: blue; font-weight: bold"></span>
+					<a th:href="@{/review/moviereview(movieCd=${c.movieCd})}"> <img
+						th:src="${c.movieposter}"
+						style="height: 210px; width: 140px; padding: 3px;" id="reviewimg">
+				</a>
+			</span> <span th:if="${c.congenre == '연극'}"> <span
+					th:text="${cStat.count}" style="color: blue; font-weight: bold"></span>
+					<a th:href="@{/review/theaterreview(mt20id=${c.mt20id})}"> <img
+						th:src="${c.poster}"
+						style="height: 210px; width: 140px; padding: 3px;" id="reviewimg">
+				</a>
+			</span>
+			</span>
+
+		</span>
+		<span id="reviewnull" th:if="${#lists.isEmpty(contents)}">
+		<div th:if ="${session.logincust == null}"> 
+            <a th:href="@{/login}" class="btn-gradient cyan mini" onClick='chkwrite();'>리뷰작성</a>
+            </div>
+            <div th:if="${session.logincust != null}">
+						<a th:href="@{/newboardwrite}" class="btn-gradient cyan mini">리뷰작성</a>
+					</div>
+		<h2>현재 작성된 리뷰가 없습니다.</h2>
+  		<img src="img/note.png">
   	
-  </span>
-  </div>
+  	</span>
+	</div>
+
+  
     <footer th:replace="footer.html :: footer"></footer>
   </body>
 </html>

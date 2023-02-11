@@ -1,6 +1,5 @@
 
 <h2> 현재 도서 콘텐츠 개수 : [[${bookcon_num}]] 개</h2>
-<input class="form-control" id="hzInput" type="text" placeholder="Search..">
 <div class="entry-content">
 	<table class="booktable">
 		<thead class="booktablehead">
@@ -27,22 +26,3 @@
 		</tbody>
 	</table>
 </div>
-	<script>
-
-		$(document).ready(function(){
-		
-		  $("#hzInput").on("keyup", function() {
-		
-		    var value = $(this).val().toLowerCase();
-		
-		    $("#hzTable tr").filter(function() {
-		
-		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-		
-		    });
-		
-		  });
-		
-		});
-	
-	</script>
