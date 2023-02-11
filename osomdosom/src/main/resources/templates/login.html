@@ -90,6 +90,7 @@
 		var pwchk=document.getElementById('pwchk').value;
 		var idchk=document.getElementById('idchk').value;
 		var emailchk=document.getElementById('emailchk').value;
+		var mbtichk=document.getElementById('emailchk').value;
 	
 		
 
@@ -119,6 +120,10 @@
 	    } else if(idchk=="no"){
 	    	  alert("아이디중복체크를 해주세요")
 	    	  return false;
+	    	  
+	    } else if(mbtichk=="no"){
+		    	
+		    	  return false;
 	    } else if(emailchk=="no"){
 	    	  alert("중복된 이메일이 있습니다.")
 	    	  return false;
