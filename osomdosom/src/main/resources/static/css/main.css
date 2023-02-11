@@ -2664,11 +2664,20 @@ section {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: bolder;
+    font-style: normal;
+}
+
 .header {
   height: 90px;
   transition: all 0.5s;
   z-index: 997;
-  background: #f2f2f2;
+  background: #ffffff;
+  font-family:'KyoboHand';
+  font-size:20px;
 }
 
 .header.sticked {
@@ -2678,13 +2687,14 @@ section {
 .header .logo img {
   max-height: 40px;
   margin-right: 6px;
+
 }
 
 .header .logo h1 {
   font-size: 30px;
   font-weight: 700;
   color: var(--color-default);
-  font-family: var(--font-primary);
+  
 }
 
 .search-form-wrap {
@@ -2775,7 +2785,7 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 10px 0 10px 30px;
-    font-family: var(--font-default);
+    font-family:'KyoboHand';
     font-size: 16px;
     font-weight: 500;
     color: rgba(var(--color-default-rgb), 1);

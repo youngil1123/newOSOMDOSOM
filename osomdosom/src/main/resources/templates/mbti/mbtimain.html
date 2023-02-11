@@ -42,6 +42,13 @@
 <script type="text/javascript" src="/js/isotope.pkgd.js"></script>
 
 <style>
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: bolder;
+    font-style: normal;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -57,6 +64,14 @@
 .mbti p {
 	font-size: 25px;
 	margin-left: 65px;
+    font-family:'KyoboHand';
+}
+
+li{
+	font-family:'KyoboHand';
+}
+h3 {
+    font-family:'KyoboHand';
 }
 
 .single_destination {
@@ -89,6 +104,7 @@ img {
 button {
 	margin: 50px;
 	width: 100px;
+	
 }
 
 #point-flters li:hover, #point-flters li.filter-active {
@@ -199,7 +215,7 @@ button {
 				<div class="col-lg-6">
 					<div class="section_title text-center mb_70">
 						<h3>MBTI PAGE</h3>
-						<p>원하시는 MBTI를 선택하세요</p>
+						<p style="font-family:'KyoboHand';">원하시는 MBTI를 선택하세요</p>
 						<div class="row">
 							<ul id="point-flters">
 								<li data-filter="*" class="filter-active">All</li>
@@ -222,7 +238,7 @@ button {
 						</div>
 						<div class="content">
 							<p class="d-flex align-items-center">
-								<a th:href="@{/mbtiex(mbti='ENFP')}">ENFP </a>
+								<a th:href="@{/mbtiex(mbti='ENFP')}" >ENFP </a>
 							</p>
 
 						</div>

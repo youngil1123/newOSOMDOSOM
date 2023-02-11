@@ -2,19 +2,17 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link th:href="@{/css/main.css}" rel="stylesheet">
-<link th:href="@{/css/team.css}" rel="stylesheet">
-
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
+<style>
+@font-face {
+    font-family: 'Humanbumsuk';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Humanbumsuk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
-</script>
-	<!-- Template Main JS File -->
-	<script src="/js/main.js"></script>
-	
- 	
-	
+</style>
 </head>
 <body>
 <header id="header" class="header d-flex align-items-center fixed-top" th:fragment="navigation-bar">
@@ -32,12 +30,10 @@
 	</script>
 
 
-		<div
-			class="container-fluid container-xl d-flex align-items-center justify-content-between">
+		<div class="top container-fluid container-xl d-flex align-items-center justify-content-between" >
 
 			<a th:href="@{/}" class="logo d-flex align-items-center"> <!-- Uncomment the line below if you also wish to use an image logo -->
-				<!-- <img src="/img/logo.png" alt=""> -->
-				<h1>DOIT BOOK</h1>
+				<img src="/img/title.png" style="width: 200px; height: 80px; object-fit: cover;">
 			</a>
 
 			<nav id="navbar" class="navbar">
@@ -99,7 +95,7 @@
 					</div>
 					<div th:if="${session.logincust != null}">
 						<a th:href="@{/logout}">
-						<span th:text="${session.logincust.nickname} + '님 <로그아웃>' " onClick='logout();'></h2>
+						<span th:text="${session.logincust.nickname} + '님💛 <로그아웃>' " onClick='logout();'></h2>
 
 					</a>
 					</div>
@@ -119,9 +115,9 @@
 					</form>
 				</div>
 				<!-- End Search Form -->
-<a href="#"
-		class="scroll-top d-flex align-items-center justify-content-center"><i
-		class="bi bi-arrow-up-short"></i></a>
+		<a href="#"
+				class="scroll-top d-flex align-items-center justify-content-center"><i
+				class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
 	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
