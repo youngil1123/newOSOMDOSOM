@@ -28,7 +28,14 @@ td{
 }
 </style>
 <body>
-<a th:href="@{/main}">메인으로 이동</a>
+<div >
+	<a th:href="@{/main}" style="margin-left:3%;">>메인으로 이동</a>
+	<!-- <a th:href="@{/membercontrol}" style="margin-left:3%;">>회원관리</a>  -->
+	<a th:href="@{/reviewlist}" style="margin-left:3%;">>게시글관리</a>
+	<a th:href="@{/contentslist}" style="margin-left:3%;">>콘텐츠목록</a> 
+	<a th:href="@{/contentsupdate}" style="margin-left:3%;">>콘텐츠업데이트</a>
+</div>
+
 <p>현재 가입한 회원 수 : [[${membernumber}]] 명</p>
 	<input class="form-control" id="hzInput" type="text" placeholder="Search..">
 	<div id="memberlist">

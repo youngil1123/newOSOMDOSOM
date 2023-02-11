@@ -33,6 +33,13 @@ td{
 }
 </style>
 <body>
+<div >
+	<a th:href="@{/main}" style="margin-left:3%;">>메인으로 이동</a>
+	<a th:href="@{/membercontrol}" style="margin-left:3%;">>회원관리</a>
+	<!-- <a th:href="@{/reviewlist}" style="margin-left:3%;">>게시글관리</a> -->
+	<a th:href="@{/contentslist}" style="margin-left:3%;">>콘텐츠목록</a> 
+	<a th:href="@{/contentsupdate}" style="margin-left:3%;">>콘텐츠업데이트</a>
+</div>
 	<h3>리뷰리스트~</h3>
 	<p>현재 등록된 리뷰 수 : [[${reviewnumber}]]</p>
 	<a th:href="@{/main}">메인으로 이동</a>

@@ -1,5 +1,4 @@
 <h2> 현재 영화 콘텐츠 개수 : [[${moviecon_num}]] 개</h2>
-<input class="form-control" id="hzInput" type="text" placeholder="Search..">
 <div class="entry-content">
 	<table class="movietable">
 		<thead class="movietablehead">
@@ -28,22 +27,3 @@
 		</tbody>
 	</table>
 </div>
-	<script>
-
-		$(document).ready(function(){
-		
-		  $("#hzInput").on("keyup", function() {
-		
-		    var value = $(this).val().toLowerCase();
-		
-		    $("#hzTable tr").filter(function() {
-		
-		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-		
-		    });
-		
-		  });
-		
-		});
-	
-	</script>

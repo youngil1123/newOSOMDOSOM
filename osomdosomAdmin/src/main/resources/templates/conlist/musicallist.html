@@ -1,5 +1,6 @@
+
+
 <h2> 현재 뮤지컬 콘텐츠 개수 : [[${musicalcon_num}]] 개</h2>
-<input class="form-control" id="hzInput" type="text" placeholder="Search..">
 <div class="entry-content">
 	<table class="musicaltable">
 		<thead class="musicaltablehead">
@@ -26,22 +27,3 @@
 		</tbody>
 	</table>
 </div>
-	<script>
-
-		$(document).ready(function(){
-		
-		  $("#hzInput").on("keyup", function() {
-		
-		    var value = $(this).val().toLowerCase();
-		
-		    $("#hzTable tr").filter(function() {
-		
-		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-		
-		    });
-		
-		  });
-		
-		});
-	
-	</script>
