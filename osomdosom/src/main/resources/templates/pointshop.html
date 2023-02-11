@@ -85,16 +85,64 @@
     });
 	
    })()
+   
+   
 	</script>
+	<style>
+
+#errorimg{
+	height:300px;
+	width:700px;
+	margin-top:10%;
+	margin:auto;
+}
+
+#error{
+	height:300px;
+	position:relative;
+	left:32%;
+	
+}
+
+#errormsg{
+	width:700px;
+	text-align:center;
+	margin: 5% auto;
+}
+
+#mypoint{
+	width:670px;
+	text-align:right;
+	position:absolute;
+	top:40%;
+}	
+
+
+
+</style>
 </head>
 <body>
 <header th:replace="top.html :: navigation-bar"></header>
 
-<section id="point" class="point">
+<div id="pointsoon">
+	<div th:each="my : ${myinfo}" id="mypoint" class="soon">
+		보유중인 포인트 : [[${myinfo.mem_point}]]
+	</div>
+	
+	<div id="errorimg" class="soon">
+		<img src="img/jongjinimg/system.png" id="error" title="error icons">
+		
+	</div>
+	<div id="errormsg" class="soon">
+		<h5> 포인트 상점이 곧 오픈 예정입니다. 열심히 포인트를 쌓아두세요!</h5>
+	</div>
+</div>
+
+<!-- <section id="point" class="point">
       <div class="container">
 
         <div class="section-title">
-         <!--  <h2>PointShop</h2> -->
+          <h2>PointShop</h2>
      
           <h3>Mypoint <span>300p</span></h3>
           <p>고객님의 포인트로 아래의 상품들과 교환 가능합니다.</p>
@@ -175,7 +223,7 @@
         </div>
 
       </div>
-  </section>
+  </section> -->
   <footer th:replace="footer.html :: footer"></footer>
   </body>
 

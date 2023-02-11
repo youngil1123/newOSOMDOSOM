@@ -2,6 +2,17 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org/">
 <head>
 <meta charset="UTF-8">
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 <title>회원목록</title>
 </head>
 <style>
@@ -19,6 +30,7 @@ td{
 <body>
 <a th:href="@{/main}">메인으로 이동</a>
 <p>현재 가입한 회원 수 : [[${membernumber}]] 명</p>
+	<input class="form-control" id="hzInput" type="text" placeholder="Search..">
 	<div id="memberlist">
 		<table class="list_1" width="100%" cellspacing="0" summary="">
 			<caption></caption>
@@ -31,15 +43,16 @@ td{
 			</colgroup>
 			<thead>
 				<tr id="member_nav">
-					<td>회원번호</td>
-					<td>회원아이디</td>
-					<td>회원이름</td>
-					<td>회원이메일</td>
-					<td>회원mbti</td>
-					<td>회원닉네임</td>
-					<td>회원포인트</td>
+					<th>회원번호</th>
+					<th>회원아이디</th>
+					<th>회원이름</th>
+					<th>회원이메일</th>
+					<th>회원mbti</th>
+					<th>회원닉네임</th>
+					<th>회원포인트</th>
 				</tr>
-
+			</thead>
+			<tbody id="hzTable">
 				<tr th:each="mem : ${members}">
 					<td th:text="${mem.mem_no}"></td>
 					<td th:text="${mem.mem_id}"></td>
@@ -49,6 +62,7 @@ td{
 					<td th:text="${mem.nickname}"></td>
 					<td th:text="${mem.mem_point}">p</td>
 				</tr>
+			</tbody>
 			<caption></caption>
 			<colgroup>
 				<col />
@@ -59,5 +73,24 @@ td{
 			</colgroup>
 		</table>
 	</div>
+	<script>
+
+		$(document).ready(function(){
+		
+		  $("#hzInput").on("keyup", function() {
+		
+		    var value = $(this).val().toLowerCase();
+		
+		    $("#hzTable tr").filter(function() {
+		
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		
+		    });
+		
+		  });
+		
+		});
+	
+	</script>
 </body>
 </html>
