@@ -107,13 +107,13 @@
 	max-width:65%;
 	padding:20px;
 	background-size: cover;
-	/* border:2px solid #969696; */
+	 word-break:break-all;
 }
-
 
 
 .content {
 	font-family: 'KyoboHand';
+	flex-grow : 1; 
 }
 
 .book-title {
@@ -124,6 +124,8 @@
 	list-style: none;
 	font-size: 2em;
 }
+
+
 </style>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -215,11 +217,13 @@
 								<li th:if="${logincust==null}" style="font-size: 15px; color: red">이 컨텐츠를 찜하시려면 <a href="/login" style="color:red; font-size:20px; text-decoration: underline; text-underline-position:under;">로그인</style></a>해주세요.</li>
 								<li>평균 평점 ⭐ : [[${star_rate}]]</li>
 							</ul>
+						
 						</div>
+						
 					</div>
 					<!-- .row -->
+						<div th:include="review/onereviewpaging" id="onereviewpaging"></div>
 				</div>
-				<div th:include="review/onereviewpaging" id="onereviewpaging"></div>
 			</div>
 		</div>
 	</main>
