@@ -65,7 +65,7 @@ white-space: nowrap;
 		</li>
 		<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
 					<span th:if="${i le p.totalPage}" style="list-style: none;">
-						<li th:if="${i == p.nowPage}" border-style: inset; font-size:1.5em;">
+						<li th:if="${i == p.nowPage}" style=" border-style: inset; font-size:1.5em;">
 							<a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a>
 					</li>
 						<li th:if="${i != p.nowPage}" style="font-size:1.5em;"><a
