@@ -43,7 +43,12 @@ public class MediaController {
 	@RequestMapping("/mediamain") 
 		
 	public String mediamain(Model model) {
-
+		List<Board> reviews = new ArrayList<Board>();
+		try {
+			reviews = boardservice.recentreview();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 도서 순위 5
 		List<Board> blist = new ArrayList<Board>();
 		blist = boardservice.getTop5("도서");
@@ -91,7 +96,7 @@ public class MediaController {
 		System.out.println(books);
 		System.out.println(movies);
 		System.out.println(theaters);
-
+		model.addAttribute("reviews", reviews);
 		model.addAttribute("top", "mediamain");
 		return "/board/mediamain";
 	}
