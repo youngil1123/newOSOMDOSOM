@@ -175,10 +175,39 @@ const drawStar = (target) => {
     name="partner">[[${board.partner}]]</textarea></br>
 			</div>
 			<div class="form-group">
-				<label for="writer" style=font-size:20px;>별점</label> <span class="star"> ★★★★★ <span>★★★★★</span>
-					<input type="range" oninput="drawStar(this)" value="1" step="1" name="star_rate"
-					min="0" max="10" th:value="${board.star_rate}">
-				</span>
+				<label for="writer" style=font-size:20px;>별점</label> 
+				<div th:if="${board.star_rate}==1">
+				<span class="star"> ★★★★★ <span style="width:10%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==2">
+				<span class="star"> ★★★★★ <span style="width:20%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==3">
+				<span class="star"> ★★★★★ <span style="width:30%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==4">
+				<span class="star"> ★★★★★ <span style="width:40%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==5">
+				<span class="star"> ★★★★★ <span style="width:50%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==6">
+				<span class="star"> ★★★★★ <span style="width:60%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==7">
+				<span class="star"> ★★★★★ <span style="width:70%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==8">
+				<span class="star"> ★★★★★ <span style="width:80%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==9">
+				<span class="star"> ★★★★★ <span style="width:90%;" >★★★★★</span></span>
+				</div>
+				<div th:if="${board.star_rate}==10">
+				<span class="star"> ★★★★★ <span style="width:100%;" >★★★★★</span></span>
+				</div>
+
+				
 				<br><br>
 			</div>
 			

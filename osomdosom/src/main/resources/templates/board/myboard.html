@@ -130,19 +130,19 @@
 	text-align: center;
 }
 
-.board-list>th:nth-child(6n+3) {
+.board-list>th:nth-child(5n+2) {
 	width: 35%;
 }
 
-.list>td:nth-child(6n+3) {
+.list>td:nth-child(5n+2) {
 	width: 35%;
 }
 
-.board-list>th:nth-child(6n+4) {
+.board-list>th:nth-child(5n+3) {
 	width: 20%;
 }
 
-.list>td:nth-child(6n+4) {
+.list>td:nth-child(5n+3) {
 	width: 20%;
 }
 
@@ -209,12 +209,11 @@ float:left;
 
 	<header th:replace="top.html :: navigation-bar"></header>
 	<div class="container">
-		<h1>게시판 목록</h1>
+		<h1 style="margin-top:130px;">게시판 목록</h1>
 		<div class="head-info">
 			<table id="table">
 				<thead>
-					<tr class="board-list" style>
-						<th><input type="checkbox" id="allCheck">전체선택</th>
+					<tr class="board-list">
 						<th>번호</th>
 						<th>제목</th>
 						<th>등록일</th>
@@ -223,22 +222,22 @@ float:left;
 				</thead>
 				<tbody>
 					<tr class="list" th:each="l :${searchmylist}">
-						<td><input type="checkbox" id="eachCheck"></td>
 						<td th:text="${l.board_no}"></td>
 						<td><a th:href="@{/post/view.do( board_no=${l.board_no} )}"
 							th:text="${l.title}" class="word-cut"></a></td>
 						<td><span
 							th:text="${#dates.format(l.writedate,'yyyy-MM-dd')}"></span></td>
 						<td th:text="${l.star_rate}"></td>
+						
 					</tr>
 				</tbody>
 			</table>
 			<!-- 여기 아래는 paging -->
-			<button id="choDel">선택삭제</button>
+			
 			<div class="pagingsection">
 				<ul class="pagingdiv">
-					<li th:if="${p.nowPage != 1}" class="material-symbols-outlined"><a
-						th:href="@{/myboard(nowPage=${p.nowPage}-1)}">arrow_back</a></li>
+					<li th:if="${p.nowPage != 1}" class="material-symbols-outlined" ><a
+						th:href="@{/myboard(nowPage=${p.nowPage}-1)}" style="text-align:center;">arrow_back</a></li>
 				<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
 					<span th:if="${i le p.totalPage}" style="list-style: none;">
 						<li th:if="${i == p.nowPage}" style="background-color: #ddd;">
@@ -257,7 +256,7 @@ float:left;
 	</div>
 
 
-	<footer th:replace="footer.html :: footer"></footer>
+	
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/plugins.js"></script>
@@ -274,6 +273,6 @@ float:left;
 
 	<!-- Page level custom scripts -->
 	<script src="js/demo/datatables-demo.js"></script>
-
+<footer th:replace="footer.html :: footer"></footer>
 </body>
 </html>
