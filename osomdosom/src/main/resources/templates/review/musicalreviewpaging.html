@@ -45,7 +45,7 @@
 <!-- .container -->
 <div class="pageDiv">
 	<ul class="pagingdiv">
-
+		<br>
 		<!-- nowPage가 1보다 클경우 -->
 		<li th:if="${p.nowPage != 1}"><span
 			class="material-symbols-outlined"><a
@@ -54,7 +54,7 @@
 		<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
 			<span th:if="${i le p.totalPage}" style="list-style: none;">
 				<li th:if="${i == p.nowPage}"
-				style="background-color: lightblue; font-size: 1.5em;"><a
+				style="border-style: inset; font-size: 1.5em;"><a
 					th:href="@{/review/musicalreview(nowPage=${i},mt20id=${p.mt20id})}">[[${i}]]</a>
 			</li>
 				<li th:if="${i != p.nowPage}" style="font-size: 1.5em;"><a

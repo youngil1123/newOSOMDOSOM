@@ -57,13 +57,13 @@ white-space: nowrap;
 <div class="pageDiv">
 <ul class="pagingdiv">
 		<!-- nowPage가 1보다 클경우 -->
-
+<br>
 		<li th:if="${p.nowPage != 1}">
 			<span class="material-symbols-outlined"><a th:href="@{/review/bookreview(nowPage=${p.nowPage}-1,book_no=${p.book_no})}">arrow_back</span></a>
 		</li>
 		<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
 					<span th:if="${i le p.totalPage}" style="list-style: none;">
-						<li th:if="${i == p.nowPage}" style="background-color: lightblue;font-size:1.5em;">
+						<li th:if="${i == p.nowPage}" border-style: inset; font-size:1.5em;">
 							<a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a>
 					</li>
 						<li th:if="${i != p.nowPage}" style="font-size:1.5em;"><a
