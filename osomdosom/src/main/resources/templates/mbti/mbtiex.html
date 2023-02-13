@@ -40,17 +40,14 @@
 <style>
 #mbti_info{
 	text-align:center;
-	margin:0 auto;
-	
+	margin:0 auto;	
 }
 #reviewnull{
 text-align:center;
 
 }
 
-
 #reviewnull img{
-
 margin-bottom:50px;
 width:20%;
 margin-right:50px;
@@ -129,8 +126,9 @@ a.button {
 		<span id="reviewnull" th:if="${#lists.isEmpty(contents)}">
 		<div th:if ="${session.logincust == null}"> 
 		<img src="img/bin.png">
-		<a th:href="@{/login}" class="button btnPush btnBlueGreen" onClick='chkwrite();'>리뷰작성</a>
 		<h2>현재 작성된 리뷰가 없습니다.</h2>
+		<a th:href="@{/login}" class="button btnPush btnBlueGreen" onClick='chkwrite();'>리뷰작성</a>
+		
 
          		
             </div>
