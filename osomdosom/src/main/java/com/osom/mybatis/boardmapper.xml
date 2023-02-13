@@ -75,4 +75,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="totalreview" resultType="Integer">
 		select mem_no from board group by mem_no order by count(mem_no) desc LIMIT 4  
 	</select>
+	<select id="getTop5" resultType="Board" parameterType="String">
+		select con_no,avg(star_rate) conStar_rate,con_genre from board inner join contents using(con_no) where con_genre = #{con_genre} group by con_no order by avg(star_rate) desc LIMIT 5;
+	</select>
 </mapper>
