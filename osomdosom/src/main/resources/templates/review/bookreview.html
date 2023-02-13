@@ -49,7 +49,7 @@
 <!-- Loading third party fonts -->
 <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|"
 	rel="stylesheet" type="text/css">
-<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 <!-- Loading main css file -->
 <link rel="stylesheet" th:href="@{/css/style.css}">
 
@@ -97,12 +97,23 @@
 	width: 40%;
 }
 
-.container {
-	margin-top: 120px;
+.main-container {
+	margin-top: 150px;
+	font-family: 'KyoboHand';
+	margin-right: auto;
+	margin-left:auto;
+	margin-bottom:150px;
+	background-image:url("/css/page1.png");
+	max-width:65%;
+	padding:20px;
+	background-size: cover;
+	/* border:2px solid #969696; */
 }
 
+
+
 .content {
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: 'KyoboHand';
 }
 
 .book-title {
@@ -168,43 +179,41 @@
 <body>
 	<header th:replace="top.html :: navigation-bar"></header>
 
-	<main class="main-content">
-		<div class="container">
+	<main class="main-content" >
+		<div class="main-container imgsrc">
 			<div class="page">
 				<div class="content">
-					<div class="row">
+					<div class="row" >
+						<h2 class="book-title" style="font-family: 'KyoboHand'; font-size:50x; text-align:center;">
+								[[${book.bookname}]]<span th:if="${book.vol!=null}">[[${book.vol}]]권</span>
+							</h2>
 						<div class="col-md-4">
-							<figure class="book-poster">
+							<figure class="book-poster" style="margin-left:30%; box-shadow:3px 4px 6px 0px #323232; ">
 								<img th:src="${book.bookImageURL}"
 									style="width: 100%; height: 100%;">
 							</figure>
 						</div>
 						<div class="col-md-8">
-							<h2 class="book-title">
-								[[${book.bookname}]]<span th:if="${book.vol!=null}">[[${book.vol}]]권</span>
-							</h2>
-							<ul class="book-meata">
+						
+							<ul class="book-meata" style="line-height:45px; margin-top:2%; margin-left:3%;">
 								<li>[[${book.authors}]]</li>
 								<li>출판사 : [[${book.publisher}]]</li>
 								<li>출판년도 : [[${book.publication_year}]]</li>
 								<li>isbn13 : [[${book.isbn13}]]</li>
 								<li>분류 : [[${book.class_nm}]]</li>
 								<!-- 로그인되어있으면 찜상태 확인. 1)찜이 안되어 있으면 찜아이콘 보여주기 . 2) 찜 되어있으면 찜 목록에서 삭제 아이콘 보여주기 -->
-								<li th:if="${logincust!=null}"><input type="hidden"
-									id="loginid" th:value="${logincust.mem_no}"> <input
-									type="hidden" id="con_no" th:value="${book.con_no}"> <span
-									th:if="${likestate==1}" style="font-size: 15px;"><b>찜한
-											컨텐츠 입니다</b>. 삭제하시려면 오른쪽 아이콘을 클릭하세요. <a href="#"
-										class="material-symbols-rounded likeremove">heart_minus</a> </span> <span
-									th:if="${likestate==0}" style="font-size: 15px;">이 컨텐츠를
-										찜목록에 저장하려면 오른쪽 아이콘을 클릭하세요. <a href="#"
-										class="material-symbols-rounded likeadd">heart_plus</a>
-								</span></li>
-								<li th:if="${logincust==null}"
-									style="font-size: 15px; color: red">이 컨텐츠를 찜하시려면 <u>로그인</u>
-									해주세요.
+								<li th:if="${logincust!=null}">
+									<input type="hidden" id="loginid" th:value="${logincust.mem_no}"> 
+									<input type="hidden" id="con_no" th:value="${book.con_no}"> 
+									<span th:if="${likestate==1}" style="font-size: 15px;"><b>찜한컨텐츠 입니다</b>. 
+										삭제하시려면 오른쪽 아이콘을 클릭하세요. <a href="#" class="material-symbols-rounded likeremove">heart_minus</a> 
+									</span> 
+									<span th:if="${likestate==0}" style="font-size: 15px;">
+									이 컨텐츠를 찜목록에 저장하려면 오른쪽 아이콘을 클릭하세요. 
+									<a href="#" class="material-symbols-rounded likeadd">heart_plus</a> </span>
 								</li>
-								<li>평균 평점 : [[${star_rate}]]</li>
+								<li th:if="${logincust==null}" style="font-size: 15px; color: red">이 컨텐츠를 찜하시려면 <a href="/login" style="color:red; font-size:20px; text-decoration: underline; text-underline-position:under;">로그인</style></a>해주세요.</li>
+								<li>평균 평점 ⭐ : [[${star_rate}]]</li>
 							</ul>
 						</div>
 					</div>
