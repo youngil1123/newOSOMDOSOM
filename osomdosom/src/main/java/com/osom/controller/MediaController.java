@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.osom.dto.Board;
@@ -134,17 +135,76 @@ public class MediaController {
 
 	// 책
 	@RequestMapping("/book")
-	public String book(Model model) {
+	public ModelAndView book(Model model,  @RequestParam(value = "bknum", defaultValue = "1") int bknum) {
 		List<BookInfo> objs = new ArrayList<BookInfo>();
+		ModelAndView mv = new ModelAndView();
+		
+		int onepagelist = 10; //한페이지에 2개씩 불러오자.
+		
+		int bkoffset = (bknum-1)*onepagelist;
+		
+		int bkpaging = 1; //기본으로는 총페이지는 1로 정의. 게시글이 많아지면 커진다.
+		
 		try {
 			objs = service.getbookreview();
-			model.addAttribute("bookreviews", objs);
+			mv.addObject("bookreviews", objs);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("top", "book");
 		return "/board/book";
+	}
+	
+	@RequestMapping("/fwBookBoard")
+	public ModelAndView fwBookBoard(Integer fwNo, @RequestParam(value = "bknum", defaultValue = "1") int bknum) { //받아온 사람의 번호 , 몇번째 페이지를 보여줄건지.
+		
+		ModelAndView mv = new ModelAndView();
+		List<Board> bklist = null;
+
+		int onepagelist = 10; //한페이지에 2개씩 불러오자.
+		
+		int bkoffset = (bknum-1)*onepagelist;
+	
+		int bkpaging = 1; //기본으로는 총페이지는 1로 정의. 게시글이 많아지면 커진다.
+		
+		//받아온 사람의 번호로 그 사람의 데이터를 받아오자.
+		try {
+			Member_tbl fwinfo = mservice.selectbyno(fwNo);
+			mv.addObject("fwinfo", fwinfo);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		System.out.println("받아온 팔로워의 번호 : "+ fwNo);
+		
+		if(fwNo !=null) {
+			try {
+				//////////////////   도서    ///////////////////////////////////
+				bklist = bservice.booklist(fwNo, onepagelist,bkoffset); //도서 내가 쓴 도서쪽 모든 글정보 가지고옴.
+				int bklistsize = bservice.bookcnt(fwNo);
+				
+				bkpaging = (int)Math.ceil(bklistsize*1.0/onepagelist);	//도서 총 페이징 수 
+				System.out.println("bkpaging : "+ bkpaging);
+				
+				mv.addObject("bkpagingcnt", bkpaging);  //도서 처음 팔로워게시글 가면 보이는 페이징수
+				
+				if(bklist !=null) {
+					mv.addObject("booklist", bklist);
+				}
+				
+				mv.addObject("fwNo", fwNo);
+				int followercnt = fservice.followercnt(fwNo);
+				System.out.println(followercnt);
+				mv.addObject("followercnt", followercnt);
+				mv.setViewName("follower/followerBookBoard");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return mv;
 	}
 
 	// 연극,뮤지컬
