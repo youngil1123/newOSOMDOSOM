@@ -229,7 +229,7 @@ color:black;
 						<td th:text="'연극'" th:if="${r.con_no gt 21299 && r.con_no le 33241}"></td> 
 						<td th:text="'뮤지컬'" th:if="${r.con_no gt 33241 && r.con_no le 60000}"></td>
 						
-						<td><a th:href="@{/recentreviewone( board_no=${r.board_no} )}"
+						<td><a th:href="@{/recentreviewone(board_no=${r.board_no})}"
 							th:text="${r.title}" class="word-cut"></a></td>
 						<td><span
 							th:text="${#dates.format(r.writedate,'yyyy-MM-dd')}"></span></td>
