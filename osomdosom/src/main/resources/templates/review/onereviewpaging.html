@@ -51,18 +51,26 @@ white-space: nowrap;
 		</tbody>
 	</table>
 </div>
-<div>
-현재 페이지 : [[${p.nowPage}]] 
-총 페이지 : [[${p.totalPage}]]<br>
-</div>
 <!-- .container -->
 <div class="pageDiv">
+<ul class="pagingdiv">
 		<!-- nowPage가 1보다 클경우 -->
-		<p th:if="${p.nowPage != 1}">
+
+		<li th:if="${p.nowPage != 1}">
 			<span class="material-symbols-outlined"><a th:href="@{/review/bookreview(nowPage=${p.nowPage}-1,book_no=${p.book_no})}">arrow_back</span></a>
-		</p>
+		</li>
+		<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
+					<span th:if="${i le p.totalPage}" style="list-style: none;">
+						<li th:if="${i == p.nowPage}" style="background-color: #ddd;font-size:1.5em;">
+							<a th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a>
+					</li>
+						<li th:if="${i != p.nowPage}" style="font-size:1.5em;"><a
+							th:href="@{/review/bookreview(nowPage=${i},book_no=${p.book_no})}">[[${i}]]</a></li>
+					</span>
+				</span>
 		<!-- nowPage<totalPage -->
 		<p th:if="${p.nowPage lt p.totalPage}">
 			<span class="material-symbols-outlined"><a th:href="@{/review/bookreview(nowPage=${p.nowPage}+1,book_no=${p.book_no})}">arrow_forward</span></a>
 		</p>
+		</ul>
 </div>
