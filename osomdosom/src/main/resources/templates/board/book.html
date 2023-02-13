@@ -65,6 +65,7 @@
 </style>
 <body>
 	<header th:replace="top.html :: navigation-bar"></header>
+	<section>
 
 	<div class="reviewcontainer"
 		style="margin-left:350px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
@@ -73,12 +74,7 @@
 		<img th:src="${bookreview.bookImageURL}" style="height: 300px; width:200px; padding:3px;" id="reviewimg"></a>
 		</span>
 	</div>
-	<div class="pagingsection">
-			<input type="hidden" id="pagingcnt" th:value="${bkpagingcnt}">
-			<ul th:each="bknum : ${#numbers.sequence(1,bkpagingcnt)}" style="float:left;">
-				<li th:value="${bknum}" style=" list-style:none;"><a th:href="@{/follower/fwBookBoard(fwNo=${fwNo},bknum=${bknum})}">[[${bknum}]]</a></li>
-			</ul>
-	</div>
+	</section>
 	<footer th:replace="footer.html :: footer"></footer>
 </body>
 </html>

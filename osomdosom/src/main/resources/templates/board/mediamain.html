@@ -42,184 +42,184 @@
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
 
+    
+
+
 <style>
-.container-fluid{
-	margin-left: 30px;
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.container {
+	height: 750px;
+	
 }
 
-
-
-.gallery-item img {
-	transition: all 0.2s linear;
+.head-info {
+	float: left;
+	width: 100%;
+	height: 40px;
+	background: #ddd;
+	line-height: 40px;
+	margin-top: 100px;
 }
 
-.gallery-item:hover img {
-	transform: scale(1.4);
+.head-info>div:last-child {
+	text-align: right;
 }
 
+#table {
+	width: 100%;
+	margin-bottom: 50px;
+}
+.board-list{
+background-color:#005f5b;
+}
+
+.board-list>th {
+	float: left;
+	width: 15%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	list-style: none;
+	text-align: center;
+}
+
+.list>td {
+	float: left;
+	width: 15%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	list-style: none;
+	text-align: center;
+}
+
+.board-list>th:nth-child(5n+2) {
+	width: 15%;
+}
+
+.list>td:nth-child(5n+2) {
+	width: 15%;
+}
+
+.board-list>th:nth-child(5n+3) {
+	width: 35%;
+}
+
+.list>td:nth-child(5n+3) {
+	width: 35%;
+}
+.board-list>th:nth-child(5n+4) {
+	width: 20%;
+}
+
+.list>td:nth-child(5n+4) {
+	width: 20%;
+}
+
+.list>td:first-child {
+	height: 40px;
+	line-height: 40px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.word-cut {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 80px;
+}
+#pp{
+height:300px;
+
+}
+
+#bookpp{
+	float:left;
+	margin-left: 80px;
+}
+#moviepp{
+	float:left;
+	margin-left: 80px;
+}
+#theaterpp{
+float:left;
+margin-left: 80px;
+}
 </style>
 
   </head>
 
   <body>
   <header th:replace="top.html :: navigation-bar"></header>
+  <div id="pp">
+  <div id="bookpp">
   <h1>---도서 인기순위---</h1>
   <span th:each="b,bStats: ${booktop5}">
   <a th:href="@{/review/bookreview(book_no=${b.book_no})}">[[${bStats.count}]]위 . [[${b.bookname}]]<span th:if="${vol != null}">[[${b.vol}]]권</span>([[${b.conStar_rate}]])</a><br>
   </span>
+  </div>
+  <div id="moviepp">
   <h1>---영화 인기순위 ---</h1>
   <span th:each="m,mStats: ${movietop5}">
   <a th:href="@{/review/moviereview(movieCd=${m.movieCd})}">[[${mStats.count}]]위 . [[${m.movieNm}]]([[${m.conStar_rate}]])</a><br>
   </span>
+  </div>
+  <div id="theaterpp">
   <h1>---연극 & 뮤지컬 인기순위---</h1>
   <span th:each="t,tStats: ${theatertop5}">
   <a th:href="@{/review/theaterreview(mt20id=${t.mt20id})}">[[${tStats.count}]]위 . [[${t.prfnm}]]([[${t.conStar_rate}]])</a><br>
   </span>
-  
-   <section id="gallery" class="gallery">
-      
-		<div class="section-title">
-         <a th:href="@{/movie}"> <h2>MOVIE</h2></a>
-        </div>
-        <div class="container-fluid">
-        <div class="row gy-4 justify-content-center">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          
-          </div>
-         </div>
-         
-         </section>
-         <section id="gallery" class="gallery">
-      
-		<div class="section-title">
-         <a th:href="@{/book}">  <h2>BOOK</h2></a>
-        </div>
-        <div class="container-fluid">
-        <div class="row gy-4 justify-content-center">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          
-          </div>
-         </div>
-         
-         </section>
-         <section id="gallery" class="gallery">
-      
-		<div class="section-title">
-           <a th:href="@{/theater}"><h2>THEATER</h2></a>
-        </div>
-        <div class="container-fluid">
-        <div class="row gy-4 justify-content-center">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          
-          </div>
-         </div>
-         
-         </section>
-         <section id="gallery" class="gallery">
-      
-		<div class="section-title">
-          <a th:href="@{/musical}"><h2>MUSCIAL</h2></a>
-        </div>
-        <div class="container-fluid">
-        <div class="row gy-4 justify-content-center">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/movie}"> <img src="/img/movie.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-             <a th:href="@{/book}"> <img src="/img/book.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/theater}"><img src="/img/theater.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <a th:href="@{/musical}"><img src="/img/musical.png" class="img-fluid" alt="" style="width:300px; height:400px;">
-             </a>
-            </div>
-          </div>
-          
-          </div>
-         </div>
-         
-         </section>
+  </div>
+   </div>
+   <div class="container">
+		<h1 style="margin-top:130px;">최신글</h1>
+		<div class="head-info">
+			<table id="table">
+				<thead>
+					<tr class="board-list">
+						<th>번호</th>
+						<th>작성자</th>
+						<th>미디어</th>
+						<th>제목</th>
+						<th>등록일</th>
+						<th>별점</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="reviews" th:each="r :${reviews}">
+						<td th:text="${r.board_no}"></td>
+						<td th:text="${r.nickname}"></td>
+					  	<td th:text="'도서'" th:if="${r.con_no le 5100}"></td>
+					  	
+						<td th:text="'영화'" th:if="${r.con_no gt 5100 && r.con_no le 21298}"></td>
+						<td th:text="'연극'" th:if="${r.con_no gt 21299 && r.con_no le 33241}"></td> 
+						<td th:text="'뮤지컬'" th:if="${r.con_no gt 33241 && r.con_no le 60000}"></td>
+						
+						<td><a th:href="@{/post/view.do( board_no=${r.board_no} )}"
+							th:text="${r.title}" class="word-cut"></a></td>
+						<td><span
+							th:text="${#dates.format(r.writedate,'yyyy-MM-dd')}"></span></td>
+						<td th:text="${r.star_rate}"></td>
+						
+					</tr>
+				</tbody>
+			</table>
+
+			
+			</div>
+	</div>
+   
    
    
    

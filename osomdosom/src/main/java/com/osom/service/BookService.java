@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.osom.dto.Board;
 import com.osom.dto.BookInfo;
 import com.osom.dto.Paging;
 import com.osom.frame.MyService;
@@ -75,5 +76,7 @@ public class BookService implements MyService<Integer, BookInfo>{
 	public List<BookInfo> getLikeContentsName(int mem_no) throws Exception{
 		return bookmapper.getLikeContentsName(mem_no);
 	}
-
+	public List<BookInfo> bookreviewlist(int pages, int offset)throws Exception{
+		return bookmapper.bookreviewlist(pages, offset);
+	}
 }

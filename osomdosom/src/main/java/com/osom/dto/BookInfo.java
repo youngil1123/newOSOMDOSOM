@@ -39,5 +39,15 @@ public class BookInfo {
 	
 	//member_tbl
 	private String nickname;
-	//
+	
+	//paging
+	int pages; 
+	int offset;
+	
+	BookInfo (int pages, int offset){
+		super();
+		this.pages = pages;
+		this.offset = offset;
+		
+	}
 }
