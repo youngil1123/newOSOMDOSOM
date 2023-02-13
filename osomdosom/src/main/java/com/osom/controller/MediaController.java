@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.osom.dto.Board;
 import com.osom.dto.BookInfo;
@@ -41,6 +42,12 @@ public class MediaController {
 
 	@RequestMapping("/mediamain")
     public String mediamain(Model model) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		// 책, 영화, 연극, 뮤지컬 종류별로 나누어서 별점의 평균이 높은 순으로 4개만 데이터를 담자.
+		
+		// 콘텐츠별로 평균 별점을 구하자.  
 		
 		model.addAttribute("top", "mediamain");
         return "/board/mediamain";
