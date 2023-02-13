@@ -13,13 +13,13 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	select con_genre from contents where con_no = #{con_no}
 </select>
 <select id="getconByconnoBook" parameterType="Integer" resultType="Mbti">
-	select book_no,bookImageURL from bookinfo where con_no = #{con_no}
+	select book_no,bookImageURL,bookname,vol from bookinfo where con_no = #{con_no}
 </select>
 <select id="getconByconnoMovie" parameterType="Integer" resultType="Mbti">
-	select movieCd,movieposter from movieinfo where con_no = #{con_no}
+	select movieCd,movieposter,movieNm from movieinfo where con_no = #{con_no}
 </select>
 <select id="getconByconnoTheater" parameterType="Integer" resultType="Mbti">
-	select mt20id,poster from theaterinfo where con_no = #{con_no}
+	select mt20id,poster,prfnm from theaterinfo where con_no = #{con_no}
 </select>
 
 </mapper>

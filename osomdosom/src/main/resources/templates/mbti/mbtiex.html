@@ -40,43 +40,58 @@
 <style>
 #mbti_info{
 	text-align:center;
-	margin:0 auto;
-	
+	margin:0 auto;	
 }
+
+.footer {
+   width:100%;
+ bottom:0;
+   position:absolute;
+  text-align: center;
+ 
+}
+
 #reviewnull{
 text-align:center;
 
 }
-#reviewnull .mini{
-margin-bottom:30px;
-}
 
 #reviewnull img{
-	margin-bottom:50px;
-	width:40%;
-margin-left:430px;
-margin-top:30px;
+margin-bottom:50px;
+width:20%;
+margin-right:50px;
+vertical-align: middle;
 }
-.btn-gradient {
-  text-decoration: none;
-  color: white;
-  padding: 10px 30px;
-  display: inline-block;
+a.button {
+  display: block;
   position: relative;
-  border: 1px solid rgba(0,0,0,0.21);
-  border-bottom: 4px solid rgba(0,0,0,0.21);
-  border-radius: 4px;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+  float: left;
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 40px 630px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
 }
-.btn-gradient.cyan {
-  background: rgba(27,188,194,1);
-  background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27,188,194,1)), to(rgba(24,163,168,1)));
-  background: -webkit-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-  background: -moz-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-  background: -o-linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-  background: linear-gradient(rgba(27,188,194,1) 0%, rgba(24,163,168,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+
+.btnBlueGreen {
+  background: #005f5b;
 }
+.btnBlueGreen.btnPush {
+  box-shadow: 0px 5px 0px 0px #007144;
+}
+.btnPush:hover {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.btnBlueGreen.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #007144;
+}
+
 
 </style>
   <body>
@@ -117,15 +132,26 @@ margin-top:30px;
 			</span>
 
 		</span>
+		
 		<span id="reviewnull" th:if="${#lists.isEmpty(contents)}">
 		<div th:if ="${session.logincust == null}"> 
-            <a th:href="@{/login}" class="btn-gradient cyan mini" onClick='chkwrite();'>리뷰작성</a>
+		<img src="img/bin.png">
+		<h2>현재 작성된 리뷰가 없습니다.</h2>
+		<a th:href="@{/login}" class="button btnPush btnBlueGreen" onClick='chkwrite();'>리뷰작성</a>
+		
+
+         		
             </div>
             <div th:if="${session.logincust != null}">
-						<a th:href="@{/newboardwrite}" class="btn-gradient cyan mini">리뷰작성</a>
+            <img src="img/bin.png">
+            <h2>현재 작성된 리뷰가 없습니다.</h2>
+            	<a th:href="@{/newboardwrite}" class="button btnPush btnBlueGreen">리뷰작성</a>
+						
+
 					</div>
-		<h2>현재 작성된 리뷰가 없습니다.</h2>
-  		<img src="img/note.png">
+					
+		
+  		
   	
   	</span>
 	</div>
