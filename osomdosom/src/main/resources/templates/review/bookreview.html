@@ -93,6 +93,8 @@
 	text-align: center;
 }
 
+
+
 .review>th:nth-child(2), td:nth-child(2) {
 	width: 40%;
 }
@@ -104,16 +106,31 @@
 	margin-left:auto;
 	margin-bottom:150px;
 	background-image:url("/css/page1.png");
-	max-width:65%;
 	padding:20px;
-	background-size: cover;
-	 word-break:break-all;
+	  *zoom: 1; 
 }
+
+.main-container:after {
+    content: " ";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    height: 0; }
+    
+    
+@media (min-width: 768px) {
+    .main-container {
+      width: 750px; } }
+  @media (min-width: 992px) {
+    .main-container {
+      width: 970px; } }
+  @media (min-width: 1200px) {
+    .main-container {
+      width: 1170px; } }
 
 
 .content {
 	font-family: 'KyoboHand';
-	flex-grow : 1; 
 }
 
 .book-title {
@@ -182,7 +199,7 @@
 	<header th:replace="top.html :: navigation-bar"></header>
 
 	<main class="main-content" >
-		<div class="main-container imgsrc">
+		<div class="main-container">
 			<div class="page">
 				<div class="content">
 					<div class="row" >
@@ -223,8 +240,9 @@
 					</div>
 					<!-- .row -->
 						<div th:include="review/onereviewpaging" id="onereviewpaging"></div>
-				</div>
-			</div>
+				
+		</div>
+		</div>
 		</div>
 	</main>
 	<footer th:replace="footer.html :: footer"></footer>
