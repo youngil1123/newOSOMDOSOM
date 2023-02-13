@@ -43,12 +43,14 @@ public class MediaController {
 	@RequestMapping("/mediamain") 
 		
 	public String mediamain(Model model) {
+		//최신글
 		List<Board> reviews = new ArrayList<Board>();
 		try {
 			reviews = boardservice.recentreview();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		// 도서 순위 5
 		List<Board> blist = new ArrayList<Board>();
 		blist = boardservice.getTop5("도서");
