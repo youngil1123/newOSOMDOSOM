@@ -10,8 +10,16 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'KyoboHand';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+    font-weight: bolder;
+    font-style: normal;
+}
+
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family:'KyoboHand';
   color: black;
 }
 
@@ -31,7 +39,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Jost", sans-serif;
+  font-family:'KyoboHand';
 }
 
 /*--------------------------------------------------------------
@@ -113,7 +121,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Jost", sans-serif;
+  font-family:'KyoboHand';
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -294,7 +302,7 @@ section {
   transition: all 0.3s;
   padding: 8px 20px;
   border-radius: 50px;
-  font-family: "Poppins", sans-serif;
+  font-family:'KyoboHand';
 }
 
 .portfolio #portfolio-flters li:hover,
@@ -557,7 +565,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Jost", sans-serif;
+  font-family:'KyoboHand';
 }
 
 
@@ -590,7 +598,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Jost", sans-serif;
+ font-family:'KyoboHand';
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -771,7 +779,7 @@ section {
   transition: all 0.3s;
   padding: 8px 20px;
   border-radius: 50px;
-  font-family: "Poppins", sans-serif;
+ font-family:'KyoboHand';
 }
 
 .portfolio #portfolio-flters li:hover,
@@ -1013,7 +1021,7 @@ section {
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+ font-family:'KyoboHand';
   color: black;
 }
 
@@ -1033,7 +1041,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Jost", sans-serif;
+ font-family:'KyoboHand';
 }
 
 /*--------------------------------------------------------------
@@ -1115,7 +1123,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Jost", sans-serif;
+ font-family:'KyoboHand';
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -1296,7 +1304,7 @@ section {
   transition: all 0.3s;
   padding: 8px 20px;
   border-radius: 50px;
-  font-family: "Poppins", sans-serif;
+  font-family:'KyoboHand';
 }
 
 .portfolio #portfolio-flters li:hover,
@@ -1538,7 +1546,7 @@ section {
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+ font-family:'KyoboHand';
   color: black;
 }
 
@@ -1558,7 +1566,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Jost", sans-serif;
+  font-family:'KyoboHand';
 }
 
 /*--------------------------------------------------------------
@@ -1642,7 +1650,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Jost", sans-serif;
+ font-family:'KyoboHand';
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -1823,7 +1831,7 @@ section {
   transition: all 0.3s;
   padding: 8px 20px;
   border-radius: 50px;
-  font-family: "Poppins", sans-serif;
+ font-family:'KyoboHand';
 }
 
 .portfolio #portfolio-flters li:hover,

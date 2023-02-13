@@ -30,6 +30,9 @@ public class Member_tbl {
 	private String today;
 	private MultipartFile img;
 	private String myword;
+	
+	private String ban;
+
 
 
 // 이메일 찾기

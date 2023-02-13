@@ -37,12 +37,6 @@
 
 
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <meta content="" name="description">
 <meta content="" name="keywords">
@@ -55,14 +49,9 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet">
-<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="/vendor/aos/aos.css" rel="stylesheet">
-<!-- Template Main CSS Files -->
-<link href="/css/variables.css" rel="stylesheet">
+
+
+
 <link href="/css/main.css" rel="stylesheet">
 
 <meta charset="UTF-8">
@@ -79,8 +68,19 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-
 <style>
+	@font-face {
+	    font-family: 'KyoboHand';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	    }
+	.footer-content{
+		font-family: 'KyoboHand';
+	}
+</style>
+<style>
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -89,7 +89,8 @@
   'opsz' 48
 }
 .container {
-	height: 1000px;
+	height: 750px;
+	
 }
 
 .head-info {
@@ -172,6 +173,8 @@ float:left;
 input[type=checkbox]{
 margin: 15px 0 0;
 }
+
+
 </style>
 
 <script th:inline="javascript">
