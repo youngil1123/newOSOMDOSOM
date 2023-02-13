@@ -81,7 +81,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		select count(*) from board where mem_no =#{mem_no}
 	</select>
 	<select id="boardPageSelect" resultType="Board" parameterType="Paging">
-		select C.* from(select A.* from(select b.board_no,b.title,b.review,b.writedate,b.star_rate
+		select C.* from(select A.* from(select b.board_no,b.title,b.review,b.writedate,b.star_rate,b.con_no
 		from board b inner join member_tbl m using(mem_no) WHERE mem_no=#{mem_no} order by board_no desc) 
         A LIMIT #{totalRecord}) 
         C LIMIT #{startRecord},#{onePageRecord}
