@@ -93,6 +93,8 @@
 	text-align: center;
 }
 
+
+
 .review>th:nth-child(2), td:nth-child(2) {
 	width: 40%;
 }
@@ -104,11 +106,28 @@
 	margin-left:auto;
 	margin-bottom:150px;
 	background-image:url("/css/page1.png");
-	max-width:65%;
 	padding:20px;
-	background-size: cover;
-	/* border:2px solid #969696; */
+	  *zoom: 1; 
 }
+
+.main-container:after {
+    content: " ";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    height: 0; }
+    
+    
+@media (min-width: 768px) {
+    .main-container {
+      width: 750px; } }
+  @media (min-width: 992px) {
+    .main-container {
+      width: 970px; } }
+  @media (min-width: 1200px) {
+    .main-container {
+      width: 1170px; } }
+
 
 
 
@@ -124,6 +143,8 @@
 	list-style: none;
 	font-size: 2em;
 }
+
+
 </style>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -180,7 +201,7 @@
 	<header th:replace="top.html :: navigation-bar"></header>
 
 	<main class="main-content" >
-		<div class="main-container imgsrc">
+		<div class="main-container">
 			<div class="page">
 				<div class="content">
 					<div class="row" >
@@ -215,12 +236,15 @@
 								<li th:if="${logincust==null}" style="font-size: 15px; color: red">이 컨텐츠를 찜하시려면 <a href="/login" style="color:red; font-size:20px; text-decoration: underline; text-underline-position:under;">로그인</style></a>해주세요.</li>
 								<li>평균 평점 ⭐ : [[${star_rate}]]</li>
 							</ul>
+						
 						</div>
+						
 					</div>
 					<!-- .row -->
-				</div>
-				<div th:include="review/onereviewpaging" id="onereviewpaging"></div>
-			</div>
+						<div th:include="review/onereviewpaging" id="onereviewpaging"></div>
+				
+		</div>
+		</div>
 		</div>
 	</main>
 	<footer th:replace="footer.html :: footer"></footer>
