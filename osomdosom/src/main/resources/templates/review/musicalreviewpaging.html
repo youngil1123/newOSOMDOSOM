@@ -54,7 +54,7 @@
 		<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
 			<span th:if="${i le p.totalPage}" style="list-style: none;">
 				<li th:if="${i == p.nowPage}"
-				style="background-color: #ddd; font-size: 1.5em;"><a
+				style="background-color: lightblue; font-size: 1.5em;"><a
 					th:href="@{/review/musicalreview(nowPage=${i},mt20id=${p.mt20id})}">[[${i}]]</a>
 			</li>
 				<li th:if="${i != p.nowPage}" style="font-size: 1.5em;"><a
