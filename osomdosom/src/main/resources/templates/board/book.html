@@ -65,15 +65,21 @@
 </style>
 <body>
 	<header th:replace="top.html :: navigation-bar"></header>
-	<section>
+	<section style="background:#f6f5f7;">
+	<img src="img/bookpage.png" style="width:40px; margin-left:13%;"><span style="font-family: 'KyoboHand'; font-size:2em;"> BOOK</span>
+	<div style="text-align:right; font-family: 'KyoboHand'; color:red; font-size:1em; margin-right:12%; ">*리뷰가 등록된 도서목록</div>
+	<br>
+	<table style="border:0px red solid;  width:80%; margin:auto;">
+		<tr style="border:0px purple solid;">
+			<th style="border:0px blue solid;"> 
+				<span id="reviewlist" th:each="bookreview:${bookreviews}"> 
+				<a th:href="@{/review/bookreview(book_no=${bookreview.book_no})}" style="border:3px #bdbdbd solid; border-radius:5%; font-family: 'KyoboHand'; text-align: center; float:left; height:330px; width:200px; margin-left:3%; margin-bottom:5px;">
+				<img th:src="${bookreview.bookImageURL}" style="height: 250px; width:180px; padding:3px; margin-top:5px;  border:0px yellow solid; margin-left:0%;" id="reviewimg"><br><br>[[${bookreview.bookname}]]</a>
+				</span>
+			</th>
+		</tr>
+	</table>
 
-	<div class="reviewcontainer"
-		style="margin-left:350px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
-		<span id="reviewlist" th:each="bookreview:${bookreviews}"> 
-		<a th:href="@{/review/bookreview(book_no=${bookreview.book_no})}">
-		<img th:src="${bookreview.bookImageURL}" style="height: 300px; width:200px; padding:3px;" id="reviewimg"></a>
-		</span>
-	</div>
 	</section>
 	<footer th:replace="footer.html :: footer"></footer>
 </body>
