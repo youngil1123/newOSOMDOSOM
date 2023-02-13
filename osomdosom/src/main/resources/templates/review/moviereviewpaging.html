@@ -36,7 +36,7 @@
 			<!-- CONTENTS !-->
 			<tr th:each="s: ${moviereview}" class="review">
 				<td><span th:text="${s.title}"></span></td>
-				<td><a href="#"> <span th:text="${s.review}"
+				<td><a th:href="@{/recentreviewone(board_no=${s.board_no})}"> <span th:text="${s.review}"
 						style="font-size: 0.8em;"></span>
 				</a></td>
 				<td><span th:text="${s.nickname}"></span></td>
@@ -49,14 +49,15 @@
 <!-- .container -->										
 <div class="pageDiv">
 <ul class="pagingdiv">
-
+<br>
 		<!-- nowPage가 1보다 클경우 -->
 		<li th:if="${p.nowPage != 1}">
 			<span class="material-symbols-outlined"><a th:href="@{/review/moviereview(nowPage=${p.nowPage}-1,movieCd=${p.movieCd})}">arrow_back</span></a>
 		</li>
+		
 		<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
 					<span th:if="${i le p.totalPage}" style="list-style: none;">
-						<li th:if="${i == p.nowPage}" style="background-color: #ddd;font-size:1.5em;">
+						<li th:if="${i == p.nowPage}" style="font-size:1.5em; border-style: inset;">
 							<a th:href="@{/review/moviereview(nowPage=${i},movieCd=${p.movieCd})}">[[${i}]]</a>
 					</li>
 						<li th:if="${i != p.nowPage}" style="font-size:1.5em;"><a
