@@ -34,4 +34,5 @@ public class Board {
 	//top5
 	private String con_genre;
 	private double conStar_rate;
+	
 }

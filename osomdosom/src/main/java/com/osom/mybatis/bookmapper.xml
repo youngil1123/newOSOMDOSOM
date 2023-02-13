@@ -34,4 +34,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="getLikeContentsName" resultType="BookInfo" parameterType="Integer">
 		select * from bookinfo where con_no in (select con_no from like_list where mem_no = #{mem_no})
 	</select>
+	<select id="bookreviewlist" parameterType="BookInfo" resultType="BookInfo">
+		SELECT * FROM bookinfo bi inner join board b WHERE bi.con_no = b.con_no order by board_no desc LIMIT #{pages} OFFSET #{offset}
+	</select>
 </mapper>

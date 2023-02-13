@@ -28,6 +28,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</select>
 	
+	<select id="bookreviewcnt" resultType="Integer">
+		select count(*) from board where con_no between 100 and 5099
+	</select>
+	
+	
 	<select id="searchmylist" parameterType="Integer" resultType="Board"  >
 		select * from board where mem_no=#{mem_no} order by board_no desc
 	</select>

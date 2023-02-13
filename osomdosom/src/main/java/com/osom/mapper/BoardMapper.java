@@ -32,6 +32,8 @@ public interface BoardMapper extends MyMapper<Integer,Board>{
 	public List<Board> recentreview();
 	public List<Integer> totalreview();
 	public List<Board> getTop5(String genre);
+	public int bookreviewcnt();
+
 }
 	
 	

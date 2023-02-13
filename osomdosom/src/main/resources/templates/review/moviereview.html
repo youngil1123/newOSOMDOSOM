@@ -97,13 +97,40 @@
 	width: 40%;
 }
 
-.container {
-	margin-top: 120px;
+.main-container {
+	margin-top: 150px;
+	font-family: 'KyoboHand';
+	margin-right: auto;
+	margin-left:auto;
+	margin-bottom:150px;
+	background-image:url("/css/page1.png");
+	padding:20px;
+	  *zoom: 1; 
 }
 
+.main-container:after {
+    content: " ";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    height: 0; }
+    
+    
+@media (min-width: 768px) {
+    .main-container {
+      width: 750px; } }
+  @media (min-width: 992px) {
+    .main-container {
+      width: 970px; } }
+  @media (min-width: 1200px) {
+    .main-container {
+      width: 1170px; } }
+
+
 .content {
-	font-family: 'Gowun Dodum', sans-serif;
+	font-family: 'KyoboHand';
 }
+
 
 .movie-title {
 	font-size: 3em;
@@ -169,7 +196,7 @@
 	<header th:replace="top.html :: navigation-bar"></header>
 
 	<main class="main-content">
-		<div class="container">
+		<div class="main-container">
 			<div class="page">
 				<!-- <div class="breadcrumbs">
 					<a href="index.html">Home</a> <a href="review.html">Movie
@@ -178,16 +205,19 @@
 
 				<div class="content">
 					<div class="row">
+					<h2 class="movie-title"  style="font-family: 'KyoboHand'; font-size:50x; text-align:center;">[[${movie.movieNm}]]</h2>
 						<div class="col-md-4">
-							<figure class="movie-poster">
+							<figure class="movie-poster" style="margin-left:30%; box-shadow:3px 4px 6px 0px #323232;">
 								<img th:src="${movie.movieposter}"
 									onerror="this.onerror=null; this.src='/img/Noimg.jpg';"
 									style="width: 100%; height: 100%;">
 							</figure>
 						</div>
 						<div class="col-md-8">
-							<h2 class="movie-title">[[${movie.movieNm}]]</h2>
-							<ul class="movie-meata">
+							
+							
+							<ul class="movie-meata" style="line-height:50px; margin-top:2%; margin-left:3%;">
+								
 								<li>장르 : [[${movie.genreAlt}]]</li>
 								<li>감독명 : [[${movie.peopleNm}]]</li>
 								<li>개봉일 : [[${movie.openDt}]]</li>
@@ -204,8 +234,8 @@
 									<span th:if="${likestate==0}" style="font-size:15px;">이 컨텐츠를 찜목록에 저장하려면 오른쪽 아이콘을 클릭하세요.
 										<a href="#" class="material-symbols-rounded likeadd">heart_plus</a>
 									</span></li>
-								<li th:if="${logincust==null}" style="font-size:15px;color:red">이 컨텐츠를 찜하시려면 <u>로그인</u> 해주세요.</li>
-								<li>평균 평점 : [[${star_rate}]]</li>
+								<li th:if="${logincust==null}" style="font-size:15px;color:red">이 컨텐츠를 찜하시려면  <a href="/login" style="color:red; font-size:20px; text-decoration: underline; text-underline-position:under;">로그인</style></a> 해주세요.</li>
+								<li>평균 평점 ⭐ : [[${star_rate}]]</li>
 							</ul>
 						</div>
 					</div>

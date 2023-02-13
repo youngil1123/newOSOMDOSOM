@@ -68,9 +68,14 @@
 	}
 </style>
 <style>
+*{
+	font-family: 'KyoboHand';
+}
 .btn {
+	
 	-bs-btn-font-size: 2rem;
 	margin-bottom: 10px;
+	float:left;
 }
 
 .search_box {
@@ -104,6 +109,46 @@
 th, td {
 	padding: 6px;
     }
+  
+/* button {
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+} */
+
+a.btn-dark {
+  display: block;
+  position: relative;
+  float: left;
+  width: 100px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color:	#FFFFF0;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+
+
+.btnOrange {
+  background: #FFAA40;
+}
+
+.btnOrange.btnPush {
+  box-shadow: 0px 5px 0px 0px #A66615;
+}
+
+.btnOrange.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #A66615;
+}
+
+#result{
+	font-size:20px;
+}
+
 </style>
 
 
@@ -201,11 +246,11 @@ th, td {
 <body>
 	<header th:replace="top.html :: navigation-bar"></header>
 	<div class="container" style="margin-top: 100px;">
-		<h2>게시판 글쓰기</h2>
+		<h2 style="font-family: 'KyoboHand';">게시판 글쓰기</h2>
 		<div class="search_box">
 			<form id="searchForm" name="searchForm" autocomplete="off"
 				onsubmit="return searchCheck()">
-				<div class="sch_group fl">
+				<div class="sch_group fl" >
 					<select id="searchType" name="searchType" title="검색 유형 선택">
 						<option value="">항목 선택</option>
 						<option value="book">Book</option>
@@ -220,7 +265,7 @@ th, td {
 			</form>
 		</div>
 		<div id="ajaxbooklist" >
-			<table class="list_1" width="100%" cellspacing="0" summary="">
+			<table class="list_1" width="100%" cc="0" summary="">
 				<caption></caption>
 				<colgroup>
 					<col />
@@ -235,7 +280,7 @@ th, td {
 							th:value="${vo.bookname}" style="width: 35px;"
 							onclick='checkOnlyOne(this)' /></td>
 						<td><input type="hidden" id="book_con_no" name="book_con_no" th:value="${vo.con_no}"></td>
-						<td style="color:#3A3C68;font-family: 'Gowun Dodum', sans-serif;
+						<td style="color:#3A3C68;
 						">[[${vo.bookname}]][[${vo.vol}]]([[${vo.publication_year}]])</td>
 						<td th:text="${vo.authors}"></td>
 						<td>출판사:[[${vo.publisher}]]</td>
@@ -285,10 +330,11 @@ th, td {
 				</thead>
 			</table>
 		</div>
-			<a href="#" onclick='getCheckboxValue()' class="btn btn-dark btn-lg">미디어
+			
+			<a href="#" onclick='getCheckboxValue()' title="Button push orange" class="btn btn-dark btn-lg btnPush btnOrange" >미디어
 				선택</a>
 			<br>
-			<label>선택 항목</label><br><span>ㄴ</span>
+			<label style="font-size:12px;">선택 항목</label><br>
 			<span id='result' name="result"></span>
 	
 
@@ -311,8 +357,9 @@ th, td {
 
 				
 			
-			
-			<div class="form-group">
+		<div style="line-height:50px;">	
+			<div class="form-group" >
+			<br>
 				<label for="title">제목</label>
 				<!-- placeholder 속성 입력한 데이터가 없는 경우 배경으로 나타난다.실제적으로 입력을 100자까지로 지정 -->
 				<!-- required 속성을 설정하면 필수입력 사항이된다. -->
@@ -327,15 +374,17 @@ th, td {
 				<label for="content">내용</label>
 				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
 				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
-				<textarea class="form-control" rows="15" id="review" name="review"
+				
+				<textarea class="form-control" rows="12" id="review" name="review"
 					placeholder="내용은 30~500사이를 적을 수 있습니다." minlength = "30" maxlength="500"></textarea>
+			
 			</div>
 
 			<div class="form-group">
 				<label for="content">개인메모</label>
 				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
 				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
-				<textarea class="form-control" rows="15" id="secret_memo" name="secret_memo"
+				<textarea class="form-control" rows="7" id="secret_memo" name="secret_memo"
 					placeholder="내용 작성"></textarea>
 			</div>
 			<div class="form-group">
@@ -349,6 +398,7 @@ th, td {
 					min="0" max="10">
 				</span>
 			</div>
+		</div>
 			<input type="hidden" id="con_no" name="con_no">
 			<button type="submit" class="btn btn-secondary" id="btn-save">등록</button>
 			
