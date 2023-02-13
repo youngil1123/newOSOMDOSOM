@@ -63,7 +63,19 @@
 
   <body>
   <header th:replace="top.html :: navigation-bar"></header>
-   
+  <h1>---도서 인기순위---</h1>
+  <span th:each="b,bStats: ${booktop5}">
+  <a th:href="@{/review/bookreview(book_no=${b.book_no})}">[[${bStats.count}]]위 . [[${b.bookname}]]<span th:if="${vol != null}">[[${b.vol}]]권</span>([[${b.conStar_rate}]])</a><br>
+  </span>
+  <h1>---영화 인기순위 ---</h1>
+  <span th:each="m,mStats: ${movietop5}">
+  <a th:href="@{/review/moviereview(movieCd=${m.movieCd})}">[[${mStats.count}]]위 . [[${m.movieNm}]]([[${m.conStar_rate}]])</a><br>
+  </span>
+  <h1>---연극 & 뮤지컬 인기순위---</h1>
+  <span th:each="t,tStats: ${theatertop5}">
+  <a th:href="@{/review/theaterreview(mt20id=${t.mt20id})}">[[${tStats.count}]]위 . [[${t.prfnm}]]([[${t.conStar_rate}]])</a><br>
+  </span>
+  
    <section id="gallery" class="gallery">
       
 		<div class="section-title">

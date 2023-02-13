@@ -30,4 +30,8 @@ public class Board {
 	
 	private int pages;
 	private int offset;
+	
+	//top5
+	private String con_genre;
+	private double conStar_rate;
 }
