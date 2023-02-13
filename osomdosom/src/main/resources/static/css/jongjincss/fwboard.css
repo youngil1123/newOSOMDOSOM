@@ -17,6 +17,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+	    font-family: 'KyoboHand';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+}
 
 body{
   margin-top: 100px;
@@ -27,7 +33,7 @@ body{
 }
 
 .mycontainer{
-	 font-family:'WandohopeR';
+  font-family: 'KyoboHand';
   width: 1180px;
   margin: 0px auto ;
 }
