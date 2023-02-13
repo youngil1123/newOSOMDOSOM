@@ -11,4 +11,7 @@ import com.admin.frame.MyMapper;
 @Repository
 public interface Member_tblMapper extends MyMapper<String,Member_tbl>{
 	public int countmember();//회원 수 검색
+	public void banned(String ban, int mem_no);
+	public Member_tbl selectbyid(String mem_id);
+
 }

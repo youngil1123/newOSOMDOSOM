@@ -24,6 +24,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		
 	</update>
 	
+	<select id="selectban" parameterType="String" resultType="String">
+		SELECT ban FROM member_tbl WHERE mem_id=#{mem_id}
+	</select>
+
+	
 	<update id="updateMyInfo" parameterType="Member_tbl">
 		UPDATE member_tbl set mem_pwd=#{mem_pwd}, mbti=#{mbti} , nickname=#{nickname}, mem_img=#{mem_img}, myword=#{myword} where mem_no=#{mem_no}
 	</update>

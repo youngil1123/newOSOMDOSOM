@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.osom.dto.BookInfo;
+import com.osom.dto.Friendship;
 import com.osom.dto.Member_tbl;
 import com.osom.dto.MovieInfo;
 import com.osom.dto.TheaterInfo;
@@ -70,6 +71,12 @@ public class MyPageController {
 
 		Member_tbl myinfo = (Member_tbl) session.getAttribute("logincust"); // 로그인한 내 정보들
 		int mem_no = myinfo.getMem_no();
+		
+		
+		int followercnt = fservice.followercnt(mem_no);
+		System.out.println(followercnt);
+		mv.addObject("followercnt", followercnt);
+		
 		//찜한 책정보 가져가기
 		List<BookInfo> books = new ArrayList<BookInfo>();
 		//찜한 영화정보 가져가기

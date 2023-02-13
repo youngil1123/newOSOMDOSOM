@@ -2,6 +2,17 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org/">
 <head>
 <meta charset="UTF-8">
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
 <title>콘텐츠목록</title>
 </head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,6 +82,13 @@ td {
 	});
 </script>
 <body>
+<div >
+	<a th:href="@{/main}" style="margin-left:3%;">>메인으로 이동</a>
+	<a th:href="@{/membercontrol}" style="margin-left:3%;">>회원관리</a>
+	<a th:href="@{/reviewlist}" style="margin-left:3%;">>게시글관리</a>
+	<!-- <a th:href="@{/contentslist}" style="margin-left:3%;">>콘텐츠목록</a>  -->
+	<a th:href="@{/contentsupdate}" style="margin-left:3%;">>콘텐츠업데이트</a>
+</div>
 	<div class="container">
 
 		<ul class="tabs">
@@ -80,8 +98,9 @@ td {
 			<li class="tab-link" data-tab="theaterlist">연극</li>
 			<li><a th:href="@{/main}">메인으로 이동</a></li>
 		</ul>
-
-
+		
+		<input class="form-control" id="hzInput" type="text" placeholder="Search..">
+	
 		<section>
 			<div th:include="conlist/movielist" id="movielist"
 				class="tab-content current"></div>
@@ -93,5 +112,24 @@ td {
 		</section>
 
 	</div>
+		<script>
+
+		$(document).ready(function(){
+		
+		  $("#hzInput").on("keyup", function() {
+		
+		    var value = $(this).val().toLowerCase();
+		
+		    $("#hzTable tr").filter(function() {
+		
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		
+		    });
+		
+		  });
+		
+		});
+	
+	</script>
 </body>
 </html>

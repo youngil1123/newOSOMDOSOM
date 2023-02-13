@@ -4,7 +4,17 @@
 <meta charset="UTF-8">
 <title>Doit Book</title>
 <link rel="icon" href="/img/stack-of-books.png">
-
+<style>
+	@font-face {
+	    font-family: 'KyoboHand';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	    }
+	.footer-content{
+		font-family: 'KyoboHand';
+	}
+</style>
 </head>
 <body>
 	<!-- ======= Footer ======= -->
@@ -52,7 +62,7 @@ function chkwrite() {
 
 				<div class="row g-5">
 					<div class="col-lg-4">
-						<h3 class="footer-heading">OSOMDOSOM</h3>
+						<h3 class="footer-heading" style="font-family: 'KyoboHand';">OSOMDOSOM</h3>
 						<p>저희 OSMDOSOM은 멀티캠퍼스에서 project를 위해 결성한 팀이며, 캠퍼스 수료후에도 스타트업을
 							준비하는 팀입니다......</p>
 						<p>
@@ -60,11 +70,11 @@ function chkwrite() {
 						</p>
 					</div>
 					<div class="col-6 col-lg-2">
-						<h3 class="footer-heading">안내</h3>
+						<h3 class="footer-heading" style="font-family: 'KyoboHand';">안내</h3>
 						<ul class="footer-links list-unstyled">
 							<li><a th:href="@{/}"><i class="bi bi-chevron-right"></i>홈</a></li>
-							<li><a th:href="@{/mediamain}"><i
-									class="bi bi-chevron-right"></i>미디어</a></li>
+							<li ><a th:href="@{/mediamain}" ><i
+									class="bi bi-chevron-right" style="font-family: 'KyoboHand';"></i>미디어</a></li>
 							<li><a th:href="@{/mbtimain}"><i
 									class="bi bi-chevron-right"></i>MBTI</a></li>
 
@@ -87,7 +97,7 @@ function chkwrite() {
 						</ul>
 					</div>
 					<div class="col-6 col-lg-2">
-						<h3 class="footer-heading">미디어</h3>
+						<h3 class="footer-heading" style="font-family: 'KyoboHand';">미디어</h3>
 						<ul class="footer-links list-unstyled">
 							<li><a th:href="@{/movie}"><i
 									class="bi bi-chevron-right"></i> 영화</a></li>
@@ -102,7 +112,7 @@ function chkwrite() {
 					</div>
 
 					<div class="col-lg-4">
-						<h3 class="footer-heading">최신글</h3>
+						<h3 class="footer-heading" style="font-family: 'KyoboHand';">최신글</h3>
 
 						<ul
 							class="footer-links footer-blog-entry list-unstyled footerreview">

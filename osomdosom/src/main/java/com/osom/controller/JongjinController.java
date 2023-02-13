@@ -117,7 +117,9 @@ public class JongjinController {
 				}
 				
 				mv.addObject("fwNo", fwNo);
-				
+				int followercnt = fservice.followercnt(fwNo);
+				System.out.println(followercnt);
+				mv.addObject("followercnt", followercnt);
 				mv.setViewName("follower/followerBookBoard");
 
 			} catch (Exception e) {
@@ -168,6 +170,9 @@ public class JongjinController {
 				}
 
 				mv.addObject("fwNo", fwNo);
+				int followercnt = fservice.followercnt(fwNo);
+				System.out.println(followercnt);
+				mv.addObject("followercnt", followercnt);
 				
 				mv.setViewName("follower/followerMovieBoard");
 
@@ -218,6 +223,9 @@ public class JongjinController {
 					mv.addObject("theaterlist", thlist);
 				}
 				mv.addObject("fwNo", fwNo);
+				int followercnt = fservice.followercnt(fwNo);
+				System.out.println(followercnt);
+				mv.addObject("followercnt", followercnt);
 				
 				mv.setViewName("follower/followerTheaterBoard");
 

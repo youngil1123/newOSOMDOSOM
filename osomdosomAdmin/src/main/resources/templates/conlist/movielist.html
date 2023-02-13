@@ -3,17 +3,17 @@
 	<table class="movietable">
 		<thead class="movietablehead">
 			<tr class="movielist">
-				<th>영화코드</th>
-				<th>영화명</th>
-				<th>영화명(영문)</th>
-				<th>장르</th>
-				<th>개봉일</th>
-				<th>감독</th>
-				<th>상영시간(분)</th>
+				<th  style="width: 5%; text-align:center;">영화코드</th>
+				<th  style="width: 20%; text-align:center;">영화명</th>
+				<th  style="width: 20%; text-align:center;">영화명(영문)</th>
+				<th  style="width: 15%; text-align:center;">장르</th>
+				<th  style="width: 5%; text-align:center;">개봉일</th>
+				<th  style="width: 10%; text-align:center;">감독</th>
+				<th  style="width: 5%; text-align:center;">상영시간(분)</th>
 			</tr>
 		</thead>
 
-		<tbody>
+		<tbody id="hzTable">
 			<!-- CONTENTS !-->
 			<tr th:each="s: ${movies}" class="movie">
 				<td><span th:text="${s.movieCd}"></span></td>

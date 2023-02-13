@@ -1,18 +1,19 @@
+
 <h2> 현재 도서 콘텐츠 개수 : [[${bookcon_num}]] 개</h2>
 <div class="entry-content">
 	<table class="booktable">
 		<thead class="booktablehead">
 			<tr class="booklist">
-				<th>번호</th>
-				<th>제목</th>
-				<th>저자</th>
-				<th>출판사</th>
-				<th>출판년도</th>
-				<th>분류</th>
+				<th style="width: 5%; text-align:center;">번호</th>
+				<th style="width: 25%; text-align:center;">제목</th>
+				<th style="width: 18%; text-align:center;">저자</th>
+				<th style="width: 10%; text-align:center;">출판사</th>
+				<th style="width: 5%; text-align:center;">출판년도</th>
+				<th style="width: 15%; text-align:center;">분류</th>
 			</tr>
 		</thead>
 
-		<tbody>
+		<tbody id="hzTable">
 			<!-- CONTENTS !-->
 			<tr th:each="s: ${books}" class="book">
 				<td><span th:text="${s.book_no}"></span></td>

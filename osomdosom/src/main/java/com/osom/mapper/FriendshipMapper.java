@@ -13,5 +13,7 @@ public interface FriendshipMapper extends MyMapper<Integer,Friendship>{
 	Integer check(Friendship f);
 
 	void fwdelete(Friendship f);
+	
+	public int followercnt(int mem_no); 
 
 }

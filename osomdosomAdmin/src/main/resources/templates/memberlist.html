@@ -2,6 +2,47 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org/">
 <head>
 <meta charset="UTF-8">
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+  <script>
+  $(function(){
+	  $("#ban").on("click", function(){
+		  let member_id = $(this).val();
+		  alert("member_id");
+	  })
+	  
+  })
+  
+  
+ /*  function chkBanned(){
+	  
+	 var nowstate = (this).value();
+	  alert("nowstate");
+	  $.ajax({
+		  url:'[[@{/bann}]]',
+		  data:{
+			  'mem_id':nowstate,
+			  
+				  
+		  },
+		  success:function(data){
+			  alert("벤 유무 변경 : "+data);
+			  
+		  }
+	  }) 
+  } */
+  
+  </script>
+
 <title>회원목록</title>
 </head>
 <style>
@@ -17,8 +58,16 @@ td{
 }
 </style>
 <body>
-<a th:href="@{/main}">메인으로 이동</a>
+<div >
+	<a th:href="@{/main}" style="margin-left:3%;">>메인으로 이동</a>
+	<!-- <a th:href="@{/membercontrol}" style="margin-left:3%;">>회원관리</a>  -->
+	<a th:href="@{/reviewlist}" style="margin-left:3%;">>게시글관리</a>
+	<a th:href="@{/contentslist}" style="margin-left:3%;">>콘텐츠목록</a> 
+	<a th:href="@{/contentsupdate}" style="margin-left:3%;">>콘텐츠업데이트</a>
+</div>
+
 <p>현재 가입한 회원 수 : [[${membernumber}]] 명</p>
+	<input class="form-control" id="hzInput" type="text" placeholder="Search..">
 	<div id="memberlist">
 		<table class="list_1" width="100%" cellspacing="0" summary="">
 			<caption></caption>
@@ -31,15 +80,17 @@ td{
 			</colgroup>
 			<thead>
 				<tr id="member_nav">
-					<td>회원번호</td>
-					<td>회원아이디</td>
-					<td>회원이름</td>
-					<td>회원이메일</td>
-					<td>회원mbti</td>
-					<td>회원닉네임</td>
-					<td>회원포인트</td>
+					<th style="text-align:center;">회원번호</th>
+					<th style="text-align:center;">회원아이디</th>
+					<th style="text-align:center;">회원이름</th>
+					<th style="text-align:center;">회원이메일</th>
+					<th style="text-align:center;">회원mbti</th>
+					<th style="text-align:center;">회원닉네임</th>
+					<th style="text-align:center;">회원포인트</th>
+					<th style="text-align:center;">정지 여부</th>
 				</tr>
-
+			</thead>
+			<tbody id="hzTable">
 				<tr th:each="mem : ${members}">
 					<td th:text="${mem.mem_no}"></td>
 					<td th:text="${mem.mem_id}"></td>
@@ -48,7 +99,9 @@ td{
 					<td th:text="${mem.mbti}"></td>
 					<td th:text="${mem.nickname}"></td>
 					<td th:text="${mem.mem_point}">p</td>
+					<td><a th:href="@{/bann(mem_id=${mem.mem_id})}">상태 : [[${mem.ban}]] </a></td>
 				</tr>
+			</tbody>
 			<caption></caption>
 			<colgroup>
 				<col />
@@ -59,5 +112,24 @@ td{
 			</colgroup>
 		</table>
 	</div>
+	<script>
+
+		$(document).ready(function(){
+		
+		  $("#hzInput").on("keyup", function() {
+		
+		    var value = $(this).val().toLowerCase();
+		
+		    $("#hzTable tr").filter(function() {
+		
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		
+		    });
+		
+		  });
+		
+		});
+	
+	</script>
 </body>
 </html>

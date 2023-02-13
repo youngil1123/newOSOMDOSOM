@@ -31,7 +31,7 @@ public interface BoardMapper extends MyMapper<Integer,Board>{
 	public Double getavgstar_rate(int i); 
 	public List<Board> recentreview();
 	public List<Integer> totalreview();
-	
+	public List<Board> getTop5(String genre);
 }
 	
 	

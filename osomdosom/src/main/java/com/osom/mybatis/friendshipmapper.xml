@@ -32,5 +32,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="Member_tbl">
 		
 	</select>
+	<select id="followercnt" parameterType="Integer" resultType="Integer">
+	SELECT COUNT(*) from friendship where mem_no2 = #{mem_no}
+</select>
 
 </mapper>

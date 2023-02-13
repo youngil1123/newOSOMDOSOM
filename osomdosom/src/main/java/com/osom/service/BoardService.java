@@ -101,7 +101,9 @@ public class BoardService implements MyService<Integer, Board>{
 		return mapper.totalreview();
 	}
 
-
+	public List<Board> getTop5(String genre){
+		return mapper.getTop5(genre);
+	}
 	
 }
 

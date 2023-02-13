@@ -19,21 +19,24 @@
 
 <!-- Vendor CSS Files -->
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet">
-<link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-<link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="/vendor/aos/aos.css" rel="stylesheet">
+
 
 
 <!-- Template Main CSS Files -->
 <link href="/css/variables.css" rel="stylesheet">
 <link href="/css/main.css" rel="stylesheet">
+<style>
+	@font-face {
+	    font-family: 'KyoboHand';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	    }
+	.footer-content{
+		font-family: 'KyoboHand';
+	}
+</style>
 
-<link href="/css/pointshop.css" rel="stylesheet">
-
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="/js/isotope.pkgd.js"></script>
    <script>
  
    (function() {
@@ -85,16 +88,64 @@
     });
 	
    })()
+   
+   
 	</script>
+	<style>
+
+#errorimg{
+	height:300px;
+	width:700px;
+	margin-top:10%;
+	margin:auto;
+}
+
+#error{
+	height:300px;
+	position:relative;
+	left:32%;
+	
+}
+
+#errormsg{
+	width:700px;
+	text-align:center;
+	margin: 5% auto;
+}
+
+#mypoint{
+	width:670px;
+	text-align:right;
+	position:absolute;
+	top:40%;
+}	
+
+
+
+</style>
 </head>
 <body>
 <header th:replace="top.html :: navigation-bar"></header>
 
-<section id="point" class="point">
+<div id="pointsoon">
+	<div th:each="my : ${myinfo}" id="mypoint" class="soon">
+		보유중인 포인트 : [[${myinfo.mem_point}]]
+	</div>
+	
+	<div id="errorimg" class="soon">
+		<img src="img/jongjinimg/system.png" id="error" title="error icons">
+		
+	</div>
+	<div id="errormsg" class="soon">
+		<h5> 포인트 상점이 곧 오픈 예정입니다.🎁<br><br> 열심히 포인트를 쌓아두세요!</h5>
+	</div>
+</div>
+
+<!-- <section id="point" class="point">
       <div class="container">
 
         <div class="section-title">
-         <!--  <h2>PointShop</h2> -->
+          <h2>PointShop</h2>
      
           <h3>Mypoint <span>300p</span></h3>
           <p>고객님의 포인트로 아래의 상품들과 교환 가능합니다.</p>
@@ -175,7 +226,7 @@
         </div>
 
       </div>
-  </section>
+  </section> -->
   <footer th:replace="footer.html :: footer"></footer>
   </body>
 
