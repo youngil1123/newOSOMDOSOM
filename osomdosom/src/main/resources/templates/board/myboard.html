@@ -90,7 +90,7 @@
 }
 .container {
 	height: 750px;
-	
+	font-family: 'KyoboHand';
 }
 
 .head-info {
@@ -100,6 +100,7 @@
 	background: #ddd;
 	line-height: 40px;
 	margin-top: 100px;
+	font-family: 'KyoboHand';
 }
 
 .head-info>div:last-child {
@@ -112,6 +113,7 @@
 }
 .board-list{
 background-color:#005f5b;
+color:ffffff;
 }
 
 .board-list>th {
@@ -174,7 +176,7 @@ background-color:#005f5b;
 	width: 80px;
 }
 .pagingdiv li{
-float:left;
+	float:left;
 }
 
 input[type=checkbox]{
@@ -226,7 +228,7 @@ margin: 15px 0 0;
 
 	<header th:replace="top.html :: navigation-bar"></header>
 	<div class="container">
-		<h1 style="margin-top:130px;">게시판 목록</h1>
+		<h1 style="margin-top:130px; font-family: 'KyoboHand'; " >게시판 목록</h1>
 		<div class="head-info">
 			<table id="table">
 				<thead>
@@ -264,16 +266,16 @@ margin: 15px 0 0;
 					<li th:if="${p.nowPage != 1}" class="material-symbols-outlined" ><a
 						th:href="@{/myboard(nowPage=${p.nowPage}-1)}" style="text-align:center;">arrow_back</a></li>
 				<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
-					<span th:if="${i le p.totalPage}" style="list-style: none;">
-						<li th:if="${i == p.nowPage}" style="background-color: #ddd;">
-							<a th:href="@{/myboard(nowPage=${i})}">[[${i}]]</a>
+					<span th:if="${i le p.totalPage}" style="list-style: none; ">
+						<li th:if="${i == p.nowPage}" style="background-color: #ddd; width:40px; margin-right:10px; text-align:center;">
+							<a th:href="@{/myboard(nowPage=${i})}" style="text-align:center; ">[[${i}]]</a>
 					</li>
-						<li th:if="${i != p.nowPage}"><a
-							th:href="@{/myboard(nowPage=${i})}">[[${i}]]</a></li>
+						<li th:if="${i != p.nowPage}"style="text-align:center; margin-right:10px;"><a
+							th:href="@{/myboard(nowPage=${i})}"style="text-align:center; margin-right:10px;" >[[${i}]]</a></li>
 					</span>
 				</span>
 				<!-- nowPage<totalPage -->
-					<li th:if="${p.nowPage lt p.totalPage}" class="material-symbols-outlined"><a
+					<li th:if="${p.nowPage lt p.totalPage}" class="material-symbols-outlined " style="margin-right:10px;"><a
 						th:href="@{/myboard(nowPage=${p.nowPage}+1)}">arrow_forward</a></li>
 				</ul>
 			</div>
