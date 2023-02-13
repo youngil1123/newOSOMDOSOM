@@ -115,6 +115,7 @@ public class TheaterController {
 		model.addAttribute("logincust", session.getAttribute("logincust"));
 		
 		return "review/theaterreview";
+		//
 		
 	}
 }
