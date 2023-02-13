@@ -73,7 +73,7 @@
 
 	<div class="reviewcontainer" style="margin-left:350px; margin-top:150px; margin-right: 160px; margin-bottom: 70px;">
 		<span id="reviewlist" th:each="theaterreviews:${theaterreviews}">
-			<a th:href="@{/review/theaterreview(mt20id=${theaterreviews.mt20id})}">
+			<a th:href="@{/review/musicalreview(mt20id=${theaterreviews.mt20id})}">
 			<img th:src="${theaterreviews.poster}" style="height: 300px; padding:3px;" id="reviewimg"></a>
 			 
 			</span>

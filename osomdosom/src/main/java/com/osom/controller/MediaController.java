@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.osom.dto.Board;
 import com.osom.dto.BookInfo;
@@ -92,6 +91,14 @@ public class MediaController {
 		System.out.println(movies);
 		System.out.println(theaters);
 
+		List<Board> reviews = new ArrayList<Board>();
+		try {
+			reviews = boardservice.recentreview();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("reviews", reviews);
 		model.addAttribute("top", "mediamain");
 		return "/board/mediamain";
 	}

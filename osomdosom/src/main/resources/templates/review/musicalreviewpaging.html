@@ -8,7 +8,7 @@
 	overflow: auto;
 }
 
-.pageDiv>ul>li {
+.pagingdiv li {
 	padding: 5px 10px;
 	float: left;
 }
@@ -20,18 +20,18 @@
 <div class="entry-content">
 	<table id="reviewtable">
 		<thead>
-				<tr class="reviewlist">
-					<th>제목</th>
-					<th>리뷰</th>
-					<th>작성자(닉네임)</th>
-					<th>등록일</th>
-					<th>평점</th>
-				</tr>
+			<tr class="reviewlist">
+				<th>제목</th>
+				<th>리뷰</th>
+				<th>작성자(닉네임)</th>
+				<th>등록일</th>
+				<th>평점</th>
+			</tr>
 		</thead>
 
 		<tbody>
 			<!-- CONTENTS !-->
-			<tr th:each="s: ${musicalreview}" class="review">
+			<tr th:each="s: ${theaterreview}" class="review">
 				<td><span th:text="${s.title}"></span></td>
 				<td><a href="#"> <span th:text="${s.review}"></span>
 				</a></td>
@@ -42,19 +42,29 @@
 		</tbody>
 	</table>
 </div>
-<div>
-	현재 페이지 : [[${p.nowPage}]] 총 페이지 : [[${p.totalPage}]]<br>
-</div>
 <!-- .container -->
 <div class="pageDiv">
-	<!-- nowPage가 1보다 클경우 -->
-	<p th:if="${p.nowPage != 1}">
-		<span class="material-symbols-outlined"><a
-			th:href="@{/review/musicalreview(nowPage=${p.nowPage}-1,mt20id=${p.mt20id})}">arrow_back</span></a>
-	</p>
-	<!-- nowPage<totalPage -->
-	<p th:if="${p.nowPage lt p.totalPage}">
-		<span class="material-symbols-outlined"><a
-			th:href="@{/review/musicalreview(nowPage=${p.nowPage}+1,mt20id=${p.mt20id})}">arrow_forward</span></a>
-	</p>
+	<ul class="pagingdiv">
+
+		<!-- nowPage가 1보다 클경우 -->
+		<li th:if="${p.nowPage != 1}"><span
+			class="material-symbols-outlined"><a
+				th:href="@{/review/musicalreview(nowPage=${p.nowPage}-1,mt20id=${p.mt20id})}">arrow_back</span></a>
+		</li>
+		<span th:each="i : ${#numbers.sequence(p.startPage,p.totalPage)}">
+			<span th:if="${i le p.totalPage}" style="list-style: none;">
+				<li th:if="${i == p.nowPage}"
+				style="background-color: #ddd; font-size: 1.5em;"><a
+					th:href="@{/review/musicalreview(nowPage=${i},mt20id=${p.mt20id})}">[[${i}]]</a>
+			</li>
+				<li th:if="${i != p.nowPage}" style="font-size: 1.5em;"><a
+					th:href="@{/review/musicalreview(nowPage=${i},mt20id=${p.mt20id})}">[[${i}]]</a></li>
+		</span>
+		</span>
+		<!-- nowPage<totalPage -->
+		<li th:if="${p.nowPage lt p.totalPage}"><span
+			class="material-symbols-outlined"><a
+				th:href="@{/review/musicalreview(nowPage=${p.nowPage}+1,mt20id=${p.mt20id})}">arrow_forward</span></a>
+		</li>
+	</ul>
 </div>
