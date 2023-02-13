@@ -220,7 +220,7 @@ color:yellow;
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="reviews" th:each="r :${reviews}">
+					<tr class="reviews" th:each="r:${reviews}">
 						<td th:text="${r.board_no}"></td>
 						<td th:text="${r.nickname}"></td>
 					  	<td th:text="'도서'" th:if="${r.con_no le 5100}"></td>
