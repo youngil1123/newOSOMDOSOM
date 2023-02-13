@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.osom.dto.Board;
 import com.osom.dto.BookInfo;
@@ -39,7 +40,8 @@ public class MediaController {
 	@Autowired
 	MbtiService mbtiservice;
 
-	@RequestMapping("/mediamain")
+	@RequestMapping("/mediamain") 
+		
 	public String mediamain(Model model) {
 
 		// 도서 순위 5
