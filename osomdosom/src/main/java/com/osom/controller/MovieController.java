@@ -32,6 +32,7 @@ public class MovieController {
 	public String moviereview(String movieCd, Model model,Paging p,HttpSession session) {
 		//영화 하나 리뷰 보는 페이지로 이동(영화 정보 + 리뷰정보를 가지고)
 		
+		
 		MovieInfo movie= null;
 		Board con_no = null;
 		Double star_rate =null;
