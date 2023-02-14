@@ -43,7 +43,7 @@
 
 3. **구현기능**
 
- 1. 미디어
+  1. 미디어
  
 
  ![media](https://user-images.githubusercontent.com/117333012/218804538-87caa4b1-7e4c-4d5f-87cd-9d041af5d3f4.gif)
