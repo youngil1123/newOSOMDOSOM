@@ -179,48 +179,15 @@ color:ffffff;
 	float:left;
 }
 
-input[type=checkbox]{
-margin: 15px 0 0;
+.list a:hover{
+	color:#005f5b;
 }
 
 
 </style>
 
 <script th:inline="javascript">
-	$(function() {
-		//전체선택을 클릭하면 목록의 체크박스를 선택 또는 해제하는 기능
-		$("#allCheck").click(function() {
-			//  $("h1").attr("title","연습"); 
-			//  $("#bb").prop("checked", true);//값바꾸기    $("#bb").prop("checked"); //구하기
-			//  $(this) : 이벤트가 발생한 객체
-			$("input[type=checkbox]").prop("checked", $(this).prop("checked"));
-		});
-
-		//선택삭제 버튼 클릭시
-		$("#choDel").on('click', function() {
-			//최소 1개이상 선택되어야 삭제하기 위해 이동
-			// <input type="checkbox" name="no" value="17"/><input type="checkbox" name="no" value="16"/>...
-			// each() 객체에 대한 반복문
-			var checkCount = 0;
-			$("input[name=no]").each(function(i, obj) {
-				if (obj.checked) { // obj담긴 input태그의 체크정보를 구하여 갯수를 구한다.
-					checkCount++;
-				}
-			});
-
-			if (checkCount > 0) {
-				if (confirm(checkCount + "개의 글을 삭제하시겠습니까?")) {
-					$.ajax({
-						url:'/post/delete.do',
-						data:{}
-					})
-				}
-			} else {
-				alert("삭제할 레코드 최소 1개이상 선택하세요..");
-			}
-		});////
-
-	});
+	
 </script>
 
 </head>
@@ -250,7 +217,7 @@ margin: 15px 0 0;
 						<td th:text="'연극'" th:if="${l.con_no gt 21299 && l.con_no le 33241}"></td> 
 						<td th:text="'뮤지컬'" th:if="${l.con_no gt 33241 && l.con_no le 60000}"></td>
 						
-						<td><a th:href="@{/post/view.do( board_no=${l.board_no} )}"
+						<td><a th:href="@{/post/view.do( board_no=${l.board_no})}"
 							th:text="${l.title}" class="word-cut"></a></td>
 						<td><span
 							th:text="${#dates.format(l.writedate,'yyyy-MM-dd')}"></span></td>
