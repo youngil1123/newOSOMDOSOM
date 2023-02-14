@@ -18,7 +18,7 @@ class ShowTests {
 	@Test
 	void contextLoads() {
 		try {
-			String page ="";
+			String page ="";//
 			int insertobj = 0;
 			List<String> ids = null;
 			for(int i = 92; i<=120; i++) { //연극 1~7 8~100 121까지 (완료) 
