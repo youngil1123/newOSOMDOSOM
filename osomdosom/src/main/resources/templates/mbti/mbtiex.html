@@ -44,10 +44,12 @@
 	margin: 0 auto;
 }
 
+
 .footer {
 	width: 100%;
 	bottom: 0;
 }
+
 
 #reviewnull {
 	text-align: center;
@@ -157,19 +159,31 @@ a.button {
 			</span>
 			<br>
 
+
+		
 		<span id="reviewnull" th:if="${#lists.isEmpty(contents)}">
-			<div th:if="${session.logincust == null}">
-				<img src="img/bin.png">
-				<h2>현재 작성된 리뷰가 없습니다.</h2>
-				<a th:href="@{/login}" class="button btnPush btnBlueGreen"
-					onClick='chkwrite();'>리뷰작성</a>
-			</div>
-			<div th:if="${session.logincust != null}">
-				<img src="img/bin.png">
-				<h2>현재 작성된 리뷰가 없습니다.</h2>
-				<a th:href="@{/newboardwrite}" class="button btnPush btnBlueGreen">리뷰작성</a>
-			</div>
-		</span>
+		<div th:if ="${session.logincust == null}"> 
+		<img src="img/bin.png">
+		<h2>현재 작성된 리뷰가 없습니다.</h2>
+		<a th:href="@{/login}" class="button btnPush btnBlueGreen" onClick='chkwrite();'>리뷰작성</a>       		
+            </div>
+            <div th:if="${session.logincust != null}">
+            <img src="img/bin.png">
+            <h2>현재 작성된 리뷰가 없습니다.</h2>
+
+            	<a th:href="@{/newboardwrite}" class="button btnPush btnBlueGreen" style="margin-bottom: 100px;">리뷰작성</a>
+						
+
+
+            	<a th:href="@{/newboardwrite}" class="button btnPush btnBlueGreen">리뷰작성</a>
+
+					</div>
+  	</span>
+	</div>
+
+
+
+		
 	</div>
 <!-- ㅇㅇ -->
 	<footer th:replace="footer.html :: footer"></footer>
