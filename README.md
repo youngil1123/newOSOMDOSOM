@@ -45,7 +45,8 @@
     1. 미디어
     2. 찜기능
     3. 페이징
-    4. 팔로우![bestreviewnerfollower](https://user-images.githubusercontent.com/117333012/218793475-501c1fcd-7c65-4535-9e7e-0031ddfdddec.gif)
+    4. 팔로워
+![bestreviewnerfollower](https://user-images.githubusercontent.com/117333012/218793475-501c1fcd-7c65-4535-9e7e-0031ddfdddec.gif)
 ![addfollower](https://user-images.githubusercontent.com/117333012/218793521-68fc6091-d3a9-46e1-ab8b-9cc905b79dfa.gif)
 ![followerinfo](https://user-images.githubusercontent.com/117333012/218793605-1fe7e9c0-6b8a-4abd-a42b-a759b888d523.gif)
 
