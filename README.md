@@ -43,16 +43,42 @@
 
 3. **구현기능**
     1. 미디어
-    2. 찜기능
-    3. 페이징
-    4. 팔로워
 
+
+ ![media](https://user-images.githubusercontent.com/117333012/218804538-87caa4b1-7e4c-4d5f-87cd-9d041af5d3f4.gif)
+
+    2. 찜기능
+
+
+  ![likelist](https://user-images.githubusercontent.com/117333012/218804029-ad512168-b4f4-4d0c-b232-0b52915944e2.gif)
+
+    3. 페이징
+
+
+![paging](https://user-images.githubusercontent.com/117333012/218803816-0be4f7e5-f577-43b1-939d-e9e4b2eeda87.gif)
+![followerlistpaging](https://user-images.githubusercontent.com/117333012/218803740-77fba405-128f-4a64-a013-3c2d75c9256a.gif)
+
+    4. 팔로워
 
 ![bestreviewnerfollower](https://user-images.githubusercontent.com/117333012/218793475-501c1fcd-7c65-4535-9e7e-0031ddfdddec.gif)
 ![addfollower](https://user-images.githubusercontent.com/117333012/218793521-68fc6091-d3a9-46e1-ab8b-9cc905b79dfa.gif)
 ![followerinfo](https://user-images.githubusercontent.com/117333012/218793605-1fe7e9c0-6b8a-4abd-a42b-a759b888d523.gif)
 
+
     5. MBTI별 인기목록
+    
+    ![mbti](https://user-images.githubusercontent.com/117333012/218803571-f6e90439-5efe-4894-9d64-5966101319e0.gif)
+
+    
     6. 리뷰포인트/로그인포인트
     7. (관리자)사용자 밴
+    
+    ![admin](https://user-images.githubusercontent.com/117333012/218801528-e0c6bceb-1634-4087-a56b-42e3a5da4d9f.gif)
+
+    
     8. 회원정보수정
+    
+    ![updatemember](https://user-images.githubusercontent.com/117333012/218804657-48b6b902-5739-4bdd-92e5-21c4d8c95b94.gif)
+    
+    
+
