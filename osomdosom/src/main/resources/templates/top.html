@@ -9,7 +9,6 @@
 
 	<!-- Template Main JS File -->
 	<script src="/js/main.js"></script>
-	
 
 </head>
 <body>
@@ -65,7 +64,7 @@
 						<li><a th:href="@{/pointshop}" onClick='chklogin();'>포인트상점</a></li>
 			
 					</div>
-					<div th:if="${session.logincust != null}">
+					<div th:if="${session.logincust != null} ">
 						<li><a th:href="@{/pointshop}">포인트상점</a></li>
 
 					</div>

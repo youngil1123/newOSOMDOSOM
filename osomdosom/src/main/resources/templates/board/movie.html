@@ -65,8 +65,14 @@
 		<tr style="border:0px purple solid;">
 			<th style="border:0px blue solid;"> 
 				<span id="reviewlist" th:each="moviereviews:${moviereviews}"> 
+				<div th:if="${moviereviews.movieposter == null}">
 				<a th:href="@{/review/moviereview(movieCd=${moviereviews.movieCd})}" style="border:3px #bdbdbd solid; border-radius:5%; font-family: 'KyoboHand'; text-align: center; float:left; height:330px; width:200px; margin-left:3%; margin-bottom:5px;">
-				<img th:src="${moviereviews.movieposter}" style="height: 250px; width:180px; padding:3px; margin-top:5px;  border:0px yellow solid; margin-left:0%;" id="reviewimg"><br><br>[[${moviereviews.movieNm}]]</a>
+				<img src="/img/Noimg.jpg" style="height: 250px; width:180px; padding:3px; margin-top:5px;  border:0px yellow solid; margin-left:0%;"><br><br>[[${moviereviews.movieNm}]]</a></div>
+				
+				
+				<div th:if="${moviereviews.movieposter != null}">
+				<a th:href="@{/review/moviereview(movieCd=${moviereviews.movieCd})}" style="border:3px #bdbdbd solid; border-radius:5%; font-family: 'KyoboHand'; text-align: center; float:left; height:330px; width:200px; margin-left:3%; margin-bottom:5px;">
+				<img th:src="${moviereviews.movieposter}" style="height: 250px; width:180px; padding:3px; margin-top:5px;  border:0px yellow solid; margin-left:0%;" id="reviewimg"><br><br>[[${moviereviews.movieNm}]]</a></div>
 				</span>
 			</th>
 		</tr>

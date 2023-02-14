@@ -1,4 +1,10 @@
 <style>
+	@font-face {
+	    font-family: 'KyoboHand';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	    }
 
 #errorimg{
 	height:300px;
@@ -28,6 +34,7 @@
 	top:40%;
 }
 </style>
+<span style="height:800px; border:1px solid red;">
 <div th:each="my : ${myinfo}" id="mypoint">
 	보유중인 포인트 : [[${myinfo.mem_point}]]
 </div>
@@ -36,6 +43,7 @@
 	<img src="img/jongjinimg/system.png" id="error" title="error icons">
 	
 </div>
-<div id="errormsg">
-	<h5> 포인트 상점이 곧 오픈 예정입니다. 열심히 포인트를 쌓아두세요!</h5>
+<div id="errormsg" >
+	<h5 style="font-family: 'KyoboHand';"> 포인트 상점이 곧 오픈 예정입니다. 열심히 포인트를 쌓아두세요!</h5>
 </div>
+</span>

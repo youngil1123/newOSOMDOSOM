@@ -68,7 +68,7 @@ a.button {
 	float: left;
 	width: 120px;
 	padding: 0;
-	margin: 10px 20px 40px 630px;
+	margin: 10px 20px 40px 45%;
 	font-weight: 600;
 	text-align: center;
 	line-height: 50px;
@@ -104,37 +104,61 @@ a.button {
 		<h5>[[${mbti}]] 가 리뷰를 많이 남긴 컨텐츠 순위</h5>
 	</div>
 
+	
 	<div class="reviewcontainer"
-		style="margin-left: 80px; margin-top: 10px; margin-right: 50px; margin-bottom: 50px;">
-		<br> <br> <br> <span th:if="${contents != null}">
-			<span th:each="c,cStat:${contents}"> <span
-				th:if="${c.congenre == '도서'}"> <span th:text="${cStat.count}"
-					style="color: blue; font-weight: bold"></span> <a
-					th:href="@{/review/bookreview(book_no=${c.book_no})}"> <img
-						th:src="${c.bookImageURL}"
-						style="height: 180px; width: 120px; padding: 3px;" id="reviewimg">
-
-				</a>
-			</span> <span th:if="${c.congenre == '영화'}"> <span
-					th:text="${cStat.count}" style="color: blue; font-weight: bold"></span>
-					<a th:href="@{/review/moviereview(movieCd=${c.movieCd})}"> <img
-						th:src="${c.movieposter}"
-						style="height: 180px; width: 120px; padding: 3px;" id="reviewimg">
-				</a>
-			</span> <span th:if="${c.congenre == '연극'}"> <span
-					th:text="${cStat.count}" style="color: blue; font-weight: bold"></span>
-					<a th:href="@{/review/theaterreview(mt20id=${c.mt20id})}"> <img
-						th:src="${c.poster}"
-						style="height: 180px; width: 120px; padding: 3px;" id="reviewimg">
-				</a>
-			</span> <span th:if="${c.congenre == '뮤지컬'}"> <span
-					th:text="${cStat.count}" style="color: blue; font-weight: bold"></span>
-					<a th:href="@{/review/musicalreview(mt20id=${c.mt20id})}"> <img
-						th:src="${c.poster}"
-						style="height: 180px; width: 120px; padding: 3px;" id="reviewimg">
-				</a>
+		style="margin:auto; width:1080px; border:0px solid red; margin-bottom:30px;">
+		<br>
+			<span th:each="c,cStat:${contents}"> 
+				<span th:if="${c.congenre == '도서'}" style="align-content:center;">
+					<img th:if="${cStat.count}==1" src="img/gold-medal.png" style="margin-left: 40%; width:50px; position:relative; bottom:90px; left:90px;">
+					<img th:if="${cStat.count}==2" src="img/silver-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 25%;">
+					<img th:if="${cStat.count}==3" src="img/bronze-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 13%;">
+					<span th:if="${cStat.count} gt 3"th:text="${cStat.count}" style="color: white; font-size:0.1em;  position:relative; bottom:90px; left:90px;margin-left: 1.6%;"></span>
+					<a th:href="@{/review/bookreview(book_no=${c.book_no})}"> 
+						<img th:src="${c.bookImageURL}" style="height: 180px; width: 120px; padding: 3px; margin-top:20px; border:3px solid #dbdbdb; box-shadow:3px 4px 6px 0px #323232;" id="reviewimg">
+						<span th:if="${cStat.count}==1"><br></span>
+						<span th:if="${cStat.count}==3"><br></span>
+					</a>
+				</span>
+			
+				<span th:if="${c.congenre == '영화'}" style=" border:0px solid blue;">
+					<img th:if="${cStat.count}==1" src="img/gold-medal.png" style="margin-left: 40%; width:50px; position:relative; bottom:90px; left:90px;">
+					<img th:if="${cStat.count}==2" src="img/silver-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 25%;">
+					<img th:if="${cStat.count}==3" src="img/bronze-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 13%;">
+					<span th:if="${cStat.count} gt 3"th:text="${cStat.count}" style="color: white; font-size:0.1em;  position:relative; bottom:90px; left:90px;margin-left: 1.6%;"></span>
+					<a th:href="@{/review/moviereview(movieCd=${c.movieCd})}"> 
+						<img th:src="${c.movieposter}" style="height: 180px; width: 120px; padding: 3px; margin-top:20px; border:3px solid #dbdbdb; box-shadow:3px 4px 6px 0px #323232;" id="reviewimg">
+						<span th:if="${cStat.count}==1"><br></span>
+						<span th:if="${cStat.count}==3"><br></span>
+					</a>
+				</span> 
+			
+				<span th:if="${c.congenre == '연극'}">
+					<img th:if="${cStat.count}==1" src="img/gold-medal.png" style="margin-left: 40%; width:50px; position:relative; bottom:90px; left:90px;">
+					<img th:if="${cStat.count}==2" src="img/silver-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 25%;">
+					<img th:if="${cStat.count}==3" src="img/bronze-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 13%;">
+					<span th:if="${cStat.count} gt 3"th:text="${cStat.count}" style="color: white; font-size:0.1em; position:relative; bottom:90px; left:90px;margin-left: 1.6%;"></span>
+					<a th:href="@{/review/theaterreview(mt20id=${c.mt20id})}"> 
+						<img th:src="${c.poster}" style="height: 180px; width: 120px; padding: 3px; margin-top:20px; border:3px solid #dbdbdb; box-shadow:3px 4px 6px 0px #323232;" id="reviewimg">
+						<span th:if="${cStat.count}==1"><br></span>
+						<span th:if="${cStat.count}==3"><br></span>
+					</a>
+				</span> 
+			
+				<span th:if="${c.congenre == '뮤지컬'}"> 
+					<img th:if="${cStat.count}==1" src="img/gold-medal.png" style="margin-left: 40%; width:50px; position:relative; bottom:90px; left:90px;">
+					<img th:if="${cStat.count}==2" src="img/silver-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 25%;">
+					<img th:if="${cStat.count}==3" src="img/bronze-medal.png" style="width:50px; position:relative; bottom:90px; left:90px; margin-left: 13%;">
+					<span th:if="${cStat.count} gt 3"th:text="${cStat.count}" style="color: white; font-size:0.1em;  position:relative; bottom:90px; left:90px;margin-left: 1.6%;"></span>
+					<a th:href="@{/review/musicalreview(mt20id=${c.mt20id})}"> 
+						<img th:src="${c.poster}" style="height: 180px; width: 120px; padding: 3px; margin-top:20px; border:3px solid #dbdbdb; box-shadow:3px 4px 6px 0px #323232;" id="reviewimg">
+						<span th:if="${cStat.count}==1"><br></span>
+						<span th:if="${cStat.count}==3"><br></span>  
+					</a>
+				</span>
 			</span>
-		</span>
+			<br>
+
 
 		
 		<span id="reviewnull" th:if="${#lists.isEmpty(contents)}">
@@ -159,19 +183,7 @@ a.button {
 
 
 
-		</span> <span id="reviewnull" th:if="${#lists.isEmpty(contents)}">
-			<div th:if="${session.logincust == null}">
-				<img src="img/bin.png">
-				<h2>현재 작성된 리뷰가 없습니다.</h2>
-				<a th:href="@{/login}" class="button btnPush btnBlueGreen"
-					onClick='chkwrite();'>리뷰작성</a>
-			</div>
-			<div th:if="${session.logincust != null}">
-				<img src="img/bin.png">
-				<h2>현재 작성된 리뷰가 없습니다.</h2>
-				<a th:href="@{/newboardwrite}" class="button btnPush btnBlueGreen">리뷰작성</a>
-			</div>
-		</span>
+		
 	</div>
 <!-- ㅇㅇ -->
 	<footer th:replace="footer.html :: footer"></footer>
