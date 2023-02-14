@@ -202,8 +202,9 @@ color:yellow;
   <h1>---연극 & 뮤지컬 인기순위---</h1>
   <span th:each="t,tStats: ${theatertop5}">
   <a th:href="@{/review/theaterreview(mt20id=${t.mt20id})}">[[${tStats.count}]]위 . [[${t.prfnm}]]([[${t.conStar_rate}]])</a><br>
-  </span>
+   </span>
   </div>
+  	<img src="/css/gg.png" style="width:300px; height: 250px; ">
    </div>
    <div class="container">
 		<h1 style="margin-top:70px;">최신글</h1>
