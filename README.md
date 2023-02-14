@@ -15,7 +15,7 @@
     - **Front** : `HTML5`,`CSS3.0`, `Javascript`, `JQuery`, `Ajax`,
     - **API** : `KOPIS Open API` , `KOBIS Open API` ,  `도서관정보나루Open API`
     - **협업도구** : `Zoom` , `Git`, `ERD Cloud`, `Google Docs` , `Discord`, **`Gather`**
-1. **내용**
+2. **내용**
 - 팀원별 역할
     - 김준용(팀장):
     - 김영일:
@@ -25,7 +25,7 @@
 - ERD
 
 
-1. **구현기능**
+3. **구현기능**
     1. 미디어
     2. 찜기능
     3. 페이징
