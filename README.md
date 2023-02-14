@@ -120,8 +120,6 @@
     7. 회원정보수정
     
    ![updatemember](https://user-images.githubusercontent.com/117333012/218804657-48b6b902-5739-4bdd-92e5-21c4d8c95b94.gif)
-   
-   
-    마이페이지에서 비밀번호,이미지 닉네임,mbti 수정이 가능한 모습입니다.
+      마이페이지에서 비밀번호,이미지 닉네임,mbti 수정이 가능한 모습입니다.
     
 
