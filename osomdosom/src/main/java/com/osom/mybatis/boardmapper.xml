@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
  	
 	<!-- 게시글 상세정보 조회 -->
     <select id="findById" parameterType="Integer" resultType="Board">
-        SELECT * FROM board WHERE board_no=#{board_no}
+        SELECT * FROM board inner join member_tbl using(mem_no) WHERE board_no=#{board_no}
     </select>
     <!-- 게시글 수정 -->
     <update id="updatepost" parameterType="Board" >

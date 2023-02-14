@@ -100,9 +100,6 @@ th, td {
     .footer {
    width:100%;
  bottom:0;
-   position:absolute;
-  text-align: center;
- 
 }
 </style>
 
@@ -192,7 +189,7 @@ th, td {
 button.back {
   --button-bg-color: #28a745;
   --button-hover-bg-color: #218838;
-  margin-top:100px;
+  margin-top:20px;
 }
 
 button:active,
@@ -209,7 +206,7 @@ button:disabled {
 </head>
 <body>
 <header th:replace="top.html :: navigation-bar"></header>	
-<div class="container" style="margin-top:200px;">
+<div class="container" style="margin-top:100px;">
 		<!-- 여기서부터 게시글 작성 폼 시작 -->
 			
 			<table class="table2">
@@ -233,15 +230,18 @@ button:disabled {
           <td style="text-align:center; font-weight:bold; background-color:#A1BBBB; font-size:15px;">내용</td>
 		  <td colspan="3" style="padding:30px; ">[[${board.review}]]</td>
      	</tr>
+     	 <tr>
+        <td class="main">별점⭐</td>
+	    <td colspan="3" style="padding-left:30px;">[[${board.star_rate}]]점</td>
+	  </tr>
       </tbody>
-			
-
+		
 		</table>
 		<a href="javascript:history.back();"><button class="back">뒤로가기</button></a>
 		</div>
 	<!-- 여기서부터 게시글 작성 폼 끝 -->
-
-	<footer th:replace="footer.html :: footer"></footer>
+	
+	<footer th:replace="footer.html :: footer" ></footer>
 
 	<!-- Default snippet for navigation -->
 </body>
