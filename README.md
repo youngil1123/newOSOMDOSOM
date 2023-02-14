@@ -28,6 +28,13 @@
     - 김종진: 팔로워 페이지, 회원 및 게시글 검색, 전체적인 UI 작업, 페이징, 마이페이지, 이미지 파일 업로드 등
     - 심정은: 관리자, API연동, 비밀번호 암호화, 미디어검색, 서버 배포, 페이징, 컨텐츠 찜
     - 황다솜: 로그인, 회원가입, E-MAIL 인증기능 설계, 포인트적립 기능, 전체적인 UI 작업
+    
+- 시스템 구성도
+- 
+![구상도](https://user-images.githubusercontent.com/117333012/218820668-ee74eb94-d8c8-480b-9927-a7820131f2ea.jpg)
+
+
+
 - ERD
 
 ![6%EC%A1%B0_%EC%B5%9C%EC%A2%85_ERD](https://user-images.githubusercontent.com/49473766/218673453-bf8b2e99-c0c3-413a-aa46-2e5aa3d612fa.png)
