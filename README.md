@@ -65,20 +65,23 @@
 ![followerinfo](https://user-images.githubusercontent.com/117333012/218793605-1fe7e9c0-6b8a-4abd-a42b-a759b888d523.gif)
 
 
+
+
     5. MBTI별 인기목록
     
-    ![mbti](https://user-images.githubusercontent.com/117333012/218803571-f6e90439-5efe-4894-9d64-5966101319e0.gif)
+   ![mbti](https://user-images.githubusercontent.com/117333012/218803571-f6e90439-5efe-4894-9d64-5966101319e0.gif)
 
+    
     
     6. 리뷰포인트/로그인포인트
     7. (관리자)사용자 밴
     
-    ![admin](https://user-images.githubusercontent.com/117333012/218801528-e0c6bceb-1634-4087-a56b-42e3a5da4d9f.gif)
+   ![admin](https://user-images.githubusercontent.com/117333012/218801528-e0c6bceb-1634-4087-a56b-42e3a5da4d9f.gif)
 
     
     8. 회원정보수정
     
-    ![updatemember](https://user-images.githubusercontent.com/117333012/218804657-48b6b902-5739-4bdd-92e5-21c4d8c95b94.gif)
+   ![updatemember](https://user-images.githubusercontent.com/117333012/218804657-48b6b902-5739-4bdd-92e5-21c4d8c95b94.gif)
     
     
 
