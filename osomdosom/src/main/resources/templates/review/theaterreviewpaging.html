@@ -34,7 +34,8 @@
 			<!-- CONTENTS !-->
 			<tr th:each="s: ${theaterreview}" class="review">
 				<td><span th:text="${s.title}"></span></td>
-				<td><a th:href="@{/recentreviewone(board_no=${s.board_no})}"> <span th:text="${s.review}"></span>
+				<td><a th:href="@{/recentreviewone(board_no=${s.board_no})}"> <span style="font-size: 1em; width:400px; white-space:normal; display:-webkit-box;
+				-webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;" th:text="${s.review}"></span>
 				</a></td>
 				<td><span th:text="${s.nickname}"></span></td>
 				<td><span th:text="${#dates.format(s.writedate,'yyyy-MM-dd')}"></span></td>
