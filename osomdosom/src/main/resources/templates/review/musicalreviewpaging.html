@@ -34,7 +34,8 @@
 		<tbody>
 			<!-- CONTENTS !-->
 			<tr th:each="s: ${theaterreview}" class="review">
-				<td><span th:text="${s.title}"></span></td>
+				<td><span th:text="${s.title}" style="width:200px; white-space:normal; display:-webkit-box;
+				-webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;"></span></td>
 				<td><a th:href="@{/recentreviewone(board_no=${s.board_no})}"> <span th:text="${s.review}" style="font-size: 1em; width:400px; white-space:normal; display:-webkit-box;
 				-webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;" ></span>
 				</a></td>
