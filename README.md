@@ -30,8 +30,6 @@
 - FlowChart
 ![6조flowchart](https://user-images.githubusercontent.com/49473766/218763204-4176c423-7831-45f7-a775-044250e7e68e.png)
 
-![WBS(6조) - 시트4.pdf](https://github.com/youngil1123/newOSOMDOSOM/files/10733585/WBS.6.-.4.pdf)
-
 3. **구현기능**
     1. 미디어
     2. 찜기능
