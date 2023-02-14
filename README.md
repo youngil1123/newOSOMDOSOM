@@ -30,7 +30,7 @@
     - 황다솜: 로그인, 회원가입, E-MAIL 인증기능 설계, 포인트적립 기능, 전체적인 UI 작업
     
 - 시스템 구성도
-- 
+
 ![구상도](https://user-images.githubusercontent.com/117333012/218820668-ee74eb94-d8c8-480b-9927-a7820131f2ea.jpg)
 
 
