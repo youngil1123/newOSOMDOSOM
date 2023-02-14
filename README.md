@@ -1,11 +1,10 @@
-# newOSOMDOSOM
 # 문화활동 기록 커뮤니티 Doit Book
 
 1. **개요**
 - **프로젝트명** : DoitBook
 - **프로젝트 기간** : 2023년 1월 6일 ~ 2월 16일
 - **개발 목적** : 영화/도서/연극/뮤지컬 다양한 문화생활의 리뷰를 기록하고 다른사람과 공유하는 커뮤니티
-<img width="531" alt="사용도구" src="https://user-images.githubusercontent.com/49473766/218671896-0f21e996-651d-41d1-8517-320d5a086803.png">
+
 - **개발환경**
     - **O/S** : `Windows 10/11` ,`Linux`
     - **Language** : `Java (JDK 11.0.17)` ,`HTML5` , `CSS 3.0` ,`JavaScript`, `SQL`
@@ -24,7 +23,7 @@
     - 심정은:
     - 황다솜:
 - ERD
-![6조 최종 ERD](https://user-images.githubusercontent.com/49473766/218671190-1dd36dc0-1777-4fc9-a607-7b4be5301e45.png)
+
 
 1. **구현기능**
     1. 미디어
