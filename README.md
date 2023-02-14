@@ -27,6 +27,8 @@
 - ERD
 
 ![6%EC%A1%B0_%EC%B5%9C%EC%A2%85_ERD](https://user-images.githubusercontent.com/49473766/218673453-bf8b2e99-c0c3-413a-aa46-2e5aa3d612fa.png)
+- FlowChart
+![6조flowchart](https://user-images.githubusercontent.com/49473766/218763204-4176c423-7831-45f7-a775-044250e7e68e.png)
 
 3. **구현기능**
     1. 미디어
