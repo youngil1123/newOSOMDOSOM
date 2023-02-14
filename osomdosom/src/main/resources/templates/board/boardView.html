@@ -57,6 +57,10 @@
 
 
 <style>
+
+*{
+	font-family: 'KyoboHand';
+}
 .btn {
 	-bs-btn-font-size: 2rem;
 	margin-bottom: 10px;
@@ -67,7 +71,7 @@
 	color: #ddd;
 }
 
-.star input {
+#star_rate {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -98,6 +102,17 @@ th, td {
 	.footer-content{
 		font-family: 'KyoboHand';
 	}
+.btnOrange {
+  background: #FFAA40;
+}
+
+.btnOrange.btnPush {
+  box-shadow: 0px 5px 0px 0px #A66615;
+}
+
+.btnOrange.btnPush:hover {
+  box-shadow: 0px 0px 0px 0px #A66615;
+}
 </style>
 
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
@@ -169,7 +184,7 @@ const drawStar = (target) => {
 			
 			<div class="form-group" >
 				<label for="content" style=font-size:20px;>내용</label>
-				<textarea class="form-control" rows="15"  id="content"
+				<textarea class="form-control" rows="13"  id="content"
     name="review">[[${board.review}]]</textarea></br>
 			</div>
 
@@ -177,17 +192,17 @@ const drawStar = (target) => {
 				<label for="content" style=font-size:20px;>개인메모</label>
 				<!--  여러줄의 데이터를 입력하고 하고자 할때 textarea 태그를 사용한다. -->
 				<!--  textarea 안에 있는 모든 글자는 그대로 나타난다. 공백문자, tag, enter -->
-				<textarea class="form-control" rows="15"  id="content"
+				<textarea class="form-control" rows="8"  id="content"
     name="secret_memo">[[${board.secret_memo}]]</textarea></br>
 			</div>
 			<div class="form-group">
 				<label for="writer" style=font-size:20px;>시청매체</label> 
-				<textarea class="form-control" rows="15"  id="content"
+				<textarea class="form-control" rows="1"  id="content"
     name="partner">[[${board.partner}]]</textarea></br>
 			</div>
 			<div class="form-group">
-				<label for="writer" style=font-size:20px;>별점</label> 
-				<div th:if="${board.star_rate}==1">
+			<label for="writer" style=font-size:20px;>별점</label> 
+			<div th:if="${board.star_rate}==1">
 				<span class="star"> ★★★★★ <span style="width:10%;" >★★★★★</span></span>
 				</div>
 				<div th:if="${board.star_rate}==2">
@@ -217,15 +232,20 @@ const drawStar = (target) => {
 				<div th:if="${board.star_rate}==10">
 				<span class="star"> ★★★★★ <span style="width:100%;" >★★★★★</span></span>
 				</div>
+				<input type="range" oninput="drawStar(this)" value="1" step="1" name="star_rate"
+					min="0" max="10" style="width: 10%;height: 1%; position: absolute; left: 0; cursor: pointer;opacity: 0; margin-left:270px; margin-top:-20px;">
+				</div>
+				
+			
 
 				
 				<br><br>
 			</div>
 			
 			
-			<button type="submit" class="btn btn-secondary" id="btn-save">수정</button>
-			<button type="button" onclick="deletePost()"class="btn btn-secondary" id="btn-save">삭제</button>
-			</form>
+			<button type="submit" class="btn btn-dark btn-lg btnPush btnOrange" id="btn-save" style="margin-left:280px;">수정</button>
+			<button type="button" onclick="deletePost()"class="btn btn-dark btn-lg btnPush btnOrange" id="btn-save">삭제</button>
+			
 		
 	</div>
 	<!-- 여기서부터 게시글 작성 폼 끝 -->

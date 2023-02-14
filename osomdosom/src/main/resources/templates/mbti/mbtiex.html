@@ -12,6 +12,7 @@
 	href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
 	rel="stylesheet">
 
+
 <!-- Vendor CSS Files -->
 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/vendor/bootstrap-icons/bootstrap-icons.css"
@@ -44,13 +45,16 @@
 	margin: 0 auto;
 }
 
+
 .footer {
 	width: 100%;
 	bottom: 0;
 }
 
+
 #reviewnull {
 	text-align: center;
+	color:white;
 }
 
 #reviewnull img {
@@ -66,7 +70,7 @@ a.button {
 	float: left;
 	width: 120px;
 	padding: 0;
-	margin: 10px 20px 40px 630px;
+	margin: 10px 20px 40px 45%;
 	font-weight: 600;
 	text-align: center;
 	line-height: 50px;
@@ -76,11 +80,11 @@ a.button {
 }
 
 .btnBlueGreen {
-	background: #005f5b;
+	background: #0073a0;
 }
 
 .btnBlueGreen.btnPush {
-	box-shadow: 0px 5px 0px 0px #007144;
+	box-shadow: 0px 5px 0px 0px #3f512e;
 }
 
 .btnPush:hover {
@@ -101,10 +105,10 @@ a.button {
 		<h3>현재 [[${mbti}]] 회원 수는 [[${mbtimemno}]] 명</h3>
 		<h5>[[${mbti}]] 가 리뷰를 많이 남긴 컨텐츠 순위</h5>
 	</div>
-
+   
 	
 	<div class="reviewcontainer"
-		style="margin:auto; width:1080px; border:0px solid red; margin-bottom:30px;">
+		style="margin:auto; width:1127px; height:670px; border:7px solid #cb8f4d; margin-bottom:30px; background:#005f5b;">
 		<br>
 			<span th:each="c,cStat:${contents}"> 
 				<span th:if="${c.congenre == '도서'}" style="align-content:center;">
@@ -157,19 +161,31 @@ a.button {
 			</span>
 			<br>
 
+
+		
 		<span id="reviewnull" th:if="${#lists.isEmpty(contents)}">
-			<div th:if="${session.logincust == null}">
-				<img src="img/bin.png">
-				<h2>현재 작성된 리뷰가 없습니다.</h2>
-				<a th:href="@{/login}" class="button btnPush btnBlueGreen"
-					onClick='chkwrite();'>리뷰작성</a>
-			</div>
-			<div th:if="${session.logincust != null}">
-				<img src="img/bin.png">
-				<h2>현재 작성된 리뷰가 없습니다.</h2>
-				<a th:href="@{/newboardwrite}" class="button btnPush btnBlueGreen">리뷰작성</a>
-			</div>
-		</span>
+		<div th:if ="${session.logincust == null}"> 
+		<img src="img/bin.png">
+		<h2>현재 작성된 리뷰가 없습니다.</h2>
+		<a th:href="@{/login}" class="button btnPush btnBlueGreen" onClick='chkwrite();'>리뷰작성</a>       		
+            </div>
+            <div th:if="${session.logincust != null}">
+            <img src="img/bin.png">
+            <h2>현재 작성된 리뷰가 없습니다.</h2>
+
+            	<a th:href="@{/newboardwrite}" class="button btnPush btnBlueGreen" style="margin-top: 70px;">리뷰작성</a>
+						
+
+
+            	
+
+					</div>
+  	</span>
+	</div>
+
+
+
+		
 	</div>
 <!-- ㅇㅇ -->
 	<footer th:replace="footer.html :: footer"></footer>
