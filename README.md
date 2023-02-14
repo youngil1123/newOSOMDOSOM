@@ -30,7 +30,7 @@
 - FlowChart
 ![6조flowchart](https://user-images.githubusercontent.com/49473766/218763204-4176c423-7831-45f7-a775-044250e7e68e.png)
 
--
+-WBS
 ![wbs(1)](https://user-images.githubusercontent.com/117333012/218775426-3740b4a6-ca7d-4157-8279-1acc97e486c7.png)
 ![wbs(2)](https://user-images.githubusercontent.com/117333012/218775456-adb97129-6b73-49a6-8c24-e457655ece94.png)
 
