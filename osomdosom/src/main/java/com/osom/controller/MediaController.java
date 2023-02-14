@@ -95,6 +95,20 @@ public class MediaController {
 			theaters.add(m);
 		}
 		model.addAttribute("theatertop5", theaters);
+		// 뮤지컬 순위 5
+		List<Board> mulist = new ArrayList<Board>();
+		mulist = boardservice.getTop5("뮤지컬");
+		List<Mbti> musicals= new ArrayList<Mbti>();
+		for (Board o : mulist) {
+			// conno 가지고 정보 가져오기.
+			Mbti m = null;
+			int con_no = o.getCon_no();
+			m = mbtiservice.getconByconnoTheater(con_no);
+			m.setConStar_rate(o.getConStar_rate());
+			m.setCon_no(con_no);
+			musicals.add(m);
+		}
+		model.addAttribute("musicaltop5", musicals);
 		System.out.println(books);
 		System.out.println(movies);
 		System.out.println(theaters);

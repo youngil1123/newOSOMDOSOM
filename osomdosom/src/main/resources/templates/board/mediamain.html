@@ -157,19 +157,25 @@ background-color:#005f5b;
 #bookpp{
 margin-top:50px;
 	float:left;
-	margin-left: 80px;
+	margin-left: 40px;
 	
 }
 #moviepp{
 margin-top:50px;
 	float:left;
-	margin-left: 80px;
+	margin-left: 40px;
 	
 }
 #theaterpp{
 margin-top:50px;
 float:left;
-margin-left: 80px;
+margin-left: 40px;
+}
+
+#musicalpp{
+margin-top:50px;
+float:left;
+margin-left: 40px;
 }
 
 #pp a{
@@ -188,21 +194,27 @@ color:yellow;
   <div id="pp">
   <img src="/css/gg.png" style="width:300px; height: 250px; float:right;">
   <div id="bookpp" >
-  <h1>---도서 인기순위---</h1>
+  <h1>┏ 도서 인기순위 ┓</h1>
   <span th:each="b,bStats: ${booktop5}">
   <a th:href="@{/review/bookreview(book_no=${b.book_no})}">[[${bStats.count}]]위 . [[${b.bookname}]]<span th:if="${vol != null}">[[${b.vol}]]권</span>([[${b.conStar_rate}]])</a><br>
   </span>
   </div>
   <div id="moviepp">
-  <h1>---영화 인기순위 ---</h1>
+  <h1>┏ 영화 인기순위 ┓</h1>
   <span th:each="m,mStats: ${movietop5}">
   <a th:href="@{/review/moviereview(movieCd=${m.movieCd})}">[[${mStats.count}]]위 . [[${m.movieNm}]]([[${m.conStar_rate}]])</a><br>
   </span>
   </div>
   <div id="theaterpp">
-  <h1>---연극 & 뮤지컬 인기순위---</h1>
+  <h1>┏ 연극 인기순위 ┓</h1>
   <span th:each="t,tStats: ${theatertop5}">
   <a th:href="@{/review/theaterreview(mt20id=${t.mt20id})}">[[${tStats.count}]]위 . [[${t.prfnm}]]([[${t.conStar_rate}]])</a><br>
+   </span>
+   </div>
+   <div id="musicalpp">
+  <h1>┏ 뮤지컬 인기순위 ┓</h1>
+   <span th:each="mu,muStats: ${musicaltop5}">
+  <a th:href="@{/review/musicalreview(mt20id=${mu.mt20id})}">[[${muStats.count}]]위 . [[${mu.prfnm}]]([[${mu.conStar_rate}]])</a><br>
    </span>
   </div>
   	
