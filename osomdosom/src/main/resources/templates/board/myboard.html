@@ -218,7 +218,8 @@ color:ffffff;
 						<td th:text="'뮤지컬'" th:if="${l.con_no gt 33241 && l.con_no le 60000}"></td>
 						
 						<td><a th:href="@{/post/view.do( board_no=${l.board_no})}"
-							th:text="${l.title}" class="word-cut"></a></td>
+							th:text="${l.title}" class="word-cut" style="width:400px; white-space:normal; display:-webkit-box;
+				-webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; text-align:center;"></a></td>
 						<td><span
 							th:text="${#dates.format(l.writedate,'yyyy-MM-dd')}"></span></td>
 						<td th:text="${l.star_rate}"></td>
