@@ -60,8 +60,10 @@
 
 
 3. **구현기능**
+  - OPEN API 연동(KOBIS,KOPIS,도서관정보나루)
 
-
+<img width="1199" alt="영화api" src="https://user-images.githubusercontent.com/49473766/218936265-8bc59167-685f-4ed0-8dca-0b54d3b68551.png">
+<img width="1123" alt="도서api" src="https://user-images.githubusercontent.com/49473766/218936281-a2a51d5b-2589-45a5-ac11-cc666d45ed53.png">
 
   - 미디어
  미디어별 평점순으로 인기순위를 만들었습니다.
