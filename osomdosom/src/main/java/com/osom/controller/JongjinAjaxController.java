@@ -37,7 +37,7 @@ public class JongjinAjaxController {
 		Member_tbl member = null;
 
 		try {
-			member = mservice.get(cid);
+			member = mservice.selectbynickname(cid);
 			if (member != null) {
 				String imgname = member.getMem_img();
 				result = imgname;
@@ -63,7 +63,8 @@ public class JongjinAjaxController {
 		Member_tbl member = (Member_tbl) session.getAttribute("logincust");
 
 		int myid_no = mservice.findmem_no(member.getMem_id());
-		int fwid_no = mservice.findmem_no(fwid);
+		Member_tbl follower = mservice.selectbynickname(fwid);
+		int fwid_no = follower.getMem_no();
 
 		friendship.setMem_no(myid_no);
 		friendship.setMem_no2(fwid_no);

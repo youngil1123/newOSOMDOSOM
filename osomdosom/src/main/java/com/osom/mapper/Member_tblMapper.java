@@ -30,6 +30,8 @@ public interface Member_tblMapper extends MyMapper<String,Member_tbl>{
 	
 	public Member_tbl selectbyno (Integer mem_no);
 	
+	public Member_tbl selectbynickname (String nickname);
+	
 	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email);
 
 	public void logindate(int mem_no, String today);

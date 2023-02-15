@@ -92,6 +92,10 @@ public class Member_tblService implements MyService<String, Member_tbl> {
 	public Member_tbl selectbyno(Integer mem_no) throws Exception{
 		return mapper.selectbyno(mem_no);
 	}
+	
+	public Member_tbl selectbynickname(String nickname) throws Exception{
+		return mapper.selectbynickname(nickname);
+	}
 
 	public void pwUpdate_M(String mem_id, String mem_pwd, String mem_email) throws Exception{
 		mapper.pwUpdate_M(mem_id, mem_pwd, mem_email);
