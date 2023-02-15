@@ -114,7 +114,7 @@
 ![addfollower](https://user-images.githubusercontent.com/117333012/218793521-68fc6091-d3a9-46e1-ab8b-9cc905b79dfa.gif)
 
 
-팔로워페이제에서  addfollower버튼 누르면 아이디를 통해 팔로워를 할 아이디를 찾아 팔로워가능하면 리스트에 이미지와 함께
+팔로워페이지에서  addfollower버튼 누르면 아이디를 통해 팔로워를 할 아이디를 찾아 팔로워가능하면 리스트에 이미지와 함께
 보여줍니다. 리스트에서 팔로워 취소도 가능한 모습입니다.
 
 
