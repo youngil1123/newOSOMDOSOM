@@ -54,8 +54,9 @@
 - WBS
 
 
-![wbs(1)](https://user-images.githubusercontent.com/117333012/218775426-3740b4a6-ca7d-4157-8279-1acc97e486c7.png)
-![wbs(2)](https://user-images.githubusercontent.com/117333012/218775456-adb97129-6b73-49a6-8c24-e457655ece94.png)
+![wbs](https://user-images.githubusercontent.com/117333012/218912213-718bb1a1-0866-4470-82ff-b2ebb403b8bd.png)
+![wbs2](https://user-images.githubusercontent.com/117333012/218912219-6b9fc88e-0ff1-4b0f-8150-dc5f8636dd37.png)
+
 
 
 3. **구현기능**
