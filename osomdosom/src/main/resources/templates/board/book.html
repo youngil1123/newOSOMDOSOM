@@ -66,7 +66,7 @@
 			<th style="border:0px blue solid;"> 
 				<span id="reviewlist" th:each="bookreview:${bookreviews}"> 
 				<a th:href="@{/review/bookreview(book_no=${bookreview.book_no})}" style="border:3px #bdbdbd solid; border-radius:5%; font-family: 'KyoboHand'; text-align: center; float:left; height:330px; width:200px; margin-left:3%; margin-bottom:5px;">
-				<img th:src="${bookreview.bookImageURL}" style="height: 250px; width:180px; padding:3px; margin-top:5px;  border:0px yellow solid; margin-left:0%;" id="reviewimg"><br><br>[[${bookreview.bookname}]]</a>
+				<img th:src="${bookreview.bookImageURL}" style="height: 220px; width:180px; padding:3px; margin-top:5px;  border:0px yellow solid; margin-left:0%;" id="reviewimg"><br><br>[[${bookreview.bookname}]]</a>
 				</span>
 			</th>
 		</tr>
