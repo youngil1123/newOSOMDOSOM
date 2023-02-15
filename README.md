@@ -41,6 +41,14 @@
 - FlowChart
 ![6조flowchart](https://user-images.githubusercontent.com/49473766/218763204-4176c423-7831-45f7-a775-044250e7e68e.png)
 
+
+- 프로젝트 수행기간
+
+![image](https://user-images.githubusercontent.com/117333012/218899047-0dd063bb-d10b-4f39-b89a-9bddd3326e74.png)
+
+
+1월1일부터 2월16일까지 약 7주동안 진행하였습니다
+
 - WBS
 
 
