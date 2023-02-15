@@ -31,7 +31,9 @@
     
 - 시스템 구성도
 
-![구상도](https://user-images.githubusercontent.com/117333012/218820668-ee74eb94-d8c8-480b-9927-a7820131f2ea.jpg)
+
+![프로젝트구성도](https://user-images.githubusercontent.com/117333012/218905312-7ac38db4-770a-461b-a498-342de7938713.jpg)
+
 
 
 
