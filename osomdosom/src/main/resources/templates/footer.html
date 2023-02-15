@@ -14,6 +14,14 @@
 	.footer-content{
 		font-family: 'KyoboHand';
 	}
+	.word_cut{
+	width:400px; 
+	white-space:normal; 
+	display:-webkit-box;
+	-webkit-line-clamp:2; 
+	-webkit-box-orient:vertical; 
+	overflow:hidden;
+	}
 </style>
 </head>
 <body>
@@ -37,7 +45,7 @@
 									board.writedate)
 									.format(
 											"YYYY-MM-DD")
-							+ '</span></div><span>'
+							+ '</span></div><span style="width:300px; white-space:normal; display:-webkit-box;-webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;">'
 							+ board.title
 							+ '</span></div></a></li>');														
 																							
@@ -90,7 +98,7 @@ function chkwrite() {
 								th:href="@{/pointshop}" class="bi bi-chevron-right">포인트상점</a></li>
 							<li th:if="${session.logincust == null}"><a
 								th:href="@{/login}" class="bi bi-chevron-right"
-								onClick='chkwrite();'>내글</a></li>
+								onClick='chkwrite();'>내 글</a></li>
 							<li th:if="${session.logincust != null}"><a
 								th:href="@{/myboard}" class="bi bi-chevron-right">내글</a></li>
 						</ul>
